@@ -1,0 +1,13 @@
+#	Android	fstab
+#	The	filesystem
+#	specify	MF_CHECK,
+
+		
+#TODO:	Add	'check'
+#	Currently	we
+
+		
+#<src>	<mnt_point>	<type>
+/boot	emmc /dev/block/platform/msm_sdcc.1/by-name/boot
+/system	ext4 /dev/block/platform/msm_sdcc.1/by-name/system
+/data	ext4 /dev/block/platform/msm_sdcc.1/by-name/userdata

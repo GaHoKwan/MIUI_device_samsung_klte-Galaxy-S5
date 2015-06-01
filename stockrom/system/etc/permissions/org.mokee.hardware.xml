@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <library name="org.mokee.hardware"
+            file="/system/framework/org.mokee.hardware.jar" />
+</permissions>
+

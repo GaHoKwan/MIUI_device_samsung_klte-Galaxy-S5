@@ -1,0 +1,10 @@
+#!/system/bin/sh
+#
+# Print startup info
+#
+L="log -p i -t mk"
+$L "   __     __    ____  __  _  _____  _____";
+$L "  //\    //\   ||   | ||  / ||     ||    ";
+$L " //  \  //  \  ||   | || |  ||———— ||————";
+$L "//    \//    \ ||___| ||  \ ||____ ||____";
+$L "Welcome to Android `getprop ro.build.version.release` / MoKee-`getprop ro.mk.version`";
