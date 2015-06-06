@@ -23,6 +23,8 @@ if [ ! -e /data/app/boeffla-config-v2.apk ]; then
 	cat /system/etc/boeffla-config-v2 > /data/app/boeffla-config-v2.apk
 fi
 
+setprop ro.telephony.default_network 10
+
 GET_BL_VERSION=`getprop ro.bootloader|cut -c 1-5`
 
 # For GSM Device
@@ -60,6 +62,34 @@ elif [ "$GET_BL_VERSION" == "G900T" ]; then
   setprop ro.product.device "kltetmo"
   setprop ro.build.description "kltetmo-user 4.4.2 KOT49H G900TUVU1BNH5 release-keys"
   setprop ro.build.fingerprint "samsung/kltetmo/kltetmo:4.4.2/KOT49H/G900TUVU1BNH5:user/release-keys"
+  setprop telephony.lteOnGsmDevice 1
+  setprop ro.telephony.ril.v3 "newDialCode"
+
+elif [ "$GET_BL_VERSION" == "G900S" ]; then
+
+  setprop ro.product.model "SM-G900S"
+  setprop ro.product.device "klteskt"
+  setprop telephony.lteOnGsmDevice 1
+  setprop ro.telephony.ril.v3 "newDialCode"
+
+elif [ "$GET_BL_VERSION" == "G900I" ]; then
+
+  setprop ro.product.model "SM-G900I"
+  setprop ro.product.device "kltedv"
+  setprop telephony.lteOnGsmDevice 1
+  setprop ro.telephony.ril.v3 "newDialCode"
+
+elif [ "$GET_BL_VERSION" == "G900L" ]; then
+
+  setprop ro.product.model "SM-G900L"
+  setprop ro.product.device "kltelgt"
+  setprop telephony.lteOnGsmDevice 1
+  setprop ro.telephony.ril.v3 "newDialCode"
+
+elif [ "$GET_BL_VERSION" == "G900K" ]; then
+
+  setprop ro.product.model "SM-G900K"
+  setprop ro.product.device "kltektt"
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 

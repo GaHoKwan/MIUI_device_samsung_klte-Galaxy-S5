@@ -63,8 +63,8 @@ fi
 
 if [ $1 = "MiuiFramework" ];then
     applyPatch $1 $2
-    cp $1/kltezn.xml $2/assets/device_features/
-    cp $1/kltezn_legacy.xml $2/assets/device_features/
+    cp $1/klte.xml $2/assets/device_features/
+    cp $1/klte_legacy.xml $2/assets/device_features/
 fi
 
 if [ $1 = "Settings" ];then
