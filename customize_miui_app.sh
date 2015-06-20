@@ -67,6 +67,10 @@ if [ $1 = "MiuiFramework" ];then
     cp $1/klte_legacy.xml $2/assets/device_features/
 fi
 
+if [ $1 = "MiuiKeyguard" ];then
+	applyPatch $1 $2
+fi
+
 if [ $1 = "Settings" ];then
 #	$XMLMERGYTOOL $1/res/values $2/res/values
 #	$XMLMERGYTOOL $1/res/values-zh-rCN $2/res/values-zh-rCN

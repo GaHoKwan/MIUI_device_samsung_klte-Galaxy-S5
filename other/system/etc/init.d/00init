@@ -23,7 +23,7 @@ if [ ! -e /data/app/boeffla-config-v2.apk ]; then
 	cat /system/etc/boeffla-config-v2 > /data/app/boeffla-config-v2.apk
 fi
 
-setprop ro.telephony.default_network 10
+setprop ro.telephony.default_network 9
 
 GET_BL_VERSION=`getprop ro.bootloader|cut -c 1-5`
 

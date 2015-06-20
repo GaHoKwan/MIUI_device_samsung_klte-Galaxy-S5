@@ -1,16 +1,31 @@
-From 063f5258c2b6a207dd053d007b7908aa9a232f1c Mon Sep 17 00:00:00 2001
-From: hasz <bmax004@gmail.com>
-Date: Sun, 26 Apr 2015 16:14:24 +0800
-Subject: [PATCH] Open LTE Mi5
+From 13bb703a22e2ec36065c7c536a7dfee576f7b9c8 Mon Sep 17 00:00:00 2001
+From: Jay <kwangaho@gmail.com>
+Date: Sun, 7 Jun 2015 20:07:19 +0800
+Subject: [PATCH] LTE
 
 ---
- .../smali/com/android/phone/PhoneGlobals.smali     |    2 +-
- .../PreferredNetworkTypeListPreference.smali       |   10 +++++-----
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ TeleService/res/xml/preferred_network_type_lte_x5.xml                                       | 4 ++--
+ TeleService/smali/com/android/phone/PhoneGlobals.smali                                      | 2 +-
+ TeleService/smali/com/android/phone/settings/PreferredNetworkTypeListPreference.smali       | 12 ++++++------
+ 3 files changed, 11 insertions(+), 13 deletions(-)
+
+--- a/TeleService/res/xml/preferred_network_type_lte_x5.xml
++++ b/TeleService/res/xml/preferred_network_type_lte_x5.xml
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <PreferenceScreen android:key="network_type_list_gsm_umts"
+   xmlns:android="http://schemas.android.com/apk/res/android">
+-    <miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_pref_entries_4g_preferred" android:key="20" />
+-    <miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_pref_entries_3g_preferred" android:key="18" />
++    <miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_pref_entries_4g_preferred" android:key="10" />
++    <miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_pref_entries_3g_preferred" android:key="7" />
+     <miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_pref_entries_only_2g" android:key="1" />
+ </PreferenceScreen>
+\ No newline at end of file
 
 --- a/TeleService/smali/com/android/phone/PhoneGlobals.smali
 +++ b/TeleService/smali/com/android/phone/PhoneGlobals.smali
-@@ -2771,7 +2771,7 @@
+@@ -3072,7 +3072,7 @@
      :cond_a
      sget-boolean v3, Lmiui/os/Build;->IS_MIFIVE:Z
  
@@ -21,9 +36,12 @@ Subject: [PATCH] Open LTE Mi5
  
 --- a/TeleService/smali/com/android/phone/settings/PreferredNetworkTypeListPreference.smali
 +++ b/TeleService/smali/com/android/phone/settings/PreferredNetworkTypeListPreference.smali
-@@ -751,15 +751,15 @@
+@@ -749,17 +749,17 @@
+     :cond_7
+     if-ne v2, v6, :cond_12
  
-     sget-boolean v3, Lmiui/os/Build;->IS_MIFIVE:Z
+-    sget-boolean v3, Lmiui/os/Build;->IS_MIFIVE:Z
++    #sget-boolean v3, Lmiui/os/Build;->IS_MIFIVE:Z
  
 -    if-nez v3, :cond_8
 +    #if-nez v3, :cond_8
@@ -41,7 +59,7 @@ Subject: [PATCH] Open LTE Mi5
 +    #if-eqz v3, :cond_a
  
      :cond_8
-     const v3, 0x7f050025
+     const v3, 0x7f050026
 -- 
-1.7.9.5
+1.9.1
 
