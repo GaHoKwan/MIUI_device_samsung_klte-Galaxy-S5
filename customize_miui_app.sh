@@ -61,7 +61,7 @@ if [ $1 = "DeskClock" ];then
     other/tools/nametoid.py framework-res/res/values/public.xml $2/smali
 fi
 
-if [ $1 = "MiuiFramework" ];then
+if [ $1 = "miuisystem" ];then
     applyPatch $1 $2
     cp $1/klte.xml $2/assets/device_features/
     cp $1/klte_legacy.xml $2/assets/device_features/
@@ -72,10 +72,10 @@ if [ $1 = "MiuiKeyguard" ];then
 fi
 
 if [ $1 = "Settings" ];then
-#	$XMLMERGYTOOL $1/res/values $2/res/values
-#	$XMLMERGYTOOL $1/res/values-zh-rCN $2/res/values-zh-rCN
+	$XMLMERGYTOOL $1/res/values $2/res/values
+	$XMLMERGYTOOL $1/res/values-zh-rCN $2/res/values-zh-rCN
 #	$XMLMERGYTOOL $1/res/values-zh-rTW $2/res/values-zh-rTW
-#	applyPatch $1 $2
+	applyPatch $1 $2
     other/tools/idtoname.py other/tools/public-miui.xml $2/smali
     other/tools/nametoid.py framework-res/res/values/public.xml $2/smali
 fi

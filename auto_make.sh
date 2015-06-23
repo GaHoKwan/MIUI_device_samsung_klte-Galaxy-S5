@@ -18,6 +18,12 @@ if [ "$1" == "" ];then
 	exit
 fi
 
+if [ -e out/ZIP/system/app/com.android.nfc-1.apk ];then
+	cp -f stockrom/system/build.prop out/ZIP/system/build.prop
+	mv out/ZIP/system/app/com.android.nfc-1.apk out/ZIP/system/app/Nfc.apk
+	mv out/ZIP/system/priv-app/QuickSearchBox.apk out/ZIP/system/app/QuickSearchBox.apk
+fi
+
 init(){
 	echo "============================"
 	echo ">>> Init Environment ...    "
@@ -29,10 +35,18 @@ init(){
 }
 
 clean(){
-	echo "============================"
-	echo ">>> Cleaning WorkSpace ...  "
-	echo "============================"
-	make clean
+	echo "--------------------------------"
+	echo "  Sure Cleaning WorkSpace? (y/n)"
+	echo "--------------------------------"
+	read c
+	if [ "$c" == "y" ]; then
+		echo "============================"
+		echo ">>> Cleaning WorkSpace ...  "
+		echo "============================"
+		make clean
+	else
+		echo ">>> Without Cleaning WorkSpace ...  "
+	fi
 }
 
 fullota(){
@@ -53,16 +67,21 @@ otadiff(){
 	echo "----------------------------"
 	echo "     Sure make otadiff?     "
 	echo "----------------------------"
-	read anykey
-	../tools/releasetools/ota_from_target_files -k ../build/security/testkey -i $LAST_TARGET out/target_files.zip OTA-$LAST_TARGET-$BUILD_NUMBER.zip
-	echo "================================="
-	echo ">>>  Copying  Target_files.zip   "
-	echo "================================="
-	cp out/target_files.zip $BUILD_NUMBER-target.zip
+	read m
+	if [ "$m" == "y" ]; then
+		../tools/releasetools/ota_from_target_files -k ../build/security/testkey -i $LAST_TARGET out/target_files.zip OTA-$LAST_TARGET-$BUILD_NUMBER.zip
+		echo "================================="
+		echo ">>>  Copying  Target_files.zip   "
+		echo "================================="
+		cp out/target_files.zip $BUILD_NUMBER-target.zip
+	else
+		echo ">>>  Skip to make otadiff !!!   "
+	fi
 }
 
 
 init
+clean
 fullota
 otadiff
 echo "================================="

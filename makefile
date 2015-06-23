@@ -1,15 +1,15 @@
 #
-# Makefile for Find5
+# Makefile for Klte
 #
 
 # The original zip file, MUST be specified by each product
 local-zip-file     := stockrom.zip
 
 # The output zip file of MIUI rom, the default is porting_miui.zip if not specified
-local-out-zip-file := MIUI.zip
+local-out-zip-file := MIUI_Klte.zip
 
 # All apps from original ZIP, but has smali files chanded
-local-modified-apps := Bluetooth Camera
+local-modified-apps :=
 
 local-modified-priv-apps :=
 
@@ -22,7 +22,7 @@ local-miui-removed-apps :=
 
 local-miui-removed-priv-apps := 
 
-local-miui-modified-apps := MiuiFramework TeleService MiuiSystemUI Music DeskClock SecurityCenter
+local-miui-modified-apps := miuisystem TeleService Settings MiuiSystemUI Music SecurityCenter
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
@@ -50,8 +50,6 @@ include $(PORT_BUILD)/porting.mk
 #pre_install_data_packages := $(TMP_DIR)/pre_install_apk_pkgname.txt
 BUILD_COUNT := $(shell date +%Y%m%d)
 local-pre-zip-misc:
-	@echo Update boot.img
-	cp -rf other/boot.img $(ZIP_DIR)/boot.img
 	@echo Fix NFC
 	mv $(ZIP_DIR)/system/app/Nfc.apk $(ZIP_DIR)/system/app/com.android.nfc-1.apk
 	@echo Fix SearchBox
