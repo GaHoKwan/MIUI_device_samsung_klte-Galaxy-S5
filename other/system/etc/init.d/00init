@@ -27,6 +27,8 @@ setprop ro.telephony.default_network 10
 
 GET_BL_VERSION=`getprop ro.bootloader|cut -c 1-5`
 
+mount -o remount,rw /system
+
 # For GSM Device
 
 if [ "$GET_BL_VERSION" == "G900F" ]; then
@@ -78,6 +80,7 @@ elif [ "$GET_BL_VERSION" == "G900I" ]; then
   setprop ro.product.device "kltedv"
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
+  rm /system/app/com.android.nfc-1.apk
 
 elif [ "$GET_BL_VERSION" == "G900L" ]; then
 
@@ -134,6 +137,7 @@ elif [ "$GET_BL_VERSION" == "SCL23" ]; then
   setprop ro.telephony.default_cdma_sub "default_cdma_sub"
   setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
   setprop telephony.lteOnCdmaDevice 1
+  rm /system/app/com.android.nfc-1.apk
 
 elif [ "$GET_BL_VERSION" == "SC04F" ]; then
 
@@ -147,7 +151,7 @@ elif [ "$GET_BL_VERSION" == "SC04F" ]; then
   setprop ro.telephony.default_cdma_sub "default_cdma_sub"
   setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
   setprop telephony.lteOnCdmaDevice 1
-
+  rm /system/app/com.android.nfc-1.apk
 
 elif [ "$GET_BL_VERSION" == "G900P" ]; then
 
@@ -162,6 +166,7 @@ elif [ "$GET_BL_VERSION" == "G900P" ]; then
   setprop ro.telephony.default_cdma_sub "default_cdma_sub"
   setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
   setprop telephony.lteOnCdmaDevice 1
+  rm /system/app/com.android.nfc-1.apk
 
 elif [ "$GET_BL_VERSION" == "G900V" ]; then
 
