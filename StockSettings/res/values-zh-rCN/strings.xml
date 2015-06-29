@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="aosp_camera">MIUI相机</string>
+    <string name="app_name">附加设置</string>
+    <string name="battery">省电模式</string>
+    <string name="boeffla">Boeffla设置</string>
+    <string name="cabc_summary_head">自适应背光控制</string>
+    <string name="camera">相机设置</string>
+    <string name="camera_sound">相机声音</string>
+    <string name="camera_switch">相机切换</string>
+    <string name="charge">快充模式</string>
+    <string name="cm_camera">CM相机</string>
+    <string name="defaults_button">默认值</string>
+    <string name="density_edit_message">请输入一个合理的密度值（180-440）</string>
+    <string name="density_edit_title">屏幕密度修改</string>
+    <string name="density_error">警告，输入密度值超出范围，请重新输入</string>
+    <string name="density_title">屏幕密度</string>
+    <string name="dialog_message">注意：本次重启为热重启！</string>
+    <string name="dialog_no">取消</string>
+    <string name="dialog_ok">应用成功，是否重启手机？</string>
+    <string name="dialog_reboot">请在稍晚些时刻手动重启手机</string>
+    <string name="dialog_yes">确定</string>
+    <string name="gestures">黑屏手势</string>
+    <string name="key_home_double_tap_action_title">双击Home锁屏</string>
+    <string name="keylight">按键设置</string>
+    <string name="knock_wake">双击唤醒</string>
+    <string name="led_fade">呼吸式led灯</string>
+    <string name="mdnie_mode_summary_head">设置 mDNIe 模式</string>
+    <string name="mdnie_mode_title_head">模式</string>
+    <string name="mdnie_scenario_summary_head">设置 mDNIe 场景</string>
+    <string name="mdnie_scenario_title_head">场景</string>
+    <string name="mipop">虚拟按键</string>
+    <string name="nubia_camera">努比亚相机</string>
+    <string name="screen">屏幕设置</string>
+    <string name="kcal_sat_summary_head">开启灰阶模式以节省电量</string>
+    <string name="kcal_sat_title_head">灰阶模式</string>
+    <string name="tweak">系统优化</string>
+    <string name="vibrator_tuning_summary_head">调整按键振动的强度</string>
+    <string name="vibrator_tuning_title">振动强度</string>
+    <string name="vibrator_warning">不推荐振动强度大于 %1$d</string>
+</resources>

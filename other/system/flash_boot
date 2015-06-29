@@ -19,7 +19,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
-GET_BL_VERSION=`/system/bin/getprop ro.bootloader | /sbin/busybox cut -c 1-5`
+GET_BL_VERSION=`getprop ro.bootloader | /sbin/busybox cut -c 1-5`
 
 # For GSM Device
 

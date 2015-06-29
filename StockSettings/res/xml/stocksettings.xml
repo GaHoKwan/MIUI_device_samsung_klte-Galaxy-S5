@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/gestures" android:key="gesture">
+        <CheckBoxPreference android:title="@string/knock_wake" android:key="knock" android:defaultValue="true" />
+        <CheckBoxPreference android:title="@string/led_fade" android:key="led_fade" android:defaultValue="true" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/tweak" android:key="tweak">
+        <CheckBoxPreference android:title="@string/charge" android:key="charge" android:defaultValue="true" />
+        <CheckBoxPreference android:title="@string/battery" android:key="battery" android:defaultValue="true" />
+        <Preference android:title="@string/boeffla">
+            <intent android:targetPackage="de.andip71.boeffla_config_v2" android:action="android.intent.action.MAIN" android:targetClass="de.andip71.boeffla_config_v2.MainActivity" />
+        </Preference>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/keylight">
+        <CheckBoxPreference android:title="@string/key_home_double_tap_action_title" android:key="key_home_double_tap_action" android:defaultValue="false" />
+        <cn.nian.stocksettings.VibratorTuning android:title="@string/vibrator_tuning_title" android:key="vibrator_tuning" android:dialogTitle="@string/vibrator_tuning_title" />
+        <Preference android:title="@string/mipop">
+            <intent android:targetPackage="com.android.mipop" android:action="android.intent.action.MAIN" android:targetClass="com.android.mipop.MIPopActivity" />
+        </Preference>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/screen" android:key="screen">
+        <CheckBoxPreference android:title="@string/kcal_sat_title_head" android:key="kcal_sat" android:summary="@string/kcal_sat_summary_head" android:defaultValue="false" />
+        <CheckBoxPreference android:title="@string/cabc_title_head" android:key="cabc" android:summary="@string/cabc_summary_head" android:defaultValue="true" />
+        <cn.nian.stocksettings.mDNIeScenario android:entries="@array/mdnie_scenario_entries" android:title="@string/mdnie_scenario_title_head" android:key="mdnie_scenario" android:summary="@string/mdnie_scenario_summary_head" android:defaultValue="0" android:entryValues="@array/mdnie_scenario_entries_values" />
+        <cn.nian.stocksettings.mDNIeMode android:entries="@array/mdnie_mode_entries" android:title="@string/mdnie_mode_title_head" android:key="mdnie_mode" android:summary="@string/mdnie_mode_summary_head" android:defaultValue="1" android:entryValues="@array/mdnie_mode_entries_values" />
+        <EditTextPreference android:digits="1234567890" android:title="@string/density_title" android:key="density_key" android:dialogTitle="@string/density_edit_title" android:dialogMessage="@string/density_edit_message" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/camera" android:key="camera">
+        <CheckBoxPreference android:title="@string/camera_sound" android:key="camera_sound" android:defaultValue="true" />
+        <Preference android:title="@string/camera_switch">
+            <intent android:targetPackage="cn.nian.stocksettings" android:action="android.intent.action.MAIN" android:targetClass="cn.nian.stocksettings.CameraActivity" />
+        </Preference>
+    </PreferenceCategory>
+</PreferenceScreen>

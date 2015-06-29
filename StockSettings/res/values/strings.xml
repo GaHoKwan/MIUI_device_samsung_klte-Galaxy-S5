@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="aosp_camera">MIUI Camera</string>
+    <string name="app_name">StockSettings</string>
+    <string name="battery">Battery Save</string>
+    <string name="boeffla">BoefflaSettings</string>
+    <string name="cabc_summary_head">Content adaptive backlight control</string>
+    <string name="cabc_title_head">CABC</string>
+    <string name="camera">Camera Settings</string>
+    <string name="camera_sound">Camera Sound</string>
+    <string name="camera_switch">Camera Switch</string>
+    <string name="charge">Fast Charge</string>
+    <string name="cm_camera">CM Camera</string>
+    <string name="defaults_button">Reset to default</string>
+    <string name="density_edit_message">Please enter a reasonable range of values(180-440)</string>
+    <string name="density_edit_title">Adjust the DPI specified</string>
+    <string name="density_error">Warning:Input Error!</string>
+    <string name="density_title">Screen DPI</string>
+    <string name="dialog_message">hot reboot</string>
+    <string name="dialog_no">No</string>
+    <string name="dialog_ok">Done!Are you sure want to reboot the phone?</string>
+    <string name="dialog_reboot">Please restart your mobile phone manually in some time later</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="gestures">Gesture</string>
+    <string name="intensity_default_value">50</string>
+    <string name="intensity_max_value">100</string>
+    <string name="intensity_min_value">0</string>
+    <string name="intensity_warning_threshold">75</string>
+    <string name="key_home_double_tap_action_title">Double tap home to wake off</string>
+    <string name="keylight">Button</string>
+    <string name="knock_wake">Double tap Wake</string>
+    <string name="led_fade">Notification LED</string>
+    <string name="mdnie_mode_summary_head">Set the mDNIe Mode</string>
+    <string name="mdnie_mode_title_head">Mode</string>
+    <string name="mdnie_scenario_summary_head">Set the mDNIe Scenario</string>
+    <string name="mdnie_scenario_title_head">Scenario</string>
+    <string name="mipop">Vitrual Key</string>
+    <string name="nubia_camera">Nubia Camera</string>
+    <string name="screen">Display Settings</string>
+    <string name="kcal_sat_summary_head">Open Grey Scale to Save Battery</string>
+    <string name="kcal_sat_title_head">Grey Scale</string>
+    <string name="tweak">Tweaks</string>
+    <string name="vibrator_sysfs_file">/sys/class/timed_output/vibrator/pwm_value</string>
+    <string name="vibrator_tuning_summary_head">Adjust the strength of the vibration feedback</string>
+    <string name="vibrator_tuning_title">Vibration strength</string>
+    <string name="vibrator_warning">Values higher than %1$d are not recommended</string>
+</resources>

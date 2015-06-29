@@ -221,5 +221,5 @@ def FullOTA_InstallEnd(info):
 	
 def IncrementalOTA_InstallEnd(info):
     RemoveDeviceAssert(info)
-    UpdatePerm(info):
+    UpdatePerm(info)
     Writeboot(info)

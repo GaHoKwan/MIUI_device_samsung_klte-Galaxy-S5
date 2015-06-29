@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference android:title="@string/aosp_camera" android:key="aosp_camera" />
+    <Preference android:title="@string/cm_camera" android:key="cm_camera" />
+    <Preference android:title="@string/nubia_camera" android:key="nubia_camera" />
+</PreferenceScreen>

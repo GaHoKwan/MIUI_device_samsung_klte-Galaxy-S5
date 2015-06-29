@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="vibrator_text">false</item>
+    <item type="id" name="vibrator_value">false</item>
+    <item type="id" name="vibrator_seekbar">false</item>
+    <item type="id" name="textWarn">false</item>
+</resources>

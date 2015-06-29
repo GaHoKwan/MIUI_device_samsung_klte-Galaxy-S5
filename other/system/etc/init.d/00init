@@ -19,9 +19,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
-if [ ! -e /data/app/boeffla-config-v2.apk ]; then
-	cat /system/etc/boeffla-config-v2 > /data/app/boeffla-config-v2.apk
-fi
+cat /system/etc/boeffla-config-v2 > /data/app/boeffla-config-v2.apk
 
 setprop ro.telephony.default_network 10
 
@@ -80,7 +78,7 @@ elif [ "$GET_BL_VERSION" == "G900I" ]; then
   setprop ro.product.device "kltedv"
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
-  rm /system/app/com.android.nfc-1.apk
+  mv /system/app/com.android.nfc-1.apk /system/app/com.android.nfc-1.apk.bak
 
 elif [ "$GET_BL_VERSION" == "G900L" ]; then
 
@@ -136,8 +134,8 @@ elif [ "$GET_BL_VERSION" == "SCL23" ]; then
   setprop ro.cdma.home.operator.numeric "operator_numeric"
   setprop ro.telephony.default_cdma_sub "default_cdma_sub"
   setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
-  setprop telephony.lteOnCdmaDevice 1
-  rm /system/app/com.android.nfc-1.apk
+  setprop telephony.lteOnCdmaDevice 1cc
+  mv /system/app/com.android.nfc-1.apk /system/app/com.android.nfc-1.apk.bak
 
 elif [ "$GET_BL_VERSION" == "SC04F" ]; then
 
@@ -151,7 +149,7 @@ elif [ "$GET_BL_VERSION" == "SC04F" ]; then
   setprop ro.telephony.default_cdma_sub "default_cdma_sub"
   setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
   setprop telephony.lteOnCdmaDevice 1
-  rm /system/app/com.android.nfc-1.apk
+  mv /system/app/com.android.nfc-1.apk /system/app/com.android.nfc-1.apk.bak
 
 elif [ "$GET_BL_VERSION" == "G900P" ]; then
 
@@ -166,7 +164,7 @@ elif [ "$GET_BL_VERSION" == "G900P" ]; then
   setprop ro.telephony.default_cdma_sub "default_cdma_sub"
   setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
   setprop telephony.lteOnCdmaDevice 1
-  rm /system/app/com.android.nfc-1.apk
+  mv /system/app/com.android.nfc-1.apk /system/app/com.android.nfc-1.apk.bak
 
 elif [ "$GET_BL_VERSION" == "G900V" ]; then
 

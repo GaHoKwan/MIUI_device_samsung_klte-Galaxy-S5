@@ -50,7 +50,8 @@ clean(){
 	fi
 }
 
-GET_FULLOTA_MD5SUM=`md5sum out/fullota.zip |cut -c 1-10`
+OUTDIR=/home/jay/miui/v6-kitkat/klte/out
+GET_FULLOTA_MD5SUM=`md5sum $OUTDIR/fullota.zip |cut -c 1-10`
 
 fullota(){
 	echo "============================"
@@ -63,7 +64,7 @@ fullota(){
 	cp out/fullota.zip miui6_KLTE_luo2888_"$BUILD_NUMBER"_"$GET_FULLOTA_MD5SUM"_4.4.zip
 }
 
-GET_DIFFOTA_MD5SUM=`md5sum diffota.zip |cut -c 1-10`
+GET_DIFFOTA_MD5SUM=`md5sum $OUTDIR/diffota.zip |cut -c 1-10`
 
 otadiff(){
 	echo "============================"
