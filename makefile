@@ -50,8 +50,6 @@ include $(PORT_BUILD)/porting.mk
 #pre_install_data_packages := $(TMP_DIR)/pre_install_apk_pkgname.txt
 BUILD_COUNT := $(shell date +%Y%m%d)
 local-pre-zip-misc:
-	@echo Fix NFC
-	mv $(ZIP_DIR)/system/app/Nfc.apk $(ZIP_DIR)/system/app/com.android.nfc-1.apk
 	@echo Fix SearchBox
 	mv $(ZIP_DIR)/system/app/QuickSearchBox.apk $(ZIP_DIR)/system/priv-app/QuickSearchBox.apk
 	cp -rf other/system $(ZIP_DIR)/

@@ -212,8 +212,16 @@ symlink("/firmware/image/widevine.b03", "/system/vendor/firmware/widevine.b03");
 symlink("/firmware/image/widevine.mdt", "/system/vendor/firmware/widevine.mdt");"""
     info.script.AppendExtra(extra_firmware);
 
+def WritePolicyConfig(info):
+  try:
+    file_contexts = info.input_zip.read("META/file_contexts")
+    common.ZipWriteStr(info.output_zip, "file_contexts", file_contexts)
+  except KeyError:
+    print "warning: file_context missing from target;"
+
 def FullOTA_InstallEnd(info):
     RemoveDeviceAssert(info)
+    WritePolicyConfig(info)
     RemoveCount(info)
     UpdateFirmWare(info)
     Setmetadata(info)

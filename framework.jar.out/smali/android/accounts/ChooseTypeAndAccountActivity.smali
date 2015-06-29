@@ -899,7 +899,6 @@
     invoke-direct {v0}, Landroid/content/Intent;-><init>()V
 
     .local v0, "intent":Landroid/content/Intent;
-
     invoke-static {v0}, Landroid/accounts/ChooseTypeAndAccountActivityInjector;->toMiuiChooseAccountTypeActivity(Landroid/content/Intent;)V
 
     const/high16 v1, 0x80000
