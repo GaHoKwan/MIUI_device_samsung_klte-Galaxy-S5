@@ -1,0 +1,12 @@
+#!/system/bin/sh
+
+count=`cat /data/system/count`
+COUNTFILE=/data/system/count
+
+if [ "$count" == "" ]; then
+	touch /data/system/count
+	echo "0" > /data/system/count
+fi
+
+let "count+=1" 
+echo $count > $COUNTFILE

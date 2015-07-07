@@ -7,7 +7,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/tweak" android:key="tweak">
         <CheckBoxPreference android:title="@string/charge" android:key="charge" android:defaultValue="true" />
-        <CheckBoxPreference android:title="@string/battery" android:key="battery" android:defaultValue="true" />
+        <CheckBoxPreference android:title="@string/battery" android:key="battery" android:defaultValue="false" />
         <Preference android:title="@string/boeffla">
             <intent android:targetPackage="de.andip71.boeffla_config_v2" android:action="android.intent.action.MAIN" android:targetClass="de.andip71.boeffla_config_v2.MainActivity" />
         </Preference>

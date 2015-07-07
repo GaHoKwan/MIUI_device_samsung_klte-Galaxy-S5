@@ -1,0 +1,22 @@
+#!/system/bin/sh
+
+count=`cat /data/system/count`
+PRELOAD_APP_DIR=/system/third-app
+APP=/system/etc/iFlyIME
+APPDIR=/system/app
+
+mount -o remount,rw /system
+
+if [ "$count" == "1" ]; then
+	cat $APP > $APPDIR/iFlyIME.apk
+fi
+
+for file in `ls $PRELOAD_APP_DIR`; do
+	if [ "$count" == "1" ]; then
+		sleep 15
+		pm install -r $PRELOAD_APP_DIR/$file	
+	elif [ "$count" == "5" ]; then
+		sleep 15
+		pm install -r $PRELOAD_APP_DIR/$file
+	fi
+done

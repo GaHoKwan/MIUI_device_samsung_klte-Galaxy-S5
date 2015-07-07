@@ -1,5 +1,3 @@
 #!/system/bin/sh
 
 setenforce 0
-
-touch /data/.boeffla/enable-permissive

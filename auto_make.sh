@@ -49,9 +49,6 @@ clean(){
 	fi
 }
 
-OUTDIR=/home/jay/miui/v6-kitkat/klte/out
-GET_FULLOTA_MD5SUM=`md5sum $OUTDIR/fullota.zip |cut -c 1-10`
-
 fullota(){
 	echo "============================"
 	echo "          Fullota           "

@@ -58,6 +58,7 @@ if [ $1 = "TeleService" ];then
 fi
 
 if [ $1 = "DeskClock" ];then
+    applyPatch $1 $2
     other/tools/idtoname.py other/tools/public-miui.xml $2/smali
     other/tools/nametoid.py framework-res/res/values/public.xml $2/smali
 fi
