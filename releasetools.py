@@ -85,6 +85,11 @@ def RemoveCount(info):
       edify.script[i] = 'delete("/data/system/count");'
       return
 
+def RemoveCountonIncrementalOTA(info):
+    remove_Count = """mount("ext4", "EMMC", "/dev/block/platform/msm_sdcc.1/by-name/userdata", "/data");
+delete("/data/system/count");"""
+    info.script.AppendExtra(remove_Count);
+
 def UpdatePerm(info):
     extra_Perm = """set_metadata_recursive("/system/etc/init.d", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata("/system/etc/init.d", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");"""
@@ -230,4 +235,4 @@ def FullOTA_InstallEnd(info):
 def IncrementalOTA_InstallEnd(info):
     RemoveDeviceAssert(info)
     UpdatePerm(info)
-    Writeboot(info)
+    RemoveCountonIncrementalOTA(info)
