@@ -3,7 +3,7 @@
 #
 
 # The original zip file, MUST be specified by each product
-local-zip-file     := stockrom.zip
+local-zip-file := stockrom.zip
 
 # The output zip file of MIUI rom, the default is porting_miui.zip if not specified
 local-out-zip-file := MIUI_Klte.zip
@@ -22,7 +22,7 @@ local-miui-removed-apps :=
 
 local-miui-removed-priv-apps := 
 
-local-miui-modified-apps := DeskClock miuisystem TeleService Settings Music SecurityCenter
+local-miui-modified-apps := DeskClock miuisystem TeleService Settings Music SecurityCenter DownloadProvider
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
@@ -50,16 +50,24 @@ include $(PORT_BUILD)/porting.mk
 #pre_install_data_packages := $(TMP_DIR)/pre_install_apk_pkgname.txt
 BUILD_COUNT := $(shell date +%Y%m%d)
 local-pre-zip-misc:
-	@echo Fix SearchBox
+	@echo ">>> Fix SearchBox"
 	mv $(ZIP_DIR)/system/app/QuickSearchBox.apk $(ZIP_DIR)/system/priv-app/QuickSearchBox.apk
 	cp -rf other/system $(ZIP_DIR)/
-	@echo goodbye! miui prebuilt binaries!
+	@echo ">>> Remove miui prebuilt binaries"
+	rm -rf $(ZIP_DIR)/system/bin/app_process_vendor
 	cp -rf stockrom/system/bin/app_process $(ZIP_DIR)/system/bin/app_process
 	rm -rf $(ZIP_DIR)/system/bin/debuggerd_vendor
 	cp -rf stockrom/system/bin/debuggerd $(ZIP_DIR)/system/bin/debuggerd
 	rm -rf $(ZIP_DIR)/system/bin/dexopt_vendor
 	cp -rf stockrom/system/bin/dexopt $(ZIP_DIR)/system/bin/dexopt
-	@echo add romjd prop!
+	@echo ">>> Fix mdnsd"
+	mv $(ZIP_DIR)/system/bin/mdnsd $(ZIP_DIR)/system/bin/mdnsd_original
+	@echo ">>> Density changes"
+	echo "ro.miui.has_real_blur=0" >> $(ZIP_DIR)/system/build.prop
+	echo "ro.miui.has_handy_mode_sf=0" >> $(ZIP_DIR)/system/build.prop
+	@echo ">>> Use auto brightadj"
+	echo "persist.power.useautobrightadj=true" >> $(ZIP_DIR)/system/build.prop
+	@echo ">>> Add romjd prop"
 	echo "romjd.rom.id=cc1ab95b-208b-4c49-bc68-52439c3906c0" >> $(ZIP_DIR)/system/build.prop
 	echo "romjd.rom.version=$(BUILD_NUMBER)" >> $(ZIP_DIR)/system/build.prop
 	echo "romjd.rom.version.code=$(BUILD_COUNT)" >> $(ZIP_DIR)/system/build.prop

@@ -25,10 +25,6 @@
     .line 13
     invoke-static {p1}, Lcn/nian/stocksettings/StockSettingsActivity;->RestoreCABC(Landroid/content/Context;)V
 
-    .line 14
-    invoke-static {p1}, Lcn/nian/stocksettings/StockSettingsActivity;->RestoremKnock(Landroid/content/Context;)V
-
-
     .line 16
     invoke-static {p1}, Lcn/nian/stocksettings/mDNIeScenario;->restore(Landroid/content/Context;)V
 

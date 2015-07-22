@@ -2,7 +2,7 @@
 <PreferenceScreen
   xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/gestures" android:key="gesture">
-        <CheckBoxPreference android:title="@string/knock_wake" android:key="knock" android:defaultValue="true" />
+        <CheckBoxPreference android:title="@string/knock_wake" android:key="knock" android:defaultValue="false" />
         <CheckBoxPreference android:title="@string/led_fade" android:key="led_fade" android:defaultValue="true" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/tweak" android:key="tweak">

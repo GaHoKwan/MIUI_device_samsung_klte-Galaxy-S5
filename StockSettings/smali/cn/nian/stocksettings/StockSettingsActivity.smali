@@ -234,58 +234,6 @@
     goto :goto_0
 .end method
 
-.method public static RestoremKnock(Landroid/content/Context;)V
-    .locals 3
-    .param p0, "paramContext"    # Landroid/content/Context;
-
-    .prologue
-    const/4 v2, 0x1
-
-    .line 194
-    invoke-static {p0}, Landroid/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;
-
-    move-result-object v0
-
-    const-string v1, "knock"
-
-    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    .line 195
-    const-string v0, "echo \'5\' > /sys/devices/f9924000.i2c/i2c-2/2-0020/input/input2/screen_wake_options"
-
-    invoke-static {v0}, Lcn/nian/stocksettings/RootCmd;->RunRootCmd(Ljava/lang/String;)I
-
-    .line 202
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 199
-    :cond_1
-    invoke-static {p0}, Landroid/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;
-
-    move-result-object v0
-
-    const-string v1, "knock"
-
-    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
-
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    .line 200
-    const-string v0, "echo \'0\' > /sys/devices/f9924000.i2c/i2c-2/2-0020/input/input2/screen_wake_options"
-
-    invoke-static {v0}, Lcn/nian/stocksettings/RootCmd;->RunRootCmd(Ljava/lang/String;)I
-
-    goto :goto_0
-.end method
-
 .method public static RestoremLedFake(Landroid/content/Context;)V
     .locals 3
     .param p0, "paramContext"    # Landroid/content/Context;
@@ -788,14 +736,6 @@
 
     if-eqz v0, :cond_e
 
-    const-string v0, "echo \'zzmoove\' >/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
-
-    invoke-static {v0}, Lcn/nian/stocksettings/RootCmd;->RunRootCmd(Ljava/lang/String;)I
-
-    const-string v0, "echo \'3\' > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number"
-
-    invoke-static {v0}, Lcn/nian/stocksettings/RootCmd;->RunRootCmd(Ljava/lang/String;)I
-
     const-string v0, "echo \'1497600\' > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"
 
     invoke-static {v0}, Lcn/nian/stocksettings/RootCmd;->RunRootCmd(Ljava/lang/String;)I
@@ -895,14 +835,6 @@
 
     .line 164
     :cond_e
-
-    const-string v0, "echo \'zzmoove\' >/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
-
-    invoke-static {v0}, Lcn/nian/stocksettings/RootCmd;->RunRootCmd(Ljava/lang/String;)I
-
-    const-string v0, "echo \'7\' > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number"
-
-    invoke-static {v0}, Lcn/nian/stocksettings/RootCmd;->RunRootCmd(Ljava/lang/String;)I
 
     const-string v0, "echo \'2457600\' > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"
 
