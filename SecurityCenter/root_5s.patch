@@ -1,32 +1,38 @@
-From 7ce3301ff29e2a114e6888009318d0c58a00d9cd Mon Sep 17 00:00:00 2001
-From: X-s <xsmumu@gmail.com>
-Date: Wed, 29 Apr 2015 16:05:27 +0800
-Subject: [PATCH] 2
+From d7d9ffe3c03fcf6316185c38e6d6b2b8966b491f Mon Sep 17 00:00:00 2001
+From: X-s <imxs1107@gmail.com>
+Date: Wed, 4 Nov 2015 22:10:04 +0800
+Subject: [PATCH] root 5s to 0s
 
 ---
- SecurityCenter/smali/com/miui/permcenter/root/RootApplyActivity.smali | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../com/miui/permcenter/root/RootApplyActivity.smali      | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
 
 --- a/SecurityCenter/smali/com/miui/permcenter/root/RootApplyActivity.smali
 +++ b/SecurityCenter/smali/com/miui/permcenter/root/RootApplyActivity.smali
-@@ -35,7 +35,7 @@
+@@ -462,12 +462,20 @@
  
-     iput v0, p0, Lcom/miui/permcenter/root/RootApplyActivity;->mCurrentStep:I
+     iget-object v0, p0, Lcom/miui/permcenter/root/RootApplyActivity;->mPkgName:Ljava/lang/String;
  
--    const/4 v0, 0x5
-+    const/4 v0, 0x1
+-    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
++    #invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+-    move-result v0
++    invoke-static {p0, v0}, Lcom/miui/common/AndroidUtils;->loadAppLabel(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/CharSequence;
+
+-    if-eqz v0, :cond_0
++    move-result-object v0
+
++    iput-object v0, p0, Lcom/miui/permcenter/root/RootApplyActivity;->mAppLabel:Ljava/lang/CharSequence;
++
++    iget-object v0, p0, Lcom/miui/permcenter/root/RootApplyActivity;->mHandler:Landroid/os/Handler;
++
++    invoke-virtual {v0, v4}, Landroid/os/Handler;->removeMessages(I)V
++
++    invoke-direct {p0}, Lcom/miui/permcenter/root/RootApplyActivity;->acceptRootApply()V
++
+     invoke-virtual {p0}, Lcom/miui/permcenter/root/RootApplyActivity;->finish()V
  
-     iput v0, p0, Lcom/miui/permcenter/root/RootApplyActivity;->mAutoNextStepTime:I
- 
-@@ -300,7 +300,7 @@
-     .prologue
-     const/4 v6, 0x1
- 
--    const/4 v3, 0x5
-+    const/4 v3, 0x1
- 
-     const/4 v5, 0x0
- 
+     :goto_0
 -- 
 1.9.1
 

@@ -19,6 +19,19 @@ function applyPatch () {
     done
 }
 
+function changeID () {
+    tools_dir=$curdir/other/tools
+    if [ -f out/framework-res_miui/res/values/public.xml ]; then
+        echo "exists!"
+    else
+        apktool d -f $PORT_ROOT/miui/XXHDPI/system/framework/framework-res.apk -o out/framework-res_miui
+    fi
+    cd out
+    python $tools_dir/idtoname.py framework-res_miui/res/values/public.xml $1/smali
+    python $tools_dir/nametoid.py $curdir/framework-res/res/values/public.xml $1/smali
+    cd -
+}
+
 function appendSmaliPart() {
     for file in `find $1/smali -name *.part`
     do
@@ -40,6 +53,7 @@ function mergyXmlPart() {
 
 if [ $1 = "MiuiSystemUI" ];then
     applyPatch $1 $2
+	changeID $1
 fi
 
 if [ $1 = "Music" ];then
@@ -52,18 +66,17 @@ fi
 
 if [ $1 = "TeleService" ];then
     applyPatch $1 $2
-    other/tools/idtoname.py other/tools/public-miui.xml $2/smali
-    other/tools/nametoid.py framework-res/res/values/public.xml $2/smali
+	changeID $1
     $XMLMERGYTOOL $1/res/values $2/res/values
 fi
 
 if [ $1 = "DeskClock" ];then
     applyPatch $1 $2
-    other/tools/idtoname.py other/tools/public-miui.xml $2/smali
-    other/tools/nametoid.py framework-res/res/values/public.xml $2/smali
+	changeID $1
 fi
 
 if [ $1 = "miuisystem" ];then
+    sed -i -e '/  - 16/a\  - 17' $2/apktool.yml
     applyPatch $1 $2
     cp $1/klte.xml $2/assets/device_features/
     cp $1/klte_legacy.xml $2/assets/device_features/
@@ -74,15 +87,13 @@ if [ $1 = "MiuiKeyguard" ];then
 fi
 
 if [ $1 = "Settings" ];then
+    sed -i -e '/  - 17/a\  - 18' $2/apktool.yml
 	$XMLMERGYTOOL $1/res/values $2/res/values
 	$XMLMERGYTOOL $1/res/values-zh-rCN $2/res/values-zh-rCN
-#	$XMLMERGYTOOL $1/res/values-zh-rTW $2/res/values-zh-rTW
 	applyPatch $1 $2
-    other/tools/idtoname.py other/tools/public-miui.xml $2/smali
-    other/tools/nametoid.py framework-res/res/values/public.xml $2/smali
+	changeID $1
 fi
 
 if [ $1 = "DownloadProvider" ];then
-    other/tools/idtoname.py other/tools/public-miui.xml $2/smali
-    other/tools/nametoid.py framework-res/res/values/public.xml $2/smali
+	changeID $1
 fi

@@ -6,8 +6,8 @@ Subject: [PATCH] LTE
 ---
  TeleService/res/xml/preferred_network_type_lte_x5.xml                                       | 4 ++--
  TeleService/smali/com/android/phone/PhoneGlobals.smali                                      | 2 +-
- TeleService/smali/com/android/phone/settings/PreferredNetworkTypeListPreference.smali       | 12 ++++++------
- 3 files changed, 11 insertions(+), 13 deletions(-)
+ TeleService/smali/com/android/phone/settings/PreferredNetworkTypeListPreference.smali       | 10 +++++-----
+ 3 files changed, 8 insertions(+), 8 deletions(-)
 
 --- a/TeleService/res/xml/preferred_network_type_lte_x5.xml
 +++ b/TeleService/res/xml/preferred_network_type_lte_x5.xml
@@ -25,23 +25,20 @@ Subject: [PATCH] LTE
 
 --- a/TeleService/smali/com/android/phone/PhoneGlobals.smali
 +++ b/TeleService/smali/com/android/phone/PhoneGlobals.smali
-@@ -3072,7 +3072,7 @@
-     :cond_a
+@@ -2789,7 +2789,7 @@
+     :cond_9
      sget-boolean v3, Lmiui/os/Build;->IS_MIFIVE:Z
  
--    if-eqz v3, :cond_d
-+    #if-eqz v3, :cond_d
+-    if-eqz v3, :cond_c
++    #if-eqz v3, :cond_c
  
      move v2, v0
  
 --- a/TeleService/smali/com/android/phone/settings/PreferredNetworkTypeListPreference.smali
 +++ b/TeleService/smali/com/android/phone/settings/PreferredNetworkTypeListPreference.smali
-@@ -749,17 +749,17 @@
-     :cond_7
-     if-ne v2, v6, :cond_12
+@@ -749,15 +749,15 @@
  
--    sget-boolean v3, Lmiui/os/Build;->IS_MIFIVE:Z
-+    #sget-boolean v3, Lmiui/os/Build;->IS_MIFIVE:Z
+     sget-boolean v3, Lmiui/os/Build;->IS_MIFIVE:Z
  
 -    if-nez v3, :cond_8
 +    #if-nez v3, :cond_8

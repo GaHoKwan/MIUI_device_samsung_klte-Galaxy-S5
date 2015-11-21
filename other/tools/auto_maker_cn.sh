@@ -57,7 +57,6 @@ LAST_TARGET="$LAST_BUILD_NUMBER"-target.zip
 if [ -e out/ZIP/system/priv-app/QuickSearchBox.apk ];then
 	cp -f stockrom/system/build.prop out/ZIP/system/build.prop
 	mv out/ZIP/system/bin/mdnsd_original out/ZIP/system/bin/mdnsd
-	mv out/ZIP/system/priv-app/QuickSearchBox.apk out/ZIP/system/app/QuickSearchBox.apk
 fi
 
 function init(){
@@ -121,7 +120,7 @@ function copydiffota(){
 	cp out/target_files.zip $BUILD_NUMBER-target.zip
 }
 
-OUTDIR=/home/jay/miui/v6-kitkat/klte/out
+OUTDIR=~/miui/v6-kitkat/klte/out
 
 # Function Start
 BUILD_DATE

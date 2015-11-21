@@ -58,6 +58,7 @@ then
     done
     cp -rf overlay/framework/smali/* $BUILD_OUT/framework/smali
     cp -rf ../android/Editor/* $BUILD_OUT/framework/smali/android/widget/
+    sed -i 's/persist.miui.density_v2/persist.sys.density/g' $2/smali/android/util/MiuiDisplayMetrics.smali
 fi
 
 if [ $2 = "$BUILD_OUT/framework2" ]

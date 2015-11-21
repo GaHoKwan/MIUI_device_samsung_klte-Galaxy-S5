@@ -27,9 +27,9 @@
 
 .field protected mCnapNamePresentation:I
 
-.field public mConnectTimeReal:J
-
 .field private mFirewallCode:I
+
+.field public mConnectTimeReal:J
 
 .field mUserData:Ljava/lang/Object;
 
@@ -71,12 +71,11 @@
 
     iput-object v0, p0, Lcom/android/internal/telephony/Connection;->callModifyRequest:Lcom/android/internal/telephony/CallModify;
 
-    .line 300
-
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/android/internal/telephony/Connection;->mFirewallCode:I
 
+    .line 300
     return-void
 .end method
 
@@ -223,15 +222,18 @@
     .locals 6
 
     .prologue
+    .line 195
     invoke-virtual {p0}, Lcom/android/internal/telephony/Connection;->getCreateTime()J
 
     move-result-wide v2
 
+    .line 196
     .local v2, "createTime":J
     invoke-virtual {p0}, Lcom/android/internal/telephony/Connection;->getConnectTime()J
 
     move-result-wide v0
 
+    .line 197
     .local v0, "connectionTime":J
     cmp-long v4, v0, v2
 

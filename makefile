@@ -22,7 +22,7 @@ local-miui-removed-apps :=
 
 local-miui-removed-priv-apps := 
 
-local-miui-modified-apps := DeskClock miuisystem TeleService Settings Music SecurityCenter DownloadProvider
+local-miui-modified-apps := miuisystem Settings TeleService MiuiSystemUI Music SecurityCenter
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
@@ -50,8 +50,6 @@ include $(PORT_BUILD)/porting.mk
 #pre_install_data_packages := $(TMP_DIR)/pre_install_apk_pkgname.txt
 BUILD_COUNT := $(shell date +%Y%m%d)
 local-pre-zip-misc:
-	@echo ">>> Fix SearchBox"
-	mv $(ZIP_DIR)/system/app/QuickSearchBox.apk $(ZIP_DIR)/system/priv-app/QuickSearchBox.apk
 	cp -rf other/system $(ZIP_DIR)/
 	@echo ">>> Remove miui prebuilt binaries"
 	rm -rf $(ZIP_DIR)/system/bin/app_process_vendor
@@ -66,6 +64,10 @@ local-pre-zip-misc:
 	echo "ro.sf.lcd_density=465" >> $(ZIP_DIR)/system/build.prop
 	echo "ro.miui.has_real_blur=0" >> $(ZIP_DIR)/system/build.prop
 	echo "ro.miui.has_handy_mode_sf=0" >> $(ZIP_DIR)/system/build.prop
+	sed -i 's/qemu.sf.lcd_density/persist.sys.density/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
+	#security patch
+	echo "ro.build.version.security_patch=2015-12-01" >> $(ZIP_DIR)/system/build.prop
+	echo "ro.build.version.base_os=" >> $(ZIP_DIR)/system/build.prop
 	@echo ">>> Use auto brightadj"
 	echo "persist.power.useautobrightadj=true" >> $(ZIP_DIR)/system/build.prop
 	@echo ">>> Add romjd prop"
