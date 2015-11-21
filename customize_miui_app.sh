@@ -52,34 +52,30 @@ function mergyXmlPart() {
 }
 
 if [ $1 = "MiuiSystemUI" ];then
-    applyPatch $1 $2
+	applyPatch $1 $2
 	changeID $1
-fi
-
-if [ $1 = "Music" ];then
-    applyPatch $1 $2
 fi
 
 if [ $1 = "SecurityCenter" ];then
-    applyPatch $1 $2
+	applyPatch $1 $2
 fi
 
 if [ $1 = "TeleService" ];then
-    applyPatch $1 $2
+	applyPatch $1 $2
 	changeID $1
-    $XMLMERGYTOOL $1/res/values $2/res/values
+	$XMLMERGYTOOL $1/res/values $2/res/values
 fi
 
 if [ $1 = "DeskClock" ];then
-    applyPatch $1 $2
+	applyPatch $1 $2
 	changeID $1
 fi
 
 if [ $1 = "miuisystem" ];then
-    sed -i -e '/  - 16/a\  - 17' $2/apktool.yml
-    applyPatch $1 $2
-    cp $1/klte.xml $2/assets/device_features/
-    cp $1/klte_legacy.xml $2/assets/device_features/
+	sed -i -e '/  - 16/a\  - 17' $2/apktool.yml
+	applyPatch $1 $2
+	cp $1/klte.xml $2/assets/device_features/
+	cp $1/klte_legacy.xml $2/assets/device_features/
 fi
 
 if [ $1 = "MiuiKeyguard" ];then
