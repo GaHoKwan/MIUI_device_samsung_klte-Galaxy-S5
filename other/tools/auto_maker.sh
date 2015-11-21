@@ -30,11 +30,11 @@
 echo "               Usage:  LAST_TARGET_BUILD_NUMBER                    " 
 echo "                                                                   " 
 echo "  -LAST_TARGET_BUILD_NUMBER  if you want to build ota diff package " 
-echo "    use [LAST_TARGET_BUILD_NUMBER] last the MIUI Version  to PATH1 " 
-echo "             it is more effective. (such as 5.5.25)                " 
+echo "      use [LAST_TARGET_BUILD_NUMBER] last the MIUI Version         " 
+echo "             it is more effective. (such as 5.4.29)                " 
 echo "                                                                   "
-echo -ne "请输入上一期MIUI版本号"
-echo -ne "\n输入:"
+echo -ne "Please Input last the MIUI Version"
+echo -ne "\nInput:"
 read LAST_BUILD_NUMBER
 function BUILD_DATE() {
 	date=`date +%y%m%d`
@@ -138,7 +138,10 @@ fi
 
 if [ "$status" == "done" ]; then
 	echo "[GaHoKwan CUST] OTA: All Done For Fullota"
+else
+	echo "[GaHoKwan CUST] OTA: Fullota Maybe Make Fail Pleace Check Logreport! "
 fi
 
-echo "[GaHoKwan CUST] OTA: Thank For Using Auto Maker Script,All Rights Reserved by luo2888"
+echo "[GaHoKwan CUST] OTA: Thank For Using Auto Maker Script"
+echo "[GaHoKwan CUST] OTA: All Rights Reserved by luo2888"
 # Script End

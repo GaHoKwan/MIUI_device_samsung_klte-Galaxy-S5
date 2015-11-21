@@ -1,9 +1,0 @@
-#!/system/bin/sh
-
-count=`cat /data/system/count`
-
-if [ "$count" == "1" ]; then
-	setprop persist.xsdensity 465
-	sleep 15
-	busybox killall system_server
-fi

@@ -62,7 +62,8 @@ local-pre-zip-misc:
 	cp -rf stockrom/system/bin/dexopt $(ZIP_DIR)/system/bin/dexopt
 	@echo ">>> Fix mdnsd"
 	mv $(ZIP_DIR)/system/bin/mdnsd $(ZIP_DIR)/system/bin/mdnsd_original
-	@echo ">>> Density changes"
+	@echo ">>> Some changes"
+	echo "ro.sf.lcd_density=465" >> $(ZIP_DIR)/system/build.prop
 	echo "ro.miui.has_real_blur=0" >> $(ZIP_DIR)/system/build.prop
 	echo "ro.miui.has_handy_mode_sf=0" >> $(ZIP_DIR)/system/build.prop
 	@echo ">>> Use auto brightadj"
