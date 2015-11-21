@@ -70,7 +70,3 @@ local-pre-zip-misc:
 	echo "ro.build.version.base_os=" >> $(ZIP_DIR)/system/build.prop
 	@echo ">>> Use auto brightadj"
 	echo "persist.power.useautobrightadj=true" >> $(ZIP_DIR)/system/build.prop
-	@echo ">>> Add romjd prop"
-	echo "romjd.rom.id=cc1ab95b-208b-4c49-bc68-52439c3906c0" >> $(ZIP_DIR)/system/build.prop
-	echo "romjd.rom.version=$(BUILD_NUMBER)" >> $(ZIP_DIR)/system/build.prop
-	echo "romjd.rom.version.code=$(BUILD_COUNT)" >> $(ZIP_DIR)/system/build.prop
