@@ -65,6 +65,8 @@ if [ $1 = "TeleService" ];then
 	applyPatch $1 $2
 	changeID $1
 	$XMLMERGYTOOL $1/res/values $2/res/values
+    #fix read sim card contact preson
+    sed -i 's/MiuiIccProvider/IccProvider/g' $2/smali/com/android/phone/IccProvider.smali
 fi
 
 if [ $1 = "DeskClock" ];then

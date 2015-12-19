@@ -22,6 +22,8 @@
 
 .field private mCurrentApp:Lcom/android/internal/telephony/uicc/UiccCardApplication;
 
+.field private mError:I
+
 .field private mIs3gCard:Z
 
 .field protected final mLock:Ljava/lang/Object;
@@ -46,42 +48,75 @@
 
 # direct methods
 .method public constructor <init>(Lcom/android/internal/telephony/PhoneBase;)V
-    .locals 1
+    .locals 2
     .param p1, "phone"    # Lcom/android/internal/telephony/PhoneBase;
 
     .prologue
-    .line 118
+    .line 135
     invoke-direct {p0}, Lcom/android/internal/telephony/IIccPhoneBook$Stub;-><init>()V
 
-    .line 48
-    const/4 v0, 0x0
+    .line 47
+    const/4 v1, 0x0
 
-    iput-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mCurrentApp:Lcom/android/internal/telephony/uicc/UiccCardApplication;
+    iput-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mCurrentApp:Lcom/android/internal/telephony/uicc/UiccCardApplication;
 
-    .line 50
-    new-instance v0, Ljava/lang/Object;
+    .line 49
+    new-instance v1, Ljava/lang/Object;
 
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {v1}, Ljava/lang/Object;-><init>()V
 
-    iput-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mLock:Ljava/lang/Object;
+    iput-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mLock:Ljava/lang/Object;
 
-    .line 53
-    const/4 v0, 0x0
+    .line 52
+    const/4 v1, 0x0
 
-    iput-boolean v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mIs3gCard:Z
+    iput-boolean v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mIs3gCard:Z
 
-    .line 63
-    new-instance v0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager$1;
+    .line 64
+    new-instance v1, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager$1;
 
-    invoke-direct {v0, p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager$1;-><init>(Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;)V
+    invoke-direct {v1, p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager$1;-><init>(Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;)V
 
-    iput-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mBaseHandler:Landroid/os/Handler;
+    iput-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mBaseHandler:Landroid/os/Handler;
 
-    .line 119
+    .line 136
     iput-object p1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mPhone:Lcom/android/internal/telephony/PhoneBase;
 
-    .line 120
+    .line 137
+    iget-object v1, p1, Lcom/android/internal/telephony/PhoneBase;->mIccRecords:Ljava/util/concurrent/atomic/AtomicReference;
+
+    invoke-virtual {v1}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/internal/telephony/uicc/IccRecords;
+
+    .line 138
+    .local v0, "r":Lcom/android/internal/telephony/uicc/IccRecords;
+    if-eqz v0, :cond_0
+
+    .line 139
+    invoke-virtual {v0}, Lcom/android/internal/telephony/uicc/IccRecords;->getAdnCache()Lcom/android/internal/telephony/uicc/AdnRecordCache;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
+
+    .line 141
+    :cond_0
     return-void
+.end method
+
+.method static synthetic access$002(Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;I)I
+    .locals 0
+    .param p0, "x0"    # Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
+    .param p1, "x1"    # I
+
+    .prologue
+    .line 43
+    iput p1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mError:I
+
+    return p1
 .end method
 
 .method private cleanUp()V
@@ -90,66 +125,41 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 123
+    .line 144
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
     if-eqz v0, :cond_0
 
-    .line 124
+    .line 145
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
     invoke-virtual {v0}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->reset()V
 
-    .line 125
+    .line 146
     iput-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
-    .line 127
+    .line 148
     :cond_0
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mIs3gCard:Z
 
-    .line 128
+    .line 149
     iput-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mCurrentApp:Lcom/android/internal/telephony/uicc/UiccCardApplication;
 
-    .line 129
+    .line 150
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mRecords:Ljava/util/List;
 
     if-eqz v0, :cond_1
 
-    .line 130
+    .line 151
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mRecords:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->clear()V
 
-    .line 132
+    .line 153
     :cond_1
     return-void
-.end method
-
-.method private getStringArray(Ljava/lang/String;)[Ljava/lang/String;
-    .locals 1
-    .param p1, "str"    # Ljava/lang/String;
-
-    .prologue
-    .line 418
-    if-eqz p1, :cond_0
-
-    .line 419
-    const-string v0, ","
-
-    invoke-virtual {p1, v0}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
-
-    move-result-object v0
-
-    .line 421
-    :goto_0
-    return-object v0
-
-    :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
 .end method
 
 .method private updateEfForIccType(I)I
@@ -157,7 +167,7 @@
     .param p1, "efid"    # I
 
     .prologue
-    .line 437
+    .line 440
     const/16 v0, 0x6f3a
 
     if-ne p1, v0, :cond_0
@@ -166,15 +176,15 @@
 
     if-eqz v0, :cond_0
 
-    .line 438
+    .line 441
     const-string v0, "Translate EF_ADN to EF_PBR"
 
     invoke-virtual {p0, v0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->logd(Ljava/lang/String;)V
 
-    .line 439
+    .line 442
     const/16 p1, 0x4f30
 
-    .line 441
+    .line 444
     .end local p1    # "efid":I
     :cond_0
     return p1
@@ -186,7 +196,7 @@
     .locals 2
 
     .prologue
-    .line 409
+    .line 419
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mBaseHandler:Landroid/os/Handler;
 
     invoke-virtual {v0}, Landroid/os/Handler;->getLooper()Landroid/os/Looper;
@@ -203,12 +213,12 @@
 
     if-eqz v0, :cond_0
 
-    .line 410
+    .line 420
     const-string v0, "query() called on the main UI thread!"
 
     invoke-virtual {p0, v0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->loge(Ljava/lang/String;)V
 
-    .line 411
+    .line 421
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string v1, "You cannot call query on this provder from the main UI thread."
@@ -217,7 +227,7 @@
 
     throw v0
 
-    .line 415
+    .line 425
     :cond_0
     return-void
 .end method
@@ -226,65 +236,31 @@
     .locals 0
 
     .prologue
-    .line 135
+    .line 156
     invoke-direct {p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->cleanUp()V
 
-    .line 136
+    .line 157
     return-void
 .end method
 
-.method public getAdnCount()I
-    .locals 3
+.method public getAdnCapacity()I
+    .locals 2
 
     .prologue
-    .line 476
-    const/4 v0, 0x0
+    .line 462
+    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
-    .line 477
-    .local v0, "adnCount":I
-    iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
+    const/16 v1, 0x6f3a
 
-    if-eqz v1, :cond_1
+    invoke-direct {p0, v1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->updateEfForIccType(I)I
 
-    .line 478
-    iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mPhone:Lcom/android/internal/telephony/PhoneBase;
+    move-result v1
 
-    invoke-virtual {v1}, Lcom/android/internal/telephony/PhoneBase;->getCurrentUiccAppType()Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
-
-    move-result-object v1
-
-    sget-object v2, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;->APPTYPE_USIM:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
-
-    if-ne v1, v2, :cond_0
-
-    .line 479
-    iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->getUsimAdnCount()I
+    invoke-virtual {v0, v1}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->getAdnCapacity(I)I
 
     move-result v0
 
-    .line 486
-    :goto_0
     return v0
-
-    .line 481
-    :cond_0
-    iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->getAdnCount()I
-
-    move-result v0
-
-    goto :goto_0
-
-    .line 484
-    :cond_1
-    const-string v1, "mAdnCache is NULL when getAdnCount."
-
-    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->loge(Ljava/lang/String;)V
-
-    goto :goto_0
 .end method
 
 .method public getAdnRecordsInEf(I)Ljava/util/List;
@@ -301,7 +277,7 @@
     .end annotation
 
     .prologue
-    .line 382
+    .line 392
     iget-object v2, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mPhone:Lcom/android/internal/telephony/PhoneBase;
 
     invoke-virtual {v2}, Lcom/android/internal/telephony/PhoneBase;->getContext()Landroid/content/Context;
@@ -316,7 +292,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 385
+    .line 395
     new-instance v2, Ljava/lang/SecurityException;
 
     const-string v3, "Requires android.permission.READ_CONTACTS permission"
@@ -325,13 +301,13 @@
 
     throw v2
 
-    .line 389
+    .line 399
     :cond_0
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->updateEfForIccType(I)I
 
     move-result p1
 
-    .line 390
+    .line 400
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -352,23 +328,23 @@
 
     invoke-virtual {p0, v2}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->logd(Ljava/lang/String;)V
 
-    .line 392
+    .line 402
     iget-object v3, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mLock:Ljava/lang/Object;
 
     monitor-enter v3
 
-    .line 393
+    .line 403
     :try_start_0
     invoke-virtual {p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->checkThread()V
 
-    .line 394
+    .line 404
     new-instance v1, Ljava/util/concurrent/atomic/AtomicBoolean;
 
     const/4 v2, 0x0
 
     invoke-direct {v1, v2}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
 
-    .line 395
+    .line 405
     .local v1, "status":Ljava/util/concurrent/atomic/AtomicBoolean;
     iget-object v2, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mBaseHandler:Landroid/os/Handler;
 
@@ -378,13 +354,13 @@
 
     move-result-object v0
 
-    .line 396
+    .line 406
     .local v0, "response":Landroid/os/Message;
     iget-object v2, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
     if-eqz v2, :cond_1
 
-    .line 397
+    .line 407
     iget-object v2, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
     iget-object v4, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
@@ -395,21 +371,21 @@
 
     invoke-virtual {v2, p1, v4, v0}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->requestLoadAllAdnLike(IILandroid/os/Message;)V
 
-    .line 398
+    .line 408
     invoke-virtual {p0, v1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->waitForResult(Ljava/util/concurrent/atomic/AtomicBoolean;)V
 
-    .line 402
+    .line 412
     :goto_0
     monitor-exit v3
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 403
+    .line 413
     iget-object v2, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mRecords:Ljava/util/List;
 
     return-object v2
 
-    .line 400
+    .line 410
     :cond_1
     :try_start_1
     const-string v2, "Failure while trying to load from SIM due to uninitialised adncache"
@@ -418,7 +394,7 @@
 
     goto :goto_0
 
-    .line 402
+    .line 412
     .end local v0    # "response":Landroid/os/Message;
     .end local v1    # "status":Ljava/util/concurrent/atomic/AtomicBoolean;
     :catchall_0
@@ -431,139 +407,207 @@
     throw v2
 .end method
 
-.method public abstract getAdnRecordsSize(I)[I
+.method public getAdnRecordsSize(I)[I
+    .locals 6
+    .param p1, "efid"    # I
+
+    .prologue
+    .line 360
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "getAdnRecordsSize: efid="
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {p0, v3}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->logd(Ljava/lang/String;)V
+
+    .line 361
+    iget-object v4, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mLock:Ljava/lang/Object;
+
+    monitor-enter v4
+
+    .line 362
+    :try_start_0
+    invoke-virtual {p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->checkThread()V
+
+    .line 363
+    const/4 v3, 0x3
+
+    new-array v3, v3, [I
+
+    iput-object v3, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mRecordSize:[I
+
+    .line 366
+    new-instance v2, Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    const/4 v3, 0x0
+
+    invoke-direct {v2, v3}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
+
+    .line 367
+    .local v2, "status":Ljava/util/concurrent/atomic/AtomicBoolean;
+    iget-object v3, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mBaseHandler:Landroid/os/Handler;
+
+    const/4 v5, 0x1
+
+    invoke-virtual {v3, v5, v2}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
+
+    move-result-object v1
+
+    .line 369
+    .local v1, "response":Landroid/os/Message;
+    iget-object v3, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mPhone:Lcom/android/internal/telephony/PhoneBase;
+
+    invoke-virtual {v3}, Lcom/android/internal/telephony/PhoneBase;->getIccFileHandler()Lcom/android/internal/telephony/uicc/IccFileHandler;
+
+    move-result-object v0
+
+    .line 371
+    .local v0, "fh":Lcom/android/internal/telephony/uicc/IccFileHandler;
+    if-eqz v0, :cond_0
+
+    .line 372
+    invoke-virtual {v0, p1, v1}, Lcom/android/internal/telephony/uicc/IccFileHandler;->getEFLinearRecordSize(ILandroid/os/Message;)V
+
+    .line 373
+    invoke-virtual {p0, v2}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->waitForResult(Ljava/util/concurrent/atomic/AtomicBoolean;)V
+
+    .line 375
+    :cond_0
+    monitor-exit v4
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 377
+    iget-object v3, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mRecordSize:[I
+
+    return-object v3
+
+    .line 375
+    .end local v0    # "fh":Lcom/android/internal/telephony/uicc/IccFileHandler;
+    .end local v1    # "response":Landroid/os/Message;
+    .end local v2    # "status":Ljava/util/concurrent/atomic/AtomicBoolean;
+    :catchall_0
+    move-exception v3
+
+    :try_start_1
+    monitor-exit v4
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    throw v3
 .end method
 
-.method public getAnrCount()I
+.method public getFreeAdn()I
     .locals 2
 
     .prologue
-    .line 491
-    const/4 v0, 0x0
+    .line 458
+    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
-    .line 492
-    .local v0, "anrCount":I
-    iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
+    const/16 v1, 0x6f3a
 
-    if-eqz v1, :cond_0
+    invoke-direct {p0, v1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->updateEfForIccType(I)I
 
-    .line 493
-    iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
+    move-result v1
 
-    invoke-virtual {v1}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->getAnrCount()I
+    invoke-virtual {v0, v1}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->getFreeAdn(I)I
 
     move-result v0
 
-    .line 497
+    return v0
+.end method
+
+.method public getLastError()I
+    .locals 1
+
+    .prologue
+    .line 466
+    iget v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mError:I
+
+    return v0
+.end method
+
+.method public isPhoneBookReady()Z
+    .locals 1
+
+    .prologue
+    .line 448
+    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mPhone:Lcom/android/internal/telephony/PhoneBase;
+
+    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneBase;->getIccFileHandler()Lcom/android/internal/telephony/uicc/IccFileHandler;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mPhone:Lcom/android/internal/telephony/PhoneBase;
+
+    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneBase;->getIccRecordsLoaded()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
     :goto_0
     return v0
 
-    .line 495
     :cond_0
-    const-string v1, "mAdnCache is NULL when getAnrCount."
-
-    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->loge(Ljava/lang/String;)V
+    const/4 v0, 0x0
 
     goto :goto_0
 .end method
 
-.method public getEmailCount()I
-    .locals 2
+.method public isUsimPhoneBookRecords()Z
+    .locals 4
 
     .prologue
-    .line 502
-    const/4 v0, 0x0
+    const/4 v1, 0x0
 
-    .line 503
-    .local v0, "emailCount":I
-    iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
+    .line 454
+    iget-object v2, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mPhone:Lcom/android/internal/telephony/PhoneBase;
 
-    if-eqz v1, :cond_0
+    iget-object v2, v2, Lcom/android/internal/telephony/PhoneBase;->mUiccApplication:Ljava/util/concurrent/atomic/AtomicReference;
 
-    .line 504
-    iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
+    invoke-virtual {v2}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
 
-    invoke-virtual {v1}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->getEmailCount()I
+    move-result-object v0
 
-    move-result v0
+    check-cast v0, Lcom/android/internal/telephony/uicc/UiccCardApplication;
 
-    .line 508
-    :goto_0
-    return v0
+    .local v0, "app":Lcom/android/internal/telephony/uicc/UiccCardApplication;
+    if-eqz v0, :cond_0
 
-    .line 506
+    invoke-virtual {v0}, Lcom/android/internal/telephony/uicc/UiccCardApplication;->getType()Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
+
+    move-result-object v2
+
+    sget-object v3, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;->APPTYPE_USIM:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
+
+    if-ne v2, v3, :cond_0
+
+    const/4 v1, 0x1
+
     :cond_0
-    const-string v1, "mAdnCache is NULL when getEmailCount."
-
-    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->loge(Ljava/lang/String;)V
-
-    goto :goto_0
-.end method
-
-.method public getSpareAnrCount()I
-    .locals 2
-
-    .prologue
-    .line 513
-    const/4 v0, 0x0
-
-    .line 514
-    .local v0, "spareAnrCount":I
-    iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
-
-    if-eqz v1, :cond_0
-
-    .line 515
-    iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->getSpareAnrCount()I
-
-    move-result v0
-
-    .line 519
-    :goto_0
-    return v0
-
-    .line 517
-    :cond_0
-    const-string v1, "mAdnCache is NULL when getSpareAnrCount."
-
-    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->loge(Ljava/lang/String;)V
-
-    goto :goto_0
-.end method
-
-.method public getSpareEmailCount()I
-    .locals 2
-
-    .prologue
-    .line 524
-    const/4 v0, 0x0
-
-    .line 525
-    .local v0, "spareEmailCount":I
-    iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
-
-    if-eqz v1, :cond_0
-
-    .line 526
-    iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->getSpareEmailCount()I
-
-    move-result v0
-
-    .line 530
-    :goto_0
-    return v0
-
-    .line 528
-    :cond_0
-    const-string v1, "mAdnCache is NULL when getSpareEmailCount."
-
-    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->loge(Ljava/lang/String;)V
-
-    goto :goto_0
+    return v1
 .end method
 
 .method protected abstract logd(Ljava/lang/String;)V
@@ -573,15 +617,10 @@
 .end method
 
 .method protected publish()V
-    .locals 1
+    .locals 0
 
     .prologue
-    .line 202
-    const-string v0, "simphonebook"
-
-    invoke-static {v0, p0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
-
-    .line 203
+    .line 237
     return-void
 .end method
 
@@ -590,7 +629,7 @@
     .param p1, "card"    # Lcom/android/internal/telephony/uicc/UiccCard;
 
     .prologue
-    .line 139
+    .line 160
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
@@ -611,139 +650,148 @@
 
     invoke-virtual {p0, v6}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->logd(Ljava/lang/String;)V
 
-    .line 141
-    if-nez p1, :cond_1
+    .line 162
+    if-eqz p1, :cond_0
 
-    .line 142
-    const-string v6, "Card is null. Cleanup"
+    invoke-virtual {p1}, Lcom/android/internal/telephony/uicc/UiccCard;->getCardState()Lcom/android/internal/telephony/uicc/IccCardStatus$CardState;
+
+    move-result-object v6
+
+    sget-object v7, Lcom/android/internal/telephony/uicc/IccCardStatus$CardState;->CARDSTATE_ABSENT:Lcom/android/internal/telephony/uicc/IccCardStatus$CardState;
+
+    if-ne v6, v7, :cond_2
+
+    .line 163
+    :cond_0
+    const-string v6, "Card is null or absent. Cleanup"
 
     invoke-virtual {p0, v6}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->logd(Ljava/lang/String;)V
 
-    .line 143
+    .line 164
     invoke-direct {p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->cleanUp()V
 
-    .line 198
-    :cond_0
+    .line 219
+    :cond_1
     :goto_0
     return-void
 
-    .line 147
-    :cond_1
+    .line 168
+    :cond_2
     const/4 v5, 0x0
 
-    .line 148
+    .line 169
     .local v5, "validApp":Lcom/android/internal/telephony/uicc/UiccCardApplication;
     invoke-virtual {p1}, Lcom/android/internal/telephony/uicc/UiccCard;->getNumApplications()I
 
     move-result v3
 
-    .line 149
+    .line 170
     .local v3, "numApps":I
     const/4 v2, 0x0
 
-    .line 150
+    .line 171
     .local v2, "isCurrentAppFound":Z
     const/4 v6, 0x0
 
     iput-boolean v6, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mIs3gCard:Z
 
-    .line 151
+    .line 172
     const/4 v1, 0x0
 
     .local v1, "i":I
     :goto_1
-    if-ge v1, v3, :cond_6
+    if-ge v1, v3, :cond_7
 
-    .line 152
+    .line 173
     invoke-virtual {p1, v1}, Lcom/android/internal/telephony/uicc/UiccCard;->getApplicationIndex(I)Lcom/android/internal/telephony/uicc/UiccCardApplication;
 
     move-result-object v0
 
-    .line 153
+    .line 174
     .local v0, "app":Lcom/android/internal/telephony/uicc/UiccCardApplication;
-    if-eqz v0, :cond_8
+    if-eqz v0, :cond_9
 
-    .line 156
+    .line 177
     invoke-virtual {v0}, Lcom/android/internal/telephony/uicc/UiccCardApplication;->getType()Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
 
     move-result-object v4
 
-    .line 157
+    .line 178
     .local v4, "type":Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
     sget-object v6, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;->APPTYPE_CSIM:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
 
-    if-eq v4, v6, :cond_2
+    if-eq v4, v6, :cond_3
 
     sget-object v6, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;->APPTYPE_USIM:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
 
-    if-eq v4, v6, :cond_2
+    if-eq v4, v6, :cond_3
 
     sget-object v6, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;->APPTYPE_ISIM:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
 
-    if-ne v4, v6, :cond_3
+    if-ne v4, v6, :cond_4
 
-    .line 159
-    :cond_2
+    .line 180
+    :cond_3
     const-string v6, "Card is 3G"
 
     invoke-virtual {p0, v6}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->logd(Ljava/lang/String;)V
 
-    .line 160
+    .line 181
     const/4 v6, 0x1
 
     iput-boolean v6, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mIs3gCard:Z
 
-    .line 164
-    :cond_3
-    if-nez v2, :cond_5
+    .line 185
+    :cond_4
+    if-nez v2, :cond_6
 
-    .line 168
-    if-nez v5, :cond_4
+    .line 189
+    if-nez v5, :cond_5
 
     sget-object v6, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;->APPTYPE_UNKNOWN:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
 
-    if-eq v4, v6, :cond_4
+    if-eq v4, v6, :cond_5
 
-    .line 169
+    .line 190
     move-object v5, v0
 
-    .line 172
-    :cond_4
+    .line 193
+    :cond_5
     iget-object v6, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mCurrentApp:Lcom/android/internal/telephony/uicc/UiccCardApplication;
 
-    if-ne v6, v0, :cond_5
+    if-ne v6, v0, :cond_6
 
-    .line 173
+    .line 194
     const-string v6, "Existing app found"
 
     invoke-virtual {p0, v6}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->logd(Ljava/lang/String;)V
 
-    .line 174
+    .line 195
     const/4 v2, 0x1
 
-    .line 181
-    :cond_5
+    .line 202
+    :cond_6
     iget-boolean v6, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mIs3gCard:Z
+
+    if-eqz v6, :cond_9
+
+    if-eqz v2, :cond_9
+
+    .line 212
+    .end local v0    # "app":Lcom/android/internal/telephony/uicc/UiccCardApplication;
+    .end local v4    # "type":Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
+    :cond_7
+    iget-object v6, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mCurrentApp:Lcom/android/internal/telephony/uicc/UiccCardApplication;
 
     if-eqz v6, :cond_8
 
-    if-eqz v2, :cond_8
+    if-nez v2, :cond_1
 
-    .line 191
-    .end local v0    # "app":Lcom/android/internal/telephony/uicc/UiccCardApplication;
-    .end local v4    # "type":Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
-    :cond_6
-    iget-object v6, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mCurrentApp:Lcom/android/internal/telephony/uicc/UiccCardApplication;
+    .line 213
+    :cond_8
+    if-eqz v5, :cond_1
 
-    if-eqz v6, :cond_7
-
-    if-nez v2, :cond_0
-
-    .line 192
-    :cond_7
-    if-eqz v5, :cond_0
-
-    .line 193
+    .line 214
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
@@ -764,27 +812,23 @@
 
     invoke-virtual {p0, v6}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->logd(Ljava/lang/String;)V
 
-    .line 194
+    .line 215
     iput-object v5, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mCurrentApp:Lcom/android/internal/telephony/uicc/UiccCardApplication;
 
-    .line 195
+    .line 216
     iget-object v6, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mCurrentApp:Lcom/android/internal/telephony/uicc/UiccCardApplication;
 
     invoke-virtual {v6}, Lcom/android/internal/telephony/uicc/UiccCardApplication;->getIccRecords()Lcom/android/internal/telephony/uicc/IccRecords;
 
     move-result-object v6
 
-    invoke-virtual {v6}, Lcom/android/internal/telephony/uicc/IccRecords;->getAdnCache()Lcom/android/internal/telephony/uicc/AdnRecordCache;
-
-    move-result-object v6
-
-    iput-object v6, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
+    invoke-virtual {p0, v6}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->updateIccRecords(Lcom/android/internal/telephony/uicc/IccRecords;)V
 
     goto :goto_0
 
-    .line 151
+    .line 172
     .restart local v0    # "app":Lcom/android/internal/telephony/uicc/UiccCardApplication;
-    :cond_8
+    :cond_9
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
@@ -799,7 +843,7 @@
     .param p5, "pin2"    # Ljava/lang/String;
 
     .prologue
-    .line 332
+    .line 323
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mPhone:Lcom/android/internal/telephony/PhoneBase;
 
     invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneBase;->getContext()Landroid/content/Context;
@@ -814,7 +858,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 335
+    .line 326
     new-instance v0, Ljava/lang/SecurityException;
 
     const-string v1, "Requires android.permission.WRITE_CONTACTS permission"
@@ -823,7 +867,7 @@
 
     throw v0
 
-    .line 339
+    .line 330
     :cond_0
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -897,28 +941,28 @@
 
     invoke-virtual {p0, v0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->logd(Ljava/lang/String;)V
 
-    .line 342
+    .line 333
     iget-object v7, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mLock:Ljava/lang/Object;
 
     monitor-enter v7
 
-    .line 343
+    .line 334
     :try_start_0
     invoke-virtual {p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->checkThread()V
 
-    .line 344
+    .line 335
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mSuccess:Z
 
-    .line 345
+    .line 336
     new-instance v6, Ljava/util/concurrent/atomic/AtomicBoolean;
 
     const/4 v0, 0x0
 
     invoke-direct {v6, v0}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
 
-    .line 346
+    .line 337
     .local v6, "status":Ljava/util/concurrent/atomic/AtomicBoolean;
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mBaseHandler:Landroid/os/Handler;
 
@@ -928,19 +972,19 @@
 
     move-result-object v5
 
-    .line 347
+    .line 338
     .local v5, "response":Landroid/os/Message;
     new-instance v2, Lcom/android/internal/telephony/uicc/AdnRecord;
 
     invoke-direct {v2, p2, p3}, Lcom/android/internal/telephony/uicc/AdnRecord;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 348
+    .line 339
     .local v2, "newAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
     if-eqz v0, :cond_1
 
-    .line 349
+    .line 340
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
     move v1, p1
@@ -951,21 +995,21 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->updateAdnByIndex(ILcom/android/internal/telephony/uicc/AdnRecord;ILjava/lang/String;Landroid/os/Message;)V
 
-    .line 350
+    .line 341
     invoke-virtual {p0, v6}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->waitForResult(Ljava/util/concurrent/atomic/AtomicBoolean;)V
 
-    .line 354
+    .line 345
     :goto_0
     monitor-exit v7
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 355
+    .line 346
     iget-boolean v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mSuccess:Z
 
     return v0
 
-    .line 352
+    .line 343
     :cond_1
     :try_start_1
     const-string v0, "Failure while trying to update by index due to uninitialised adncache"
@@ -974,7 +1018,7 @@
 
     goto :goto_0
 
-    .line 354
+    .line 345
     .end local v2    # "newAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
     .end local v5    # "response":Landroid/os/Message;
     .end local v6    # "status":Ljava/util/concurrent/atomic/AtomicBoolean;
@@ -998,7 +1042,7 @@
     .param p6, "pin2"    # Ljava/lang/String;
 
     .prologue
-    .line 236
+    .line 270
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mPhone:Lcom/android/internal/telephony/PhoneBase;
 
     invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneBase;->getContext()Landroid/content/Context;
@@ -1013,7 +1057,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 239
+    .line 273
     new-instance v0, Ljava/lang/SecurityException;
 
     const-string v1, "Requires android.permission.WRITE_CONTACTS permission"
@@ -1022,7 +1066,7 @@
 
     throw v0
 
-    .line 244
+    .line 278
     :cond_0
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -1112,33 +1156,33 @@
 
     invoke-virtual {p0, v0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->logd(Ljava/lang/String;)V
 
-    .line 248
+    .line 282
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->updateEfForIccType(I)I
 
     move-result p1
 
-    .line 250
+    .line 284
     iget-object v7, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mLock:Ljava/lang/Object;
 
     monitor-enter v7
 
-    .line 251
+    .line 285
     :try_start_0
     invoke-virtual {p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->checkThread()V
 
-    .line 252
+    .line 286
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mSuccess:Z
 
-    .line 253
+    .line 287
     new-instance v6, Ljava/util/concurrent/atomic/AtomicBoolean;
 
     const/4 v0, 0x0
 
     invoke-direct {v6, v0}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
 
-    .line 254
+    .line 288
     .local v6, "status":Ljava/util/concurrent/atomic/AtomicBoolean;
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mBaseHandler:Landroid/os/Handler;
 
@@ -1148,25 +1192,25 @@
 
     move-result-object v5
 
-    .line 255
+    .line 289
     .local v5, "response":Landroid/os/Message;
     new-instance v2, Lcom/android/internal/telephony/uicc/AdnRecord;
 
     invoke-direct {v2, p2, p3}, Lcom/android/internal/telephony/uicc/AdnRecord;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 256
+    .line 290
     .local v2, "oldAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
     new-instance v3, Lcom/android/internal/telephony/uicc/AdnRecord;
 
     invoke-direct {v3, p4, p5}, Lcom/android/internal/telephony/uicc/AdnRecord;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 257
+    .line 291
     .local v3, "newAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
     if-eqz v0, :cond_1
 
-    .line 258
+    .line 292
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
     move v1, p1
@@ -1175,21 +1219,21 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->updateAdnBySearch(ILcom/android/internal/telephony/uicc/AdnRecord;Lcom/android/internal/telephony/uicc/AdnRecord;Ljava/lang/String;Landroid/os/Message;)V
 
-    .line 259
+    .line 293
     invoke-virtual {p0, v6}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->waitForResult(Ljava/util/concurrent/atomic/AtomicBoolean;)V
 
-    .line 263
+    .line 297
     :goto_0
     monitor-exit v7
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 264
+    .line 298
     iget-boolean v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mSuccess:Z
 
     return v0
 
-    .line 261
+    .line 295
     :cond_1
     :try_start_1
     const-string v0, "Failure while trying to update by search due to uninitialised adncache"
@@ -1198,7 +1242,7 @@
 
     goto :goto_0
 
-    .line 263
+    .line 297
     .end local v2    # "oldAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
     .end local v3    # "newAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
     .end local v5    # "response":Landroid/os/Message;
@@ -1213,418 +1257,43 @@
     throw v0
 .end method
 
-.method public updateAdnRecordsWithContentValuesInEfBySearch(ILandroid/content/ContentValues;Ljava/lang/String;)Z
-    .locals 24
-    .param p1, "efid"    # I
-    .param p2, "values"    # Landroid/content/ContentValues;
-    .param p3, "pin2"    # Ljava/lang/String;
+.method public updateIccRecords(Lcom/android/internal/telephony/uicc/IccRecords;)V
+    .locals 1
+    .param p1, "iccRecords"    # Lcom/android/internal/telephony/uicc/IccRecords;
 
     .prologue
-    .line 271
-    move-object/from16 v0, p0
+    .line 222
+    if-eqz p1, :cond_0
 
-    iget-object v4, v0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mPhone:Lcom/android/internal/telephony/PhoneBase;
+    .line 223
+    invoke-virtual {p1}, Lcom/android/internal/telephony/uicc/IccRecords;->getAdnCache()Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
-    invoke-virtual {v4}, Lcom/android/internal/telephony/PhoneBase;->getContext()Landroid/content/Context;
+    move-result-object v0
 
-    move-result-object v4
+    iput-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
-    const-string v5, "android.permission.WRITE_CONTACTS"
-
-    invoke-virtual {v4, v5}, Landroid/content/Context;->checkCallingOrSelfPermission(Ljava/lang/String;)I
-
-    move-result v4
-
-    if-eqz v4, :cond_0
-
-    .line 273
-    new-instance v4, Ljava/lang/SecurityException;
-
-    const-string v5, "Requires android.permission.WRITE_CONTACTS permission"
-
-    invoke-direct {v4, v5}, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;)V
-
-    throw v4
-
-    .line 276
-    :cond_0
-    const-string v4, "tag"
-
-    move-object/from16 v0, p2
-
-    invoke-virtual {v0, v4}, Landroid/content/ContentValues;->getAsString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v21
-
-    .line 277
-    .local v21, "oldTag":Ljava/lang/String;
-    const-string v4, "newTag"
-
-    move-object/from16 v0, p2
-
-    invoke-virtual {v0, v4}, Landroid/content/ContentValues;->getAsString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v15
-
-    .line 278
-    .local v15, "newTag":Ljava/lang/String;
-    const-string v4, "number"
-
-    move-object/from16 v0, p2
-
-    invoke-virtual {v0, v4}, Landroid/content/ContentValues;->getAsString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v20
-
-    .line 279
-    .local v20, "oldPhoneNumber":Ljava/lang/String;
-    const-string v4, "newNumber"
-
-    move-object/from16 v0, p2
-
-    invoke-virtual {v0, v4}, Landroid/content/ContentValues;->getAsString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v14
-
-    .line 280
-    .local v14, "newPhoneNumber":Ljava/lang/String;
-    const-string v4, "emails"
-
-    move-object/from16 v0, p2
-
-    invoke-virtual {v0, v4}, Landroid/content/ContentValues;->getAsString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v18
-
-    .line 281
-    .local v18, "oldEmail":Ljava/lang/String;
-    const-string v4, "newEmails"
-
-    move-object/from16 v0, p2
-
-    invoke-virtual {v0, v4}, Landroid/content/ContentValues;->getAsString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v12
-
-    .line 282
-    .local v12, "newEmail":Ljava/lang/String;
-    const-string v4, "anrs"
-
-    move-object/from16 v0, p2
-
-    invoke-virtual {v0, v4}, Landroid/content/ContentValues;->getAsString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v16
-
-    .line 283
-    .local v16, "oldAnr":Ljava/lang/String;
-    const-string v4, "newAnrs"
-
-    move-object/from16 v0, p2
-
-    invoke-virtual {v0, v4}, Landroid/content/ContentValues;->getAsString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v10
-
-    .line 284
-    .local v10, "newAnr":Ljava/lang/String;
-    invoke-static/range {v18 .. v18}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_1
-
-    const/16 v19, 0x0
-
-    .line 285
-    .local v19, "oldEmailArray":[Ljava/lang/String;
+    .line 224
     :goto_0
-    invoke-static {v12}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    return-void
 
-    move-result v4
+    .line 228
+    :cond_0
+    const/4 v0, 0x0
 
-    if-eqz v4, :cond_2
+    .line 232
+    iput-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
-    const/4 v13, 0x0
-
-    .line 286
-    .local v13, "newEmailArray":[Ljava/lang/String;
-    :goto_1
-    invoke-static/range {v16 .. v16}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_3
-
-    const/16 v17, 0x0
-
-    .line 287
-    .local v17, "oldAnrArray":[Ljava/lang/String;
-    :goto_2
-    invoke-static {v10}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_4
-
-    const/4 v11, 0x0
-
-    .line 288
-    .local v11, "newAnrArray":[Ljava/lang/String;
-    :goto_3
-    invoke-direct/range {p0 .. p1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->updateEfForIccType(I)I
-
-    move-result p1
-
-    .line 291
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, "updateAdnRecordsInEfBySearch: efid="
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    move/from16 v0, p1
-
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, ", values = "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    move-object/from16 v0, p2
-
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, ", pin2="
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    move-object/from16 v0, p3
-
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    move-object/from16 v0, p0
-
-    invoke-virtual {v0, v4}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->logd(Ljava/lang/String;)V
-
-    .line 293
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mLock:Ljava/lang/Object;
-
-    move-object/from16 v23, v0
-
-    monitor-enter v23
-
-    .line 294
-    :try_start_0
-    invoke-virtual/range {p0 .. p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->checkThread()V
-
-    .line 295
-    const/4 v4, 0x0
-
-    move-object/from16 v0, p0
-
-    iput-boolean v4, v0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mSuccess:Z
-
-    .line 296
-    new-instance v22, Ljava/util/concurrent/atomic/AtomicBoolean;
-
-    const/4 v4, 0x0
-
-    move-object/from16 v0, v22
-
-    invoke-direct {v0, v4}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
-
-    .line 297
-    .local v22, "status":Ljava/util/concurrent/atomic/AtomicBoolean;
-    move-object/from16 v0, p0
-
-    iget-object v4, v0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mBaseHandler:Landroid/os/Handler;
-
-    const/4 v5, 0x3
-
-    move-object/from16 v0, v22
-
-    invoke-virtual {v4, v5, v0}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
-
-    move-result-object v9
-
-    .line 298
-    .local v9, "response":Landroid/os/Message;
-    new-instance v6, Lcom/android/internal/telephony/uicc/AdnRecord;
-
-    move-object/from16 v0, v21
-
-    move-object/from16 v1, v20
-
-    move-object/from16 v2, v19
-
-    move-object/from16 v3, v17
-
-    invoke-direct {v6, v0, v1, v2, v3}, Lcom/android/internal/telephony/uicc/AdnRecord;-><init>(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;)V
-
-    .line 299
-    .local v6, "oldAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
-    new-instance v7, Lcom/android/internal/telephony/uicc/AdnRecord;
-
-    invoke-direct {v7, v15, v14, v13, v11}, Lcom/android/internal/telephony/uicc/AdnRecord;-><init>(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;)V
-
-    .line 300
-    .local v7, "newAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
-    move-object/from16 v0, p0
-
-    iget-object v4, v0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
-
-    if-eqz v4, :cond_5
-
-    .line 301
-    move-object/from16 v0, p0
-
-    iget-object v4, v0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
-
-    move/from16 v5, p1
-
-    move-object/from16 v8, p3
-
-    invoke-virtual/range {v4 .. v9}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->updateAdnBySearch(ILcom/android/internal/telephony/uicc/AdnRecord;Lcom/android/internal/telephony/uicc/AdnRecord;Ljava/lang/String;Landroid/os/Message;)V
-
-    .line 302
-    move-object/from16 v0, p0
-
-    move-object/from16 v1, v22
-
-    invoke-virtual {v0, v1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->waitForResult(Ljava/util/concurrent/atomic/AtomicBoolean;)V
-
-    .line 306
-    :goto_4
-    monitor-exit v23
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 307
-    move-object/from16 v0, p0
-
-    iget-boolean v4, v0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mSuccess:Z
-
-    return v4
-
-    .line 284
-    .end local v6    # "oldAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
-    .end local v7    # "newAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
-    .end local v9    # "response":Landroid/os/Message;
-    .end local v11    # "newAnrArray":[Ljava/lang/String;
-    .end local v13    # "newEmailArray":[Ljava/lang/String;
-    .end local v17    # "oldAnrArray":[Ljava/lang/String;
-    .end local v19    # "oldEmailArray":[Ljava/lang/String;
-    .end local v22    # "status":Ljava/util/concurrent/atomic/AtomicBoolean;
-    :cond_1
-    move-object/from16 v0, p0
-
-    move-object/from16 v1, v18
-
-    invoke-direct {v0, v1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->getStringArray(Ljava/lang/String;)[Ljava/lang/String;
-
-    move-result-object v19
-
-    goto/16 :goto_0
-
-    .line 285
-    .restart local v19    # "oldEmailArray":[Ljava/lang/String;
-    :cond_2
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v12}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->getStringArray(Ljava/lang/String;)[Ljava/lang/String;
-
-    move-result-object v13
-
-    goto/16 :goto_1
-
-    .line 286
-    .restart local v13    # "newEmailArray":[Ljava/lang/String;
-    :cond_3
-    move-object/from16 v0, p0
-
-    move-object/from16 v1, v16
-
-    invoke-direct {v0, v1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->getStringArray(Ljava/lang/String;)[Ljava/lang/String;
-
-    move-result-object v17
-
-    goto/16 :goto_2
-
-    .line 287
-    .restart local v17    # "oldAnrArray":[Ljava/lang/String;
-    :cond_4
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v10}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->getStringArray(Ljava/lang/String;)[Ljava/lang/String;
-
-    move-result-object v11
-
-    goto/16 :goto_3
-
-    .line 304
-    .restart local v6    # "oldAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
-    .restart local v7    # "newAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
-    .restart local v9    # "response":Landroid/os/Message;
-    .restart local v11    # "newAnrArray":[Ljava/lang/String;
-    .restart local v22    # "status":Ljava/util/concurrent/atomic/AtomicBoolean;
-    :cond_5
-    :try_start_1
-    const-string v4, "Failure while trying to update by search due to uninitialised adncache"
-
-    move-object/from16 v0, p0
-
-    invoke-virtual {v0, v4}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->loge(Ljava/lang/String;)V
-
-    goto :goto_4
-
-    .line 306
-    .end local v6    # "oldAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
-    .end local v7    # "newAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
-    .end local v9    # "response":Landroid/os/Message;
-    .end local v22    # "status":Ljava/util/concurrent/atomic/AtomicBoolean;
-    :catchall_0
-    move-exception v4
-
-    monitor-exit v23
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    throw v4
+    goto :goto_0
 .end method
 
-.method public updateUsimAdnRecordsInEfByIndex(ILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;ILjava/lang/String;)Z
+.method public updateUsimPhoneBookRecordsByIndex(ILcom/android/internal/telephony/uicc/AdnRecord;I)Z
     .locals 8
     .param p1, "efid"    # I
-    .param p2, "newTag"    # Ljava/lang/String;
-    .param p3, "newPhoneNumber"    # Ljava/lang/String;
-    .param p4, "anrNumbers"    # [Ljava/lang/String;
-    .param p5, "emails"    # [Ljava/lang/String;
-    .param p6, "index"    # I
-    .param p7, "pin2"    # Ljava/lang/String;
+    .param p2, "adn"    # Lcom/android/internal/telephony/uicc/AdnRecord;
+    .param p3, "index"    # I
 
     .prologue
-    .line 448
+    .line 470
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mPhone:Lcom/android/internal/telephony/PhoneBase;
 
     invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneBase;->getContext()Landroid/content/Context;
@@ -1639,7 +1308,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 450
+    .line 472
     new-instance v0, Ljava/lang/SecurityException;
 
     const-string v1, "Requires android.permission.WRITE_CONTACTS permission"
@@ -1648,102 +1317,34 @@
 
     throw v0
 
-    .line 454
+    .line 475
     :cond_0
-    new-instance v0, Ljava/lang/StringBuilder;
+    invoke-direct {p0, p1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->updateEfForIccType(I)I
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    move-result p1
 
-    const-string v1, "updateAdnRecordsInEfByIndex: efid="
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, " Index="
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, " ==> "
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, "("
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, ","
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, ")"
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, " pin2="
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->logd(Ljava/lang/String;)V
-
-    .line 456
+    .line 477
     iget-object v7, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mLock:Ljava/lang/Object;
 
     monitor-enter v7
 
-    .line 457
+    .line 478
     :try_start_0
     invoke-virtual {p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->checkThread()V
 
-    .line 458
+    .line 479
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mSuccess:Z
 
-    .line 459
+    .line 480
     new-instance v6, Ljava/util/concurrent/atomic/AtomicBoolean;
 
     const/4 v0, 0x0
 
     invoke-direct {v6, v0}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
 
-    .line 460
+    .line 481
     .local v6, "status":Ljava/util/concurrent/atomic/AtomicBoolean;
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mBaseHandler:Landroid/os/Handler;
 
@@ -1753,64 +1354,149 @@
 
     move-result-object v5
 
-    .line 461
+    .line 482
     .local v5, "response":Landroid/os/Message;
-    new-instance v2, Lcom/android/internal/telephony/uicc/AdnRecord;
-
-    invoke-direct {v2, p2, p3, p5, p4}, Lcom/android/internal/telephony/uicc/AdnRecord;-><init>(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;)V
-
-    .line 462
-    .local v2, "newAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
-    invoke-direct {p0, p1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->updateEfForIccType(I)I
-
-    move-result p1
-
-    .line 463
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
-    if-eqz v0, :cond_1
-
-    .line 464
-    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
+    const/4 v4, 0x0
 
     move v1, p1
 
-    move v3, p6
+    move-object v2, p2
 
-    move-object v4, p7
+    move v3, p3
 
-    invoke-virtual/range {v0 .. v5}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->updateUsimAdnByIndex(ILcom/android/internal/telephony/uicc/AdnRecord;ILjava/lang/String;Landroid/os/Message;)V
+    invoke-virtual/range {v0 .. v5}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->updateAdnByIndex(ILcom/android/internal/telephony/uicc/AdnRecord;ILjava/lang/String;Landroid/os/Message;)V
 
-    .line 465
+    .line 483
     invoke-virtual {p0, v6}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->waitForResult(Ljava/util/concurrent/atomic/AtomicBoolean;)V
 
-    .line 470
-    :goto_0
+    .line 484
     monitor-exit v7
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 471
+    .line 485
     iget-boolean v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mSuccess:Z
 
     return v0
 
-    .line 468
-    :cond_1
-    :try_start_1
-    const-string v0, "Failure while trying to update by index due to uninitialised adncache"
-
-    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->logd(Ljava/lang/String;)V
-
-    goto :goto_0
-
-    .line 470
-    .end local v2    # "newAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
+    .line 484
     .end local v5    # "response":Landroid/os/Message;
     .end local v6    # "status":Ljava/util/concurrent/atomic/AtomicBoolean;
     :catchall_0
     move-exception v0
 
+    :try_start_1
+    monitor-exit v7
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    throw v0
+.end method
+
+.method public updateUsimPhoneBookRecordsBySearch(ILcom/android/internal/telephony/uicc/AdnRecord;Lcom/android/internal/telephony/uicc/AdnRecord;)Z
+    .locals 8
+    .param p1, "efid"    # I
+    .param p2, "oldAdn"    # Lcom/android/internal/telephony/uicc/AdnRecord;
+    .param p3, "newAdn"    # Lcom/android/internal/telephony/uicc/AdnRecord;
+
+    .prologue
+    .line 489
+    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mPhone:Lcom/android/internal/telephony/PhoneBase;
+
+    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneBase;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    const-string v1, "android.permission.WRITE_CONTACTS"
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->checkCallingOrSelfPermission(Ljava/lang/String;)I
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 491
+    new-instance v0, Ljava/lang/SecurityException;
+
+    const-string v1, "Requires android.permission.WRITE_CONTACTS permission"
+
+    invoke-direct {v0, v1}, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 494
+    :cond_0
+    invoke-direct {p0, p1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->updateEfForIccType(I)I
+
+    move-result p1
+
+    .line 496
+    iget-object v7, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mLock:Ljava/lang/Object;
+
+    monitor-enter v7
+
+    .line 497
+    :try_start_0
+    invoke-virtual {p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->checkThread()V
+
+    .line 498
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mSuccess:Z
+
+    .line 499
+    new-instance v6, Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    const/4 v0, 0x0
+
+    invoke-direct {v6, v0}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
+
+    .line 500
+    .local v6, "status":Ljava/util/concurrent/atomic/AtomicBoolean;
+    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mBaseHandler:Landroid/os/Handler;
+
+    const/4 v1, 0x3
+
+    invoke-virtual {v0, v1, v6}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
+
+    move-result-object v5
+
+    .line 501
+    .local v5, "response":Landroid/os/Message;
+    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
+
+    const/4 v4, 0x0
+
+    move v1, p1
+
+    move-object v2, p2
+
+    move-object v3, p3
+
+    invoke-virtual/range {v0 .. v5}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->updateAdnBySearch(ILcom/android/internal/telephony/uicc/AdnRecord;Lcom/android/internal/telephony/uicc/AdnRecord;Ljava/lang/String;Landroid/os/Message;)V
+
+    .line 502
+    invoke-virtual {p0, v6}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->waitForResult(Ljava/util/concurrent/atomic/AtomicBoolean;)V
+
+    .line 503
+    monitor-exit v7
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 504
+    iget-boolean v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mSuccess:Z
+
+    return v0
+
+    .line 503
+    .end local v5    # "response":Landroid/os/Message;
+    .end local v6    # "status":Ljava/util/concurrent/atomic/AtomicBoolean;
+    :catchall_0
+    move-exception v0
+
+    :try_start_1
     monitor-exit v7
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
@@ -1823,7 +1509,7 @@
     .param p1, "status"    # Ljava/util/concurrent/atomic/AtomicBoolean;
 
     .prologue
-    .line 425
+    .line 428
     :goto_0
     invoke-virtual {p1}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
 
@@ -1831,7 +1517,7 @@
 
     if-nez v1, :cond_0
 
-    .line 427
+    .line 430
     :try_start_0
     iget-object v1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->mLock:Ljava/lang/Object;
 
@@ -1841,11 +1527,11 @@
 
     goto :goto_0
 
-    .line 428
+    .line 431
     :catch_0
     move-exception v0
 
-    .line 429
+    .line 432
     .local v0, "e":Ljava/lang/InterruptedException;
     const-string v1, "interrupted while trying to update by search"
 
@@ -1853,7 +1539,7 @@
 
     goto :goto_0
 
-    .line 432
+    .line 435
     .end local v0    # "e":Ljava/lang/InterruptedException;
     :cond_0
     return-void

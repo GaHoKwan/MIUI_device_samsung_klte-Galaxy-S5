@@ -9,238 +9,81 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+        Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;,
+        Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;,
+        Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
     }
 .end annotation
 
 
 # static fields
-.field private static final ANR_ADDITIONAL_NUMBER_END_ID:I = 0xc
+.field static final DBG:Z = true
 
-.field private static final ANR_ADDITIONAL_NUMBER_START_ID:I = 0x3
+.field static final EVENT_ANR_RECORD_LOAD_DONE:I = 0x4
 
-.field private static final ANR_ADN_RECORD_IDENTIFIER_ID:I = 0x10
+.field static final EVENT_EMAIL_RECORD_LOAD_DONE:I = 0x5
 
-.field private static final ANR_ADN_SFI_ID:I = 0xf
+.field static final EVENT_IAP_RECORD_LOAD_DONE:I = 0x6
 
-.field private static final ANR_BCD_NUMBER_LENGTH:I = 0x1
+.field static final EVENT_PBR_LOAD_DONE:I = 0x1
 
-.field private static final ANR_CAPABILITY_ID:I = 0xd
+.field static final EVENT_RECORD_SIZE_READ_DONE:I = 0x2
 
-.field private static final ANR_DESCRIPTION_ID:I = 0x0
+.field static final EVENT_UPDATE_DONE:I = 0x7
 
-.field private static final ANR_EXTENSION_ID:I = 0xe
+.field static final EVENT_USIM_ADN_LOAD_DONE:I = 0x3
 
-.field private static final ANR_TON_NPI_ID:I = 0x2
+.field static final LOG_TAG:Ljava/lang/String; = "UsimPhoneBookManager"
 
-.field private static final DBG:Z = true
+.field static final MAX_ANR_DATA_LENGTH:I = 0xb
 
-.field private static final EVENT_ANR_LOAD_DONE:I = 0x5
+.field static final MAX_ANR_LENGTH:I = 0x14
 
-.field private static final EVENT_EF_ANR_RECORD_SIZE_DONE:I = 0x7
+.field static final USIM_EFAAS_TAG:I = 0xc7
 
-.field private static final EVENT_EF_EMAIL_RECORD_SIZE_DONE:I = 0x6
+.field static final USIM_EFADN_TAG:I = 0xc0
 
-.field private static final EVENT_EF_IAP_RECORD_SIZE_DONE:I = 0xa
+.field static final USIM_EFANR_TAG:I = 0xc4
 
-.field private static final EVENT_EMAIL_LOAD_DONE:I = 0x4
+.field static final USIM_EFCCP1_TAG:I = 0xcb
 
-.field private static final EVENT_IAP_LOAD_DONE:I = 0x3
+.field static final USIM_EFEMAIL_TAG:I = 0xca
 
-.field private static final EVENT_PBR_LOAD_DONE:I = 0x1
+.field static final USIM_EFEXT1_TAG:I = 0xc2
 
-.field private static final EVENT_UPDATE_ANR_RECORD_DONE:I = 0x9
+.field static final USIM_EFGRP_TAG:I = 0xc6
 
-.field private static final EVENT_UPDATE_EMAIL_RECORD_DONE:I = 0x8
+.field static final USIM_EFGSD_TAG:I = 0xc8
 
-.field private static final EVENT_UPDATE_IAP_RECORD_DONE:I = 0xb
+.field static final USIM_EFIAP_TAG:I = 0xc1
 
-.field private static final EVENT_USIM_ADN_LOAD_DONE:I = 0x2
+.field static final USIM_EFPBC_TAG:I = 0xc5
 
-.field private static final LOG_TAG:Ljava/lang/String; = "UsimPhoneBookManager"
+.field static final USIM_EFSNE_TAG:I = 0xc3
 
-.field private static final MAX_NUMBER_SIZE_BYTES:I = 0xb
+.field static final USIM_EFUID_TAG:I = 0xc9
 
-.field private static final USIM_EFAAS_TAG:I = 0xc7
+.field static final USIM_TYPE1_TAG:I = 0xa8
 
-.field private static final USIM_EFADN_TAG:I = 0xc0
+.field static final USIM_TYPE2_CONDITIONAL_LENGTH:I = 0x2
 
-.field private static final USIM_EFANR_TAG:I = 0xc4
+.field static final USIM_TYPE2_TAG:I = 0xa9
 
-.field private static final USIM_EFCCP1_TAG:I = 0xcb
-
-.field private static final USIM_EFEMAIL_TAG:I = 0xca
-
-.field private static final USIM_EFEXT1_TAG:I = 0xc2
-
-.field private static final USIM_EFGRP_TAG:I = 0xc6
-
-.field private static final USIM_EFGSD_TAG:I = 0xc8
-
-.field private static final USIM_EFIAP_TAG:I = 0xc1
-
-.field private static final USIM_EFPBC_TAG:I = 0xc5
-
-.field private static final USIM_EFSNE_TAG:I = 0xc3
-
-.field private static final USIM_EFUID_TAG:I = 0xc9
-
-.field private static final USIM_TYPE1_TAG:I = 0xa8
-
-.field private static final USIM_TYPE2_TAG:I = 0xa9
-
-.field private static final USIM_TYPE3_TAG:I = 0xaa
+.field static final USIM_TYPE3_TAG:I = 0xaa
 
 
 # instance fields
-.field private mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
+.field mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
-.field private mAdnLengthList:Ljava/util/ArrayList;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/ArrayList",
-            "<",
-            "Ljava/lang/Integer;",
-            ">;"
-        }
-    .end annotation
-.end field
+.field mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
 
-.field private mAnrFileRecord:Ljava/util/Map;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/Map",
-            "<",
-            "Ljava/lang/Integer;",
-            "Ljava/util/ArrayList",
-            "<[B>;>;"
-        }
-    .end annotation
-.end field
+.field mIapFiles:[[[B
 
-.field private mAnrFlags:Ljava/util/Map;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/Map",
-            "<",
-            "Ljava/lang/Integer;",
-            "Ljava/util/ArrayList",
-            "<",
-            "Ljava/lang/Integer;",
-            ">;>;"
-        }
-    .end annotation
-.end field
+.field mLock:Ljava/lang/Object;
 
-.field private mAnrFlagsRecord:[Ljava/util/ArrayList;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "[",
-            "Ljava/util/ArrayList",
-            "<",
-            "Ljava/lang/Integer;",
-            ">;"
-        }
-    .end annotation
-.end field
+.field mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
 
-.field private mAnrPresentInIap:Z
-
-.field private mAnrTagNumberInIap:I
-
-.field private mAnrsForAdnRec:Ljava/util/Map;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/Map",
-            "<",
-            "Ljava/lang/Integer;",
-            "Ljava/util/ArrayList",
-            "<",
-            "Ljava/lang/String;",
-            ">;>;"
-        }
-    .end annotation
-.end field
-
-.field private mEmailFileRecord:Ljava/util/Map;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/Map",
-            "<",
-            "Ljava/lang/Integer;",
-            "Ljava/util/ArrayList",
-            "<[B>;>;"
-        }
-    .end annotation
-.end field
-
-.field private mEmailFlags:Ljava/util/Map;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/Map",
-            "<",
-            "Ljava/lang/Integer;",
-            "Ljava/util/ArrayList",
-            "<",
-            "Ljava/lang/Integer;",
-            ">;>;"
-        }
-    .end annotation
-.end field
-
-.field private mEmailFlagsRecord:[Ljava/util/ArrayList;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "[",
-            "Ljava/util/ArrayList",
-            "<",
-            "Ljava/lang/Integer;",
-            ">;"
-        }
-    .end annotation
-.end field
-
-.field private mEmailPresentInIap:Z
-
-.field private mEmailTagNumberInIap:I
-
-.field private mEmailsForAdnRec:Ljava/util/Map;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/Map",
-            "<",
-            "Ljava/lang/Integer;",
-            "Ljava/util/ArrayList",
-            "<",
-            "Ljava/lang/String;",
-            ">;>;"
-        }
-    .end annotation
-.end field
-
-.field private mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
-
-.field private mIapFileRecord:Ljava/util/Map;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/Map",
-            "<",
-            "Ljava/lang/Integer;",
-            "Ljava/util/ArrayList",
-            "<[B>;>;"
-        }
-    .end annotation
-.end field
-
-.field private mIsPbrPresent:Ljava/lang/Boolean;
-
-.field private mLock:Ljava/lang/Object;
-
-.field private mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
-
-.field private mPendingExtLoads:I
-
-.field private mPhoneBookRecords:Ljava/util/ArrayList;
+.field mPhoneBookRecords:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/util/ArrayList",
@@ -251,488 +94,910 @@
     .end annotation
 .end field
 
-.field private mRecordNums:Ljava/util/Map;
+.field mReadLock:Ljava/lang/Object;
+
+.field mReadingAnrNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+.field mReadingEmailNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+.field mReadingIapNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+.field mRecordSize:Ljava/util/HashMap;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/Map",
+            "Ljava/util/HashMap",
             "<",
             "Ljava/lang/Integer;",
-            "Ljava/util/ArrayList",
-            "<",
-            "Ljava/lang/Integer;",
-            ">;>;"
+            "Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;",
+            ">;"
         }
     .end annotation
 .end field
 
-.field private mRefreshCache:Z
+.field mSupportAnr:Z
 
-.field private mSuccess:Z
+.field mSupportEmail:Z
+
+.field mUpdateResult:Landroid/os/AsyncResult;
 
 
 # direct methods
 .method public constructor <init>(Lcom/android/internal/telephony/uicc/IccFileHandler;Lcom/android/internal/telephony/uicc/AdnRecordCache;)V
-    .locals 3
+    .locals 2
     .param p1, "fh"    # Lcom/android/internal/telephony/uicc/IccFileHandler;
     .param p2, "cache"    # Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
     .prologue
-    const/4 v2, 0x0
+    const/4 v0, 0x1
 
     const/4 v1, 0x0
 
-    .line 113
+    .line 83
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
 
-    .line 50
+    .line 37
+    iput-boolean v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSupportEmail:Z
+
+    .line 38
+    iput-boolean v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSupportAnr:Z
+
+    .line 40
     new-instance v0, Ljava/lang/Object;
 
     invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
 
-    .line 52
-    iput-boolean v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailPresentInIap:Z
+    .line 48
+    new-instance v0, Ljava/lang/Object;
 
-    .line 53
-    iput v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailTagNumberInIap:I
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
-    .line 54
-    iput-boolean v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrPresentInIap:Z
+    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadLock:Ljava/lang/Object;
 
-    .line 55
-    iput v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrTagNumberInIap:I
+    .line 49
+    new-instance v0, Ljava/util/concurrent/atomic/AtomicInteger;
 
-    .line 59
-    iput-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAdnLengthList:Ljava/util/ArrayList;
+    invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicInteger;-><init>(I)V
 
-    .line 63
-    iput-boolean v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
+    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingAnrNum:Ljava/util/concurrent/atomic/AtomicInteger;
 
-    .line 64
-    iput-boolean v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRefreshCache:Z
+    .line 50
+    new-instance v0, Ljava/util/concurrent/atomic/AtomicInteger;
 
-    .line 114
+    invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicInteger;-><init>(I)V
+
+    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingEmailNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    .line 51
+    new-instance v0, Ljava/util/concurrent/atomic/AtomicInteger;
+
+    invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicInteger;-><init>(I)V
+
+    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingIapNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    .line 84
     iput-object p1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
 
-    .line 115
+    .line 85
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
 
-    .line 116
-    new-instance v0, Ljava/util/ArrayList;
-
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAdnLengthList:Ljava/util/ArrayList;
-
-    .line 117
-    new-instance v0, Ljava/util/HashMap;
-
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
-
-    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
-
-    .line 118
-    new-instance v0, Ljava/util/HashMap;
-
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
-
-    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFileRecord:Ljava/util/Map;
-
-    .line 119
-    new-instance v0, Ljava/util/HashMap;
-
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
-
-    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFileRecord:Ljava/util/Map;
-
-    .line 120
-    new-instance v0, Ljava/util/HashMap;
-
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
-
-    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordNums:Ljava/util/Map;
-
-    .line 121
-    iput-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
-
-    .line 123
-    new-instance v0, Ljava/util/HashMap;
-
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
-
-    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    .line 124
-    new-instance v0, Ljava/util/HashMap;
-
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
-
-    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    .line 128
-    const/4 v0, 0x1
-
-    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-
-    move-result-object v0
-
-    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIsPbrPresent:Ljava/lang/Boolean;
-
-    .line 129
+    .line 86
     iput-object p2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
-    .line 130
+    .line 88
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    .line 89
+    new-instance v0, Ljava/util/HashMap;
+
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    .line 90
     return-void
 .end method
 
-.method static synthetic access$002(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;Z)Z
-    .locals 0
-    .param p0, "x0"    # Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;
-    .param p1, "x1"    # Z
-
-    .prologue
-    .line 43
-    iput-boolean p1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailPresentInIap:Z
-
-    return p1
-.end method
-
-.method static synthetic access$102(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;I)I
-    .locals 0
-    .param p0, "x0"    # Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;
-    .param p1, "x1"    # I
-
-    .prologue
-    .line 43
-    iput p1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailTagNumberInIap:I
-
-    return p1
-.end method
-
-.method static synthetic access$202(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;Z)Z
-    .locals 0
-    .param p0, "x0"    # Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;
-    .param p1, "x1"    # Z
-
-    .prologue
-    .line 43
-    iput-boolean p1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrPresentInIap:Z
-
-    return p1
-.end method
-
-.method static synthetic access$302(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;I)I
-    .locals 0
-    .param p0, "x0"    # Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;
-    .param p1, "x1"    # I
-
-    .prologue
-    .line 43
-    iput p1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrTagNumberInIap:I
-
-    return p1
-.end method
-
-.method private buildAnrData(IILjava/lang/String;)[B
+.method private getRecordNumber(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;I)I
     .locals 11
-    .param p1, "length"    # I
-    .param p2, "adnRecIndex"    # I
-    .param p3, "anr"    # Ljava/lang/String;
+    .param p1, "record"    # Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+    .param p2, "recordCount"    # I
 
     .prologue
-    const/4 v10, 0x2
+    const/4 v10, 0x1
 
-    const/4 v9, 0x1
+    .line 964
+    const/4 v4, -0x1
 
-    const/4 v8, -0x1
+    .line 965
+    .local v4, "recordNumber":I
+    new-instance v6, Ljava/util/BitSet;
 
-    const/4 v7, 0x0
+    add-int/lit8 v8, p2, 0x1
 
-    .line 842
-    new-array v1, p1, [B
+    invoke-direct {v6, v8}, Ljava/util/BitSet;-><init>(I)V
 
-    .line 843
-    .local v1, "data":[B
-    const/4 v2, 0x0
+    .line 966
+    .local v6, "validIndex":Ljava/util/BitSet;
+    add-int/lit8 v8, p2, 0x1
 
-    .local v2, "i":I
+    invoke-virtual {v6, v10, v8}, Ljava/util/BitSet;->set(II)V
+
+    .line 968
+    iget-object v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v8, v8, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mEfRecords:Ljava/util/HashMap;
+
+    iget v9, p1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
+
+    invoke-static {v9}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v9
+
+    invoke-virtual {v8, v9}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v8
+
+    check-cast v8, Ljava/util/ArrayList;
+
+    invoke-virtual {v8}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    .local v1, "i$":Ljava/util/Iterator;
+    :cond_0
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v8
+
+    if-eqz v8, :cond_2
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+
+    .line 969
+    .local v3, "r":Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+    iget v8, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mEfTag:I
+
+    iget v9, p1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mEfTag:I
+
+    if-ne v8, v9, :cond_0
+
+    .line 970
+    iget-object v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFiles:[[[B
+
+    iget v9, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mPbrIndex:I
+
+    aget-object v2, v8, v9
+
+    .line 971
+    .local v2, "iaps":[[B
+    const/4 v0, 0x0
+
+    .local v0, "i":I
     :goto_0
-    if-ge v2, p1, :cond_0
+    array-length v8, v2
 
-    .line 844
-    aput-byte v8, v1, v2
+    if-ge v0, v8, :cond_0
 
-    .line 843
-    add-int/lit8 v2, v2, 0x1
+    .line 972
+    aget-object v7, v2, v0
+
+    .line 973
+    .local v7, "value":[B
+    if-eqz v7, :cond_1
+
+    .line 974
+    iget v8, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType2Record:I
+
+    aget-byte v5, v7, v8
+
+    .line 975
+    .local v5, "tempIndex":I
+    if-lez v5, :cond_1
+
+    const/16 v8, 0xff
+
+    if-ge v5, v8, :cond_1
+
+    if-gt v5, p2, :cond_1
+
+    .line 976
+    invoke-virtual {v6, v5}, Ljava/util/BitSet;->clear(I)V
+
+    .line 971
+    .end local v5    # "tempIndex":I
+    :cond_1
+    add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 846
-    :cond_0
-    invoke-static {p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v6
-
-    if-eqz v6, :cond_1
-
-    .line 847
-    const-string v6, "[buildAnrData] Empty anr record"
-
-    invoke-direct {p0, v6}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 874
-    .end local v1    # "data":[B
-    :goto_1
-    return-object v1
-
-    .line 850
-    .restart local v1    # "data":[B
-    :cond_1
-    aput-byte v7, v1, v7
-
-    .line 851
-    invoke-static {p3}, Landroid/telephony/PhoneNumberUtils;->numberToCalledPartyBCD(Ljava/lang/String;)[B
-
-    move-result-object v0
-
-    .line 854
-    .local v0, "byteAnr":[B
-    if-nez v0, :cond_2
-
-    .line 855
-    const/4 v1, 0x0
-
-    goto :goto_1
-
-    .line 858
+    .line 983
+    .end local v0    # "i":I
+    .end local v2    # "iaps":[[B
+    .end local v3    # "r":Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+    .end local v7    # "value":[B
     :cond_2
-    const/16 v3, 0xa
-
-    .line 859
-    .local v3, "maxlength":I
-    array-length v6, v0
-
-    if-le v6, v3, :cond_4
-
-    .line 860
-    invoke-static {v0, v7, v1, v10, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 861
-    int-to-byte v6, v3
-
-    aput-byte v6, v1, v9
-
-    .line 866
-    :goto_2
-    const/16 v6, 0xd
-
-    aput-byte v8, v1, v6
-
-    .line 867
-    const/16 v6, 0xe
-
-    aput-byte v8, v1, v6
-
-    .line 868
-    const/16 v6, 0x11
-
-    if-ne p1, v6, :cond_3
-
-    .line 869
-    invoke-virtual {p0, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getPbrIndexBy(I)I
+    invoke-virtual {v6, v10}, Ljava/util/BitSet;->nextSetBit(I)I
 
     move-result v4
 
-    .line 870
-    .local v4, "pbrIndex":I
-    invoke-direct {p0, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
+    .line 984
+    return v4
+.end method
 
-    move-result v6
 
-    sub-int v5, p2, v6
+# virtual methods
+.method buildAnrRecord(Ljava/lang/String;I)[B
+    .locals 6
+    .param p1, "anr"    # Ljava/lang/String;
+    .param p2, "recordSize"    # I
 
-    .line 871
-    .local v5, "recordIndex":I
-    const/16 v6, 0x10
+    .prologue
+    .line 1013
+    new-array v1, p2, [B
 
-    add-int/lit8 v7, v5, 0x1
+    .line 1014
+    .local v1, "data":[B
+    const/4 v3, -0x1
 
-    int-to-byte v7, v7
+    invoke-static {v1, v3}, Ljava/util/Arrays;->fill([BB)V
 
-    aput-byte v7, v1, v6
+    .line 1016
+    invoke-static {p1}, Landroid/telephony/PhoneNumberUtils;->convertPreDial(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 873
-    .end local v4    # "pbrIndex":I
-    .end local v5    # "recordIndex":I
-    :cond_3
-    new-instance v6, Ljava/lang/StringBuilder;
+    move-result-object v2
 
-    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+    .line 1017
+    .local v2, "updatedAnr":Ljava/lang/String;
+    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    const-string v7, "buildAnrData: data is"
+    move-result v3
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    if-eqz v3, :cond_1
 
-    move-result-object v6
+    .line 1029
+    .end local v1    # "data":[B
+    :cond_0
+    :goto_0
+    return-object v1
 
-    invoke-static {v1}, Lcom/android/internal/telephony/uicc/IccUtils;->bytesToHexString([B)Ljava/lang/String;
+    .line 1020
+    .restart local v1    # "data":[B
+    :cond_1
+    invoke-virtual {v2}, Ljava/lang/String;->length()I
+
+    move-result v3
+
+    const/16 v4, 0x14
+
+    if-le v3, v4, :cond_2
+
+    .line 1021
+    const/4 v1, 0x0
+
+    goto :goto_0
+
+    .line 1024
+    :cond_2
+    invoke-static {v2}, Landroid/telephony/PhoneNumberUtils;->numberToCalledPartyBCD(Ljava/lang/String;)[B
+
+    move-result-object v0
+
+    .line 1025
+    .local v0, "bcdNumber":[B
+    if-eqz v0, :cond_0
+
+    .line 1026
+    const/4 v3, 0x0
+
+    const/4 v4, 0x2
+
+    array-length v5, v0
+
+    invoke-static {v0, v3, v1, v4, v5}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 1027
+    const/4 v3, 0x1
+
+    array-length v4, v0
+
+    int-to-byte v4, v4
+
+    aput-byte v4, v1, v3
+
+    goto :goto_0
+.end method
+
+.method buildEmailRecord(Ljava/lang/String;II)[B
+    .locals 11
+    .param p1, "str"    # Ljava/lang/String;
+    .param p2, "adnRecordNumber"    # I
+    .param p3, "recordSize"    # I
+
+    .prologue
+    const/16 v10, 0xc0
+
+    const/4 v8, 0x0
+
+    .line 988
+    new-array v3, p3, [B
+
+    .line 989
+    .local v3, "emailRecordData":[B
+    const/4 v7, -0x1
+
+    invoke-static {v3, v7}, Ljava/util/Arrays;->fill([BB)V
+
+    .line 991
+    iget-object v7, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v7, v7, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mEfRecords:Ljava/util/HashMap;
+
+    const/16 v9, 0xca
+
+    invoke-static {v9}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v9
+
+    invoke-virtual {v7, v9}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v7
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    check-cast v7, Ljava/util/ArrayList;
 
-    move-result-object v6
+    invoke-virtual {v7, v8}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
-    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v7
 
-    move-result-object v6
+    check-cast v7, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
 
-    invoke-direct {p0, v6}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
+    iget v7, v7, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v9, 0xa9
+
+    if-ne v7, v9, :cond_1
+
+    const/4 v2, 0x1
+
+    .line 992
+    .local v2, "emailInIap":Z
+    :goto_0
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v7
+
+    if-nez v7, :cond_0
+
+    .line 993
+    invoke-static {p1}, Lcom/android/internal/telephony/GsmAlphabet;->stringToGsm8BitPacked(Ljava/lang/String;)[B
+
+    move-result-object v1
+
+    .line 994
+    .local v1, "emailData":[B
+    if-eqz v2, :cond_2
+
+    array-length v7, v3
+
+    add-int/lit8 v4, v7, -0x2
+
+    .line 996
+    .local v4, "maxDataLength":I
+    :goto_1
+    array-length v7, v1
+
+    if-le v7, v4, :cond_3
+
+    .line 997
+    const/4 v3, 0x0
+
+    .line 1009
+    .end local v1    # "emailData":[B
+    .end local v3    # "emailRecordData":[B
+    .end local v4    # "maxDataLength":I
+    :cond_0
+    :goto_2
+    return-object v3
+
+    .end local v2    # "emailInIap":Z
+    .restart local v3    # "emailRecordData":[B
+    :cond_1
+    move v2, v8
+
+    .line 991
+    goto :goto_0
+
+    .line 994
+    .restart local v1    # "emailData":[B
+    .restart local v2    # "emailInIap":Z
+    :cond_2
+    array-length v4, v3
 
     goto :goto_1
 
-    .line 863
-    :cond_4
-    array-length v6, v0
+    .line 1000
+    .restart local v4    # "maxDataLength":I
+    :cond_3
+    array-length v7, v1
 
-    invoke-static {v0, v7, v1, v10, v6}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v1, v8, v3, v8, v7}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 864
-    array-length v6, v0
+    .line 1001
+    if-eqz v2, :cond_0
 
-    int-to-byte v6, v6
+    .line 1002
+    iget-object v7, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
 
-    aput-byte v6, v1, v9
+    invoke-static {v10}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v8
+
+    invoke-virtual {v7, v8}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v7
+
+    check-cast v7, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v0, v7, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    .line 1003
+    .local v0, "adnRecordCount":I
+    add-int/lit8 v7, p2, -0x1
+
+    div-int v5, v7, v0
+
+    .line 1004
+    .local v5, "pbrIndex":I
+    iget-object v7, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v7, v7, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mEfRecords:Ljava/util/HashMap;
+
+    invoke-static {v10}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v8
+
+    invoke-virtual {v7, v8}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v7
+
+    check-cast v7, Ljava/util/ArrayList;
+
+    invoke-virtual {v7, v5}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+
+    .line 1005
+    .local v6, "record":Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+    add-int/lit8 v7, p3, -0x2
+
+    iget-byte v8, v6, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mSfi:B
+
+    aput-byte v8, v3, v7
+
+    .line 1006
+    add-int/lit8 v7, p3, -0x1
+
+    add-int/lit8 v8, p2, -0x1
+
+    rem-int/2addr v8, v0
+
+    add-int/lit8 v8, v8, 0x1
+
+    int-to-byte v8, v8
+
+    aput-byte v8, v3, v7
 
     goto :goto_2
 .end method
 
-.method private buildEmailData(IILjava/lang/String;)[B
-    .locals 10
-    .param p1, "length"    # I
-    .param p2, "adnRecIndex"    # I
-    .param p3, "email"    # Ljava/lang/String;
+.method checkAnrCapacityFree(ILjava/lang/String;)Z
+    .locals 9
+    .param p1, "adnRecordNumber"    # I
+    .param p2, "anr"    # Ljava/lang/String;
 
     .prologue
-    const/4 v9, 0x0
+    const/16 v8, 0xc4
 
-    .line 822
-    new-array v2, p1, [B
+    const/4 v5, 0x0
 
-    .line 823
-    .local v2, "data":[B
-    move-object v0, v2
+    const/4 v4, 0x1
 
-    .local v0, "arr$":[B
-    array-length v4, v0
+    .line 708
+    iget-boolean v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSupportAnr:Z
 
-    .local v4, "len$":I
-    const/4 v3, 0x0
+    if-nez v3, :cond_1
 
-    .local v3, "i$":I
+    move v4, v5
+
+    .line 722
+    :cond_0
     :goto_0
-    if-ge v3, v4, :cond_0
+    return v4
 
-    aget-byte v5, v0, v3
+    .line 712
+    :cond_1
+    invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    .local v5, "mData":B
-    add-int/lit8 v3, v3, 0x1
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    .line 716
+    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    invoke-static {v8}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v6
+
+    invoke-virtual {v3, v6}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v0, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    .line 717
+    .local v0, "anrRecordCount":I
+    add-int/lit8 v6, p1, -0x1
+
+    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    const/16 v7, 0xc0
+
+    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v7
+
+    invoke-virtual {v3, v7}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    div-int v1, v6, v3
+
+    .line 718
+    .local v1, "pbrIndex":I
+    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mEfRecords:Ljava/util/HashMap;
+
+    invoke-static {v8}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v6
+
+    invoke-virtual {v3, v6}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/util/ArrayList;
+
+    invoke-virtual {v3, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+
+    .line 719
+    .local v2, "record":Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+    iget v3, v2, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v6, 0xa9
+
+    if-ne v3, v6, :cond_0
+
+    .line 720
+    invoke-direct {p0, v2, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getRecordNumber(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;I)I
+
+    move-result v3
+
+    if-lez v3, :cond_2
+
+    move v3, v4
+
+    :goto_1
+    move v4, v3
 
     goto :goto_0
 
-    .line 826
-    .end local v5    # "mData":B
-    :cond_0
-    invoke-static {p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v8
-
-    if-eqz v8, :cond_1
-
-    .line 827
-    const-string v8, "[buildEmailData] Empty email record"
-
-    invoke-direct {p0, v8}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 838
-    :goto_1
-    return-object v2
-
-    .line 830
-    :cond_1
-    invoke-static {p3}, Lcom/android/internal/telephony/GsmAlphabet;->stringToGsm8BitPacked(Ljava/lang/String;)[B
-
-    move-result-object v1
-
-    .line 831
-    .local v1, "byteEmail":[B
-    array-length v8, v1
-
-    invoke-static {v1, v9, v2, v9, v8}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 832
-    invoke-virtual {p0, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getPbrIndexBy(I)I
-
-    move-result v6
-
-    .line 833
-    .local v6, "pbrIndex":I
-    invoke-direct {p0, v6}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
-
-    move-result v8
-
-    sub-int v7, p2, v8
-
-    .line 834
-    .local v7, "recordIndex":I
-    iget-boolean v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailPresentInIap:Z
-
-    if-eqz v8, :cond_2
-
-    .line 835
-    add-int/lit8 v8, p1, -0x1
-
-    add-int/lit8 v9, v7, 0x1
-
-    int-to-byte v9, v9
-
-    aput-byte v9, v2, v8
-
-    .line 837
     :cond_2
-    new-instance v8, Ljava/lang/StringBuilder;
-
-    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v9, "buildEmailData: data is"
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-static {v2}, Lcom/android/internal/telephony/uicc/IccUtils;->bytesToHexString([B)Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v8
-
-    invoke-direct {p0, v8}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
+    move v3, v5
 
     goto :goto_1
 .end method
 
-.method private createPbrFile(Ljava/util/ArrayList;)V
+.method checkAnrLength(Ljava/lang/String;)Z
+    .locals 3
+    .param p1, "anr"    # Ljava/lang/String;
+
+    .prologue
+    .line 741
+    invoke-static {p1}, Landroid/telephony/PhoneNumberUtils;->convertPreDial(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 742
+    .local v0, "updatedAnr":Ljava/lang/String;
+    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    move-result v1
+
+    const/16 v2, 0x14
+
+    if-gt v1, v2, :cond_1
+
+    :cond_0
+    const/4 v1, 0x1
+
+    :goto_0
+    return v1
+
+    :cond_1
+    const/4 v1, 0x0
+
+    goto :goto_0
+.end method
+
+.method checkEmailCapacityFree(I[Ljava/lang/String;)Z
+    .locals 9
+    .param p1, "adnRecordNumber"    # I
+    .param p2, "emails"    # [Ljava/lang/String;
+
+    .prologue
+    const/16 v8, 0xca
+
+    const/4 v5, 0x0
+
+    const/4 v4, 0x1
+
+    .line 690
+    iget-boolean v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSupportEmail:Z
+
+    if-nez v3, :cond_1
+
+    move v4, v5
+
+    .line 704
+    :cond_0
+    :goto_0
+    return v4
+
+    .line 694
+    :cond_1
+    invoke-virtual {p0, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasEmail([Ljava/lang/String;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    .line 698
+    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    invoke-static {v8}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v6
+
+    invoke-virtual {v3, v6}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v0, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    .line 699
+    .local v0, "emailRecordCount":I
+    add-int/lit8 v6, p1, -0x1
+
+    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    const/16 v7, 0xc0
+
+    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v7
+
+    invoke-virtual {v3, v7}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    div-int v1, v6, v3
+
+    .line 700
+    .local v1, "pbrIndex":I
+    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mEfRecords:Ljava/util/HashMap;
+
+    invoke-static {v8}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v6
+
+    invoke-virtual {v3, v6}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/util/ArrayList;
+
+    invoke-virtual {v3, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+
+    .line 701
+    .local v2, "record":Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+    iget v3, v2, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v6, 0xa9
+
+    if-ne v3, v6, :cond_0
+
+    .line 702
+    invoke-direct {p0, v2, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getRecordNumber(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;I)I
+
+    move-result v3
+
+    if-lez v3, :cond_2
+
+    move v3, v4
+
+    :goto_1
+    move v4, v3
+
+    goto :goto_0
+
+    :cond_2
+    move v3, v5
+
+    goto :goto_1
+.end method
+
+.method checkEmailLength([Ljava/lang/String;)Z
+    .locals 8
+    .param p1, "emails"    # [Ljava/lang/String;
+
+    .prologue
+    const/4 v7, -0x1
+
+    const/16 v6, 0xca
+
+    const/4 v4, 0x0
+
+    .line 726
+    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v5
+
+    invoke-virtual {v3, v5}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v1, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordSize:I
+
+    .line 727
+    .local v1, "emailRecordSize":I
+    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v5
+
+    invoke-virtual {v3, v5}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    if-eq v3, v7, :cond_0
+
+    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mEfRecords:Ljava/util/HashMap;
+
+    invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v5
+
+    invoke-virtual {v3, v5}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/util/ArrayList;
+
+    invoke-virtual {v3, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+
+    iget v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v5, 0xa9
+
+    if-ne v3, v5, :cond_0
+
+    add-int/lit8 v2, v1, -0x2
+
+    .line 731
+    .local v2, "maxDataLength":I
+    :goto_0
+    if-eqz p1, :cond_1
+
+    aget-object v3, p1, v4
+
+    if-eqz v3, :cond_1
+
+    .line 732
+    aget-object v3, p1, v4
+
+    invoke-static {v3}, Lcom/android/internal/telephony/GsmAlphabet;->stringToGsm8BitPacked(Ljava/lang/String;)[B
+
+    move-result-object v0
+
+    .line 733
+    .local v0, "emailData":[B
+    if-eq v2, v7, :cond_1
+
+    array-length v3, v0
+
+    if-le v3, v2, :cond_1
+
+    move v3, v4
+
+    .line 737
+    .end local v0    # "emailData":[B
+    :goto_1
+    return v3
+
+    .end local v2    # "maxDataLength":I
+    :cond_0
+    move v2, v1
+
+    .line 727
+    goto :goto_0
+
+    .line 737
+    .restart local v2    # "maxDataLength":I
+    :cond_1
+    const/4 v3, 0x1
+
+    goto :goto_1
+.end method
+
+.method createPbrFile(Ljava/util/ArrayList;)V
     .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -743,29 +1008,20 @@
     .end annotation
 
     .prologue
-    .line 878
+    .line 323
     .local p1, "records":Ljava/util/ArrayList;, "Ljava/util/ArrayList<[B>;"
     if-nez p1, :cond_0
 
-    .line 879
+    .line 324
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
 
-    .line 880
-    const/4 v0, 0x0
-
-    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-
-    move-result-object v0
-
-    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIsPbrPresent:Ljava/lang/Boolean;
-
-    .line 884
+    .line 328
     :goto_0
     return-void
 
-    .line 883
+    .line 326
     :cond_0
     new-instance v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
 
@@ -776,999 +1032,462 @@
     goto :goto_0
 .end method
 
-.method private getAnrRecNumber(IILjava/lang/String;)I
-    .locals 11
-    .param p1, "adnRecIndex"    # I
-    .param p2, "numRecs"    # I
-    .param p3, "oldAnr"    # Ljava/lang/String;
-
-    .prologue
-    .line 785
-    invoke-virtual {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getPbrIndexBy(I)I
-
-    move-result v4
-
-    .line 786
-    .local v4, "pbrIndex":I
-    invoke-direct {p0, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
-
-    move-result v9
-
-    sub-int v6, p1, v9
-
-    .line 787
-    .local v6, "recordIndex":I
-    const/4 v7, -0x1
-
-    .line 788
-    .local v7, "recordNumber":I
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFileRecord:Ljava/util/Map;
-
-    invoke-direct {p0, v9, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
-
-    move-result v9
-
-    if-nez v9, :cond_0
-
-    move v9, v7
-
-    .line 818
-    :goto_0
-    return v9
-
-    .line 791
-    :cond_0
-    iget-boolean v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrPresentInIap:Z
-
-    if-eqz v9, :cond_3
-
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
-
-    invoke-direct {p0, v9, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
-
-    move-result v9
-
-    if-eqz v9, :cond_3
-
-    .line 792
-    const/4 v5, 0x0
-
-    .line 794
-    .local v5, "record":[B
-    :try_start_0
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
-
-    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v10
-
-    invoke-interface {v9, v10}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v9
-
-    check-cast v9, Ljava/util/ArrayList;
-
-    invoke-virtual {v9, v6}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v9
-
-    move-object v0, v9
-
-    check-cast v0, [B
-
-    move-object v5, v0
-    :try_end_0
-    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 798
-    :goto_1
-    if-eqz v5, :cond_1
-
-    iget v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrTagNumberInIap:I
-
-    aget-byte v9, v5, v9
-
-    if-lez v9, :cond_1
-
-    .line 799
-    iget v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrTagNumberInIap:I
-
-    aget-byte v7, v5, v9
-
-    move v9, v7
-
-    .line 800
-    goto :goto_0
-
-    .line 795
-    :catch_0
-    move-exception v2
-
-    .line 796
-    .local v2, "e":Ljava/lang/IndexOutOfBoundsException;
-    const-string v9, "UsimPhoneBookManager"
-
-    const-string v10, "IndexOutOfBoundsException in getAnrRecNumber"
-
-    invoke-static {v9, v10}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_1
-
-    .line 802
-    .end local v2    # "e":Ljava/lang/IndexOutOfBoundsException;
-    :cond_1
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFileRecord:Ljava/util/Map;
-
-    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v10
-
-    invoke-interface {v9, v10}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v9
-
-    check-cast v9, Ljava/util/ArrayList;
-
-    invoke-virtual {v9}, Ljava/util/ArrayList;->size()I
-
-    move-result v8
-
-    .line 803
-    .local v8, "recsSize":I
-    const-string v9, ""
-
-    invoke-virtual {v9, p3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v9
-
-    if-eqz v9, :cond_4
-
-    .line 804
-    const/4 v3, 0x0
-
-    .local v3, "i":I
-    :goto_2
-    if-ge v3, v8, :cond_4
-
-    .line 805
-    invoke-direct {p0, v3, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readAnrRecord(II)Ljava/lang/String;
-
-    move-result-object v1
-
-    .line 806
-    .local v1, "anrRecord":Ljava/lang/String;
-    if-eqz v1, :cond_2
-
-    invoke-virtual {v1, p3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v9
-
-    if-eqz v9, :cond_2
-
-    .line 807
-    new-instance v9, Ljava/lang/StringBuilder;
-
-    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v10, "the anr record index is :"
-
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    add-int/lit8 v10, v3, 0x1
-
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-direct {p0, v9}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 808
-    add-int/lit8 v9, v3, 0x1
-
-    goto :goto_0
-
-    .line 804
-    :cond_2
-    add-int/lit8 v3, v3, 0x1
-
-    goto :goto_2
-
-    .line 814
-    .end local v1    # "anrRecord":Ljava/lang/String;
-    .end local v3    # "i":I
-    .end local v5    # "record":[B
-    .end local v8    # "recsSize":I
-    :cond_3
-    add-int/lit8 v7, v6, 0x1
-
-    move v9, v7
-
-    .line 815
-    goto/16 :goto_0
-
-    .line 817
-    .restart local v5    # "record":[B
-    .restart local v8    # "recsSize":I
-    :cond_4
-    const-string v9, "no anr record index found"
-
-    invoke-direct {p0, v9}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    move v9, v7
-
-    .line 818
-    goto/16 :goto_0
-.end method
-
-.method private getEfidByTag(II)I
-    .locals 4
-    .param p1, "recNum"    # I
-    .param p2, "tag"    # I
-
-    .prologue
-    .line 430
-    const/4 v0, -0x1
-
-    .line 431
-    .local v0, "efid":I
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
-
-    iget-object v2, v2, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Ljava/util/Map;
-
-    .line 432
-    .local v1, "fileIds":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
-    if-nez v1, :cond_0
-
-    .line 433
-    const/4 v2, -0x1
-
-    .line 437
-    :goto_0
-    return v2
-
-    .line 434
-    :cond_0
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v2
-
-    invoke-interface {v1, v2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_1
-
-    .line 435
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v2
-
-    invoke-interface {v1, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->intValue()I
-
-    move-result v0
-
-    :cond_1
-    move v2, v0
-
-    .line 437
-    goto :goto_0
-.end method
-
-.method private getEmailRecNumber(IILjava/lang/String;)I
-    .locals 11
-    .param p1, "adnRecIndex"    # I
-    .param p2, "numRecs"    # I
-    .param p3, "oldEmail"    # Ljava/lang/String;
-
-    .prologue
-    .line 742
-    invoke-virtual {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getPbrIndexBy(I)I
-
-    move-result v4
-
-    .line 743
-    .local v4, "pbrIndex":I
-    invoke-direct {p0, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
-
-    move-result v9
-
-    sub-int v6, p1, v9
-
-    .line 744
-    .local v6, "recordIndex":I
-    const/4 v7, -0x1
-
-    .line 745
-    .local v7, "recordNumber":I
-    new-instance v9, Ljava/lang/StringBuilder;
-
-    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v10, "getEmailRecNumber adnRecIndex is: "
-
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    const-string v10, ", recordIndex is :"
-
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-direct {p0, v9}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 747
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFileRecord:Ljava/util/Map;
-
-    invoke-direct {p0, v9, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
-
-    move-result v9
-
-    if-nez v9, :cond_0
-
-    .line 748
-    new-instance v9, Ljava/lang/StringBuilder;
-
-    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v10, "getEmailRecNumber recordNumber is: "
-
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9, v7}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-direct {p0, v9}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    move v9, v7
-
-    .line 781
-    :goto_0
-    return v9
-
-    .line 751
-    :cond_0
-    iget-boolean v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailPresentInIap:Z
-
-    if-eqz v9, :cond_3
-
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
-
-    invoke-direct {p0, v9, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
-
-    move-result v9
-
-    if-eqz v9, :cond_3
-
-    .line 752
-    const/4 v5, 0x0
-
-    .line 754
-    .local v5, "record":[B
-    :try_start_0
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
-
-    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v10
-
-    invoke-interface {v9, v10}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v9
-
-    check-cast v9, Ljava/util/ArrayList;
-
-    invoke-virtual {v9, v6}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v9
-
-    move-object v0, v9
-
-    check-cast v0, [B
-
-    move-object v5, v0
-    :try_end_0
-    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 758
-    :goto_1
-    if-eqz v5, :cond_1
-
-    iget v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailTagNumberInIap:I
-
-    aget-byte v9, v5, v9
-
-    if-lez v9, :cond_1
-
-    .line 759
-    iget v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailTagNumberInIap:I
-
-    aget-byte v7, v5, v9
-
-    .line 760
-    new-instance v9, Ljava/lang/StringBuilder;
-
-    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v10, " getEmailRecNumber: record is "
-
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-static {v5}, Lcom/android/internal/telephony/uicc/IccUtils;->bytesToHexString([B)Ljava/lang/String;
-
-    move-result-object v10
-
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    const-string v10, ", the email recordNumber is :"
-
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9, v7}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-direct {p0, v9}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    move v9, v7
-
-    .line 762
-    goto :goto_0
-
-    .line 755
-    :catch_0
-    move-exception v1
-
-    .line 756
-    .local v1, "e":Ljava/lang/IndexOutOfBoundsException;
-    const-string v9, "UsimPhoneBookManager"
-
-    const-string v10, "IndexOutOfBoundsException in getEmailRecNumber"
-
-    invoke-static {v9, v10}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_1
-
-    .line 764
-    .end local v1    # "e":Ljava/lang/IndexOutOfBoundsException;
-    :cond_1
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFileRecord:Ljava/util/Map;
-
-    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v10
-
-    invoke-interface {v9, v10}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v9
-
-    check-cast v9, Ljava/util/ArrayList;
-
-    invoke-virtual {v9}, Ljava/util/ArrayList;->size()I
-
-    move-result v8
-
-    .line 765
-    .local v8, "recsSize":I
-    new-instance v9, Ljava/lang/StringBuilder;
-
-    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v10, "getEmailRecNumber recsSize is: "
-
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-direct {p0, v9}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 766
-    const/4 v3, 0x0
-
-    .local v3, "i":I
-    :goto_2
-    if-ge v3, v8, :cond_4
-
-    .line 767
-    const-string v9, ""
-
-    invoke-virtual {v9, p3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v9
-
-    if-eqz v9, :cond_2
-
-    .line 768
-    invoke-direct {p0, v3, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readEmailRecord(II)Ljava/lang/String;
-
-    move-result-object v2
-
-    .line 769
-    .local v2, "emailRecord":Ljava/lang/String;
-    if-eqz v2, :cond_2
-
-    invoke-virtual {v2, p3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v9
-
-    if-eqz v9, :cond_2
-
-    .line 770
-    new-instance v9, Ljava/lang/StringBuilder;
-
-    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v10, "the email record index is :"
-
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    add-int/lit8 v10, v3, 0x1
-
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-direct {p0, v9}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 771
-    add-int/lit8 v9, v3, 0x1
-
-    goto/16 :goto_0
-
-    .line 766
-    .end local v2    # "emailRecord":Ljava/lang/String;
-    :cond_2
-    add-int/lit8 v3, v3, 0x1
-
-    goto :goto_2
-
-    .line 777
-    .end local v3    # "i":I
-    .end local v5    # "record":[B
-    .end local v8    # "recsSize":I
-    :cond_3
-    add-int/lit8 v7, v6, 0x1
-
-    move v9, v7
-
-    .line 778
-    goto/16 :goto_0
-
-    .line 780
-    .restart local v3    # "i":I
-    .restart local v5    # "record":[B
-    .restart local v8    # "recsSize":I
-    :cond_4
-    const-string v9, "no email record index found"
-
-    invoke-direct {p0, v9}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    move v9, v7
-
-    .line 781
-    goto/16 :goto_0
-.end method
-
-.method private getInitIndexBy(I)I
-    .locals 3
-    .param p1, "pbrIndex"    # I
-
-    .prologue
-    .line 454
-    const/4 v0, 0x0
-
-    .line 455
-    .local v0, "index":I
-    :goto_0
-    if-lez p1, :cond_0
-
-    .line 456
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAdnLengthList:Ljava/util/ArrayList;
-
-    add-int/lit8 v2, p1, -0x1
-
-    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Ljava/lang/Integer;
-
-    invoke-virtual {v1}, Ljava/lang/Integer;->intValue()I
-
-    move-result v1
-
-    add-int/2addr v0, v1
-
-    .line 457
-    add-int/lit8 p1, p1, -0x1
-
-    goto :goto_0
-
-    .line 459
-    :cond_0
-    return v0
-.end method
-
-.method private getValidRecordNums(I)Ljava/util/ArrayList;
-    .locals 2
-    .param p1, "pbrIndex"    # I
+.method public getAdnRecordsIfLoaded()Ljava/util/ArrayList;
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "(I)",
+            "()",
             "Ljava/util/ArrayList",
             "<",
-            "Ljava/lang/Integer;",
+            "Lcom/android/internal/telephony/uicc/AdnRecord;",
             ">;"
         }
     .end annotation
 
     .prologue
-    .line 903
-    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordNums:Ljava/util/Map;
+    .line 102
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
 
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-virtual {v0}, Ljava/util/ArrayList;->isEmpty()Z
 
-    move-result-object v1
+    move-result v0
 
-    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    if-eqz v0, :cond_0
 
-    move-result-object v0
+    const/4 v0, 0x0
 
-    check-cast v0, Ljava/util/ArrayList;
-
+    :goto_0
     return-object v0
+
+    :cond_0
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    goto :goto_0
 .end method
 
-.method private hasRecordIn(Ljava/util/Map;I)Z
-    .locals 5
-    .param p2, "pbrIndex"    # I
+.method public handleMessage(Landroid/os/Message;)V
+    .locals 3
+    .param p1, "msg"    # Landroid/os/Message;
+
+    .prologue
+    .line 272
+    iget v0, p1, Landroid/os/Message;->what:I
+
+    packed-switch v0, :pswitch_data_0
+
+    .line 298
+    :goto_0
+    return-void
+
+    .line 274
+    :pswitch_0
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v0, Landroid/os/AsyncResult;
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readPbrFileDone(Landroid/os/AsyncResult;)V
+
+    goto :goto_0
+
+    .line 277
+    :pswitch_1
+    iget v1, p1, Landroid/os/Message;->arg1:I
+
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v0, Landroid/os/AsyncResult;
+
+    invoke-virtual {p0, v1, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readRecordSizeDone(ILandroid/os/AsyncResult;)V
+
+    goto :goto_0
+
+    .line 280
+    :pswitch_2
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v0, Landroid/os/AsyncResult;
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readAdnFileDone(Landroid/os/AsyncResult;)V
+
+    goto :goto_0
+
+    .line 283
+    :pswitch_3
+    iget v1, p1, Landroid/os/Message;->arg1:I
+
+    iget v2, p1, Landroid/os/Message;->arg2:I
+
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v0, Landroid/os/AsyncResult;
+
+    invoke-virtual {p0, v1, v2, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readAnrRecordDone(IILandroid/os/AsyncResult;)V
+
+    goto :goto_0
+
+    .line 286
+    :pswitch_4
+    iget v1, p1, Landroid/os/Message;->arg1:I
+
+    iget v2, p1, Landroid/os/Message;->arg2:I
+
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v0, Landroid/os/AsyncResult;
+
+    invoke-virtual {p0, v1, v2, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readEmailRecordDone(IILandroid/os/AsyncResult;)V
+
+    goto :goto_0
+
+    .line 289
+    :pswitch_5
+    iget v1, p1, Landroid/os/Message;->arg1:I
+
+    iget v2, p1, Landroid/os/Message;->arg2:I
+
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v0, Landroid/os/AsyncResult;
+
+    invoke-virtual {p0, v1, v2, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readIapRecordDone(IILandroid/os/AsyncResult;)V
+
+    goto :goto_0
+
+    .line 292
+    :pswitch_6
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    monitor-enter v1
+
+    .line 293
+    :try_start_0
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v0, Landroid/os/AsyncResult;
+
+    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mUpdateResult:Landroid/os/AsyncResult;
+
+    .line 294
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    invoke-virtual {v0}, Ljava/lang/Object;->notify()V
+
+    .line 295
+    monitor-exit v1
+
+    goto :goto_0
+
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v0
+
+    .line 272
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_0
+        :pswitch_1
+        :pswitch_2
+        :pswitch_3
+        :pswitch_4
+        :pswitch_5
+        :pswitch_6
+    .end packed-switch
+.end method
+
+.method hasEmail([Ljava/lang/String;)Z
+    .locals 2
+    .param p1, "emails"    # [Ljava/lang/String;
+
+    .prologue
+    const/4 v0, 0x0
+
+    .line 686
+    if-eqz p1, :cond_0
+
+    aget-object v1, p1, v0
+
+    invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :cond_0
+    return v0
+.end method
+
+.method public loadEfFilesFromUsim()Ljava/util/ArrayList;
+    .locals 7
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "(",
-            "Ljava/util/Map",
-            "<",
-            "Ljava/lang/Integer;",
+            "()",
             "Ljava/util/ArrayList",
-            "<[B>;>;I)Z"
+            "<",
+            "Lcom/android/internal/telephony/uicc/AdnRecord;",
+            ">;"
         }
     .end annotation
 
     .prologue
-    .local p1, "record":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Integer;Ljava/util/ArrayList<[B>;>;"
-    const/4 v1, 0x0
+    const/4 v3, 0x0
 
-    .line 463
-    if-nez p1, :cond_0
+    .line 106
+    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
 
-    .line 471
-    :goto_0
-    return v1
+    monitor-enter v4
 
-    .line 466
-    :cond_0
+    .line 107
     :try_start_0
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
 
-    move-result-object v2
+    invoke-virtual {v5}, Ljava/util/ArrayList;->isEmpty()Z
 
-    invoke-interface {p1, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-    :try_end_0
-    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_0 .. :try_end_0} :catch_0
+    move-result v5
 
-    .line 471
-    const/4 v1, 0x1
+    if-nez v5, :cond_0
+
+    .line 108
+    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    monitor-exit v4
+
+    .line 160
+    :goto_0
+    return-object v3
+
+    .line 111
+    :cond_0
+    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    if-nez v5, :cond_1
+
+    .line 112
+    invoke-virtual {p0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readPbrFileAndWait()V
+
+    .line 115
+    :cond_1
+    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    if-nez v5, :cond_2
+
+    .line 116
+    monitor-exit v4
 
     goto :goto_0
 
-    .line 467
+    .line 159
+    :catchall_0
+    move-exception v3
+
+    monitor-exit v4
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v3
+
+    .line 119
+    :cond_2
+    const/16 v5, 0xc0
+
+    :try_start_1
+    invoke-virtual {p0, v5}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readRecordSizeAndWait(I)V
+
+    .line 120
+    const/16 v5, 0xca
+
+    invoke-virtual {p0, v5}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readRecordSizeAndWait(I)V
+
+    .line 121
+    const/16 v5, 0xc1
+
+    invoke-virtual {p0, v5}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readRecordSizeAndWait(I)V
+
+    .line 122
+    const/16 v5, 0xc4
+
+    invoke-virtual {p0, v5}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readRecordSizeAndWait(I)V
+
+    .line 124
+    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    if-nez v5, :cond_3
+
+    .line 125
+    monitor-exit v4
+
+    goto :goto_0
+
+    .line 128
+    :cond_3
+    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v5, v5, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
+
+    invoke-virtual {v5}, Ljava/util/HashMap;->size()I
+
+    move-result v2
+
+    .line 130
+    .local v2, "numRecs":I
+    const/4 v1, 0x0
+
+    .local v1, "i":I
+    :goto_1
+    if-ge v1, v2, :cond_5
+
+    .line 131
+    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    if-nez v5, :cond_4
+
+    .line 132
+    monitor-exit v4
+
+    goto :goto_0
+
+    .line 134
+    :cond_4
+    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readAdnFileAndWait(I)V
+
+    .line 130
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_1
+
+    .line 137
+    :cond_5
+    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    invoke-virtual {v5}, Ljava/util/ArrayList;->isEmpty()Z
+
+    move-result v5
+
+    if-eqz v5, :cond_6
+
+    .line 138
+    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    monitor-exit v4
+
+    goto :goto_0
+
+    .line 141
+    :cond_6
+    const/4 v1, 0x0
+
+    :goto_2
+    if-ge v1, v2, :cond_9
+
+    .line 142
+    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    if-nez v5, :cond_7
+
+    .line 143
+    monitor-exit v4
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    goto :goto_0
+
+    .line 146
+    :cond_7
+    :try_start_2
+    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readAnrFileAndWait(I)V
+    :try_end_2
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_0
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    .line 150
+    :goto_3
+    :try_start_3
+    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    if-nez v5, :cond_8
+
+    .line 151
+    monitor-exit v4
+
+    goto :goto_0
+
+    .line 147
     :catch_0
     move-exception v0
 
-    .line 468
-    .local v0, "e":Ljava/lang/IndexOutOfBoundsException;
-    const-string v2, "UsimPhoneBookManager"
+    .line 148
+    .local v0, "e":Ljava/lang/Exception;
+    const-string v5, "UsimPhoneBookManager"
 
-    new-instance v3, Ljava/lang/StringBuilder;
+    const-string v6, "readAnrFile error."
 
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-static {v5, v6, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    const-string v4, "record is empty in pbrIndex"
+    goto :goto_3
 
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 154
+    .end local v0    # "e":Ljava/lang/Exception;
+    :cond_8
+    :try_start_4
+    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readEmailFileAndWait(I)V
+    :try_end_4
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_1
+    .catchall {:try_start_4 .. :try_end_4} :catchall_0
 
-    move-result-object v3
+    .line 141
+    :goto_4
+    add-int/lit8 v1, v1, 0x1
 
-    invoke-virtual {v3, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    goto :goto_2
 
-    move-result-object v3
+    .line 155
+    :catch_1
+    move-exception v0
 
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    .line 156
+    .restart local v0    # "e":Ljava/lang/Exception;
+    :try_start_5
+    const-string v5, "UsimPhoneBookManager"
 
-    move-result-object v3
+    const-string v6, "readEmailFile error."
 
-    invoke-static {v2, v3}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v5, v6, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    goto :goto_0
-.end method
+    goto :goto_4
 
-.method private hasValidRecords(I)Z
-    .locals 2
-    .param p1, "pbrIndex"    # I
+    .line 159
+    .end local v0    # "e":Ljava/lang/Exception;
+    :cond_9
+    monitor-exit v4
+    :try_end_5
+    .catchall {:try_start_5 .. :try_end_5} :catchall_0
 
-    .prologue
-    .line 907
-    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordNums:Ljava/util/Map;
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v1
-
-    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Ljava/util/ArrayList;
-
-    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
-
-    move-result v0
-
-    if-lez v0, :cond_0
-
-    const/4 v0, 0x1
-
-    :goto_0
-    return v0
-
-    :cond_0
-    const/4 v0, 0x0
+    .line 160
+    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
 
     goto :goto_0
 .end method
 
-.method private log(Ljava/lang/String;)V
-    .locals 1
-    .param p1, "msg"    # Ljava/lang/String;
-
-    .prologue
-    .line 1292
-    const-string v0, "UsimPhoneBookManager"
-
-    invoke-static {v0, p1}, Landroid/telephony/Rlog;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 1293
-    return-void
-.end method
-
-.method private putValidRecNums(I)V
-    .locals 5
-    .param p1, "pbrIndex"    # I
-
-    .prologue
-    .line 887
-    new-instance v2, Ljava/util/ArrayList;
-
-    invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
-
-    .line 888
-    .local v2, "recordNums":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/Integer;>;"
-    invoke-direct {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
-
-    move-result v1
-
-    .line 889
-    .local v1, "initAdnIndex":I
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v4, "pbr index is "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    const-string v4, ", initAdnIndex is "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-direct {p0, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 890
-    const/4 v0, 0x0
-
-    .local v0, "i":I
-    :goto_0
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAdnLengthList:Ljava/util/ArrayList;
-
-    invoke-virtual {v3, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Ljava/lang/Integer;
-
-    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
-
-    move-result v3
-
-    if-ge v0, v3, :cond_0
-
-    .line 891
-    add-int/lit8 v3, v0, 0x1
-
-    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 892
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v4, "valid recnum is "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    add-int/lit8 v4, v0, 0x1
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-direct {p0, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 890
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_0
-
-    .line 896
-    :cond_0
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
-
-    move-result v3
-
-    if-nez v3, :cond_1
-
-    .line 897
-    const/4 v3, 0x1
-
-    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 899
-    :cond_1
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordNums:Ljava/util/Map;
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v4
-
-    invoke-interface {v3, v4, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 900
-    return-void
-.end method
-
-.method private readAdnFileAndWait(I)V
+.method readAdnFileAndWait(I)V
     .locals 7
-    .param p1, "recNum"    # I
+    .param p1, "pbrIndex"    # I
 
     .prologue
     const/16 v6, 0xc2
 
     const/16 v5, 0xc0
 
-    .line 717
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
-
-    if-nez v3, :cond_1
-
-    .line 718
-    const-string v3, "UsimPhoneBookManager"
-
-    const-string v4, "mPbrFile is NULL, exiting from readAdnFileAndWait"
-
-    invoke-static {v3, v4}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 739
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 721
-    :cond_1
+    .line 361
     iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
 
     iget-object v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
@@ -1783,21 +1502,50 @@
 
     check-cast v2, Ljava/util/Map;
 
-    .line 723
+    .line 362
     .local v2, "fileIds":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
     if-eqz v2, :cond_0
 
-    invoke-interface {v2}, Ljava/util/Map;->isEmpty()Z
+    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v3
+
+    invoke-interface {v2, v3}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-nez v3, :cond_0
+    if-nez v3, :cond_1
 
-    .line 726
-    const/4 v1, 0x0
+    .line 363
+    :cond_0
+    const-string v3, "UsimPhoneBookManager"
 
-    .line 728
-    .local v1, "extEf":I
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "readAdnFileAndWait: no ADN tag in PBR "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 377
+    :goto_0
+    return-void
+
+    .line 368
+    :cond_1
     invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v3
@@ -1808,7 +1556,6 @@
 
     if-eqz v3, :cond_2
 
-    .line 729
     invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v3
@@ -1823,37 +1570,9 @@
 
     move-result v1
 
-    .line 731
-    :cond_2
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v4, "readAdnFileAndWait adn efid is : "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v4
-
-    invoke-interface {v2, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-direct {p0, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 732
+    .line 370
+    .local v1, "extEf":I
+    :goto_1
     iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAdnCache:Lcom/android/internal/telephony/uicc/AdnRecordCache;
 
     invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -1870,19 +1589,15 @@
 
     move-result v3
 
-    const/4 v5, 0x2
+    const/4 v5, 0x3
 
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-virtual {p0, v5, v6}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
+    invoke-virtual {p0, v5}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(I)Landroid/os/Message;
 
     move-result-object v5
 
     invoke-virtual {v4, v3, v1, v5}, Lcom/android/internal/telephony/uicc/AdnRecordCache;->requestLoadAllAdnLike(IILandroid/os/Message;)V
 
-    .line 735
+    .line 373
     :try_start_0
     iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
 
@@ -1892,548 +1607,148 @@
 
     goto :goto_0
 
-    .line 736
+    .line 374
     :catch_0
     move-exception v0
 
-    .line 737
+    .line 375
     .local v0, "e":Ljava/lang/InterruptedException;
     const-string v3, "UsimPhoneBookManager"
 
     const-string v4, "Interrupted Exception in readAdnFileAndWait"
 
-    invoke-static {v3, v4}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_0
-.end method
-
-.method private readAnrFileAndWait(I)V
-    .locals 9
-    .param p1, "recNum"    # I
-
-    .prologue
-    const/4 v8, 0x5
-
-    const/16 v7, 0xc4
-
-    .line 266
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
-
-    if-nez v3, :cond_1
-
-    .line 267
-    const-string v3, "UsimPhoneBookManager"
-
-    const-string v4, "mPbrFile is NULL, exiting from readAnrFileAndWait"
-
-    invoke-static {v3, v4}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 300
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 270
-    :cond_1
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
-
-    iget-object v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v4
-
-    invoke-virtual {v3, v4}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/Map;
-
-    .line 272
-    .local v2, "fileIds":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
-    if-eqz v2, :cond_0
-
-    invoke-interface {v2}, Ljava/util/Map;->isEmpty()Z
-
-    move-result v3
-
-    if-nez v3, :cond_0
-
-    .line 274
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_0
-
-    .line 275
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Ljava/lang/Integer;
-
-    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
-
-    move-result v1
-
-    .line 276
-    .local v1, "efid":I
-    iget-boolean v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrPresentInIap:Z
-
-    if-eqz v3, :cond_3
-
-    .line 277
-    const/16 v3, 0xc1
-
-    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Ljava/lang/Integer;
-
-    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
-
-    move-result v3
-
-    invoke-direct {p0, v3, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readIapFileAndWait(II)V
-
-    .line 278
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
-
-    invoke-direct {p0, v3, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
-
-    move-result v3
-
-    if-nez v3, :cond_2
-
-    .line 279
-    const-string v3, "UsimPhoneBookManager"
-
-    const-string v4, "Error: IAP file is empty"
-
-    invoke-static {v3, v4}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_0
 
-    .line 282
-    :cond_2
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
-
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Ljava/lang/Integer;
-
-    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
-
-    move-result v3
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v5
-
-    invoke-virtual {p0, v8, v5}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
-
-    move-result-object v5
-
-    invoke-virtual {v4, v3, v5}, Lcom/android/internal/telephony/uicc/IccFileHandler;->loadEFLinearFixedAll(ILandroid/os/Message;)V
-
-    .line 288
-    :goto_1
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v4, "readAnrFileAndWait anr efid is : "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v4
-
-    invoke-interface {v2, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-direct {p0, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 290
-    :try_start_0
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v3}, Ljava/lang/Object;->wait()V
-    :try_end_0
-    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 294
-    :goto_2
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFileRecord:Ljava/util/Map;
-
-    invoke-direct {p0, v3, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
-
-    move-result v3
-
-    if-nez v3, :cond_4
-
-    .line 295
-    const-string v3, "UsimPhoneBookManager"
-
-    const-string v4, "Error: Anr file is empty"
-
-    invoke-static {v3, v4}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto/16 :goto_0
-
-    .line 285
-    :cond_3
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
-
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Ljava/lang/Integer;
-
-    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
-
-    move-result v3
-
-    invoke-direct {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getValidRecordNums(I)Ljava/util/ArrayList;
-
-    move-result-object v5
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-virtual {p0, v8, v6}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
-
-    move-result-object v6
-
-    invoke-virtual {v4, v3, v5, v6}, Lcom/android/internal/telephony/uicc/IccFileHandler;->loadEFLinearFixedPart(ILjava/util/ArrayList;Landroid/os/Message;)V
-
-    goto :goto_1
-
-    .line 291
-    :catch_0
-    move-exception v0
-
-    .line 292
-    .local v0, "e":Ljava/lang/InterruptedException;
-    const-string v3, "UsimPhoneBookManager"
-
-    const-string v4, "Interrupted Exception in readEmailFileAndWait"
-
-    invoke-static {v3, v4}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_2
-
-    .line 298
+    .line 368
     .end local v0    # "e":Ljava/lang/InterruptedException;
-    :cond_4
-    invoke-direct {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->updatePhoneAdnRecordWithAnr(I)V
-
-    goto/16 :goto_0
-.end method
-
-.method private readAnrRecord(II)Ljava/lang/String;
-    .locals 7
-    .param p1, "recNum"    # I
-    .param p2, "pbrIndex"    # I
-
-    .prologue
-    const/4 v5, 0x0
-
-    .line 699
+    .end local v1    # "extEf":I
+    :cond_2
     const/4 v1, 0x0
 
-    .line 700
-    .local v1, "anrRec":[B
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFileRecord:Ljava/util/Map;
-
-    invoke-direct {p0, v4, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
-
-    move-result v4
-
-    if-nez v4, :cond_0
-
-    move-object v4, v5
-
-    .line 712
-    :goto_0
-    return-object v4
-
-    .line 703
-    :cond_0
-    :try_start_0
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFileRecord:Ljava/util/Map;
-
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-interface {v4, v6}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Ljava/util/ArrayList;
-
-    invoke-virtual {v4, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v4
-
-    move-object v0, v4
-
-    check-cast v0, [B
-
-    move-object v1, v0
-    :try_end_0
-    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 707
-    const/4 v4, 0x1
-
-    aget-byte v4, v1, v4
-
-    and-int/lit16 v3, v4, 0xff
-
-    .line 708
-    .local v3, "numberLength":I
-    const/16 v4, 0xb
-
-    if-le v3, v4, :cond_1
-
-    .line 709
-    const-string v4, "Invalid number length in anr record"
-
-    invoke-direct {p0, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 710
-    const-string v4, ""
-
-    goto :goto_0
-
-    .line 704
-    .end local v3    # "numberLength":I
-    :catch_0
-    move-exception v2
-
-    .local v2, "e":Ljava/lang/IndexOutOfBoundsException;
-    move-object v4, v5
-
-    .line 705
-    goto :goto_0
-
-    .line 712
-    .end local v2    # "e":Ljava/lang/IndexOutOfBoundsException;
-    .restart local v3    # "numberLength":I
-    :cond_1
-    const/4 v4, 0x2
-
-    invoke-static {v1, v4, v3}, Landroid/telephony/PhoneNumberUtils;->calledPartyBCDToString([BII)Ljava/lang/String;
-
-    move-result-object v4
-
-    goto :goto_0
+    goto :goto_1
 .end method
 
-.method private readEmailFileAndWait(I)V
-    .locals 9
-    .param p1, "recNum"    # I
+.method readAdnFileDone(Landroid/os/AsyncResult;)V
+    .locals 4
+    .param p1, "ar"    # Landroid/os/AsyncResult;
 
     .prologue
-    const/4 v8, 0x4
+    .line 380
+    iget-object v1, p1, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    const/16 v7, 0xca
+    if-nez v1, :cond_0
 
-    .line 219
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+    .line 382
+    iget-object v0, p1, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
-    if-nez v3, :cond_1
+    check-cast v0, Ljava/util/ArrayList;
 
-    .line 220
-    const-string v3, "UsimPhoneBookManager"
+    .line 383
+    .local v0, "records":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/internal/telephony/uicc/AdnRecord;>;"
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
 
-    const-string v4, "mPbrFile is NULL, exiting from readEmailFileAndWait"
+    invoke-virtual {v1, v0}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
 
-    invoke-static {v3, v4}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 262
-    :cond_0
+    .line 387
+    .end local v0    # "records":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/internal/telephony/uicc/AdnRecord;>;"
     :goto_0
+    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    monitor-enter v2
+
+    .line 388
+    :try_start_0
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    invoke-virtual {v1}, Ljava/lang/Object;->notify()V
+
+    .line 389
+    monitor-exit v2
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 390
     return-void
 
-    .line 223
-    :cond_1
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+    .line 385
+    :cond_0
+    const-string v1, "UsimPhoneBookManager"
 
-    iget-object v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
+    const-string v2, "readAdnFileDone failed"
+
+    iget-object v3, p1, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    invoke-static {v1, v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_0
+
+    .line 389
+    :catchall_0
+    move-exception v1
+
+    :try_start_1
+    monitor-exit v2
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    throw v1
+.end method
+
+.method readAnrFileAndWait(I)V
+    .locals 6
+    .param p1, "pbrIndex"    # I
+
+    .prologue
+    const/16 v4, 0xc4
+
+    const/4 v5, 0x0
+
+    .line 393
+    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v2, v2, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
 
     invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v4
+    move-result-object v3
 
-    invoke-virtual {v3, v4}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v2, v3}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/util/Map;
+
+    .line 394
+    .local v0, "fileIds":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
+    if-eqz v0, :cond_0
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v2
 
-    check-cast v2, Ljava/util/Map;
+    invoke-interface {v0, v2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
-    .line 225
-    .local v2, "fileIds":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
-    if-eqz v2, :cond_0
+    move-result v2
 
-    .line 227
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    if-nez v2, :cond_2
 
-    move-result-object v3
+    .line 395
+    :cond_0
+    const-string v2, "UsimPhoneBookManager"
 
-    invoke-interface {v2, v3}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_0
-
-    .line 228
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Ljava/lang/Integer;
-
-    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
-
-    move-result v1
-
-    .line 233
-    .local v1, "efid":I
-    iget-boolean v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailPresentInIap:Z
-
-    if-eqz v3, :cond_3
-
-    .line 234
-    const/16 v3, 0xc1
-
-    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Ljava/lang/Integer;
-
-    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
-
-    move-result v3
-
-    invoke-direct {p0, v3, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readIapFileAndWait(II)V
-
-    .line 235
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
-
-    invoke-direct {p0, v3, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
-
-    move-result v3
-
-    if-nez v3, :cond_2
-
-    .line 236
-    const-string v3, "UsimPhoneBookManager"
-
-    const-string v4, "Error: IAP file is empty"
-
-    invoke-static {v3, v4}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_0
-
-    .line 239
-    :cond_2
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
-
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Ljava/lang/Integer;
-
-    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
-
-    move-result v3
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v5
-
-    invoke-virtual {p0, v8, v5}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
-
-    move-result-object v5
-
-    invoke-virtual {v4, v3, v5}, Lcom/android/internal/telephony/uicc/IccFileHandler;->loadEFLinearFixedAll(ILandroid/os/Message;)V
-
-    .line 247
-    :goto_1
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "readEmailFileAndWait email efid is : "
+    const-string v4, "readAnrFileAndWait: no ANR tag in PBR "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v4
-
-    invoke-interface {v2, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
@@ -2441,190 +1756,184 @@
 
     move-result-object v3
 
-    invoke-direct {p0, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
+    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 250
-    :try_start_0
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+    .line 396
+    iput-boolean v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSupportAnr:Z
 
-    invoke-virtual {v3}, Ljava/lang/Object;->wait()V
-    :try_end_0
-    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 255
-    :goto_2
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFileRecord:Ljava/util/Map;
-
-    invoke-direct {p0, v3, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
-
-    move-result v3
-
-    if-nez v3, :cond_4
-
-    .line 256
-    const-string v3, "UsimPhoneBookManager"
-
-    const-string v4, "Error: Email file is empty"
-
-    invoke-static {v3, v4}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto/16 :goto_0
-
-    .line 243
-    :cond_3
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
-
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Ljava/lang/Integer;
-
-    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
-
-    move-result v3
-
-    invoke-direct {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getValidRecordNums(I)Ljava/util/ArrayList;
-
-    move-result-object v5
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-virtual {p0, v8, v6}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
-
-    move-result-object v6
-
-    invoke-virtual {v4, v3, v5, v6}, Lcom/android/internal/telephony/uicc/IccFileHandler;->loadEFLinearFixedPart(ILjava/util/ArrayList;Landroid/os/Message;)V
-
-    goto :goto_1
-
-    .line 251
-    :catch_0
-    move-exception v0
-
-    .line 252
-    .local v0, "e":Ljava/lang/InterruptedException;
-    const-string v3, "UsimPhoneBookManager"
-
-    const-string v4, "Interrupted Exception in readEmailFileAndWait"
-
-    invoke-static {v3, v4}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_2
-
-    .line 259
-    .end local v0    # "e":Ljava/lang/InterruptedException;
-    :cond_4
-    invoke-direct {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->updatePhoneAdnRecordWithEmail(I)V
-
-    goto/16 :goto_0
-.end method
-
-.method private readEmailRecord(II)Ljava/lang/String;
-    .locals 6
-    .param p1, "recNum"    # I
-    .param p2, "pbrIndex"    # I
-
-    .prologue
-    const/4 v2, 0x0
-
-    .line 684
-    const/4 v3, 0x0
-
-    .line 685
-    .local v3, "emailRec":[B
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFileRecord:Ljava/util/Map;
-
-    invoke-direct {p0, v4, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
-
-    move-result v4
-
-    if-nez v4, :cond_0
-
-    .line 695
+    .line 417
+    :cond_1
     :goto_0
-    return-object v2
+    return-void
 
-    .line 688
-    :cond_0
-    :try_start_0
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFileRecord:Ljava/util/Map;
+    .line 400
+    :cond_2
+    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
 
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v5
+    move-result-object v3
 
-    invoke-interface {v4, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v2, v3}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
 
-    move-result-object v4
+    move-result v2
 
-    check-cast v4, Ljava/util/ArrayList;
+    if-nez v2, :cond_3
 
-    invoke-virtual {v4, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    .line 401
+    const-string v2, "UsimPhoneBookManager"
 
-    move-result-object v4
+    const-string v3, "readAnrFileAndWait: size of ANR tag in PBR is incorrect"
 
-    move-object v0, v4
+    invoke-static {v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    check-cast v0, [B
+    .line 402
+    iput-boolean v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSupportAnr:Z
 
-    move-object v3, v0
-    :try_end_0
-    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_0 .. :try_end_0} :catch_0
+    goto :goto_0
 
-    .line 694
-    const/4 v4, 0x0
+    .line 406
+    :cond_3
+    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
 
-    array-length v5, v3
+    iget-object v2, v2, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mEfRecords:Ljava/util/HashMap;
 
-    add-int/lit8 v5, v5, -0x2
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    invoke-static {v3, v4, v5}, Lcom/android/internal/telephony/uicc/IccUtils;->adnStringFieldToString([BII)Ljava/lang/String;
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v2
 
-    .line 695
-    .local v2, "email":Ljava/lang/String;
+    check-cast v2, Ljava/util/ArrayList;
+
+    invoke-virtual {v2, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+
+    .line 407
+    .local v1, "record":Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+    iget v2, v1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v3, 0xa9
+
+    if-ne v2, v3, :cond_5
+
+    .line 408
+    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    const/16 v3, 0xc1
+
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v2
+
+    if-nez v2, :cond_4
+
+    .line 409
+    const-string v2, "UsimPhoneBookManager"
+
+    const-string v3, "readAnrFileAndWait: no AIP size in PBR and anr type is type2"
+
+    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 410
+    iput-boolean v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSupportAnr:Z
+
     goto :goto_0
 
-    .line 689
-    .end local v2    # "email":Ljava/lang/String;
-    :catch_0
-    move-exception v1
+    .line 413
+    :cond_4
+    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readType2Ef(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;)V
 
-    .line 690
-    .local v1, "e":Ljava/lang/IndexOutOfBoundsException;
+    goto :goto_0
+
+    .line 414
+    :cond_5
+    iget v2, v1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v3, 0xa8
+
+    if-ne v2, v3, :cond_1
+
+    .line 415
+    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readType1Ef(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;)V
+
     goto :goto_0
 .end method
 
-.method private readIapFileAndWait(II)V
-    .locals 5
-    .param p1, "efid"    # I
-    .param p2, "recNum"    # I
+.method readAnrRecordDone(IILandroid/os/AsyncResult;)V
+    .locals 3
+    .param p1, "pbrIndex"    # I
+    .param p2, "adnIndex"    # I
+    .param p3, "ar"    # Landroid/os/AsyncResult;
 
     .prologue
-    .line 303
+    .line 420
+    iget-object v0, p3, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    if-nez v0, :cond_1
+
+    .line 421
+    iget-object v0, p3, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
+
+    check-cast v0, [B
+
+    check-cast v0, [B
+
+    invoke-virtual {p0, p1, p2, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->setPhoneAdnRecordAnr(II[B)V
+
+    .line 426
+    :goto_0
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    monitor-enter v1
+
+    .line 427
+    :try_start_0
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingAnrNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->decrementAndGet()I
+
+    .line 428
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingAnrNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->get()I
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 429
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    invoke-virtual {v0}, Ljava/lang/Object;->notify()V
+
+    .line 431
+    :cond_0
+    monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 432
+    return-void
+
+    .line 423
+    :cond_1
+    const-string v0, "UsimPhoneBookManager"
+
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "pbrIndex is "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string v2, ",iap efid is : "
+    const-string v2, "readAnrRecord failed for pbrIndex="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2634,63 +1943,731 @@
 
     move-result-object v1
 
+    const-string v2, ", adnIndex="
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
 
-    invoke-direct {p0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
+    iget-object v2, p3, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    .line 304
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
+    invoke-static {v0, v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    invoke-direct {p0, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getValidRecordNums(I)Ljava/util/ArrayList;
+    goto :goto_0
 
-    move-result-object v2
+    .line 431
+    :catchall_0
+    move-exception v0
 
-    const/4 v3, 0x3
+    :try_start_1
+    monitor-exit v1
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    throw v0
+.end method
 
-    move-result-object v4
+.method readEmailFileAndWait(I)V
+    .locals 6
+    .param p1, "pbrIndex"    # I
 
-    invoke-virtual {p0, v3, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
+    .prologue
+    const/16 v4, 0xca
+
+    const/4 v5, 0x0
+
+    .line 659
+    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v2, v2, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
+
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v3
 
-    invoke-virtual {v1, p1, v2, v3}, Lcom/android/internal/telephony/uicc/IccFileHandler;->loadEFLinearFixedPart(ILjava/util/ArrayList;Landroid/os/Message;)V
+    invoke-virtual {v2, v3}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 307
-    :try_start_0
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+    move-result-object v0
 
-    invoke-virtual {v1}, Ljava/lang/Object;->wait()V
-    :try_end_0
-    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
+    check-cast v0, Ljava/util/Map;
 
-    .line 311
+    .line 660
+    .local v0, "fileIds":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
+    if-eqz v0, :cond_0
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v2
+
+    invoke-interface {v0, v2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_2
+
+    .line 661
+    :cond_0
+    const-string v2, "UsimPhoneBookManager"
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "readEmailFileAndWait: no EMAIL tag in PBR "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 662
+    iput-boolean v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSupportEmail:Z
+
+    .line 683
+    :cond_1
     :goto_0
     return-void
 
-    .line 308
-    :catch_0
-    move-exception v0
+    .line 666
+    :cond_2
+    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
 
-    .line 309
-    .local v0, "e":Ljava/lang/InterruptedException;
-    const-string v1, "UsimPhoneBookManager"
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    const-string v2, "Interrupted Exception in readIapFileAndWait"
+    move-result-object v3
 
-    invoke-static {v1, v2}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v2, v3}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_3
+
+    .line 667
+    const-string v2, "UsimPhoneBookManager"
+
+    const-string v3, "readEmailFileAndWait: size of EMAIL tag in PBR is incorrect"
+
+    invoke-static {v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 668
+    iput-boolean v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSupportEmail:Z
+
+    goto :goto_0
+
+    .line 672
+    :cond_3
+    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v2, v2, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mEfRecords:Ljava/util/HashMap;
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Ljava/util/ArrayList;
+
+    invoke-virtual {v2, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+
+    .line 673
+    .local v1, "record":Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+    iget v2, v1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v3, 0xa9
+
+    if-ne v2, v3, :cond_5
+
+    .line 674
+    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    const/16 v3, 0xc1
+
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v2
+
+    if-nez v2, :cond_4
+
+    .line 675
+    const-string v2, "UsimPhoneBookManager"
+
+    const-string v3, "readEmailFileAndWait: no AIP size in PBR and anr type is type2"
+
+    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 676
+    iput-boolean v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSupportEmail:Z
+
+    goto :goto_0
+
+    .line 679
+    :cond_4
+    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readType2Ef(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;)V
+
+    goto :goto_0
+
+    .line 680
+    :cond_5
+    iget v2, v1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v3, 0xa8
+
+    if-ne v2, v3, :cond_1
+
+    .line 681
+    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readType1Ef(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;)V
 
     goto :goto_0
 .end method
 
-.method private readPbrFileAndWait()V
+.method readEmailRecordDone(IILandroid/os/AsyncResult;)V
+    .locals 3
+    .param p1, "pbrIndex"    # I
+    .param p2, "adnIndex"    # I
+    .param p3, "ar"    # Landroid/os/AsyncResult;
+
+    .prologue
+    .line 435
+    iget-object v0, p3, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    if-nez v0, :cond_1
+
+    .line 436
+    iget-object v0, p3, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
+
+    check-cast v0, [B
+
+    check-cast v0, [B
+
+    invoke-virtual {p0, p1, p2, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->setPhoneAdnRecordEmail(II[B)V
+
+    .line 441
+    :goto_0
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    monitor-enter v1
+
+    .line 442
+    :try_start_0
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingEmailNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->decrementAndGet()I
+
+    .line 443
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingEmailNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->get()I
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 444
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    invoke-virtual {v0}, Ljava/lang/Object;->notify()V
+
+    .line 446
+    :cond_0
+    monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 447
+    return-void
+
+    .line 438
+    :cond_1
+    const-string v0, "UsimPhoneBookManager"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "readAnrRecord failed for pbrIndex="
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, ", adnIndex="
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    iget-object v2, p3, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    invoke-static {v0, v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_0
+
+    .line 446
+    :catchall_0
+    move-exception v0
+
+    :try_start_1
+    monitor-exit v1
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    throw v0
+.end method
+
+.method readIapFileAndWait(I)V
+    .locals 19
+    .param p1, "pbrIndex"    # I
+
+    .prologue
+    .line 599
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFiles:[[[B
+
+    if-nez v15, :cond_0
+
+    .line 600
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v15, v15, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
+
+    invoke-virtual {v15}, Ljava/util/HashMap;->size()I
+
+    move-result v15
+
+    new-array v15, v15, [[[B
+
+    move-object/from16 v0, p0
+
+    iput-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFiles:[[[B
+
+    .line 603
+    :cond_0
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFiles:[[[B
+
+    aget-object v15, v15, p1
+
+    if-eqz v15, :cond_2
+
+    .line 641
+    :cond_1
+    :goto_0
+    return-void
+
+    .line 607
+    :cond_2
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    const/16 v16, 0xc0
+
+    invoke-static/range {v16 .. v16}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v16
+
+    invoke-virtual/range {v15 .. v16}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v15
+
+    check-cast v15, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v5, v15, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    .line 609
+    .local v5, "adnRecordCount":I
+    new-array v9, v5, [[B
+
+    .line 610
+    .local v9, "iapList":[[B
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    const/16 v16, 0xc1
+
+    invoke-static/range {v16 .. v16}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v16
+
+    invoke-virtual/range {v15 .. v16}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v15
+
+    check-cast v15, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v10, v15, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordSize:I
+
+    .line 611
+    .local v10, "iapRecordSize":I
+    const/4 v8, 0x0
+
+    .local v8, "i":I
+    :goto_1
+    if-ge v8, v5, :cond_3
+
+    .line 612
+    new-array v14, v10, [B
+
+    .line 613
+    .local v14, "value":[B
+    const/4 v15, -0x1
+
+    invoke-static {v14, v15}, Ljava/util/Arrays;->fill([BB)V
+
+    .line 614
+    aput-object v14, v9, v8
+
+    .line 611
+    add-int/lit8 v8, v8, 0x1
+
+    goto :goto_1
+
+    .line 616
+    .end local v14    # "value":[B
+    :cond_3
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFiles:[[[B
+
+    aput-object v9, v15, p1
+
+    .line 618
+    mul-int v12, p1, v5
+
+    .line 619
+    .local v12, "offset":I
+    add-int v11, v12, v5
+
+    .line 620
+    .local v11, "max":I
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    invoke-virtual {v15}, Ljava/util/ArrayList;->size()I
+
+    move-result v15
+
+    if-ge v15, v11, :cond_4
+
+    .line 621
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    invoke-virtual {v15}, Ljava/util/ArrayList;->size()I
+
+    move-result v11
+
+    .line 624
+    :cond_4
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v15, v15, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
+
+    invoke-static/range {p1 .. p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v16
+
+    invoke-virtual/range {v15 .. v16}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v15
+
+    check-cast v15, Ljava/util/Map;
+
+    const/16 v16, 0xc1
+
+    invoke-static/range {v16 .. v16}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v16
+
+    invoke-interface/range {v15 .. v16}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v15
+
+    check-cast v15, Ljava/lang/Integer;
+
+    invoke-virtual {v15}, Ljava/lang/Integer;->intValue()I
+
+    move-result v7
+
+    .line 625
+    .local v7, "efid":I
+    move v4, v12
+
+    .local v4, "adnIndex":I
+    :goto_2
+    if-ge v4, v11, :cond_6
+
+    .line 626
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    invoke-virtual {v15, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v13
+
+    check-cast v13, Lcom/android/internal/telephony/uicc/AdnRecord;
+
+    .line 627
+    .local v13, "rec":Lcom/android/internal/telephony/uicc/AdnRecord;
+    invoke-virtual {v13}, Lcom/android/internal/telephony/uicc/AdnRecord;->isEmpty()Z
+
+    move-result v15
+
+    if-nez v15, :cond_5
+
+    .line 628
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingIapNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    invoke-virtual {v15}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
+
+    .line 629
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
+
+    add-int/lit8 v16, v4, 0x1
+
+    sub-int v16, v16, v12
+
+    const/16 v17, 0x6
+
+    sub-int v18, v4, v12
+
+    move-object/from16 v0, p0
+
+    move/from16 v1, v17
+
+    move/from16 v2, p1
+
+    move/from16 v3, v18
+
+    invoke-virtual {v0, v1, v2, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(III)Landroid/os/Message;
+
+    move-result-object v17
+
+    move/from16 v0, v16
+
+    move-object/from16 v1, v17
+
+    invoke-virtual {v15, v7, v10, v0, v1}, Lcom/android/internal/telephony/uicc/IccFileHandler;->loadEFLinearFixed(IIILandroid/os/Message;)V
+
+    .line 625
+    :cond_5
+    add-int/lit8 v4, v4, 0x1
+
+    goto :goto_2
+
+    .line 634
+    .end local v13    # "rec":Lcom/android/internal/telephony/uicc/AdnRecord;
+    :cond_6
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingIapNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    invoke-virtual {v15}, Ljava/util/concurrent/atomic/AtomicInteger;->get()I
+
+    move-result v15
+
+    if-eqz v15, :cond_1
+
+    .line 636
+    :try_start_0
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    invoke-virtual {v15}, Ljava/lang/Object;->wait()V
+    :try_end_0
+    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
+
+    goto/16 :goto_0
+
+    .line 637
+    :catch_0
+    move-exception v6
+
+    .line 638
+    .local v6, "e":Ljava/lang/InterruptedException;
+    const-string v15, "UsimPhoneBookManager"
+
+    const-string v16, "Interrupted Exception in readIapFileAndWait"
+
+    invoke-static/range {v15 .. v16}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto/16 :goto_0
+.end method
+
+.method readIapRecordDone(IILandroid/os/AsyncResult;)V
+    .locals 3
+    .param p1, "pbrIndex"    # I
+    .param p2, "iapIndex"    # I
+    .param p3, "ar"    # Landroid/os/AsyncResult;
+
+    .prologue
+    .line 644
+    iget-object v0, p3, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    if-nez v0, :cond_1
+
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFiles:[[[B
+
+    if-eqz v0, :cond_1
+
+    .line 645
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFiles:[[[B
+
+    aget-object v1, v0, p1
+
+    iget-object v0, p3, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
+
+    check-cast v0, [B
+
+    check-cast v0, [B
+
+    aput-object v0, v1, p2
+
+    .line 650
+    :goto_0
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    monitor-enter v1
+
+    .line 651
+    :try_start_0
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingIapNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->decrementAndGet()I
+
+    .line 652
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingIapNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->get()I
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 653
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    invoke-virtual {v0}, Ljava/lang/Object;->notify()V
+
+    .line 655
+    :cond_0
+    monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 656
+    return-void
+
+    .line 647
+    :cond_1
+    const-string v0, "UsimPhoneBookManager"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "readIapRecordDone failed for pbrIndex="
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, ", iapIndex="
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    iget-object v2, p3, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    invoke-static {v0, v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_0
+
+    .line 655
+    :catchall_0
+    move-exception v0
+
+    :try_start_1
+    monitor-exit v1
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    throw v0
+.end method
+
+.method readPbrFileAndWait()V
     .locals 4
 
     .prologue
-    .line 209
+    .line 301
     iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
 
     const/16 v2, 0x4f30
@@ -2703,7 +2680,7 @@
 
     invoke-virtual {v1, v2, v3}, Lcom/android/internal/telephony/uicc/IccFileHandler;->loadEFLinearFixedAll(ILandroid/os/Message;)V
 
-    .line 211
+    .line 303
     :try_start_0
     iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
 
@@ -2711,402 +2688,437 @@
     :try_end_0
     .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 215
+    .line 307
     :goto_0
     return-void
 
-    .line 212
+    .line 304
     :catch_0
     move-exception v0
 
-    .line 213
+    .line 305
     .local v0, "e":Ljava/lang/InterruptedException;
     const-string v1, "UsimPhoneBookManager"
 
-    const-string v2, "Interrupted Exception in readAdnFileAndWait"
+    const-string v2, "Interrupted Exception in readPbrFileAndWait"
 
-    invoke-static {v1, v2}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_0
-.end method
-
-.method private refreshCache()V
-    .locals 3
-
-    .prologue
-    .line 195
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
-
-    if-nez v2, :cond_1
-
-    .line 202
-    :cond_0
-    return-void
-
-    .line 196
-    :cond_1
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
-
-    invoke-virtual {v2}, Ljava/util/ArrayList;->clear()V
-
-    .line 198
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
-
-    iget-object v2, v2, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
-
-    invoke-virtual {v2}, Ljava/util/HashMap;->size()I
-
-    move-result v1
-
-    .line 199
-    .local v1, "numRecs":I
-    const/4 v0, 0x0
-
-    .local v0, "i":I
-    :goto_0
-    if-ge v0, v1, :cond_0
-
-    .line 200
-    invoke-direct {p0, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readAdnFileAndWait(I)V
-
-    .line 199
-    add-int/lit8 v0, v0, 0x1
+    invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_0
 .end method
 
-.method private updateIapFile(ILjava/lang/String;Ljava/lang/String;I)Z
-    .locals 8
-    .param p1, "adnRecNum"    # I
-    .param p2, "oldValue"    # Ljava/lang/String;
-    .param p3, "newValue"    # Ljava/lang/String;
-    .param p4, "tag"    # I
+.method readPbrFileDone(Landroid/os/AsyncResult;)V
+    .locals 4
+    .param p1, "ar"    # Landroid/os/AsyncResult;
 
     .prologue
-    .line 396
-    add-int/lit8 v4, p1, -0x1
+    .line 310
+    iget-object v1, p1, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    invoke-virtual {p0, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getPbrIndexBy(I)I
+    if-nez v1, :cond_0
 
-    move-result v2
+    .line 312
+    iget-object v0, p1, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
-    .line 397
-    .local v2, "pbrIndex":I
-    const/16 v4, 0xc1
+    check-cast v0, Ljava/util/ArrayList;
 
-    invoke-direct {p0, v2, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getEfidByTag(II)I
+    .line 313
+    .local v0, "data":Ljava/util/ArrayList;, "Ljava/util/ArrayList<[B>;"
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->createPbrFile(Ljava/util/ArrayList;)V
 
-    move-result v1
-
-    .line 398
-    .local v1, "efid":I
-    const/4 v4, 0x0
-
-    iput-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 399
-    const/4 v3, -0x1
-
-    .line 400
-    .local v3, "recordNumber":I
-    const/4 v4, -0x1
-
-    if-ne v1, v4, :cond_0
-
-    .line 401
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 425
+    .line 317
+    .end local v0    # "data":Ljava/util/ArrayList;, "Ljava/util/ArrayList<[B>;"
     :goto_0
-    return v4
+    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
 
-    .line 402
-    :cond_0
-    sparse-switch p4, :sswitch_data_0
+    monitor-enter v2
 
-    .line 411
-    :goto_1
-    invoke-static {p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_1
-
-    .line 412
-    const/4 v3, -0x1
-
-    .line 414
-    :cond_1
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, "updateIapFile  efid="
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, ", recordNumber= "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, ", adnRecNum="
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-direct {p0, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 416
-    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v5
-
-    .line 417
+    .line 318
     :try_start_0
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
 
-    const/16 v6, 0xa
+    invoke-virtual {v1}, Ljava/lang/Object;->notify()V
 
-    invoke-static {p4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v7
-
-    invoke-virtual {p0, v6, p1, v3, v7}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
-
-    move-result-object v6
-
-    invoke-virtual {v4, v1, v6}, Lcom/android/internal/telephony/uicc/IccFileHandler;->getEFLinearRecordSize(ILandroid/os/Message;)V
+    .line 319
+    monitor-exit v2
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 420
-    :try_start_1
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+    .line 320
+    return-void
 
-    invoke-virtual {v4}, Ljava/lang/Object;->wait()V
-    :try_end_1
-    .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_0
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    .line 315
+    :cond_0
+    const-string v1, "UsimPhoneBookManager"
 
-    .line 424
-    :goto_2
-    :try_start_2
-    monitor-exit v5
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+    const-string v2, "readPbrFile failed"
 
-    .line 425
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
+    iget-object v3, p1, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    invoke-static {v1, v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     goto :goto_0
 
-    .line 404
-    :sswitch_0
-    add-int/lit8 v4, p1, -0x1
+    .line 319
+    :catchall_0
+    move-exception v1
 
-    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+    :try_start_1
+    monitor-exit v2
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    invoke-virtual {v5}, Ljava/util/ArrayList;->size()I
+    throw v1
+.end method
 
-    move-result v5
+.method readRecordSizeAndWait(II)Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+    .locals 4
+    .param p1, "type"    # I
+    .param p2, "fileId"    # I
 
-    invoke-direct {p0, v4, v5, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getEmailRecNumber(IILjava/lang/String;)I
+    .prologue
+    .line 337
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
 
-    move-result v3
+    const/4 v2, 0x2
 
-    .line 406
-    goto :goto_1
+    const/4 v3, 0x0
 
-    .line 408
-    :sswitch_1
-    add-int/lit8 v4, p1, -0x1
+    invoke-virtual {p0, v2, p1, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(III)Landroid/os/Message;
 
-    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+    move-result-object v2
 
-    invoke-virtual {v5}, Ljava/util/ArrayList;->size()I
+    invoke-virtual {v1, p2, v2}, Lcom/android/internal/telephony/uicc/IccFileHandler;->getEFLinearRecordSize(ILandroid/os/Message;)V
 
-    move-result v5
+    .line 339
+    :try_start_0
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
 
-    invoke-direct {p0, v4, v5, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getAnrRecNumber(IILjava/lang/String;)I
+    invoke-virtual {v1}, Ljava/lang/Object;->wait()V
+    :try_end_0
+    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result v3
+    .line 343
+    :goto_0
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
 
-    goto :goto_1
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 421
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    return-object v1
+
+    .line 340
     :catch_0
     move-exception v0
 
-    .line 422
+    .line 341
     .local v0, "e":Ljava/lang/InterruptedException;
-    :try_start_3
-    const-string v4, "UsimPhoneBookManager"
+    const-string v1, "UsimPhoneBookManager"
 
-    const-string v6, "interrupted while trying to update by search"
+    const-string v2, "Interrupted Exception in readRecordSizeAndWait"
 
-    invoke-static {v4, v6}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_2
-
-    .line 424
-    .end local v0    # "e":Ljava/lang/InterruptedException;
-    :catchall_0
-    move-exception v4
-
-    monitor-exit v5
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
-
-    throw v4
-
-    .line 402
-    nop
-
-    :sswitch_data_0
-    .sparse-switch
-        0xc4 -> :sswitch_1
-        0xca -> :sswitch_0
-    .end sparse-switch
+    goto :goto_0
 .end method
 
-.method private updatePhoneAdnRecordWithAnr(I)V
-    .locals 12
-    .param p1, "pbrIndex"    # I
+.method readRecordSizeAndWait(I)V
+    .locals 3
+    .param p1, "efTag"    # I
 
     .prologue
-    const/4 v11, 0x0
+    const/4 v2, 0x0
 
-    .line 541
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFileRecord:Ljava/util/Map;
+    .line 331
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
 
-    invoke-direct {p0, v9, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
+    if-eqz v0, :cond_0
 
-    move-result v9
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
 
-    if-nez v9, :cond_1
+    iget-object v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
 
-    .line 601
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/util/Map;
+
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    .line 332
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
+
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/util/Map;
+
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/lang/Integer;
+
+    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
+
+    move-result v0
+
+    invoke-virtual {p0, p1, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readRecordSizeAndWait(II)Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    .line 334
+    :cond_0
+    return-void
+.end method
+
+.method readRecordSizeDone(ILandroid/os/AsyncResult;)V
+    .locals 4
+    .param p1, "fileId"    # I
+    .param p2, "ar"    # Landroid/os/AsyncResult;
+
+    .prologue
+    .line 347
+    iget-object v1, p2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    if-nez v1, :cond_1
+
+    .line 348
+    iget-object v1, p2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
+
+    check-cast v1, [I
+
+    move-object v0, v1
+
+    check-cast v0, [I
+
+    .line 349
+    .local v0, "recordSize":[I
+    array-length v1, v0
+
+    const/4 v2, 0x3
+
+    if-ne v1, v2, :cond_0
+
+    .line 350
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v2
+
+    new-instance v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    invoke-direct {v3, p0, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;-><init>(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;[I)V
+
+    invoke-virtual {v1, v2, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 355
+    .end local v0    # "recordSize":[I
+    :cond_0
+    :goto_0
+    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    monitor-enter v2
+
+    .line 356
+    :try_start_0
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    invoke-virtual {v1}, Ljava/lang/Object;->notify()V
+
+    .line 357
+    monitor-exit v2
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 358
+    return-void
+
+    .line 353
+    :cond_1
+    const-string v1, "UsimPhoneBookManager"
+
+    const-string v2, "readRecordSize failed"
+
+    iget-object v3, p2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    invoke-static {v1, v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_0
+
+    .line 357
+    :catchall_0
+    move-exception v1
+
+    :try_start_1
+    monitor-exit v2
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    throw v1
+.end method
+
+.method readType1Ef(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;)V
+    .locals 13
+    .param p1, "record"    # Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+
+    .prologue
+    .line 480
+    iget v9, p1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v10, 0xa8
+
+    if-eq v9, v10, :cond_1
+
+    .line 524
     :cond_0
     :goto_0
     return-void
 
-    .line 543
+    .line 484
     :cond_1
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAdnLengthList:Ljava/util/ArrayList;
+    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
 
-    invoke-virtual {v9, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    const/16 v10, 0xc0
 
-    move-result-object v9
-
-    check-cast v9, Ljava/lang/Integer;
-
-    invoke-virtual {v9}, Ljava/lang/Integer;->intValue()I
-
-    move-result v5
-
-    .line 545
-    .local v5, "numAdnRecs":I
-    iget-boolean v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrPresentInIap:Z
-
-    if-eqz v9, :cond_3
-
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
-
-    invoke-direct {p0, v9, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
-
-    move-result v9
-
-    if-eqz v9, :cond_3
-
-    .line 551
-    const/4 v4, 0x0
-
-    .local v4, "i":I
-    :goto_1
-    if-ge v4, v5, :cond_3
-
-    .line 552
-    const/4 v8, 0x0
-
-    .line 554
-    .local v8, "record":[B
-    :try_start_0
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v10}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v10
 
-    invoke-interface {v9, v10}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v9, v10}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v9
 
-    check-cast v9, Ljava/util/ArrayList;
+    check-cast v9, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
 
-    invoke-virtual {v9, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    iget v1, v9, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
 
-    move-result-object v8
+    .line 485
+    .local v1, "adnRecordCount":I
+    iget v9, p1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mPbrIndex:I
 
-    .end local v8    # "record":[B
-    check-cast v8, [B
-    :try_end_0
-    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_0 .. :try_end_0} :catch_0
+    mul-int v4, v9, v1
 
-    .line 559
-    .restart local v8    # "record":[B
-    iget v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrTagNumberInIap:I
+    .line 486
+    .local v4, "offset":I
+    add-int v3, v4, v1
 
-    aget-byte v7, v8, v9
+    .line 487
+    .local v3, "max":I
+    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
 
-    .line 560
-    .local v7, "recNum":I
-    if-lez v7, :cond_2
-
-    .line 561
-    const/4 v9, 0x1
-
-    new-array v2, v9, [Ljava/lang/String;
-
-    .line 563
-    .local v2, "anrs":[Ljava/lang/String;
-    add-int/lit8 v9, v7, -0x1
-
-    invoke-direct {p0, v9, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readAnrRecord(II)Ljava/lang/String;
-
-    move-result-object v9
-
-    aput-object v9, v2, v11
-
-    .line 564
-    invoke-direct {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
+    invoke-virtual {v9}, Ljava/util/ArrayList;->size()I
 
     move-result v9
 
-    add-int v0, v4, v9
+    if-ge v9, v3, :cond_2
 
-    .line 565
-    .local v0, "adnRecIndex":I
+    .line 488
+    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    invoke-virtual {v9}, Ljava/util/ArrayList;->size()I
+
+    move-result v3
+
+    .line 493
+    :cond_2
+    iget v9, p1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
+
+    sparse-switch v9, :sswitch_data_0
+
+    .line 503
+    const-string v9, "UsimPhoneBookManager"
+
+    new-instance v10, Ljava/lang/StringBuilder;
+
+    invoke-direct {v10}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v11, "readType1Ef: unsupported tag "
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    iget v11, p1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    invoke-virtual {v10}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v10
+
+    invoke-static {v9, v10}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_0
+
+    .line 495
+    :sswitch_0
+    const/4 v8, 0x4
+
+    .line 496
+    .local v8, "what":I
+    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingAnrNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    .line 507
+    .local v5, "readingNum":Ljava/util/concurrent/atomic/AtomicInteger;
+    :goto_1
+    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    iget v10, p1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
+
+    invoke-static {v10}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v10
+
+    invoke-virtual {v9, v10}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v9
+
+    check-cast v9, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v7, v9, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordSize:I
+
+    .line 508
+    .local v7, "recordSize":I
+    move v0, v4
+
+    .local v0, "adnIndex":I
+    :goto_2
+    if-ge v0, v3, :cond_4
+
+    .line 509
     iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
 
     invoke-virtual {v9, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -3115,902 +3127,2554 @@
 
     check-cast v6, Lcom/android/internal/telephony/uicc/AdnRecord;
 
-    .line 566
+    .line 510
     .local v6, "rec":Lcom/android/internal/telephony/uicc/AdnRecord;
-    if-eqz v6, :cond_2
-
-    aget-object v9, v2, v11
-
-    invoke-static {v9}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    invoke-virtual {v6}, Lcom/android/internal/telephony/uicc/AdnRecord;->isEmpty()Z
 
     move-result v9
 
-    if-nez v9, :cond_2
+    if-nez v9, :cond_3
 
-    .line 567
-    invoke-virtual {v6, v2}, Lcom/android/internal/telephony/uicc/AdnRecord;->setAdditionalNumbers([Ljava/lang/String;)V
+    .line 511
+    invoke-virtual {v5}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
 
-    .line 568
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+    .line 512
+    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
 
-    invoke-virtual {v9, v0, v6}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
+    iget v10, p1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mEfTag:I
 
-    .line 551
-    .end local v0    # "adnRecIndex":I
-    .end local v2    # "anrs":[Ljava/lang/String;
-    .end local v6    # "rec":Lcom/android/internal/telephony/uicc/AdnRecord;
-    :cond_2
-    add-int/lit8 v4, v4, 0x1
+    add-int/lit8 v11, v0, 0x1
 
-    goto :goto_1
+    sub-int/2addr v11, v4
 
-    .line 555
-    .end local v7    # "recNum":I
-    .end local v8    # "record":[B
-    :catch_0
-    move-exception v3
+    iget v12, p1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mPbrIndex:I
 
-    .line 556
-    .local v3, "e":Ljava/lang/IndexOutOfBoundsException;
-    const-string v9, "UsimPhoneBookManager"
+    invoke-virtual {p0, v8, v12, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(III)Landroid/os/Message;
 
-    const-string v10, "Error: Improper ICC card: No IAP record for ADN, continuing"
+    move-result-object v12
 
-    invoke-static {v9, v10}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v9, v10, v7, v11, v12}, Lcom/android/internal/telephony/uicc/IccFileHandler;->loadEFLinearFixed(IIILandroid/os/Message;)V
 
-    .line 581
-    .end local v3    # "e":Ljava/lang/IndexOutOfBoundsException;
-    .end local v4    # "i":I
+    .line 508
     :cond_3
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrsForAdnRec:Ljava/util/Map;
-
-    if-eqz v9, :cond_4
-
-    iget-boolean v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrPresentInIap:Z
-
-    if-nez v9, :cond_5
-
-    .line 582
-    :cond_4
-    invoke-virtual {p0, v5, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->parseType1AnrFile(II)V
-
-    .line 584
-    :cond_5
-    invoke-direct {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
-
-    move-result v4
-
-    .restart local v4    # "i":I
-    :goto_2
-    invoke-direct {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
-
-    move-result v9
-
-    add-int/2addr v9, v5
-
-    if-ge v4, v9, :cond_0
-
-    .line 585
-    const/4 v1, 0x0
-
-    .line 587
-    .local v1, "anrList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    :try_start_1
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrsForAdnRec:Ljava/util/Map;
-
-    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v10
-
-    invoke-interface {v9, v10}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v1
-
-    .end local v1    # "anrList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    check-cast v1, Ljava/util/ArrayList;
-    :try_end_1
-    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_1 .. :try_end_1} :catch_1
-
-    .line 591
-    .restart local v1    # "anrList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    if-nez v1, :cond_7
-
-    .line 584
-    :cond_6
-    :goto_3
-    add-int/lit8 v4, v4, 0x1
+    add-int/lit8 v0, v0, 0x1
 
     goto :goto_2
 
-    .line 588
-    .end local v1    # "anrList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    :catch_1
-    move-exception v3
+    .line 499
+    .end local v0    # "adnIndex":I
+    .end local v5    # "readingNum":Ljava/util/concurrent/atomic/AtomicInteger;
+    .end local v6    # "rec":Lcom/android/internal/telephony/uicc/AdnRecord;
+    .end local v7    # "recordSize":I
+    .end local v8    # "what":I
+    :sswitch_1
+    const/4 v8, 0x5
 
-    .line 589
-    .restart local v3    # "e":Ljava/lang/IndexOutOfBoundsException;
-    goto/16 :goto_0
+    .line 500
+    .restart local v8    # "what":I
+    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingEmailNum:Ljava/util/concurrent/atomic/AtomicInteger;
 
-    .line 593
-    .end local v3    # "e":Ljava/lang/IndexOutOfBoundsException;
-    .restart local v1    # "anrList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    :cond_7
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+    .line 501
+    .restart local v5    # "readingNum":Ljava/util/concurrent/atomic/AtomicInteger;
+    goto :goto_1
 
-    invoke-virtual {v9, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v6
-
-    check-cast v6, Lcom/android/internal/telephony/uicc/AdnRecord;
-
-    .line 594
-    .restart local v6    # "rec":Lcom/android/internal/telephony/uicc/AdnRecord;
-    if-eqz v6, :cond_6
-
-    .line 595
-    invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
+    .line 517
+    .restart local v0    # "adnIndex":I
+    .restart local v7    # "recordSize":I
+    :cond_4
+    invoke-virtual {v5}, Ljava/util/concurrent/atomic/AtomicInteger;->get()I
 
     move-result v9
 
-    new-array v2, v9, [Ljava/lang/String;
+    if-eqz v9, :cond_0
 
-    .line 596
-    .restart local v2    # "anrs":[Ljava/lang/String;
-    invoke-virtual {v1}, Ljava/util/ArrayList;->toArray()[Ljava/lang/Object;
+    .line 519
+    :try_start_0
+    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
 
-    move-result-object v9
+    invoke-virtual {v9}, Ljava/lang/Object;->wait()V
+    :try_end_0
+    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
-    invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
+    goto/16 :goto_0
 
-    move-result v10
+    .line 520
+    :catch_0
+    move-exception v2
 
-    invoke-static {v9, v11, v2, v11, v10}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    .line 521
+    .local v2, "e":Ljava/lang/InterruptedException;
+    const-string v9, "UsimPhoneBookManager"
 
-    .line 597
-    invoke-virtual {v6, v2}, Lcom/android/internal/telephony/uicc/AdnRecord;->setAdditionalNumbers([Ljava/lang/String;)V
+    const-string v10, "Interrupted Exception in readType1Ef"
 
-    .line 598
-    iget-object v9, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+    invoke-static {v9, v10}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-virtual {v9, v4, v6}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
+    goto/16 :goto_0
 
-    goto :goto_3
+    .line 493
+    :sswitch_data_0
+    .sparse-switch
+        0xc4 -> :sswitch_0
+        0xca -> :sswitch_1
+    .end sparse-switch
 .end method
 
-.method private updatePhoneAdnRecordWithEmail(I)V
-    .locals 14
-    .param p1, "pbrIndex"    # I
+.method readType2Ef(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;)V
+    .locals 18
+    .param p1, "record"    # Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
 
     .prologue
-    .line 475
-    iget-object v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFileRecord:Ljava/util/Map;
+    .line 527
+    move-object/from16 v0, p1
 
-    invoke-direct {p0, v10, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
+    iget v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
 
-    move-result v10
+    const/16 v16, 0xa9
 
-    if-nez v10, :cond_1
+    move/from16 v0, v16
 
-    .line 538
+    if-eq v15, v0, :cond_1
+
+    .line 596
     :cond_0
     :goto_0
     return-void
 
-    .line 477
+    .line 531
     :cond_1
-    iget-object v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAdnLengthList:Ljava/util/ArrayList;
+    move-object/from16 v0, p0
 
-    invoke-virtual {v10, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
 
-    move-result-object v10
+    iget-object v15, v15, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
 
-    check-cast v10, Ljava/lang/Integer;
+    move-object/from16 v0, p1
 
-    invoke-virtual {v10}, Ljava/lang/Integer;->intValue()I
+    iget v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mPbrIndex:I
 
-    move-result v6
+    move/from16 v16, v0
 
-    .line 479
-    .local v6, "numAdnRecs":I
-    iget-boolean v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailPresentInIap:Z
+    invoke-static/range {v16 .. v16}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    if-eqz v10, :cond_3
+    move-result-object v16
 
-    iget-object v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
+    invoke-virtual/range {v15 .. v16}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    invoke-direct {p0, v10, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
+    move-result-object v5
 
-    move-result v10
+    check-cast v5, Ljava/util/Map;
 
-    if-eqz v10, :cond_3
+    .line 532
+    .local v5, "fileIds":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
+    if-eqz v5, :cond_0
 
-    .line 485
-    const/4 v4, 0x0
+    const/16 v15, 0xc1
 
-    .local v4, "i":I
-    :goto_1
-    if-ge v4, v6, :cond_3
+    invoke-static {v15}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 486
-    const/4 v9, 0x0
+    move-result-object v15
 
-    .line 488
-    .local v9, "record":[B
-    :try_start_0
-    iget-object v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
+    invoke-interface {v5, v15}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    move-result v15
 
-    move-result-object v11
+    if-eqz v15, :cond_0
 
-    invoke-interface {v10, v11}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    .line 536
+    move-object/from16 v0, p1
 
-    move-result-object v10
+    iget v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mPbrIndex:I
 
-    check-cast v10, Ljava/util/ArrayList;
+    move-object/from16 v0, p0
 
-    invoke-virtual {v10, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    invoke-virtual {v0, v15}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readIapFileAndWait(I)V
 
-    move-result-object v9
+    .line 537
+    move-object/from16 v0, p0
 
-    .end local v9    # "record":[B
-    check-cast v9, [B
-    :try_end_0
-    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_0 .. :try_end_0} :catch_0
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFiles:[[[B
 
-    .line 493
-    .restart local v9    # "record":[B
-    iget v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailTagNumberInIap:I
+    if-eqz v15, :cond_2
 
-    aget-byte v8, v9, v10
+    move-object/from16 v0, p0
 
-    .line 495
-    .local v8, "recNum":I
-    if-lez v8, :cond_2
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFiles:[[[B
 
-    .line 496
-    const/4 v10, 0x1
+    array-length v15, v15
 
-    new-array v3, v10, [Ljava/lang/String;
+    move-object/from16 v0, p1
 
-    .line 498
-    .local v3, "emails":[Ljava/lang/String;
-    const/4 v10, 0x0
+    iget v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mPbrIndex:I
 
-    add-int/lit8 v11, v8, -0x1
+    move/from16 v16, v0
 
-    invoke-direct {p0, v11, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readEmailRecord(II)Ljava/lang/String;
+    move/from16 v0, v16
 
-    move-result-object v11
+    if-le v15, v0, :cond_2
 
-    aput-object v11, v3, v10
+    move-object/from16 v0, p0
 
-    .line 499
-    invoke-direct {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFiles:[[[B
 
-    move-result v10
+    move-object/from16 v0, p1
 
-    add-int v0, v4, v10
+    iget v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mPbrIndex:I
 
-    .line 500
-    .local v0, "adnRecIndex":I
-    iget-object v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+    move/from16 v16, v0
 
-    invoke-virtual {v10, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    aget-object v15, v15, v16
 
-    move-result-object v7
+    if-nez v15, :cond_3
 
-    check-cast v7, Lcom/android/internal/telephony/uicc/AdnRecord;
-
-    .line 501
-    .local v7, "rec":Lcom/android/internal/telephony/uicc/AdnRecord;
-    if-eqz v7, :cond_2
-
-    const/4 v10, 0x0
-
-    aget-object v10, v3, v10
-
-    invoke-static {v10}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v10
-
-    if-nez v10, :cond_2
-
-    .line 502
-    invoke-virtual {v7, v3}, Lcom/android/internal/telephony/uicc/AdnRecord;->setEmails([Ljava/lang/String;)V
-
-    .line 503
-    iget-object v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
-
-    invoke-virtual {v10, v0, v7}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
-
-    .line 505
-    iget-object v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v11
-
-    invoke-interface {v10, v11}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v10
-
-    check-cast v10, Ljava/util/ArrayList;
-
-    add-int/lit8 v11, v8, -0x1
-
-    const/4 v12, 0x1
-
-    invoke-static {v12}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v12
-
-    invoke-virtual {v10, v11, v12}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
-
-    .line 485
-    .end local v0    # "adnRecIndex":I
-    .end local v3    # "emails":[Ljava/lang/String;
-    .end local v7    # "rec":Lcom/android/internal/telephony/uicc/AdnRecord;
+    .line 539
     :cond_2
-    add-int/lit8 v4, v4, 0x1
+    const-string v15, "UsimPhoneBookManager"
 
-    goto :goto_1
+    const-string v16, "readType2Ef: IAP file is empty"
 
-    .line 489
-    .end local v8    # "recNum":I
-    .end local v9    # "record":[B
-    :catch_0
-    move-exception v1
+    invoke-static/range {v15 .. v16}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 490
-    .local v1, "e":Ljava/lang/IndexOutOfBoundsException;
-    const-string v10, "UsimPhoneBookManager"
+    goto :goto_0
 
-    const-string v11, "Error: Improper ICC card: No IAP record for ADN, continuing"
-
-    invoke-static {v10, v11}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 515
-    .end local v1    # "e":Ljava/lang/IndexOutOfBoundsException;
-    .end local v4    # "i":I
+    .line 545
     :cond_3
-    iget-object v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAdnLengthList:Ljava/util/ArrayList;
+    move-object/from16 v0, p1
 
-    invoke-virtual {v10, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    iget v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
 
-    move-result-object v10
+    sparse-switch v15, :sswitch_data_0
 
-    check-cast v10, Ljava/lang/Integer;
+    .line 555
+    const-string v15, "UsimPhoneBookManager"
 
-    invoke-virtual {v10}, Ljava/lang/Integer;->intValue()I
+    new-instance v16, Ljava/lang/StringBuilder;
 
-    move-result v5
+    invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 518
-    .local v5, "len":I
-    iget-object v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailsForAdnRec:Ljava/util/Map;
+    const-string v17, "readType2EF: no implementation for "
 
-    if-eqz v10, :cond_4
+    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-boolean v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailPresentInIap:Z
+    move-result-object v16
 
-    if-nez v10, :cond_5
+    move-object/from16 v0, p1
 
-    .line 519
+    iget v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
+
+    move/from16 v17, v0
+
+    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v16
+
+    invoke-virtual/range {v16 .. v16}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v16
+
+    invoke-static/range {v15 .. v16}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_0
+
+    .line 547
+    :sswitch_0
+    const/4 v14, 0x4
+
+    .line 548
+    .local v14, "what":I
+    move-object/from16 v0, p0
+
+    iget-object v10, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingAnrNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    .line 559
+    .local v10, "readingNum":Ljava/util/concurrent/atomic/AtomicInteger;
+    :goto_1
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFiles:[[[B
+
+    move-object/from16 v0, p1
+
+    iget v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mPbrIndex:I
+
+    move/from16 v16, v0
+
+    aget-object v7, v15, v16
+
+    .line 560
+    .local v7, "iaps":[[B
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    const/16 v16, 0xc0
+
+    invoke-static/range {v16 .. v16}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v16
+
+    invoke-virtual/range {v15 .. v16}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v15
+
+    check-cast v15, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v3, v15, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    .line 561
+    .local v3, "adnRecordCount":I
+    move-object/from16 v0, p1
+
+    iget v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mPbrIndex:I
+
+    mul-int v9, v15, v3
+
+    .line 562
+    .local v9, "offset":I
+    add-int v8, v9, v3
+
+    .line 563
+    .local v8, "max":I
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    invoke-virtual {v15}, Ljava/util/ArrayList;->size()I
+
+    move-result v15
+
+    if-ge v15, v8, :cond_4
+
+    .line 564
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    invoke-virtual {v15}, Ljava/util/ArrayList;->size()I
+
+    move-result v8
+
+    .line 567
     :cond_4
-    invoke-virtual {p0, v5, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->parseType1EmailFile(II)V
+    move-object/from16 v0, p0
 
-    .line 521
-    :cond_5
-    invoke-direct {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
 
-    move-result v4
+    move-object/from16 v0, p1
 
-    .restart local v4    # "i":I
+    iget v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
+
+    move/from16 v16, v0
+
+    invoke-static/range {v16 .. v16}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v16
+
+    invoke-virtual/range {v15 .. v16}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v15
+
+    check-cast v15, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v13, v15, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordSize:I
+
+    .line 568
+    .local v13, "recordSize":I
+    move v2, v9
+
+    .local v2, "adnIndex":I
     :goto_2
-    invoke-direct {p0, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
+    if-ge v2, v8, :cond_8
 
-    move-result v10
+    .line 569
+    move-object/from16 v0, p0
 
-    add-int/2addr v10, v6
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
 
-    if-ge v4, v10, :cond_0
-
-    .line 522
-    const/4 v2, 0x0
-
-    .line 524
-    .local v2, "emailList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    :try_start_1
-    iget-object v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailsForAdnRec:Ljava/util/Map;
-
-    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-virtual {v15, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v11
 
-    invoke-interface {v10, v11}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    check-cast v11, Lcom/android/internal/telephony/uicc/AdnRecord;
+
+    .line 570
+    .local v11, "rec":Lcom/android/internal/telephony/uicc/AdnRecord;
+    invoke-virtual {v11}, Lcom/android/internal/telephony/uicc/AdnRecord;->isEmpty()Z
+
+    move-result v15
+
+    if-nez v15, :cond_5
+
+    .line 571
+    sub-int v15, v2, v9
+
+    aget-object v6, v7, v15
+
+    .line 572
+    .local v6, "iap":[B
+    if-nez v6, :cond_6
+
+    .line 573
+    const-string v15, "UsimPhoneBookManager"
+
+    new-instance v16, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v17, "readType2Ef: No IAP for ADN "
+
+    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v16
+
+    add-int/lit8 v17, v2, 0x1
+
+    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v16
+
+    invoke-virtual/range {v16 .. v16}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v16
+
+    invoke-static/range {v15 .. v16}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 568
+    .end local v6    # "iap":[B
+    :cond_5
+    :goto_3
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_2
+
+    .line 551
+    .end local v2    # "adnIndex":I
+    .end local v3    # "adnRecordCount":I
+    .end local v7    # "iaps":[[B
+    .end local v8    # "max":I
+    .end local v9    # "offset":I
+    .end local v10    # "readingNum":Ljava/util/concurrent/atomic/AtomicInteger;
+    .end local v11    # "rec":Lcom/android/internal/telephony/uicc/AdnRecord;
+    .end local v13    # "recordSize":I
+    .end local v14    # "what":I
+    :sswitch_1
+    const/4 v14, 0x5
+
+    .line 552
+    .restart local v14    # "what":I
+    move-object/from16 v0, p0
+
+    iget-object v10, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mReadingEmailNum:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    .line 553
+    .restart local v10    # "readingNum":Ljava/util/concurrent/atomic/AtomicInteger;
+    goto/16 :goto_1
+
+    .line 577
+    .restart local v2    # "adnIndex":I
+    .restart local v3    # "adnRecordCount":I
+    .restart local v6    # "iap":[B
+    .restart local v7    # "iaps":[[B
+    .restart local v8    # "max":I
+    .restart local v9    # "offset":I
+    .restart local v11    # "rec":Lcom/android/internal/telephony/uicc/AdnRecord;
+    .restart local v13    # "recordSize":I
+    :cond_6
+    move-object/from16 v0, p1
+
+    iget v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType2Record:I
+
+    aget-byte v12, v6, v15
+
+    .line 578
+    .local v12, "recordNumber":I
+    const/4 v15, -0x1
+
+    if-ne v12, v15, :cond_7
+
+    .line 579
+    const-string v15, "UsimPhoneBookManager"
+
+    new-instance v16, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v17, "readType2Ef: NO IAP index for ADN "
+
+    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v16
+
+    add-int/lit8 v17, v2, 0x1
+
+    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v16
+
+    invoke-virtual/range {v16 .. v16}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v16
+
+    invoke-static/range {v15 .. v16}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_3
+
+    .line 583
+    :cond_7
+    invoke-virtual {v10}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
+
+    .line 584
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
+
+    move-object/from16 v0, p1
+
+    iget v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mEfTag:I
+
+    move/from16 v16, v0
+
+    move-object/from16 v0, p1
+
+    iget v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mPbrIndex:I
+
+    move/from16 v17, v0
+
+    move-object/from16 v0, p0
+
+    move/from16 v1, v17
+
+    invoke-virtual {v0, v14, v1, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(III)Landroid/os/Message;
+
+    move-result-object v17
+
+    move/from16 v0, v16
+
+    move-object/from16 v1, v17
+
+    invoke-virtual {v15, v0, v13, v12, v1}, Lcom/android/internal/telephony/uicc/IccFileHandler;->loadEFLinearFixed(IIILandroid/os/Message;)V
+
+    goto :goto_3
+
+    .line 589
+    .end local v6    # "iap":[B
+    .end local v11    # "rec":Lcom/android/internal/telephony/uicc/AdnRecord;
+    .end local v12    # "recordNumber":I
+    :cond_8
+    invoke-virtual {v10}, Ljava/util/concurrent/atomic/AtomicInteger;->get()I
+
+    move-result v15
+
+    if-eqz v15, :cond_0
+
+    .line 591
+    :try_start_0
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    invoke-virtual {v15}, Ljava/lang/Object;->wait()V
+    :try_end_0
+    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
+
+    goto/16 :goto_0
+
+    .line 592
+    :catch_0
+    move-exception v4
+
+    .line 593
+    .local v4, "e":Ljava/lang/InterruptedException;
+    const-string v15, "UsimPhoneBookManager"
+
+    const-string v16, "Interrupted Exception in readType2Ef"
+
+    invoke-static/range {v15 .. v16}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto/16 :goto_0
+
+    .line 545
+    nop
+
+    :sswitch_data_0
+    .sparse-switch
+        0xc4 -> :sswitch_0
+        0xca -> :sswitch_1
+    .end sparse-switch
+.end method
+
+.method public reset()V
+    .locals 2
+
+    .prologue
+    .line 93
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    monitor-enter v1
+
+    .line 94
+    :try_start_0
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
+
+    .line 95
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    .line 96
+    const/4 v0, 0x0
+
+    check-cast v0, [[[B
+
+    iput-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFiles:[[[B
+
+    .line 97
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    invoke-virtual {v0}, Ljava/util/HashMap;->clear()V
+
+    .line 98
+    monitor-exit v1
+
+    .line 99
+    return-void
+
+    .line 98
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v0
+.end method
+
+.method setPhoneAdnRecordAnr(II[B)V
+    .locals 4
+    .param p1, "pbrIndex"    # I
+    .param p2, "adnIndex"    # I
+    .param p3, "anrData"    # [B
+
+    .prologue
+    const/4 v3, 0x2
+
+    .line 450
+    if-eqz p3, :cond_0
+
+    array-length v2, p3
+
+    if-ge v2, v3, :cond_1
+
+    .line 461
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 454
+    :cond_1
+    const/4 v2, 0x1
+
+    aget-byte v1, p3, v2
+
+    .line 455
+    .local v1, "length":I
+    if-lez v1, :cond_0
+
+    const/16 v2, 0xb
+
+    if-ge v1, v2, :cond_0
+
+    .line 456
+    invoke-static {p3, v3, v1}, Landroid/telephony/PhoneNumberUtils;->calledPartyBCDToString([BII)Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 457
+    .local v0, "anr":Ljava/lang/String;
+    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    .line 458
+    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    invoke-virtual {v2, p2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v2
 
-    .end local v2    # "emailList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    check-cast v2, Ljava/util/ArrayList;
+    check-cast v2, Lcom/android/internal/telephony/uicc/AdnRecord;
+
+    invoke-virtual {v2, v0}, Lcom/android/internal/telephony/uicc/AdnRecord;->setAnr(Ljava/lang/String;)V
+
+    goto :goto_0
+.end method
+
+.method setPhoneAdnRecordEmail(II[B)V
+    .locals 5
+    .param p1, "pbrIndex"    # I
+    .param p2, "andIndex"    # I
+    .param p3, "emailData"    # [B
+
+    .prologue
+    const/4 v4, 0x0
+
+    .line 464
+    if-nez p3, :cond_1
+
+    .line 477
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 468
+    :cond_1
+    array-length v1, p3
+
+    .line 469
+    .local v1, "length":I
+    const/4 v2, 0x2
+
+    if-lt v1, v2, :cond_2
+
+    .line 470
+    add-int/lit8 v1, v1, -0x2
+
+    .line 473
+    :cond_2
+    invoke-static {p3, v4, v1}, Lcom/android/internal/telephony/IccUtils;->adnStringFieldToString([BII)Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 474
+    .local v0, "email":Ljava/lang/String;
+    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    .line 475
+    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    invoke-virtual {v2, p2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Lcom/android/internal/telephony/uicc/AdnRecord;
+
+    const/4 v3, 0x1
+
+    new-array v3, v3, [Ljava/lang/String;
+
+    aput-object v0, v3, v4
+
+    invoke-virtual {v2, v3}, Lcom/android/internal/telephony/uicc/AdnRecord;->setEmails([Ljava/lang/String;)V
+
+    goto :goto_0
+.end method
+
+.method public update(ILcom/android/internal/telephony/uicc/AdnRecord;)I
+    .locals 3
+    .param p1, "recordNumber"    # I
+    .param p2, "adn"    # Lcom/android/internal/telephony/uicc/AdnRecord;
+
+    .prologue
+    .line 164
+    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    monitor-enter v2
+
+    .line 165
+    const/4 v0, 0x0
+
+    .line 166
+    .local v0, "result":I
+    :try_start_0
+    iget-boolean v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSupportEmail:Z
+
+    if-eqz v1, :cond_2
+
+    .line 167
+    invoke-virtual {p2}, Lcom/android/internal/telephony/uicc/AdnRecord;->getEmails()[Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {p0, p1, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->checkEmailCapacityFree(I[Ljava/lang/String;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    .line 168
+    const/16 v1, -0x3f3
+
+    monitor-exit v2
+
+    .line 196
+    :goto_0
+    return v1
+
+    .line 171
+    :cond_0
+    invoke-virtual {p2}, Lcom/android/internal/telephony/uicc/AdnRecord;->getEmails()[Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->checkEmailLength([Ljava/lang/String;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_1
+
+    .line 172
+    const/16 v1, -0x3f4
+
+    monitor-exit v2
+
+    goto :goto_0
+
+    .line 197
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v2
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v1
+
+    .line 175
+    :cond_1
+    :try_start_1
+    invoke-virtual {p0, p2, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->updateEmailAndWait(Lcom/android/internal/telephony/uicc/AdnRecord;I)I
+
+    move-result v0
+
+    .line 176
+    if-eqz v0, :cond_2
+
+    .line 177
+    monitor-exit v2
+
+    move v1, v0
+
+    goto :goto_0
+
+    .line 181
+    :cond_2
+    iget-boolean v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSupportAnr:Z
+
+    if-eqz v1, :cond_5
+
+    .line 182
+    invoke-virtual {p2}, Lcom/android/internal/telephony/uicc/AdnRecord;->getAnr()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {p0, p1, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->checkAnrCapacityFree(ILjava/lang/String;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_3
+
+    .line 183
+    const/16 v1, -0x3f0
+
+    monitor-exit v2
+
+    goto :goto_0
+
+    .line 186
+    :cond_3
+    invoke-virtual {p2}, Lcom/android/internal/telephony/uicc/AdnRecord;->getAnr()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->checkAnrLength(Ljava/lang/String;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_4
+
+    .line 187
+    const/16 v1, -0x3f1
+
+    monitor-exit v2
+
+    goto :goto_0
+
+    .line 190
+    :cond_4
+    invoke-virtual {p0, p2, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->updateAnrAndWait(Lcom/android/internal/telephony/uicc/AdnRecord;I)I
+
+    move-result v0
+
+    .line 191
+    if-eqz v0, :cond_5
+
+    .line 192
+    monitor-exit v2
+
+    move v1, v0
+
+    goto :goto_0
+
+    .line 196
+    :cond_5
+    invoke-virtual {p0, p2, p1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->updateAdnAndWait(Lcom/android/internal/telephony/uicc/AdnRecord;I)I
+
+    move-result v1
+
+    monitor-exit v2
     :try_end_1
-    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_1 .. :try_end_1} :catch_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 528
-    .restart local v2    # "emailList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    if-nez v2, :cond_7
+    goto :goto_0
+.end method
 
-    .line 521
-    :cond_6
-    :goto_3
+.method public update(Lcom/android/internal/telephony/uicc/AdnRecord;ILcom/android/internal/telephony/uicc/AdnRecord;)I
+    .locals 18
+    .param p1, "oldAdn"    # Lcom/android/internal/telephony/uicc/AdnRecord;
+    .param p2, "oldRecordNumber"    # I
+    .param p3, "newAdn"    # Lcom/android/internal/telephony/uicc/AdnRecord;
+
+    .prologue
+    .line 201
+    move-object/from16 v0, p0
+
+    iget-object v13, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    monitor-enter v13
+
+    .line 202
+    :try_start_0
+    move-object/from16 v0, p0
+
+    iget-object v12, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    const/16 v14, 0xc0
+
+    invoke-static {v14}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v14
+
+    invoke-virtual {v12, v14}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v12
+
+    check-cast v12, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v3, v12, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    .line 203
+    .local v3, "adnCount":I
+    add-int/lit8 v12, p2, -0x1
+
+    div-int v6, v12, v3
+
+    .line 205
+    .local v6, "pbrIndex":I
+    move-object/from16 v0, p0
+
+    iget-object v12, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v12, v12, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
+
+    invoke-virtual {v12}, Ljava/util/HashMap;->size()I
+
+    move-result v12
+
+    new-array v10, v12, [I
+
+    .line 206
+    .local v10, "validPbr":[I
+    const/4 v12, 0x0
+
+    invoke-static {v10, v12}, Ljava/util/Arrays;->fill([II)V
+
+    .line 207
+    array-length v11, v10
+
+    .line 210
+    .local v11, "validPbrCount":I
+    move-object/from16 v0, p0
+
+    iget-boolean v12, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSupportEmail:Z
+
+    if-eqz v12, :cond_1
+
+    .line 211
+    move-object/from16 v0, p0
+
+    iget-object v12, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v12, v12, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mEfRecords:Ljava/util/HashMap;
+
+    const/16 v14, 0xca
+
+    invoke-static {v14}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v14
+
+    invoke-virtual {v12, v14}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v12
+
+    check-cast v12, Ljava/util/ArrayList;
+
+    invoke-virtual {v12, v6}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v7
+
+    check-cast v7, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+
+    .line 212
+    .local v7, "record":Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+    invoke-virtual/range {p3 .. p3}, Lcom/android/internal/telephony/uicc/AdnRecord;->getEmails()[Ljava/lang/String;
+
+    move-result-object v12
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v12}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasEmail([Ljava/lang/String;)Z
+
+    move-result v12
+
+    if-eqz v12, :cond_1
+
+    invoke-virtual/range {p1 .. p1}, Lcom/android/internal/telephony/uicc/AdnRecord;->getEmails()[Ljava/lang/String;
+
+    move-result-object v12
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v12}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasEmail([Ljava/lang/String;)Z
+
+    move-result v12
+
+    if-nez v12, :cond_1
+
+    iget v12, v7, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v14, 0xa9
+
+    if-ne v12, v14, :cond_1
+
+    .line 213
+    const/4 v4, 0x0
+
+    .local v4, "i":I
+    move-object/from16 v0, p0
+
+    iget-object v12, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v12, v12, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
+
+    invoke-virtual {v12}, Ljava/util/HashMap;->size()I
+
+    move-result v9
+
+    .local v9, "s":I
+    :goto_0
+    if-ge v4, v9, :cond_1
+
+    .line 214
+    mul-int v12, v4, v3
+
+    add-int/lit8 v12, v12, 0x1
+
+    invoke-virtual/range {p3 .. p3}, Lcom/android/internal/telephony/uicc/AdnRecord;->getEmails()[Ljava/lang/String;
+
+    move-result-object v14
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v12, v14}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->checkEmailCapacityFree(I[Ljava/lang/String;)Z
+
+    move-result v12
+
+    if-nez v12, :cond_0
+
+    .line 215
+    const/16 v12, -0x3f3
+
+    aput v12, v10, v4
+
+    .line 216
+    add-int/lit8 v11, v11, -0x1
+
+    .line 213
+    :cond_0
+    add-int/lit8 v4, v4, 0x1
+
+    goto :goto_0
+
+    .line 222
+    .end local v4    # "i":I
+    .end local v7    # "record":Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+    .end local v9    # "s":I
+    :cond_1
+    if-nez v11, :cond_2
+
+    .line 223
+    aget v12, v10, v6
+
+    monitor-exit v13
+
+    .line 266
+    :goto_1
+    return v12
+
+    .line 227
+    :cond_2
+    move-object/from16 v0, p0
+
+    iget-boolean v12, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSupportAnr:Z
+
+    if-eqz v12, :cond_4
+
+    .line 228
+    move-object/from16 v0, p0
+
+    iget-object v12, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v12, v12, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mEfRecords:Ljava/util/HashMap;
+
+    const/16 v14, 0xc4
+
+    invoke-static {v14}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v14
+
+    invoke-virtual {v12, v14}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v12
+
+    check-cast v12, Ljava/util/ArrayList;
+
+    invoke-virtual {v12, v6}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v7
+
+    check-cast v7, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+
+    .line 229
+    .restart local v7    # "record":Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+    invoke-virtual/range {p3 .. p3}, Lcom/android/internal/telephony/uicc/AdnRecord;->getAnr()Ljava/lang/String;
+
+    move-result-object v12
+
+    invoke-static {v12}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v12
+
+    if-nez v12, :cond_4
+
+    invoke-virtual/range {p1 .. p1}, Lcom/android/internal/telephony/uicc/AdnRecord;->getAnr()Ljava/lang/String;
+
+    move-result-object v12
+
+    invoke-static {v12}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v12
+
+    if-eqz v12, :cond_4
+
+    iget v12, v7, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v14, 0xa9
+
+    if-ne v12, v14, :cond_4
+
+    .line 230
+    const/4 v4, 0x0
+
+    .restart local v4    # "i":I
+    move-object/from16 v0, p0
+
+    iget-object v12, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v12, v12, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
+
+    invoke-virtual {v12}, Ljava/util/HashMap;->size()I
+
+    move-result v9
+
+    .restart local v9    # "s":I
+    :goto_2
+    if-ge v4, v9, :cond_4
+
+    .line 231
+    mul-int v12, v4, v3
+
+    add-int/lit8 v12, v12, 0x1
+
+    invoke-virtual/range {p3 .. p3}, Lcom/android/internal/telephony/uicc/AdnRecord;->getAnr()Ljava/lang/String;
+
+    move-result-object v14
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v12, v14}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->checkAnrCapacityFree(ILjava/lang/String;)Z
+
+    move-result v12
+
+    if-nez v12, :cond_3
+
+    .line 232
+    const/16 v12, -0x3f0
+
+    aput v12, v10, v4
+
+    .line 233
+    add-int/lit8 v11, v11, -0x1
+
+    .line 230
+    :cond_3
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_2
 
-    .line 525
-    .end local v2    # "emailList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    :catch_1
-    move-exception v1
+    .line 239
+    .end local v4    # "i":I
+    .end local v7    # "record":Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+    .end local v9    # "s":I
+    :cond_4
+    if-nez v11, :cond_5
 
-    .line 526
-    .restart local v1    # "e":Ljava/lang/IndexOutOfBoundsException;
-    goto/16 :goto_0
+    .line 240
+    aget v12, v10, v6
 
-    .line 530
-    .end local v1    # "e":Ljava/lang/IndexOutOfBoundsException;
-    .restart local v2    # "emailList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
+    monitor-exit v13
+
+    goto :goto_1
+
+    .line 267
+    .end local v3    # "adnCount":I
+    .end local v6    # "pbrIndex":I
+    .end local v10    # "validPbr":[I
+    .end local v11    # "validPbrCount":I
+    :catchall_0
+    move-exception v12
+
+    monitor-exit v13
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v12
+
+    .line 243
+    .restart local v3    # "adnCount":I
+    .restart local v6    # "pbrIndex":I
+    .restart local v10    # "validPbr":[I
+    .restart local v11    # "validPbrCount":I
+    :cond_5
+    :try_start_1
+    aget v12, v10, v6
+
+    if-nez v12, :cond_6
+
+    .line 244
+    move-object/from16 v0, p0
+
+    move/from16 v1, p2
+
+    move-object/from16 v2, p3
+
+    invoke-virtual {v0, v1, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->update(ILcom/android/internal/telephony/uicc/AdnRecord;)I
+
+    move-result v12
+
+    monitor-exit v13
+
+    goto :goto_1
+
+    .line 247
+    :cond_6
+    const/4 v8, -0x1
+
+    .line 248
+    .local v8, "recordNumber":I
+    const/4 v4, 0x0
+
+    .restart local v4    # "i":I
+    :goto_3
+    array-length v12, v10
+
+    if-ge v4, v12, :cond_9
+
+    .line 249
+    aget v12, v10, v4
+
+    if-nez v12, :cond_7
+
+    .line 250
+    mul-int v5, v3, v4
+
+    .local v5, "j":I
+    add-int v9, v5, v3
+
+    .restart local v9    # "s":I
+    :goto_4
+    if-ge v5, v9, :cond_7
+
+    .line 251
+    move-object/from16 v0, p0
+
+    iget-object v12, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    invoke-virtual {v12, v5}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v12
+
+    check-cast v12, Lcom/android/internal/telephony/uicc/AdnRecord;
+
+    invoke-virtual {v12}, Lcom/android/internal/telephony/uicc/AdnRecord;->isEmpty()Z
+
+    move-result v12
+
+    if-eqz v12, :cond_8
+
+    .line 252
+    add-int/lit8 v8, v5, 0x1
+
+    .line 248
+    .end local v5    # "j":I
+    .end local v9    # "s":I
     :cond_7
-    iget-object v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+    add-int/lit8 v4, v4, 0x1
 
-    invoke-virtual {v10, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    goto :goto_3
 
-    move-result-object v7
+    .line 250
+    .restart local v5    # "j":I
+    .restart local v9    # "s":I
+    :cond_8
+    add-int/lit8 v5, v5, 0x1
 
-    check-cast v7, Lcom/android/internal/telephony/uicc/AdnRecord;
+    goto :goto_4
 
-    .line 531
-    .restart local v7    # "rec":Lcom/android/internal/telephony/uicc/AdnRecord;
-    if-eqz v7, :cond_6
+    .line 259
+    .end local v5    # "j":I
+    .end local v9    # "s":I
+    :cond_9
+    if-gez v8, :cond_a
 
-    .line 532
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
+    .line 260
+    aget v12, v10, v6
 
-    move-result v10
+    monitor-exit v13
 
-    new-array v3, v10, [Ljava/lang/String;
+    goto/16 :goto_1
 
-    .line 533
-    .restart local v3    # "emails":[Ljava/lang/String;
-    invoke-virtual {v2}, Ljava/util/ArrayList;->toArray()[Ljava/lang/Object;
+    .line 263
+    :cond_a
+    invoke-virtual/range {p1 .. p1}, Lcom/android/internal/telephony/uicc/AdnRecord;->isEmpty()Z
+
+    move-result v12
+
+    if-nez v12, :cond_b
+
+    .line 264
+    new-instance v12, Lcom/android/internal/telephony/uicc/AdnRecord;
+
+    const-string v14, ""
+
+    const-string v15, ""
+
+    const/16 v16, 0x0
+
+    const-string v17, ""
+
+    move-object/from16 v0, v16
+
+    move-object/from16 v1, v17
+
+    invoke-direct {v12, v14, v15, v0, v1}, Lcom/android/internal/telephony/uicc/AdnRecord;-><init>(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)V
+
+    move-object/from16 v0, p0
+
+    move/from16 v1, p2
+
+    invoke-virtual {v0, v1, v12}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->update(ILcom/android/internal/telephony/uicc/AdnRecord;)I
+
+    .line 266
+    :cond_b
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p3
+
+    invoke-virtual {v0, v8, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->update(ILcom/android/internal/telephony/uicc/AdnRecord;)I
+
+    move-result v12
+
+    monitor-exit v13
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    goto/16 :goto_1
+.end method
+
+.method updateAdnAndWait(Lcom/android/internal/telephony/uicc/AdnRecord;I)I
+    .locals 12
+    .param p1, "adn"    # Lcom/android/internal/telephony/uicc/AdnRecord;
+    .param p2, "adnRecordNumber"    # I
+
+    .prologue
+    const/16 v5, 0xc2
+
+    const/16 v4, 0xc0
+
+    .line 1033
+    add-int/lit8 v1, p2, -0x1
+
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v2}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    div-int v11, v1, v0
+
+    .line 1034
+    .local v11, "pbrIndex":I
+    add-int/lit8 v1, p2, -0x1
+
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v2}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    rem-int v7, v1, v0
+
+    .line 1036
+    .local v7, "adnIndex":I
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
+
+    invoke-static {v11}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v9
+
+    check-cast v9, Ljava/util/Map;
+
+    .line 1037
+    .local v9, "fileIds":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
+    if-eqz v9, :cond_0
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v0
+
+    invoke-interface {v9, v0}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    .line 1038
+    :cond_0
+    const/16 v0, -0x3f6
+
+    .line 1057
+    :goto_0
+    return v0
+
+    .line 1042
+    :cond_1
+    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v0
+
+    invoke-interface {v9, v0}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_3
+
+    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v0
+
+    invoke-interface {v9, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/lang/Integer;
+
+    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
+
+    move-result v3
+
+    .line 1044
+    .local v3, "extensionEF":I
+    :goto_1
+    new-instance v0, Lcom/android/internal/telephony/uicc/AdnRecordLoader;
+
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
+
+    invoke-direct {v0, v1}, Lcom/android/internal/telephony/uicc/AdnRecordLoader;-><init>(Lcom/android/internal/telephony/uicc/IccFileHandler;)V
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    invoke-interface {v9, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/lang/Integer;
+
+    invoke-virtual {v1}, Ljava/lang/Integer;->intValue()I
+
+    move-result v2
+
+    add-int/lit8 v4, v7, 0x1
+
+    const/4 v5, 0x0
+
+    const/4 v1, 0x7
+
+    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(I)Landroid/os/Message;
+
+    move-result-object v6
+
+    move-object v1, p1
+
+    invoke-virtual/range {v0 .. v6}, Lcom/android/internal/telephony/uicc/AdnRecordLoader;->updateEF(Lcom/android/internal/telephony/uicc/AdnRecord;IIILjava/lang/String;Landroid/os/Message;)V
+
+    .line 1047
+    :try_start_0
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    invoke-virtual {v0}, Ljava/lang/Object;->wait()V
+    :try_end_0
+    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 1052
+    :goto_2
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mUpdateResult:Landroid/os/AsyncResult;
+
+    iget-object v0, v0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    if-nez v0, :cond_2
+
+    .line 1053
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    add-int/lit8 v1, p2, -0x1
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v10
 
-    const/4 v11, 0x0
+    check-cast v10, Lcom/android/internal/telephony/uicc/AdnRecord;
 
-    const/4 v12, 0x0
+    .line 1054
+    .local v10, "oldAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
+    invoke-virtual {p1}, Lcom/android/internal/telephony/uicc/AdnRecord;->getAlphaTag()Ljava/lang/String;
 
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
+    move-result-object v0
 
-    move-result v13
+    invoke-virtual {v10, v0}, Lcom/android/internal/telephony/uicc/AdnRecord;->setAlphaTag(Ljava/lang/String;)V
 
-    invoke-static {v10, v11, v3, v12, v13}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    .line 1055
+    invoke-virtual {p1}, Lcom/android/internal/telephony/uicc/AdnRecord;->getNumber()Ljava/lang/String;
 
-    .line 534
-    invoke-virtual {v7, v3}, Lcom/android/internal/telephony/uicc/AdnRecord;->setEmails([Ljava/lang/String;)V
+    move-result-object v0
 
-    .line 535
-    iget-object v10, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+    invoke-virtual {v10, v0}, Lcom/android/internal/telephony/uicc/AdnRecord;->setNumber(Ljava/lang/String;)V
 
-    invoke-virtual {v10, v4, v7}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
-
-    goto :goto_3
-.end method
-
-
-# virtual methods
-.method public getAnrCount()I
-    .locals 5
-
-    .prologue
-    .line 1296
-    const/4 v0, 0x0
-
-    .line 1297
-    .local v0, "count":I
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    invoke-interface {v3}, Ljava/util/Map;->size()I
-
-    move-result v2
-
-    .line 1298
-    .local v2, "pbrIndex":I
-    const/4 v1, 0x0
-
-    .local v1, "j":I
-    :goto_0
-    if-ge v1, v2, :cond_0
-
-    .line 1299
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v4
-
-    invoke-interface {v3, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Ljava/util/ArrayList;
-
-    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
-
-    move-result v3
-
-    add-int/2addr v0, v3
-
-    .line 1298
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_0
-
-    .line 1301
-    :cond_0
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v4, "getAnrCount count is"
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-direct {p0, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1302
-    return v0
-.end method
-
-.method public getEmailCount()I
-    .locals 5
-
-    .prologue
-    .line 1306
-    const/4 v0, 0x0
-
-    .line 1307
-    .local v0, "count":I
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    invoke-interface {v3}, Ljava/util/Map;->size()I
-
-    move-result v2
-
-    .line 1308
-    .local v2, "pbrIndex":I
-    const/4 v1, 0x0
-
-    .local v1, "j":I
-    :goto_0
-    if-ge v1, v2, :cond_0
-
-    .line 1309
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v4
-
-    invoke-interface {v3, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Ljava/util/ArrayList;
-
-    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
-
-    move-result v3
-
-    add-int/2addr v0, v3
-
-    .line 1308
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_0
-
-    .line 1311
-    :cond_0
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v4, "getEmailCount count is: "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-direct {p0, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1312
-    return v0
-.end method
-
-.method public getEmptyAnrNum_Pbrindex(I)I
-    .locals 5
-    .param p1, "pbrindex"    # I
-
-    .prologue
-    .line 1362
-    const/4 v0, 0x0
-
-    .line 1363
-    .local v0, "count":I
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    if-eqz v2, :cond_2
-
-    .line 1364
-    const/4 v1, 0x0
-
-    .local v1, "i":I
-    :goto_0
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
-
-    move-result v2
-
-    if-ge v1, v2, :cond_1
-
-    .line 1365
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    invoke-virtual {v2, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->intValue()I
-
-    move-result v2
-
-    if-nez v2, :cond_0
-
-    .line 1366
-    add-int/lit8 v0, v0, 0x1
-
-    .line 1364
-    :cond_0
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_0
-
-    .line 1368
-    :cond_1
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, "getEmptyAnrNum_Pbrindex pbrIndex is: "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, " size is: "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v4
-
-    invoke-interface {v2, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
-
-    move-result v2
-
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, ", count is "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-direct {p0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1371
-    .end local v1    # "i":I
+    .line 1057
+    .end local v10    # "oldAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
     :cond_2
-    return v0
-.end method
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mUpdateResult:Landroid/os/AsyncResult;
 
-.method public getEmptyEmailNum_Pbrindex(I)I
-    .locals 4
-    .param p1, "pbrindex"    # I
+    iget-object v0, v0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    .prologue
-    .line 1351
-    const/4 v0, 0x0
+    invoke-static {v0}, Lcom/android/internal/telephony/IccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
 
-    .line 1352
-    .local v0, "count":I
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    if-eqz v2, :cond_1
-
-    .line 1353
-    const/4 v1, 0x0
-
-    .local v1, "i":I
-    :goto_0
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
-
-    move-result v2
-
-    if-ge v1, v2, :cond_1
-
-    .line 1354
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    invoke-interface {v2, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    invoke-virtual {v2, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->intValue()I
-
-    move-result v2
-
-    if-nez v2, :cond_0
-
-    .line 1355
-    add-int/lit8 v0, v0, 0x1
-
-    .line 1353
-    :cond_0
-    add-int/lit8 v1, v1, 0x1
+    move-result v0
 
     goto :goto_0
 
-    .line 1358
-    .end local v1    # "i":I
-    :cond_1
-    return v0
+    .line 1042
+    .end local v3    # "extensionEF":I
+    :cond_3
+    const/4 v3, 0x0
+
+    goto :goto_1
+
+    .line 1048
+    .restart local v3    # "extensionEF":I
+    :catch_0
+    move-exception v8
+
+    .line 1049
+    .local v8, "e":Ljava/lang/InterruptedException;
+    const-string v0, "UsimPhoneBookManager"
+
+    const-string v1, "Interrupted Exception in updateAdnAndWait"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_2
 .end method
 
-.method public getPbrIndexBy(I)I
-    .locals 5
-    .param p1, "adnIndex"    # I
+.method updateAnrAndWait(Lcom/android/internal/telephony/uicc/AdnRecord;I)I
+    .locals 7
+    .param p1, "adn"    # Lcom/android/internal/telephony/uicc/AdnRecord;
+    .param p2, "adnRecordNumber"    # I
 
     .prologue
-    .line 441
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAdnLengthList:Ljava/util/ArrayList;
+    const/16 v6, 0xc4
 
-    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
+    .line 765
+    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
 
-    move-result v1
+    const/16 v5, 0xc0
 
-    .line 442
-    .local v1, "len":I
-    const/4 v2, 0x0
+    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 443
-    .local v2, "size":I
-    const/4 v0, 0x0
+    move-result-object v5
 
-    .local v0, "i":I
+    invoke-virtual {v4, v5}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v0, v4, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    .line 766
+    .local v0, "adnRecordCount":I
+    add-int/lit8 v4, p2, -0x1
+
+    div-int v2, v4, v0
+
+    .line 768
+    .local v2, "pbrIndex":I
+    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v4, v4, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
+
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/util/Map;
+
+    .line 769
+    .local v1, "fileIds":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
+    if-eqz v1, :cond_0
+
+    invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v4
+
+    invoke-interface {v1, v4}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-nez v4, :cond_1
+
+    .line 770
+    :cond_0
+    const/16 v4, -0x3f6
+
+    .line 780
     :goto_0
-    if-ge v0, v1, :cond_1
+    return v4
 
-    .line 444
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAdnLengthList:Ljava/util/ArrayList;
+    .line 773
+    :cond_1
+    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
 
-    invoke-virtual {v3, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    iget-object v4, v4, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mEfRecords:Ljava/util/HashMap;
+
+    invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/util/ArrayList;
+
+    invoke-virtual {v4, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+
+    .line 775
+    .local v3, "record":Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+    iget v4, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v5, 0xa9
+
+    if-ne v4, v5, :cond_2
+
+    .line 776
+    invoke-virtual {p1}, Lcom/android/internal/telephony/uicc/AdnRecord;->getAnr()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {p0, v4, p2, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->updateType2Ef(Ljava/lang/String;ILcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;)I
+
+    move-result v4
+
+    goto :goto_0
+
+    .line 777
+    :cond_2
+    iget v4, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v5, 0xa8
+
+    if-ne v4, v5, :cond_3
+
+    .line 778
+    invoke-virtual {p1}, Lcom/android/internal/telephony/uicc/AdnRecord;->getAnr()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {p0, v4, p2, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->updateType1Ef(Ljava/lang/String;ILcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;)I
+
+    move-result v4
+
+    goto :goto_0
+
+    .line 780
+    :cond_3
+    const/16 v4, -0x3e9
+
+    goto :goto_0
+.end method
+
+.method updateEmailAndWait(Lcom/android/internal/telephony/uicc/AdnRecord;I)I
+    .locals 9
+    .param p1, "adn"    # Lcom/android/internal/telephony/uicc/AdnRecord;
+    .param p2, "adnRecordNumber"    # I
+
+    .prologue
+    const/4 v5, 0x0
+
+    const/16 v8, 0xca
+
+    const/4 v7, 0x0
+
+    .line 746
+    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    const/16 v6, 0xc0
+
+    invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v6
+
+    invoke-virtual {v4, v6}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v0, v4, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    .line 747
+    .local v0, "adnRecordCount":I
+    add-int/lit8 v4, p2, -0x1
+
+    div-int v2, v4, v0
+
+    .line 749
+    .local v2, "pbrIndex":I
+    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v4, v4, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
+
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v6
+
+    invoke-virtual {v4, v6}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/util/Map;
+
+    .line 750
+    .local v1, "fileIds":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
+    if-eqz v1, :cond_0
+
+    invoke-static {v8}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v4
+
+    invoke-interface {v1, v4}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-nez v4, :cond_1
+
+    .line 751
+    :cond_0
+    const/16 v4, -0x3f6
+
+    .line 761
+    :goto_0
+    return v4
+
+    .line 754
+    :cond_1
+    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v4, v4, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mEfRecords:Ljava/util/HashMap;
+
+    invoke-static {v8}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v6
+
+    invoke-virtual {v4, v6}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/util/ArrayList;
+
+    invoke-virtual {v4, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+
+    .line 756
+    .local v3, "record":Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+    iget v4, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v6, 0xa9
+
+    if-ne v4, v6, :cond_3
+
+    .line 757
+    invoke-virtual {p1}, Lcom/android/internal/telephony/uicc/AdnRecord;->getEmails()[Ljava/lang/String;
+
+    move-result-object v4
+
+    if-nez v4, :cond_2
+
+    move-object v4, v5
+
+    :goto_1
+    invoke-virtual {p0, v4, p2, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->updateType2Ef(Ljava/lang/String;ILcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;)I
+
+    move-result v4
+
+    goto :goto_0
+
+    :cond_2
+    invoke-virtual {p1}, Lcom/android/internal/telephony/uicc/AdnRecord;->getEmails()[Ljava/lang/String;
+
+    move-result-object v4
+
+    aget-object v4, v4, v7
+
+    goto :goto_1
+
+    .line 758
+    :cond_3
+    iget v4, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v6, 0xa8
+
+    if-ne v4, v6, :cond_5
+
+    .line 759
+    invoke-virtual {p1}, Lcom/android/internal/telephony/uicc/AdnRecord;->getEmails()[Ljava/lang/String;
+
+    move-result-object v4
+
+    if-nez v4, :cond_4
+
+    :goto_2
+    invoke-virtual {p0, v5, p2, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->updateType1Ef(Ljava/lang/String;ILcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;)I
+
+    move-result v4
+
+    goto :goto_0
+
+    :cond_4
+    invoke-virtual {p1}, Lcom/android/internal/telephony/uicc/AdnRecord;->getEmails()[Ljava/lang/String;
+
+    move-result-object v4
+
+    aget-object v5, v4, v7
+
+    goto :goto_2
+
+    .line 761
+    :cond_5
+    const/16 v4, -0x3e9
+
+    goto :goto_0
+.end method
+
+.method updateType1Ef(Ljava/lang/String;ILcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;)I
+    .locals 12
+    .param p1, "data"    # Ljava/lang/String;
+    .param p2, "adnRecordNumber"    # I
+    .param p3, "record"    # Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+
+    .prologue
+    const/4 v4, 0x0
+
+    const/16 v11, 0xca
+
+    const/16 v10, 0xc4
+
+    const/4 v5, -0x1
+
+    const/16 v0, -0x3f6
+
+    .line 784
+    iget v1, p3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v2, 0xa8
+
+    if-eq v1, v2, :cond_0
+
+    .line 849
+    :goto_0
+    return v0
+
+    .line 788
+    :cond_0
+    iget v1, p3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
+
+    sparse-switch v1, :sswitch_data_0
+
+    goto :goto_0
+
+    .line 796
+    :sswitch_0
+    const/4 v3, 0x0
+
+    .line 797
+    .local v3, "recordData":[B
+    iget v0, p3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
+
+    sparse-switch v0, :sswitch_data_1
+
+    .line 822
+    :cond_1
+    :goto_1
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    const/16 v1, 0xc0
+
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v7, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    .line 823
+    .local v7, "adnRecordCount":I
+    add-int/lit8 v0, p2, -0x1
+
+    rem-int v6, v0, v7
+
+    .line 824
+    .local v6, "adnIndex":I
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
+
+    iget v1, p3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mEfTag:I
+
+    add-int/lit8 v2, v6, 0x1
+
+    const/4 v5, 0x7
+
+    invoke-virtual {p0, v5}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(I)Landroid/os/Message;
+
+    move-result-object v5
+
+    invoke-virtual/range {v0 .. v5}, Lcom/android/internal/telephony/uicc/IccFileHandler;->updateEFLinearFixed(II[BLjava/lang/String;Landroid/os/Message;)V
+
+    .line 826
+    :try_start_0
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    invoke-virtual {v0}, Ljava/lang/Object;->wait()V
+    :try_end_0
+    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 830
+    :goto_2
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mUpdateResult:Landroid/os/AsyncResult;
+
+    iget-object v0, v0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    if-nez v0, :cond_2
+
+    .line 831
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+
+    add-int/lit8 v1, p2, -0x1
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v9
+
+    check-cast v9, Lcom/android/internal/telephony/uicc/AdnRecord;
+
+    .line 832
+    .local v9, "oldAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
+    iget v0, p3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
+
+    sparse-switch v0, :sswitch_data_2
+
+    .line 849
+    .end local v9    # "oldAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
+    :cond_2
+    :goto_3
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mUpdateResult:Landroid/os/AsyncResult;
+
+    iget-object v0, v0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    invoke-static {v0}, Lcom/android/internal/telephony/IccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
+
+    move-result v0
+
+    goto :goto_0
+
+    .line 799
+    .end local v6    # "adnIndex":I
+    .end local v7    # "adnRecordCount":I
+    :sswitch_1
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_3
+
+    .line 800
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    invoke-static {v10}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordSize:I
+
+    invoke-virtual {p0, p1, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->buildAnrRecord(Ljava/lang/String;I)[B
+
+    move-result-object v3
+
+    .line 801
+    if-nez v3, :cond_1
+
+    .line 802
+    const/16 v0, -0x3f1
+
+    goto :goto_0
+
+    .line 805
+    :cond_3
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    invoke-static {v10}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordSize:I
+
+    new-array v3, v0, [B
+
+    .line 806
+    invoke-static {v3, v5}, Ljava/util/Arrays;->fill([BB)V
+
+    goto :goto_1
+
+    .line 810
+    :sswitch_2
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_4
+
+    .line 811
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    invoke-static {v11}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordSize:I
+
+    invoke-virtual {p0, p1, p2, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->buildEmailRecord(Ljava/lang/String;II)[B
+
+    move-result-object v3
+
+    .line 812
+    if-nez v3, :cond_1
+
+    .line 813
+    const/16 v0, -0x3f4
+
+    goto/16 :goto_0
+
+    .line 816
+    :cond_4
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    invoke-static {v11}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v0, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordSize:I
+
+    new-array v3, v0, [B
+
+    .line 817
+    invoke-static {v3, v5}, Ljava/util/Arrays;->fill([BB)V
+
+    goto/16 :goto_1
+
+    .line 827
+    .restart local v6    # "adnIndex":I
+    .restart local v7    # "adnRecordCount":I
+    :catch_0
+    move-exception v8
+
+    .line 828
+    .local v8, "e":Ljava/lang/InterruptedException;
+    const-string v0, "UsimPhoneBookManager"
+
+    const-string v1, "Interrupted Exception in updateType1Ef"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto/16 :goto_2
+
+    .line 834
+    .end local v8    # "e":Ljava/lang/InterruptedException;
+    .restart local v9    # "oldAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
+    :sswitch_3
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_5
+
+    .line 835
+    const-string v0, ""
+
+    invoke-virtual {v9, v0}, Lcom/android/internal/telephony/uicc/AdnRecord;->setAnr(Ljava/lang/String;)V
+
+    goto/16 :goto_3
+
+    .line 837
+    :cond_5
+    invoke-virtual {v9, p1}, Lcom/android/internal/telephony/uicc/AdnRecord;->setAnr(Ljava/lang/String;)V
+
+    goto/16 :goto_3
+
+    .line 841
+    :sswitch_4
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_6
+
+    .line 842
+    invoke-virtual {v9, v4}, Lcom/android/internal/telephony/uicc/AdnRecord;->setEmails([Ljava/lang/String;)V
+
+    goto/16 :goto_3
+
+    .line 844
+    :cond_6
+    const/4 v0, 0x1
+
+    new-array v0, v0, [Ljava/lang/String;
+
+    const/4 v1, 0x0
+
+    aput-object p1, v0, v1
+
+    invoke-virtual {v9, v0}, Lcom/android/internal/telephony/uicc/AdnRecord;->setEmails([Ljava/lang/String;)V
+
+    goto/16 :goto_3
+
+    .line 788
+    :sswitch_data_0
+    .sparse-switch
+        0xc4 -> :sswitch_0
+        0xca -> :sswitch_0
+    .end sparse-switch
+
+    .line 797
+    :sswitch_data_1
+    .sparse-switch
+        0xc4 -> :sswitch_1
+        0xca -> :sswitch_2
+    .end sparse-switch
+
+    .line 832
+    :sswitch_data_2
+    .sparse-switch
+        0xc4 -> :sswitch_3
+        0xca -> :sswitch_4
+    .end sparse-switch
+.end method
+
+.method updateType2Ef(Ljava/lang/String;ILcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;)I
+    .locals 23
+    .param p1, "data"    # Ljava/lang/String;
+    .param p2, "adnRecordNumber"    # I
+    .param p3, "record"    # Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;
+
+    .prologue
+    .line 853
+    move-object/from16 v0, p3
+
+    iget v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType:I
+
+    const/16 v4, 0xa9
+
+    if-eq v3, v4, :cond_0
+
+    .line 854
+    const/16 v3, -0x3f6
+
+    .line 960
+    :goto_0
+    return v3
+
+    .line 856
+    :cond_0
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+
+    iget-object v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
+
+    move-object/from16 v0, p3
+
+    iget v4, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mPbrIndex:I
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v18
+
+    check-cast v18, Ljava/util/Map;
+
+    .line 857
+    .local v18, "fileIds":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/Integer;Ljava/lang/Integer;>;"
+    if-eqz v18, :cond_1
+
+    const/16 v3, 0xc1
+
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v3
+
+    move-object/from16 v0, v18
+
+    invoke-interface {v0, v3}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_2
+
+    .line 858
+    :cond_1
+    const/16 v3, -0x3f6
+
+    goto :goto_0
+
+    .line 861
+    :cond_2
+    move-object/from16 v0, p3
+
+    iget v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
+
+    sparse-switch v3, :sswitch_data_0
+
+    .line 866
+    const/16 v3, -0x3f6
+
+    goto :goto_0
+
+    .line 869
+    :sswitch_0
+    move-object/from16 v0, p3
+
+    iget v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mPbrIndex:I
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readIapFileAndWait(I)V
+
+    .line 871
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    const/16 v4, 0xc0
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v0, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    move/from16 v16, v0
+
+    .line 872
+    .local v16, "adnRecordCount":I
+    add-int/lit8 v3, p2, -0x1
+
+    rem-int v19, v3, v16
+
+    .line 873
+    .local v19, "iapIndex":I
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFiles:[[[B
+
+    move-object/from16 v0, p3
+
+    iget v4, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mPbrIndex:I
+
+    aget-object v20, v3, v4
+
+    .line 874
+    .local v20, "iaps":[[B
+    aget-object v13, v20, v19
+
+    .line 876
+    .local v13, "iap":[B
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    move-object/from16 v0, p3
+
+    iget v4, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v0, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordCount:I
+
+    move/from16 v22, v0
+
+    .line 877
+    .local v22, "recordCount":I
+    move-object/from16 v0, p3
+
+    iget v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType2Record:I
+
+    aget-byte v9, v13, v3
+
+    .line 878
+    .local v9, "dataIndex":I
+    const/16 v5, 0xff
+
+    .line 879
+    .local v5, "recordNumber":I
+    invoke-static/range {p1 .. p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_8
+
+    .line 880
+    if-lez v9, :cond_7
+
+    move/from16 v0, v22
+
+    if-gt v9, v0, :cond_7
+
+    .line 881
+    move v5, v9
+
+    .line 889
+    :cond_3
+    const/4 v6, 0x0
+
+    .line 890
+    .local v6, "recordData":[B
+    move-object/from16 v0, p3
+
+    iget v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
+
+    sparse-switch v3, :sswitch_data_1
+
+    .line 904
+    :cond_4
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
+
+    move-object/from16 v0, p3
+
+    iget v4, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v4
+
+    move-object/from16 v0, v18
+
+    invoke-interface {v0, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/Integer;
+
+    invoke-virtual {v4}, Ljava/lang/Integer;->intValue()I
+
+    move-result v4
+
+    const/4 v7, 0x0
+
+    const/4 v8, 0x7
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v8}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(I)Landroid/os/Message;
+
+    move-result-object v8
+
+    invoke-virtual/range {v3 .. v8}, Lcom/android/internal/telephony/uicc/IccFileHandler;->updateEFLinearFixed(II[BLjava/lang/String;Landroid/os/Message;)V
+
+    .line 906
+    :try_start_0
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+
+    invoke-virtual {v3}, Ljava/lang/Object;->wait()V
+    :try_end_0
+    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 930
+    :goto_1
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mUpdateResult:Landroid/os/AsyncResult;
+
+    iget-object v3, v3, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    if-nez v3, :cond_6
+
+    .line 931
+    if-eq v5, v9, :cond_5
+
+    .line 932
+    move-object/from16 v0, p3
+
+    iget v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mType2Record:I
+
+    int-to-byte v4, v5
+
+    aput-byte v4, v13, v3
+
+    .line 933
+    move-object/from16 v0, p0
+
+    iget-object v10, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
+
+    const/16 v3, 0xc1
+
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v3
+
+    move-object/from16 v0, v18
+
+    invoke-interface {v0, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v3
 
@@ -4018,4059 +5682,452 @@
 
     invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
 
-    move-result v3
+    move-result v11
 
-    add-int/2addr v2, v3
+    add-int/lit8 v12, v19, 0x1
 
-    .line 445
-    if-ge p1, v2, :cond_0
+    const/4 v14, 0x0
 
-    .line 446
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v4, "getPbrIndexBy  adnIndex: "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    const-string v4, " PbrIndex: "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-direct {p0, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 450
-    .end local v0    # "i":I
-    :goto_1
-    return v0
-
-    .line 443
-    .restart local v0    # "i":I
-    :cond_0
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_0
-
-    .line 450
-    :cond_1
-    const/4 v0, -0x1
-
-    goto :goto_1
-.end method
-
-.method public getSpareAnrCount()I
-    .locals 6
-
-    .prologue
-    .line 1316
-    const/4 v0, 0x0
-
-    .line 1317
-    .local v0, "count":I
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    invoke-interface {v4}, Ljava/util/Map;->size()I
-
-    move-result v3
-
-    .line 1318
-    .local v3, "pbrIndex":I
-    const/4 v2, 0x0
-
-    .local v2, "j":I
-    :goto_0
-    if-ge v2, v3, :cond_2
-
-    .line 1319
-    const/4 v1, 0x0
-
-    .local v1, "i":I
-    :goto_1
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v5
-
-    invoke-interface {v4, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Ljava/util/ArrayList;
-
-    invoke-virtual {v4}, Ljava/util/ArrayList;->size()I
-
-    move-result v4
-
-    if-ge v1, v4, :cond_1
-
-    .line 1320
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v5
-
-    invoke-interface {v4, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Ljava/util/ArrayList;
-
-    invoke-virtual {v4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Ljava/lang/Integer;
-
-    invoke-virtual {v4}, Ljava/lang/Integer;->intValue()I
-
-    move-result v4
-
-    if-nez v4, :cond_0
-
-    .line 1321
-    add-int/lit8 v0, v0, 0x1
-
-    .line 1319
-    :cond_0
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_1
-
-    .line 1318
-    :cond_1
-    add-int/lit8 v2, v2, 0x1
-
-    goto :goto_0
-
-    .line 1324
-    .end local v1    # "i":I
-    :cond_2
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, "getSpareAnrCount count is"
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-direct {p0, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1325
-    return v0
-.end method
-
-.method public getSpareEmailCount()I
-    .locals 6
-
-    .prologue
-    .line 1329
-    const/4 v0, 0x0
-
-    .line 1330
-    .local v0, "count":I
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    invoke-interface {v4}, Ljava/util/Map;->size()I
-
-    move-result v3
-
-    .line 1331
-    .local v3, "pbrIndex":I
-    const/4 v2, 0x0
-
-    .local v2, "j":I
-    :goto_0
-    if-ge v2, v3, :cond_2
-
-    .line 1332
-    const/4 v1, 0x0
-
-    .local v1, "i":I
-    :goto_1
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v5
-
-    invoke-interface {v4, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Ljava/util/ArrayList;
-
-    invoke-virtual {v4}, Ljava/util/ArrayList;->size()I
-
-    move-result v4
-
-    if-ge v1, v4, :cond_1
-
-    .line 1333
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v5
-
-    invoke-interface {v4, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Ljava/util/ArrayList;
-
-    invoke-virtual {v4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Ljava/lang/Integer;
-
-    invoke-virtual {v4}, Ljava/lang/Integer;->intValue()I
-
-    move-result v4
-
-    if-nez v4, :cond_0
-
-    .line 1334
-    add-int/lit8 v0, v0, 0x1
-
-    .line 1332
-    :cond_0
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_1
-
-    .line 1331
-    :cond_1
-    add-int/lit8 v2, v2, 0x1
-
-    goto :goto_0
-
-    .line 1337
-    .end local v1    # "i":I
-    :cond_2
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, "getSpareEmailCount count is: "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-direct {p0, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1338
-    return v0
-.end method
-
-.method public getUsimAdnCount()I
-    .locals 2
-
-    .prologue
-    .line 1342
-    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
-
-    invoke-virtual {v0}, Ljava/util/ArrayList;->isEmpty()Z
-
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    .line 1343
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v1, "getUsimAdnCount count is"
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
-
-    invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
-
-    move-result v1
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-direct {p0, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1344
-    iget-object v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
-
-    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
-
-    move-result v0
-
-    .line 1346
-    :goto_0
-    return v0
-
-    :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
-.end method
-
-.method public handleMessage(Landroid/os/Message;)V
-    .locals 29
-    .param p1, "msg"    # Landroid/os/Message;
-
-    .prologue
-    .line 919
-    const/16 v22, 0x0
-
-    .line 920
-    .local v22, "oldAnr":Ljava/lang/String;
-    const/16 v20, 0x0
-
-    .line 921
-    .local v20, "newAnr":Ljava/lang/String;
-    const/16 v23, 0x0
-
-    .line 922
-    .local v23, "oldEmail":Ljava/lang/String;
-    const/16 v21, 0x0
-
-    .line 923
-    .local v21, "newEmail":Ljava/lang/String;
-    const/16 v27, 0x0
-
-    .line 925
-    .local v27, "response":Landroid/os/Message;
-    move-object/from16 v0, p1
-
-    iget v2, v0, Landroid/os/Message;->what:I
-
-    packed-switch v2, :pswitch_data_0
-
-    .line 1217
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 927
-    :pswitch_0
-    const-string v2, "Loading PBR done"
+    const/4 v3, 0x7
 
     move-object/from16 v0, p0
 
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
+    invoke-virtual {v0, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(I)Landroid/os/Message;
 
-    .line 928
-    move-object/from16 v0, p1
+    move-result-object v15
 
-    iget-object v15, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
+    invoke-virtual/range {v10 .. v15}, Lcom/android/internal/telephony/uicc/IccFileHandler;->updateEFLinearFixed(II[BLjava/lang/String;Landroid/os/Message;)V
 
-    check-cast v15, Landroid/os/AsyncResult;
-
-    .line 929
-    .local v15, "ar":Landroid/os/AsyncResult;
-    iget-object v2, v15, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
-
-    if-nez v2, :cond_1
-
-    .line 930
-    iget-object v2, v15, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
-
-    check-cast v2, Ljava/util/ArrayList;
-
+    .line 935
+    :try_start_1
     move-object/from16 v0, p0
 
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->createPbrFile(Ljava/util/ArrayList;)V
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
 
-    .line 932
-    :cond_1
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v6
-
-    .line 933
-    :try_start_0
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
-
-    .line 934
-    monitor-exit v6
-
-    goto :goto_0
-
-    :catchall_0
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    throw v2
-
-    .line 937
-    .end local v15    # "ar":Landroid/os/AsyncResult;
-    :pswitch_1
-    const-string v2, "Loading USIM ADN records done"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 938
-    move-object/from16 v0, p1
-
-    iget-object v15, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    check-cast v15, Landroid/os/AsyncResult;
-
-    .line 939
-    .restart local v15    # "ar":Landroid/os/AsyncResult;
-    iget-object v2, v15, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
-
-    check-cast v2, Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->intValue()I
-
-    move-result v24
+    invoke-virtual {v3}, Ljava/lang/Object;->wait()V
+    :try_end_1
+    .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_2
 
     .line 940
-    .local v24, "pbrIndex":I
-    iget-object v2, v15, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+    :cond_5
+    :goto_2
+    move-object/from16 v0, p0
 
-    if-nez v2, :cond_2
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mUpdateResult:Landroid/os/AsyncResult;
+
+    iget-object v3, v3, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    if-nez v3, :cond_6
 
     .line 941
     move-object/from16 v0, p0
 
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
 
-    iget-object v2, v15, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
+    add-int/lit8 v4, p2, -0x1
 
-    check-cast v2, Ljava/util/ArrayList;
+    invoke-virtual {v3, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
-    invoke-virtual {v6, v2}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
+    move-result-object v21
+
+    check-cast v21, Lcom/android/internal/telephony/uicc/AdnRecord;
 
     .line 942
-    move-object/from16 v0, p0
+    .local v21, "oldAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
+    move-object/from16 v0, p3
 
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAdnLengthList:Ljava/util/ArrayList;
+    iget v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
 
-    iget-object v2, v15, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
-
-    move-result v2
-
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v2
-
-    move/from16 v0, v24
-
-    invoke-virtual {v6, v0, v2}, Ljava/util/ArrayList;->add(ILjava/lang/Object;)V
-
-    .line 943
-    move-object/from16 v0, p0
-
-    move/from16 v1, v24
-
-    invoke-direct {v0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->putValidRecNums(I)V
-
-    .line 947
-    :goto_1
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v6
-
-    .line 948
-    :try_start_1
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
-
-    .line 949
-    monitor-exit v6
-
-    goto :goto_0
-
-    :catchall_1
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_1
-
-    throw v2
-
-    .line 945
-    :cond_2
-    const-string v2, "can\'t load USIM ADN records"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    goto :goto_1
-
-    .line 952
-    .end local v15    # "ar":Landroid/os/AsyncResult;
-    .end local v24    # "pbrIndex":I
-    :pswitch_2
-    const-string v2, "Loading USIM IAP records done"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 953
-    move-object/from16 v0, p1
-
-    iget-object v15, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    check-cast v15, Landroid/os/AsyncResult;
-
-    .line 954
-    .restart local v15    # "ar":Landroid/os/AsyncResult;
-    iget-object v2, v15, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
-
-    check-cast v2, Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->intValue()I
-
-    move-result v24
-
-    .line 955
-    .restart local v24    # "pbrIndex":I
-    iget-object v2, v15, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
-
-    if-nez v2, :cond_3
-
-    .line 956
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v7
-
-    iget-object v2, v15, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    invoke-interface {v6, v7, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 958
-    :cond_3
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v6
-
-    .line 959
-    :try_start_2
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
+    sparse-switch v3, :sswitch_data_2
 
     .line 960
-    monitor-exit v6
-
-    goto/16 :goto_0
-
-    :catchall_2
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_2
-
-    throw v2
-
-    .line 963
-    .end local v15    # "ar":Landroid/os/AsyncResult;
-    .end local v24    # "pbrIndex":I
-    :pswitch_3
-    const-string v2, "Loading USIM Email records done"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 964
-    move-object/from16 v0, p1
-
-    iget-object v15, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    check-cast v15, Landroid/os/AsyncResult;
-
-    .line 965
-    .restart local v15    # "ar":Landroid/os/AsyncResult;
-    iget-object v2, v15, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
-
-    check-cast v2, Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->intValue()I
-
-    move-result v24
-
-    .line 966
-    .restart local v24    # "pbrIndex":I
-    iget-object v2, v15, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
-
-    if-nez v2, :cond_5
-
-    .line 967
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFileRecord:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v7
-
-    iget-object v2, v15, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    invoke-interface {v6, v7, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 969
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v6, "handlemessage EVENT_EMAIL_LOAD_DONE size is: "
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v6
-
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFileRecord:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v7
-
-    invoke-interface {v2, v7}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
-
-    move-result v2
-
-    invoke-virtual {v6, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 971
-    const/16 v19, 0x0
-
-    .local v19, "m":I
-    :goto_2
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFileRecord:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-interface {v2, v6}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
-
-    move-result v2
-
-    move/from16 v0, v19
-
-    if-ge v0, v2, :cond_4
-
-    .line 972
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlagsRecord:[Ljava/util/ArrayList;
-
-    aget-object v2, v2, v24
-
-    const/4 v6, 0x0
-
-    invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-virtual {v2, v6}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 971
-    add-int/lit8 v19, v19, 0x1
-
-    goto :goto_2
-
-    .line 974
-    :cond_4
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    move-object/from16 v0, p0
-
-    iget-object v7, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlagsRecord:[Ljava/util/ArrayList;
-
-    aget-object v7, v7, v24
-
-    invoke-interface {v2, v6, v7}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 977
-    .end local v19    # "m":I
-    :cond_5
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v6
-
-    .line 978
-    :try_start_3
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
-
-    .line 979
-    monitor-exit v6
-
-    goto/16 :goto_0
-
-    :catchall_3
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_3
-
-    throw v2
-
-    .line 982
-    .end local v15    # "ar":Landroid/os/AsyncResult;
-    .end local v24    # "pbrIndex":I
-    :pswitch_4
-    const-string v2, "Loading USIM Anr records done"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 983
-    move-object/from16 v0, p1
-
-    iget-object v15, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    check-cast v15, Landroid/os/AsyncResult;
-
-    .line 984
-    .restart local v15    # "ar":Landroid/os/AsyncResult;
-    iget-object v2, v15, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
-
-    check-cast v2, Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->intValue()I
-
-    move-result v24
-
-    .line 985
-    .restart local v24    # "pbrIndex":I
-    iget-object v2, v15, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
-
-    if-nez v2, :cond_7
-
-    .line 986
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFileRecord:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v7
-
-    iget-object v2, v15, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    invoke-interface {v6, v7, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 988
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v6, "handlemessage EVENT_ANR_LOAD_DONE size is: "
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v6
-
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFileRecord:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v7
-
-    invoke-interface {v2, v7}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
-
-    move-result v2
-
-    invoke-virtual {v6, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 990
-    const/16 v19, 0x0
-
-    .restart local v19    # "m":I
+    .end local v21    # "oldAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
+    :cond_6
     :goto_3
     move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFileRecord:Ljava/util/Map;
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mUpdateResult:Landroid/os/AsyncResult;
 
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    iget-object v3, v3, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    move-result-object v6
+    invoke-static {v3}, Lcom/android/internal/telephony/IccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
 
-    invoke-interface {v2, v6}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    move-result v3
 
-    move-result-object v2
+    goto/16 :goto_0
 
-    check-cast v2, Ljava/util/ArrayList;
-
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
-
-    move-result v2
-
-    move/from16 v0, v19
-
-    if-ge v0, v2, :cond_6
-
-    .line 991
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlagsRecord:[Ljava/util/ArrayList;
-
-    aget-object v2, v2, v24
-
-    const/4 v6, 0x0
-
-    invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-virtual {v2, v6}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 990
-    add-int/lit8 v19, v19, 0x1
-
-    goto :goto_3
-
-    .line 993
-    :cond_6
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    move-object/from16 v0, p0
-
-    iget-object v7, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlagsRecord:[Ljava/util/ArrayList;
-
-    aget-object v7, v7, v24
-
-    invoke-interface {v2, v6, v7}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 995
-    .end local v19    # "m":I
+    .line 883
+    .end local v6    # "recordData":[B
     :cond_7
     move-object/from16 v0, p0
 
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+    move-object/from16 v1, p3
 
-    monitor-enter v6
+    move/from16 v2, v22
 
-    .line 996
-    :try_start_4
-    move-object/from16 v0, p0
+    invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getRecordNumber(Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;I)I
 
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+    move-result v5
 
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
+    .line 884
+    if-gez v5, :cond_3
 
-    .line 997
-    monitor-exit v6
-
-    goto/16 :goto_0
-
-    :catchall_4
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_4
-    .catchall {:try_start_4 .. :try_end_4} :catchall_4
-
-    throw v2
-
-    .line 1000
-    .end local v15    # "ar":Landroid/os/AsyncResult;
-    .end local v24    # "pbrIndex":I
-    :pswitch_5
-    const-string v2, "Loading EF_EMAIL_RECORD_SIZE_DONE"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1001
-    move-object/from16 v0, p1
-
-    iget-object v2, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    check-cast v2, Landroid/os/AsyncResult;
-
-    move-object v15, v2
-
-    check-cast v15, Landroid/os/AsyncResult;
-
-    .line 1002
-    .restart local v15    # "ar":Landroid/os/AsyncResult;
-    iget-object v2, v15, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
-
-    check-cast v2, Ljava/lang/String;
-
-    move-object/from16 v17, v2
-
-    check-cast v17, Ljava/lang/String;
-
-    .line 1003
-    .local v17, "emails":Ljava/lang/String;
-    move-object/from16 v0, p1
-
-    iget v2, v0, Landroid/os/Message;->arg1:I
-
-    add-int/lit8 v12, v2, -0x1
-
-    .line 1004
-    .local v12, "adnRecIndex":I
-    move-object/from16 v0, p1
-
-    iget v3, v0, Landroid/os/Message;->arg2:I
-
-    .line 1005
-    .local v3, "efid":I
-    const-string v2, ","
-
-    move-object/from16 v0, v17
-
-    invoke-virtual {v0, v2}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
-
-    move-result-object v16
-
-    .line 1006
-    .local v16, "email":[Ljava/lang/String;
-    move-object/from16 v0, v16
-
-    array-length v2, v0
-
-    const/4 v6, 0x1
-
-    if-ne v2, v6, :cond_9
-
-    .line 1007
-    const/4 v2, 0x0
-
-    aget-object v23, v16, v2
-
-    .line 1008
-    const-string v21, ""
-
-    .line 1013
-    :cond_8
-    :goto_4
-    iget-object v2, v15, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
-
-    if-eqz v2, :cond_a
-
-    .line 1014
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p0
-
-    iput-boolean v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 1015
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v6
-
-    .line 1016
-    :try_start_5
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
-
-    .line 1017
-    monitor-exit v6
+    .line 885
+    const/16 v3, -0x3ed
 
     goto/16 :goto_0
 
-    :catchall_5
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_5
-    .catchall {:try_start_5 .. :try_end_5} :catchall_5
-
-    throw v2
-
-    .line 1009
-    :cond_9
-    move-object/from16 v0, v16
-
-    array-length v2, v0
-
-    const/4 v6, 0x1
-
-    if-le v2, v6, :cond_8
-
-    .line 1010
-    const/4 v2, 0x0
-
-    aget-object v23, v16, v2
-
-    .line 1011
-    const/4 v2, 0x1
-
-    aget-object v21, v16, v2
-
-    goto :goto_4
-
-    .line 1020
-    :cond_a
-    iget-object v2, v15, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
-
-    check-cast v2, [I
-
-    move-object/from16 v26, v2
-
-    check-cast v26, [I
-
-    .line 1021
-    .local v26, "recordSize":[I
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
-
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
-
-    move-result v2
-
-    move-object/from16 v0, p0
-
-    move-object/from16 v1, v23
-
-    invoke-direct {v0, v12, v2, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getEmailRecNumber(IILjava/lang/String;)I
-
-    move-result v4
-
-    .line 1022
-    .local v4, "recordNumber":I
-    move-object/from16 v0, v26
-
-    array-length v2, v0
-
-    const/4 v6, 0x3
-
-    if-ne v2, v6, :cond_b
-
-    const/4 v2, 0x2
-
-    aget v2, v26, v2
-
-    if-gt v4, v2, :cond_b
-
-    if-gtz v4, :cond_c
-
-    .line 1023
-    :cond_b
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p0
-
-    iput-boolean v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 1024
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v6
-
-    .line 1025
-    :try_start_6
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
-
-    .line 1026
-    monitor-exit v6
-
-    goto/16 :goto_0
-
-    :catchall_6
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_6
-    .catchall {:try_start_6 .. :try_end_6} :catchall_6
-
-    throw v2
-
-    .line 1029
-    :cond_c
-    const/4 v2, 0x0
-
-    aget v2, v26, v2
-
-    move-object/from16 v0, p0
-
-    move-object/from16 v1, v21
-
-    invoke-direct {v0, v2, v12, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->buildEmailData(IILjava/lang/String;)[B
-
-    move-result-object v5
-
-    .line 1030
-    .local v5, "data":[B
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
-
-    const/4 v6, 0x0
-
-    const/16 v7, 0x8
-
-    move-object/from16 v0, p0
-
-    invoke-virtual {v0, v7, v4, v12, v5}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
-
-    move-result-object v7
-
-    invoke-virtual/range {v2 .. v7}, Lcom/android/internal/telephony/uicc/IccFileHandler;->updateEFLinearFixed(II[BLjava/lang/String;Landroid/os/Message;)V
-
-    .line 1037
-    const/4 v2, 0x1
-
-    move-object/from16 v0, p0
-
-    iput v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPendingExtLoads:I
-
-    goto/16 :goto_0
-
-    .line 1040
-    .end local v3    # "efid":I
-    .end local v4    # "recordNumber":I
-    .end local v5    # "data":[B
-    .end local v12    # "adnRecIndex":I
-    .end local v15    # "ar":Landroid/os/AsyncResult;
-    .end local v16    # "email":[Ljava/lang/String;
-    .end local v17    # "emails":Ljava/lang/String;
-    .end local v26    # "recordSize":[I
-    :pswitch_6
-    const-string v2, "Loading EF_ANR_RECORD_SIZE_DONE"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1041
-    move-object/from16 v0, p1
-
-    iget-object v2, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    check-cast v2, Landroid/os/AsyncResult;
-
-    move-object v15, v2
-
-    check-cast v15, Landroid/os/AsyncResult;
-
-    .line 1042
-    .restart local v15    # "ar":Landroid/os/AsyncResult;
-    iget-object v2, v15, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
-
-    check-cast v2, Ljava/lang/String;
-
-    move-object v14, v2
-
-    check-cast v14, Ljava/lang/String;
-
-    .line 1043
-    .local v14, "anrs":Ljava/lang/String;
-    move-object/from16 v0, p1
-
-    iget v2, v0, Landroid/os/Message;->arg1:I
-
-    add-int/lit8 v12, v2, -0x1
-
-    .line 1044
-    .restart local v12    # "adnRecIndex":I
-    move-object/from16 v0, p1
-
-    iget v3, v0, Landroid/os/Message;->arg2:I
-
-    .line 1045
-    .restart local v3    # "efid":I
-    const-string v2, ","
-
-    invoke-virtual {v14, v2}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
-
-    move-result-object v13
-
-    .line 1046
-    .local v13, "anr":[Ljava/lang/String;
-    array-length v2, v13
-
-    const/4 v6, 0x1
-
-    if-ne v2, v6, :cond_e
-
-    .line 1047
-    const/4 v2, 0x0
-
-    aget-object v22, v13, v2
-
-    .line 1048
-    const-string v20, ""
-
-    .line 1053
-    :cond_d
-    :goto_5
-    iget-object v2, v15, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
-
-    if-eqz v2, :cond_f
-
-    .line 1054
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p0
-
-    iput-boolean v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 1055
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v6
-
-    .line 1056
-    :try_start_7
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
-
-    .line 1057
-    monitor-exit v6
-
-    goto/16 :goto_0
-
-    :catchall_7
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_7
-    .catchall {:try_start_7 .. :try_end_7} :catchall_7
-
-    throw v2
-
-    .line 1049
-    :cond_e
-    array-length v2, v13
-
-    const/4 v6, 0x1
-
-    if-le v2, v6, :cond_d
-
-    .line 1050
-    const/4 v2, 0x0
-
-    aget-object v22, v13, v2
-
-    .line 1051
-    const/4 v2, 0x1
-
-    aget-object v20, v13, v2
-
-    goto :goto_5
-
-    .line 1060
-    :cond_f
-    iget-object v2, v15, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
-
-    check-cast v2, [I
-
-    move-object/from16 v26, v2
-
-    check-cast v26, [I
-
-    .line 1061
-    .restart local v26    # "recordSize":[I
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
-
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
-
-    move-result v2
-
-    move-object/from16 v0, p0
-
-    move-object/from16 v1, v22
-
-    invoke-direct {v0, v12, v2, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getAnrRecNumber(IILjava/lang/String;)I
-
-    move-result v4
-
-    .line 1062
-    .restart local v4    # "recordNumber":I
-    move-object/from16 v0, v26
-
-    array-length v2, v0
-
-    const/4 v6, 0x3
-
-    if-ne v2, v6, :cond_10
-
-    const/4 v2, 0x2
-
-    aget v2, v26, v2
-
-    if-gt v4, v2, :cond_10
-
-    if-gtz v4, :cond_11
-
-    .line 1063
-    :cond_10
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p0
-
-    iput-boolean v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 1064
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v6
-
-    .line 1065
-    :try_start_8
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
-
-    .line 1066
-    monitor-exit v6
-
-    goto/16 :goto_0
-
-    :catchall_8
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_8
-    .catchall {:try_start_8 .. :try_end_8} :catchall_8
-
-    throw v2
-
-    .line 1069
-    :cond_11
-    const/4 v2, 0x0
-
-    aget v2, v26, v2
-
-    move-object/from16 v0, p0
-
-    move-object/from16 v1, v20
-
-    invoke-direct {v0, v2, v12, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->buildAnrData(IILjava/lang/String;)[B
-
-    move-result-object v5
-
-    .line 1070
-    .restart local v5    # "data":[B
-    if-nez v5, :cond_12
-
-    .line 1071
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p0
-
-    iput-boolean v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 1072
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v6
-
-    .line 1073
-    :try_start_9
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
-
-    .line 1074
-    monitor-exit v6
-
-    goto/16 :goto_0
-
-    :catchall_9
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_9
-    .catchall {:try_start_9 .. :try_end_9} :catchall_9
-
-    throw v2
-
-    .line 1078
-    :cond_12
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
-
-    const/4 v6, 0x0
-
-    const/16 v7, 0x9
-
-    move-object/from16 v0, p0
-
-    invoke-virtual {v0, v7, v4, v12, v5}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
-
-    move-result-object v7
-
-    invoke-virtual/range {v2 .. v7}, Lcom/android/internal/telephony/uicc/IccFileHandler;->updateEFLinearFixed(II[BLjava/lang/String;Landroid/os/Message;)V
-
-    .line 1085
-    const/4 v2, 0x1
-
-    move-object/from16 v0, p0
-
-    iput v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPendingExtLoads:I
-
-    goto/16 :goto_0
-
-    .line 1088
-    .end local v3    # "efid":I
-    .end local v4    # "recordNumber":I
-    .end local v5    # "data":[B
-    .end local v12    # "adnRecIndex":I
-    .end local v13    # "anr":[Ljava/lang/String;
-    .end local v14    # "anrs":Ljava/lang/String;
-    .end local v15    # "ar":Landroid/os/AsyncResult;
-    .end local v26    # "recordSize":[I
-    :pswitch_7
-    const-string v2, "Loading UPDATE_EMAIL_RECORD_DONE"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1089
-    move-object/from16 v0, p1
-
-    iget-object v2, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    check-cast v2, Landroid/os/AsyncResult;
-
-    move-object v15, v2
-
-    check-cast v15, Landroid/os/AsyncResult;
-
-    .line 1090
-    .restart local v15    # "ar":Landroid/os/AsyncResult;
-    iget-object v2, v15, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
-
-    if-eqz v2, :cond_13
-
-    .line 1091
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p0
-
-    iput-boolean v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 1093
-    :cond_13
-    iget-object v2, v15, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
-
-    check-cast v2, [B
-
-    move-object v5, v2
-
-    check-cast v5, [B
-
-    .line 1094
-    .restart local v5    # "data":[B
-    move-object/from16 v0, p1
-
-    iget v4, v0, Landroid/os/Message;->arg1:I
-
-    .line 1095
-    .restart local v4    # "recordNumber":I
-    move-object/from16 v0, p1
-
-    iget v12, v0, Landroid/os/Message;->arg2:I
-
-    .line 1096
-    .restart local v12    # "adnRecIndex":I
-    move-object/from16 v0, p0
-
-    invoke-virtual {v0, v12}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getPbrIndexBy(I)I
-
-    move-result v24
-
-    .line 1097
-    .restart local v24    # "pbrIndex":I
-    const-string v2, "EVENT_UPDATE_EMAIL_RECORD_DONE"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1098
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p0
-
-    iput v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPendingExtLoads:I
-
-    .line 1099
-    const/4 v2, 0x1
-
-    move-object/from16 v0, p0
-
-    iput-boolean v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 1100
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFileRecord:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-interface {v2, v6}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    add-int/lit8 v6, v4, -0x1
-
-    invoke-virtual {v2, v6, v5}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
-
-    .line 1102
-    const/16 v18, 0x0
-
-    .local v18, "i":I
-    :goto_6
-    array-length v2, v5
-
-    move/from16 v0, v18
-
-    if-ge v0, v2, :cond_14
-
-    .line 1103
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v6, "EVENT_UPDATE_EMAIL_RECORD_DONE data = "
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    aget-byte v6, v5, v18
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v6, ",i is "
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    move/from16 v0, v18
-
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1104
-    aget-byte v2, v5, v18
-
-    const/4 v6, -0x1
-
-    if-eq v2, v6, :cond_15
-
-    .line 1105
-    const-string v2, "EVENT_UPDATE_EMAIL_RECORD_DONE data !=0xff"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1106
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-interface {v2, v6}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    add-int/lit8 v6, v4, -0x1
-
-    const/4 v7, 0x1
-
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v7
-
-    invoke-virtual {v2, v6, v7}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
-
-    .line 1111
-    :cond_14
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v6
-
-    .line 1112
-    :try_start_a
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
-
-    .line 1113
-    monitor-exit v6
-
-    goto/16 :goto_0
-
-    :catchall_a
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_a
-    .catchall {:try_start_a .. :try_end_a} :catchall_a
-
-    throw v2
-
-    .line 1109
-    :cond_15
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-interface {v2, v6}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    add-int/lit8 v6, v4, -0x1
-
-    const/4 v7, 0x0
-
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v7
-
-    invoke-virtual {v2, v6, v7}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
-
-    .line 1102
-    add-int/lit8 v18, v18, 0x1
-
-    goto :goto_6
-
-    .line 1116
-    .end local v4    # "recordNumber":I
-    .end local v5    # "data":[B
-    .end local v12    # "adnRecIndex":I
-    .end local v15    # "ar":Landroid/os/AsyncResult;
-    .end local v18    # "i":I
-    .end local v24    # "pbrIndex":I
-    :pswitch_8
-    const-string v2, "Loading UPDATE_ANR_RECORD_DONE"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1117
-    move-object/from16 v0, p1
-
-    iget-object v2, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    check-cast v2, Landroid/os/AsyncResult;
-
-    move-object v15, v2
-
-    check-cast v15, Landroid/os/AsyncResult;
-
-    .line 1118
-    .restart local v15    # "ar":Landroid/os/AsyncResult;
-    iget-object v2, v15, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
-
-    check-cast v2, [B
-
-    move-object v5, v2
-
-    check-cast v5, [B
-
-    .line 1119
-    .restart local v5    # "data":[B
-    move-object/from16 v0, p1
-
-    iget v4, v0, Landroid/os/Message;->arg1:I
-
-    .line 1120
-    .restart local v4    # "recordNumber":I
-    move-object/from16 v0, p1
-
-    iget v12, v0, Landroid/os/Message;->arg2:I
-
-    .line 1121
-    .restart local v12    # "adnRecIndex":I
-    move-object/from16 v0, p0
-
-    invoke-virtual {v0, v12}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getPbrIndexBy(I)I
-
-    move-result v24
-
-    .line 1122
-    .restart local v24    # "pbrIndex":I
-    iget-object v2, v15, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
-
-    if-eqz v2, :cond_16
-
-    .line 1123
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p0
-
-    iput-boolean v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 1125
-    :cond_16
-    const-string v2, "EVENT_UPDATE_ANR_RECORD_DONE"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1126
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p0
-
-    iput v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPendingExtLoads:I
-
-    .line 1127
-    const/4 v2, 0x1
-
-    move-object/from16 v0, p0
-
-    iput-boolean v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 1128
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFileRecord:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-interface {v2, v6}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    add-int/lit8 v6, v4, -0x1
-
-    invoke-virtual {v2, v6, v5}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
-
-    .line 1130
-    const/16 v18, 0x0
-
-    .restart local v18    # "i":I
-    :goto_7
-    array-length v2, v5
-
-    move/from16 v0, v18
-
-    if-ge v0, v2, :cond_17
-
-    .line 1131
-    aget-byte v2, v5, v18
-
-    const/4 v6, -0x1
-
-    if-eq v2, v6, :cond_18
-
-    .line 1132
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-interface {v2, v6}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    add-int/lit8 v6, v4, -0x1
-
-    const/4 v7, 0x1
-
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v7
-
-    invoke-virtual {v2, v6, v7}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
-
-    .line 1137
-    :cond_17
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v6
-
-    .line 1138
-    :try_start_b
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
-
-    .line 1139
-    monitor-exit v6
-
-    goto/16 :goto_0
-
-    :catchall_b
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_b
-    .catchall {:try_start_b .. :try_end_b} :catchall_b
-
-    throw v2
-
-    .line 1135
-    :cond_18
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-interface {v2, v6}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    add-int/lit8 v6, v4, -0x1
-
-    const/4 v7, 0x0
-
-    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v7
-
-    invoke-virtual {v2, v6, v7}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
-
-    .line 1130
-    add-int/lit8 v18, v18, 0x1
-
-    goto :goto_7
-
-    .line 1142
-    .end local v4    # "recordNumber":I
-    .end local v5    # "data":[B
-    .end local v12    # "adnRecIndex":I
-    .end local v15    # "ar":Landroid/os/AsyncResult;
-    .end local v18    # "i":I
-    .end local v24    # "pbrIndex":I
-    :pswitch_9
-    const-string v2, "EVENT_EF_IAP_RECORD_SIZE_DONE"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1143
-    move-object/from16 v0, p1
-
-    iget-object v2, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    check-cast v2, Landroid/os/AsyncResult;
-
-    move-object v15, v2
-
-    check-cast v15, Landroid/os/AsyncResult;
-
-    .line 1144
-    .restart local v15    # "ar":Landroid/os/AsyncResult;
-    move-object/from16 v0, p1
-
-    iget v4, v0, Landroid/os/Message;->arg2:I
-
-    .line 1145
-    .restart local v4    # "recordNumber":I
-    move-object/from16 v0, p1
-
-    iget v2, v0, Landroid/os/Message;->arg1:I
-
-    add-int/lit8 v12, v2, -0x1
-
-    .line 1146
-    .restart local v12    # "adnRecIndex":I
-    move-object/from16 v0, p0
-
-    invoke-virtual {v0, v12}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getPbrIndexBy(I)I
-
-    move-result v24
-
-    .line 1147
-    .restart local v24    # "pbrIndex":I
-    const/16 v2, 0xc1
-
-    move-object/from16 v0, p0
-
-    move/from16 v1, v24
-
-    invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getEfidByTag(II)I
-
-    move-result v3
-
-    .line 1148
-    .restart local v3    # "efid":I
-    iget-object v2, v15, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
-
-    check-cast v2, Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->intValue()I
-
-    move-result v28
-
-    .line 1149
-    .local v28, "tag":I
-    iget-object v2, v15, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
-
-    if-eqz v2, :cond_19
-
-    .line 1150
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p0
-
-    iput-boolean v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 1151
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v6
-
-    .line 1152
-    :try_start_c
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
-
-    .line 1153
-    monitor-exit v6
-
-    goto/16 :goto_0
-
-    :catchall_c
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_c
-    .catchall {:try_start_c .. :try_end_c} :catchall_c
-
-    throw v2
-
-    .line 1156
-    :cond_19
-    iget-object v2, v15, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
-
-    check-cast v2, [I
-
-    move-object/from16 v26, v2
-
-    check-cast v26, [I
-
-    .line 1157
-    .restart local v26    # "recordSize":[I
-    const/4 v5, 0x0
-
-    .line 1159
-    .restart local v5    # "data":[B
-    move-object/from16 v0, p0
-
-    move/from16 v1, v24
-
-    invoke-direct {v0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
-
-    move-result v2
-
-    sub-int v25, v12, v2
-
-    .line 1160
-    .local v25, "recordIndex":I
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v6, "handleIAP_RECORD_SIZE_DONE adnRecIndex is: "
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v12}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v6, ", recordNumber is: "
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v6, ", recordIndex is: "
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    move/from16 v0, v25
-
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1163
-    move-object/from16 v0, v26
-
-    array-length v2, v0
-
-    const/4 v6, 0x3
-
-    if-ne v2, v6, :cond_1a
-
-    add-int/lit8 v2, v25, 0x1
-
-    const/4 v6, 0x2
-
-    aget v6, v26, v6
-
-    if-gt v2, v6, :cond_1a
-
-    if-nez v4, :cond_1b
-
-    .line 1165
-    :cond_1a
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p0
-
-    iput-boolean v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 1166
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v6
-
-    .line 1167
-    :try_start_d
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
-
-    .line 1168
-    monitor-exit v6
-
-    goto/16 :goto_0
-
-    :catchall_d
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_d
-    .catchall {:try_start_d .. :try_end_d} :catchall_d
-
-    throw v2
-
-    .line 1171
-    :cond_1b
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
-
-    move-object/from16 v0, p0
-
-    move/from16 v1, v24
-
-    invoke-direct {v0, v2, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    .line 1172
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-interface {v2, v6}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    move/from16 v0, v25
-
-    invoke-virtual {v2, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v5
-
-    .end local v5    # "data":[B
-    check-cast v5, [B
-
-    .line 1173
-    .restart local v5    # "data":[B
-    array-length v2, v5
-
-    new-array v9, v2, [B
-
-    .line 1174
-    .local v9, "record_data":[B
-    const/4 v2, 0x0
-
-    const/4 v6, 0x0
-
-    array-length v7, v9
-
-    invoke-static {v5, v2, v9, v6, v7}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 1175
-    sparse-switch v28, :sswitch_data_0
-
-    .line 1183
-    :goto_8
-    const/4 v2, 0x1
-
-    move-object/from16 v0, p0
-
-    iput v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPendingExtLoads:I
-
-    .line 1184
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v6, " IAP  efid= "
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v6, ", update IAP index= "
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    move/from16 v0, v25
-
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v6, " with value= "
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-static {v9}, Lcom/android/internal/telephony/uicc/IccUtils;->bytesToHexString([B)Ljava/lang/String;
-
-    move-result-object v6
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1186
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
-
-    add-int/lit8 v8, v25, 0x1
-
-    const/4 v10, 0x0
-
-    const/16 v2, 0xb
-
-    move-object/from16 v0, p0
-
-    invoke-virtual {v0, v2, v12, v4, v9}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
-
-    move-result-object v11
-
-    move v7, v3
-
-    invoke-virtual/range {v6 .. v11}, Lcom/android/internal/telephony/uicc/IccFileHandler;->updateEFLinearFixed(II[BLjava/lang/String;Landroid/os/Message;)V
-
-    goto/16 :goto_0
-
-    .line 1177
-    :sswitch_0
-    move-object/from16 v0, p0
-
-    iget v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailTagNumberInIap:I
-
-    int-to-byte v6, v4
-
-    aput-byte v6, v9, v2
-
-    goto :goto_8
-
-    .line 1180
+    .line 892
+    .restart local v6    # "recordData":[B
     :sswitch_1
     move-object/from16 v0, p0
 
-    iget v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrTagNumberInIap:I
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
 
-    int-to-byte v6, v4
+    const/16 v4, 0xc4
 
-    aput-byte v6, v9, v2
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    goto :goto_8
+    move-result-object v4
 
-    .line 1196
-    .end local v3    # "efid":I
-    .end local v4    # "recordNumber":I
-    .end local v5    # "data":[B
-    .end local v9    # "record_data":[B
-    .end local v12    # "adnRecIndex":I
-    .end local v15    # "ar":Landroid/os/AsyncResult;
-    .end local v24    # "pbrIndex":I
-    .end local v25    # "recordIndex":I
-    .end local v26    # "recordSize":[I
-    .end local v28    # "tag":I
-    :pswitch_a
-    const-string v2, "EVENT_UPDATE_IAP_RECORD_DONE"
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1197
-    move-object/from16 v0, p1
-
-    iget-object v2, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    check-cast v2, Landroid/os/AsyncResult;
-
-    move-object v15, v2
-
-    check-cast v15, Landroid/os/AsyncResult;
-
-    .line 1198
-    .restart local v15    # "ar":Landroid/os/AsyncResult;
-    iget-object v2, v15, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
-
-    if-eqz v2, :cond_1c
-
-    .line 1199
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p0
-
-    iput-boolean v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 1201
-    :cond_1c
-    iget-object v2, v15, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
-
-    check-cast v2, [B
-
-    move-object v5, v2
-
-    check-cast v5, [B
-
-    .line 1202
-    .restart local v5    # "data":[B
-    move-object/from16 v0, p1
-
-    iget v12, v0, Landroid/os/Message;->arg1:I
-
-    .line 1203
-    .restart local v12    # "adnRecIndex":I
-    move-object/from16 v0, p0
-
-    invoke-virtual {v0, v12}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getPbrIndexBy(I)I
-
-    move-result v24
-
-    .line 1204
-    .restart local v24    # "pbrIndex":I
-    move-object/from16 v0, p0
-
-    move/from16 v1, v24
-
-    invoke-direct {v0, v1}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
-
-    move-result v2
-
-    sub-int v25, v12, v2
-
-    .line 1205
-    .restart local v25    # "recordIndex":I
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v6, "handleMessage EVENT_UPDATE_IAP_RECORD_DONE recordIndex is: "
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    move/from16 v0, v25
-
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v6, ", adnRecIndex is: "
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v12}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1207
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p0
-
-    iput v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPendingExtLoads:I
-
-    .line 1208
-    const/4 v2, 0x1
-
-    move-object/from16 v0, p0
-
-    iput-boolean v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 1210
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
-
-    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    invoke-interface {v2, v6}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/util/ArrayList;
-
-    move/from16 v0, v25
-
-    invoke-virtual {v2, v0, v5}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
-
-    .line 1211
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v6, "the iap email recordNumber is :"
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    move-object/from16 v0, p0
-
-    iget v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailTagNumberInIap:I
-
-    aget-byte v6, v5, v6
-
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 1212
-    move-object/from16 v0, p0
-
-    iget-object v6, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v6
-
-    .line 1213
-    :try_start_e
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
-
-    .line 1214
-    monitor-exit v6
-
-    goto/16 :goto_0
-
-    :catchall_e
-    move-exception v2
-
-    monitor-exit v6
-    :try_end_e
-    .catchall {:try_start_e .. :try_end_e} :catchall_e
-
-    throw v2
-
-    .line 925
-    :pswitch_data_0
-    .packed-switch 0x1
-        :pswitch_0
-        :pswitch_1
-        :pswitch_2
-        :pswitch_3
-        :pswitch_4
-        :pswitch_5
-        :pswitch_6
-        :pswitch_7
-        :pswitch_8
-        :pswitch_9
-        :pswitch_a
-    .end packed-switch
-
-    .line 1175
-    :sswitch_data_0
-    .sparse-switch
-        0xc4 -> :sswitch_1
-        0xca -> :sswitch_0
-    .end sparse-switch
-.end method
-
-.method public invalidateCache()V
-    .locals 1
-
-    .prologue
-    .line 205
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRefreshCache:Z
-
-    .line 206
-    return-void
-.end method
-
-.method public loadEfFilesFromUsim()Ljava/util/ArrayList;
-    .locals 5
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()",
-            "Ljava/util/ArrayList",
-            "<",
-            "Lcom/android/internal/telephony/uicc/AdnRecord;",
-            ">;"
-        }
-    .end annotation
-
-    .prologue
-    const/4 v2, 0x0
-
-    .line 154
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v3
-
-    .line 155
-    :try_start_0
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
-
-    invoke-virtual {v4}, Ljava/util/ArrayList;->isEmpty()Z
-
-    move-result v4
-
-    if-nez v4, :cond_1
-
-    .line 156
-    iget-boolean v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRefreshCache:Z
-
-    if-eqz v2, :cond_0
-
-    .line 157
-    const/4 v2, 0x0
-
-    iput-boolean v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRefreshCache:Z
-
-    .line 158
-    invoke-direct {p0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->refreshCache()V
-
-    .line 160
-    :cond_0
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
-
-    monitor-exit v3
-
-    .line 191
-    :goto_0
-    return-object v2
-
-    .line 163
-    :cond_1
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIsPbrPresent:Ljava/lang/Boolean;
-
-    invoke-virtual {v4}, Ljava/lang/Boolean;->booleanValue()Z
-
-    move-result v4
-
-    if-nez v4, :cond_2
-
-    monitor-exit v3
-
-    goto :goto_0
-
-    .line 190
-    :catchall_0
-    move-exception v2
-
-    monitor-exit v3
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    throw v2
-
-    .line 167
-    :cond_2
-    :try_start_1
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
-
-    if-nez v4, :cond_3
-
-    .line 168
-    invoke-direct {p0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readPbrFileAndWait()V
-
-    .line 171
-    :cond_3
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
-
-    if-nez v4, :cond_4
-
-    monitor-exit v3
-
-    goto :goto_0
-
-    .line 173
-    :cond_4
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
-
-    iget-object v2, v2, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
-
-    invoke-virtual {v2}, Ljava/util/HashMap;->size()I
-
-    move-result v1
-
-    .line 175
-    .local v1, "numRecs":I
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlagsRecord:[Ljava/util/ArrayList;
-
-    if-nez v2, :cond_5
-
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlagsRecord:[Ljava/util/ArrayList;
-
-    if-nez v2, :cond_5
-
-    .line 176
-    new-array v2, v1, [Ljava/util/ArrayList;
-
-    iput-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlagsRecord:[Ljava/util/ArrayList;
-
-    .line 177
-    new-array v2, v1, [Ljava/util/ArrayList;
-
-    iput-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlagsRecord:[Ljava/util/ArrayList;
-
-    .line 178
-    const/4 v0, 0x0
-
-    .local v0, "i":I
-    :goto_1
-    if-ge v0, v1, :cond_5
-
-    .line 179
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlagsRecord:[Ljava/util/ArrayList;
-
-    new-instance v4, Ljava/util/ArrayList;
-
-    invoke-direct {v4}, Ljava/util/ArrayList;-><init>()V
-
-    aput-object v4, v2, v0
-
-    .line 180
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlagsRecord:[Ljava/util/ArrayList;
-
-    new-instance v4, Ljava/util/ArrayList;
-
-    invoke-direct {v4}, Ljava/util/ArrayList;-><init>()V
-
-    aput-object v4, v2, v0
-
-    .line 178
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_1
-
-    .line 184
-    .end local v0    # "i":I
-    :cond_5
-    const/4 v0, 0x0
-
-    .restart local v0    # "i":I
-    :goto_2
-    if-ge v0, v1, :cond_6
-
-    .line 185
-    invoke-direct {p0, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readAdnFileAndWait(I)V
-
-    .line 186
-    invoke-direct {p0, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readEmailFileAndWait(I)V
-
-    .line 187
-    invoke-direct {p0, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readAnrFileAndWait(I)V
-
-    .line 184
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_2
-
-    .line 190
-    :cond_6
-    monitor-exit v3
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    .line 191
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
-
-    goto :goto_0
-.end method
-
-.method parseType1AnrFile(II)V
-    .locals 10
-    .param p1, "numRecs"    # I
-    .param p2, "pbrIndex"    # I
-
-    .prologue
-    .line 647
-    new-instance v8, Ljava/util/HashMap;
-
-    invoke-direct {v8}, Ljava/util/HashMap;-><init>()V
-
-    iput-object v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrsForAdnRec:Ljava/util/Map;
-
-    .line 648
-    const/4 v3, 0x0
-
-    .line 650
-    .local v3, "anrRec":[B
-    iget-object v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFileRecord:Ljava/util/Map;
-
-    invoke-direct {p0, v8, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
-
-    move-result v8
-
-    if-nez v8, :cond_1
-
-    .line 681
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 652
-    :cond_1
-    const/4 v6, 0x0
-
-    .local v6, "i":I
-    :goto_1
-    if-ge v6, p1, :cond_0
-
-    .line 654
-    :try_start_0
-    iget-object v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFileRecord:Ljava/util/Map;
-
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v9
-
-    invoke-interface {v8, v9}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v8
-
-    check-cast v8, Ljava/util/ArrayList;
-
-    invoke-virtual {v8, v6}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v8
-
-    move-object v0, v8
-
-    check-cast v0, [B
-
-    move-object v3, v0
-    :try_end_0
-    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 659
-    invoke-direct {p0, v6, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readAnrRecord(II)Ljava/lang/String;
-
-    move-result-object v2
-
-    .line 660
-    .local v2, "anr":Ljava/lang/String;
-    if-eqz v2, :cond_2
-
-    const-string v8, ""
-
-    invoke-virtual {v2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v8
-
-    if-eqz v8, :cond_3
-
-    .line 652
-    :cond_2
-    :goto_2
-    add-int/lit8 v6, v6, 0x1
-
-    goto :goto_1
-
-    .line 655
-    .end local v2    # "anr":Ljava/lang/String;
-    :catch_0
-    move-exception v5
-
-    .line 656
-    .local v5, "e":Ljava/lang/IndexOutOfBoundsException;
-    const-string v8, "UsimPhoneBookManager"
-
-    const-string v9, "Error: Improper ICC card: No anr record for ADN, continuing"
-
-    invoke-static {v8, v9}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_0
-
-    .line 663
-    .end local v5    # "e":Ljava/lang/IndexOutOfBoundsException;
-    .restart local v2    # "anr":Ljava/lang/String;
-    :cond_3
-    array-length v8, v3
-
-    add-int/lit8 v8, v8, -0x1
-
-    aget-byte v4, v3, v8
-
-    .line 664
-    .local v4, "anrRecNum":I
-    iget-boolean v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrPresentInIap:Z
-
-    if-eqz v8, :cond_5
-
-    .line 665
-    const/4 v8, -0x1
-
-    if-eq v4, v8, :cond_2
-
-    .line 668
-    add-int/lit8 v8, v4, -0x1
-
-    invoke-direct {p0, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
-
-    move-result v9
-
-    add-int v1, v8, v9
-
-    .line 672
-    .local v1, "adnRecIndex":I
-    :goto_3
-    iget-object v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrsForAdnRec:Ljava/util/Map;
-
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v9
-
-    invoke-interface {v8, v9}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v7
-
-    check-cast v7, Ljava/util/ArrayList;
-
-    .line 673
-    .local v7, "val":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    if-nez v7, :cond_4
-
-    .line 674
-    new-instance v7, Ljava/util/ArrayList;
-
-    .end local v7    # "val":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    invoke-direct {v7}, Ljava/util/ArrayList;-><init>()V
-
-    .line 676
-    .restart local v7    # "val":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    :cond_4
-    invoke-virtual {v7, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 677
-    iget-object v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrsForAdnRec:Ljava/util/Map;
-
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v9
-
-    invoke-interface {v8, v9, v7}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 679
-    iget-object v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v9
-
-    invoke-interface {v8, v9}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v8
-
-    check-cast v8, Ljava/util/ArrayList;
-
-    const/4 v9, 0x1
-
-    invoke-static {v9}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v9
-
-    invoke-virtual {v8, v6, v9}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
-
-    goto :goto_2
-
-    .line 670
-    .end local v1    # "adnRecIndex":I
-    .end local v7    # "val":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    :cond_5
-    invoke-direct {p0, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
-
-    move-result v8
-
-    add-int v1, v6, v8
-
-    .restart local v1    # "adnRecIndex":I
-    goto :goto_3
-.end method
-
-.method parseType1EmailFile(II)V
-    .locals 10
-    .param p1, "numRecs"    # I
-    .param p2, "pbrIndex"    # I
-
-    .prologue
-    .line 604
-    new-instance v8, Ljava/util/HashMap;
-
-    invoke-direct {v8}, Ljava/util/HashMap;-><init>()V
-
-    iput-object v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailsForAdnRec:Ljava/util/Map;
-
-    .line 605
-    const/4 v4, 0x0
-
-    .line 607
-    .local v4, "emailRec":[B
-    iget-object v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFileRecord:Ljava/util/Map;
-
-    invoke-direct {p0, v8, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->hasRecordIn(Ljava/util/Map;I)Z
-
-    move-result v8
-
-    if-nez v8, :cond_1
-
-    .line 644
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 609
-    :cond_1
-    const/4 v6, 0x0
-
-    .local v6, "i":I
-    :goto_1
-    if-ge v6, p1, :cond_0
-
-    .line 611
-    :try_start_0
-    new-instance v8, Ljava/lang/StringBuilder;
-
-    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v9, "parseType1EmailFile: pbrIndex is: "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    const-string v9, ", i is: "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v8
-
-    invoke-direct {p0, v8}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 612
-    iget-object v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFileRecord:Ljava/util/Map;
-
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v9
-
-    invoke-interface {v8, v9}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v8
-
-    check-cast v8, Ljava/util/ArrayList;
-
-    invoke-virtual {v8, v6}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v8
-
-    move-object v0, v8
-
-    check-cast v0, [B
-
-    move-object v4, v0
-    :try_end_0
-    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 617
-    invoke-direct {p0, v6, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->readEmailRecord(II)Ljava/lang/String;
+    invoke-virtual {v3, v4}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v3
 
-    .line 619
-    .local v3, "email":Ljava/lang/String;
-    if-eqz v3, :cond_2
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
 
-    const-string v8, ""
+    iget v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordSize:I
 
-    invoke-virtual {v3, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    move-object/from16 v0, p0
 
-    move-result v8
+    move-object/from16 v1, p1
 
-    if-eqz v8, :cond_3
+    invoke-virtual {v0, v1, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->buildAnrRecord(Ljava/lang/String;I)[B
 
-    .line 609
-    :cond_2
-    :goto_2
-    add-int/lit8 v6, v6, 0x1
+    move-result-object v6
 
-    goto :goto_1
+    .line 893
+    if-nez v6, :cond_4
 
-    .line 613
-    .end local v3    # "email":Ljava/lang/String;
+    .line 894
+    const/16 v3, -0x3f1
+
+    goto/16 :goto_0
+
+    .line 898
+    :sswitch_2
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
+
+    const/16 v4, 0xca
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
+
+    iget v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordSize:I
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p1
+
+    move/from16 v2, p2
+
+    invoke-virtual {v0, v1, v2, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->buildEmailRecord(Ljava/lang/String;II)[B
+
+    move-result-object v6
+
+    .line 899
+    if-nez v6, :cond_4
+
+    .line 900
+    const/16 v3, -0x3f4
+
+    goto/16 :goto_0
+
+    .line 907
     :catch_0
-    move-exception v2
+    move-exception v17
 
-    .line 614
-    .local v2, "e":Ljava/lang/IndexOutOfBoundsException;
-    const-string v8, "UsimPhoneBookManager"
+    .line 908
+    .local v17, "e":Ljava/lang/InterruptedException;
+    const-string v3, "UsimPhoneBookManager"
 
-    const-string v9, "Error: Improper ICC card: No email record for ADN, continuing"
+    const-string v4, "Interrupted Exception in updateType2Anr"
 
-    invoke-static {v8, v9}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_0
+    goto/16 :goto_1
 
-    .line 623
-    .end local v2    # "e":Ljava/lang/IndexOutOfBoundsException;
-    .restart local v3    # "email":Ljava/lang/String;
-    :cond_3
-    array-length v8, v4
+    .line 910
+    .end local v6    # "recordData":[B
+    .end local v17    # "e":Ljava/lang/InterruptedException;
+    :cond_8
+    if-lez v9, :cond_9
 
-    add-int/lit8 v8, v8, -0x1
+    move/from16 v0, v22
 
-    aget-byte v5, v4, v8
+    if-gt v9, v0, :cond_9
 
-    .line 625
-    .local v5, "emailRecNum":I
-    iget-boolean v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailPresentInIap:Z
+    .line 911
+    const/4 v6, 0x0
 
-    if-eqz v8, :cond_5
+    .line 912
+    .restart local v6    # "recordData":[B
+    move-object/from16 v0, p3
 
-    .line 626
-    const/4 v8, -0x1
+    iget v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
 
-    if-eq v5, v8, :cond_2
+    sparse-switch v3, :sswitch_data_3
 
-    .line 629
-    add-int/lit8 v8, v5, -0x1
+    .line 920
+    :goto_4
+    move-object/from16 v0, p0
 
-    invoke-direct {p0, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
+    iget-object v7, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
 
-    move-result v9
+    move-object/from16 v0, p3
 
-    add-int v1, v8, v9
+    iget v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$EfRecord;->mTag:I
 
-    .line 634
-    .local v1, "adnRecIndex":I
-    :goto_3
-    iget-object v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailsForAdnRec:Ljava/util/Map;
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    move-result-object v3
 
-    move-result-object v9
+    move-object/from16 v0, v18
 
-    invoke-interface {v8, v9}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v0, v3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v7
+    move-result-object v3
 
-    check-cast v7, Ljava/util/ArrayList;
+    check-cast v3, Ljava/lang/Integer;
 
-    .line 635
-    .local v7, "val":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    if-nez v7, :cond_4
-
-    .line 636
-    new-instance v7, Ljava/util/ArrayList;
-
-    .end local v7    # "val":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    invoke-direct {v7}, Ljava/util/ArrayList;-><init>()V
-
-    .line 638
-    .restart local v7    # "val":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    :cond_4
-    invoke-virtual {v7, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 640
-    iget-object v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailsForAdnRec:Ljava/util/Map;
-
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v9
-
-    invoke-interface {v8, v9, v7}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 642
-    iget-object v8, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v9
-
-    invoke-interface {v8, v9}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v8
-
-    check-cast v8, Ljava/util/ArrayList;
-
-    const/4 v9, 0x1
-
-    invoke-static {v9}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v9
-
-    invoke-virtual {v8, v6, v9}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
-
-    goto :goto_2
-
-    .line 631
-    .end local v1    # "adnRecIndex":I
-    .end local v7    # "val":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    :cond_5
-    invoke-direct {p0, p2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getInitIndexBy(I)I
+    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
 
     move-result v8
 
-    add-int v1, v6, v8
+    const/4 v11, 0x0
 
-    .restart local v1    # "adnRecIndex":I
-    goto :goto_3
-.end method
+    const/4 v3, 0x7
 
-.method public reset()V
-    .locals 2
+    move-object/from16 v0, p0
 
-    .prologue
-    .line 133
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlagsRecord:[Ljava/util/ArrayList;
+    invoke-virtual {v0, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(I)Landroid/os/Message;
 
-    if-eqz v1, :cond_0
+    move-result-object v12
 
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlagsRecord:[Ljava/util/ArrayList;
+    move-object v10, v6
 
-    if-eqz v1, :cond_0
+    invoke-virtual/range {v7 .. v12}, Lcom/android/internal/telephony/uicc/IccFileHandler;->updateEFLinearFixed(II[BLjava/lang/String;Landroid/os/Message;)V
 
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+    .line 922
+    :try_start_2
+    move-object/from16 v0, p0
 
-    if-eqz v1, :cond_0
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
 
-    .line 134
-    const/4 v0, 0x0
+    invoke-virtual {v3}, Ljava/lang/Object;->wait()V
+    :try_end_2
+    .catch Ljava/lang/InterruptedException; {:try_start_2 .. :try_end_2} :catch_1
 
-    .local v0, "i":I
-    :goto_0
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
+    goto/16 :goto_1
 
-    iget-object v1, v1, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;->mFileIds:Ljava/util/HashMap;
+    .line 923
+    :catch_1
+    move-exception v17
 
-    invoke-virtual {v1}, Ljava/util/HashMap;->size()I
+    .line 924
+    .restart local v17    # "e":Ljava/lang/InterruptedException;
+    const-string v3, "UsimPhoneBookManager"
 
-    move-result v1
+    const-string v4, "Interrupted Exception in updateType2Anr"
 
-    if-ge v0, v1, :cond_0
+    invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 135
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlagsRecord:[Ljava/util/ArrayList;
+    goto/16 :goto_1
 
-    aget-object v1, v1, v0
+    .line 914
+    .end local v17    # "e":Ljava/lang/InterruptedException;
+    :sswitch_3
+    const/4 v4, 0x0
 
-    invoke-virtual {v1}, Ljava/util/ArrayList;->clear()V
+    move-object/from16 v0, p0
 
-    .line 136
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlagsRecord:[Ljava/util/ArrayList;
-
-    aget-object v1, v1, v0
-
-    invoke-virtual {v1}, Ljava/util/ArrayList;->clear()V
-
-    .line 134
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_0
-
-    .line 139
-    .end local v0    # "i":I
-    :cond_0
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFlags:Ljava/util/Map;
-
-    invoke-interface {v1}, Ljava/util/Map;->clear()V
-
-    .line 140
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFlags:Ljava/util/Map;
-
-    invoke-interface {v1}, Ljava/util/Map;->clear()V
-
-    .line 142
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPhoneBookRecords:Ljava/util/ArrayList;
-
-    invoke-virtual {v1}, Ljava/util/ArrayList;->clear()V
-
-    .line 143
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIapFileRecord:Ljava/util/Map;
-
-    invoke-interface {v1}, Ljava/util/Map;->clear()V
-
-    .line 144
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailFileRecord:Ljava/util/Map;
-
-    invoke-interface {v1}, Ljava/util/Map;->clear()V
-
-    .line 145
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrFileRecord:Ljava/util/Map;
-
-    invoke-interface {v1}, Ljava/util/Map;->clear()V
-
-    .line 146
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordNums:Ljava/util/Map;
-
-    invoke-interface {v1}, Ljava/util/Map;->clear()V
-
-    .line 147
-    const/4 v1, 0x0
-
-    iput-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mPbrFile:Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$PbrFile;
-
-    .line 148
-    iget-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAdnLengthList:Ljava/util/ArrayList;
-
-    invoke-virtual {v1}, Ljava/util/ArrayList;->clear()V
-
-    .line 149
-    const/4 v1, 0x1
-
-    invoke-static {v1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-
-    move-result-object v1
-
-    iput-object v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mIsPbrPresent:Ljava/lang/Boolean;
-
-    .line 150
-    const/4 v1, 0x0
-
-    iput-boolean v1, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRefreshCache:Z
-
-    .line 151
-    return-void
-.end method
-
-.method public updateAnrFile(ILjava/lang/String;Ljava/lang/String;)Z
-    .locals 8
-    .param p1, "adnRecNum"    # I
-    .param p2, "oldAnr"    # Ljava/lang/String;
-    .param p3, "newAnr"    # Ljava/lang/String;
-
-    .prologue
-    const/4 v6, 0x1
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
 
     const/16 v7, 0xc4
 
-    .line 356
-    add-int/lit8 v4, p1, -0x1
+    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    invoke-virtual {p0, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getPbrIndexBy(I)I
+    move-result-object v7
 
-    move-result v3
+    invoke-virtual {v3, v7}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 357
-    .local v3, "pbrIndex":I
-    invoke-direct {p0, v3, v7}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getEfidByTag(II)I
+    move-result-object v3
 
-    move-result v2
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
 
-    .line 358
-    .local v2, "efid":I
-    if-nez p2, :cond_0
+    iget v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordSize:I
 
-    .line 359
-    const-string p2, ""
+    move-object/from16 v0, p0
 
-    .line 360
-    :cond_0
-    if-nez p3, :cond_1
-
-    .line 361
-    const-string p3, ""
-
-    .line 362
-    :cond_1
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {v4, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, ","
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    .line 363
-    .local v0, "anrs":Ljava/lang/String;
-    const/4 v4, 0x0
-
-    iput-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 364
-    const/4 v4, -0x1
-
-    if-ne v2, v4, :cond_2
-
-    .line 365
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 392
-    :goto_0
-    return v4
-
-    .line 366
-    :cond_2
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrPresentInIap:Z
-
-    if-eqz v4, :cond_5
-
-    invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_5
-
-    invoke-static {p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-nez v4, :cond_5
-
-    .line 367
-    invoke-virtual {p0, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getEmptyAnrNum_Pbrindex(I)I
-
-    move-result v4
-
-    if-nez v4, :cond_3
-
-    .line 368
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, "updateAnrFile getEmptyAnrNum_Pbrindex=0, pbrIndex is "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-direct {p0, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 369
-    iput-boolean v6, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 370
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    goto :goto_0
-
-    .line 373
-    :cond_3
-    invoke-direct {p0, p1, p2, p3, v7}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->updateIapFile(ILjava/lang/String;Ljava/lang/String;I)Z
-
-    move-result v4
-
-    iput-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 377
-    :goto_1
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, "updateAnrFile oldAnr : "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, ", newAnr:"
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, " anrs:"
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, ", efid"
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, ", adnRecNum: "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-direct {p0, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 379
-    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v5
-
-    .line 380
-    :try_start_0
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
-
-    const/4 v6, 0x7
-
-    invoke-virtual {p0, v6, p1, v2, v0}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
+    invoke-virtual {v0, v4, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->buildAnrRecord(Ljava/lang/String;I)[B
 
     move-result-object v6
 
-    invoke-virtual {v4, v2, v6}, Lcom/android/internal/telephony/uicc/IccFileHandler;->getEFLinearRecordSize(ILandroid/os/Message;)V
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    .line 915
+    goto :goto_4
 
-    .line 383
-    :try_start_1
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
+    .line 917
+    :sswitch_4
+    const/4 v4, 0x0
 
-    invoke-virtual {v4}, Ljava/lang/Object;->wait()V
-    :try_end_1
-    .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_0
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    move-object/from16 v0, p0
 
-    .line 387
-    :goto_2
-    :try_start_2
-    monitor-exit v5
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
-    .line 388
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mAnrPresentInIap:Z
-
-    if-eqz v4, :cond_4
-
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    if-eqz v4, :cond_4
-
-    invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-nez v4, :cond_4
-
-    invoke-static {p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_4
-
-    .line 390
-    invoke-direct {p0, p1, p2, p3, v7}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->updateIapFile(ILjava/lang/String;Ljava/lang/String;I)Z
-
-    move-result v4
-
-    iput-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 392
-    :cond_4
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    goto/16 :goto_0
-
-    .line 375
-    :cond_5
-    iput-boolean v6, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    goto :goto_1
-
-    .line 384
-    :catch_0
-    move-exception v1
-
-    .line 385
-    .local v1, "e":Ljava/lang/InterruptedException;
-    :try_start_3
-    const-string v4, "UsimPhoneBookManager"
-
-    const-string v6, "interrupted while trying to update by search"
-
-    invoke-static {v4, v6}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_2
-
-    .line 387
-    .end local v1    # "e":Ljava/lang/InterruptedException;
-    :catchall_0
-    move-exception v4
-
-    monitor-exit v5
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
-
-    throw v4
-.end method
-
-.method public updateEmailFile(ILjava/lang/String;Ljava/lang/String;)Z
-    .locals 8
-    .param p1, "adnRecNum"    # I
-    .param p2, "oldEmail"    # Ljava/lang/String;
-    .param p3, "newEmail"    # Ljava/lang/String;
-
-    .prologue
-    const/4 v6, 0x1
+    iget-object v3, v0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mRecordSize:Ljava/util/HashMap;
 
     const/16 v7, 0xca
 
-    .line 314
-    add-int/lit8 v4, p1, -0x1
+    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    invoke-virtual {p0, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getPbrIndexBy(I)I
+    move-result-object v7
 
-    move-result v3
+    invoke-virtual {v3, v7}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 315
-    .local v3, "pbrIndex":I
-    invoke-direct {p0, v3, v7}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getEfidByTag(II)I
+    move-result-object v3
 
-    move-result v1
+    check-cast v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;
 
-    .line 316
-    .local v1, "efid":I
-    if-nez p2, :cond_0
+    iget v3, v3, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager$RecordSize;->mRecordSize:I
 
-    .line 317
-    const-string p2, ""
+    move-object/from16 v0, p0
 
-    .line 318
-    :cond_0
-    if-nez p3, :cond_1
+    move/from16 v1, p2
 
-    .line 319
-    const-string p3, ""
-
-    .line 320
-    :cond_1
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {v4, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, ","
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    .line 321
-    .local v2, "emails":Ljava/lang/String;
-    const/4 v4, 0x0
-
-    iput-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 322
-    const/4 v4, -0x1
-
-    if-ne v1, v4, :cond_2
-
-    .line 323
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 352
-    :goto_0
-    return v4
-
-    .line 324
-    :cond_2
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailPresentInIap:Z
-
-    if-eqz v4, :cond_6
-
-    invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_6
-
-    invoke-static {p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-nez v4, :cond_6
-
-    .line 325
-    invoke-virtual {p0, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->getEmptyEmailNum_Pbrindex(I)I
-
-    move-result v4
-
-    if-nez v4, :cond_3
-
-    .line 326
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, "updateEmailFile getEmptyEmailNum_Pbrindex=0, pbrIndex is "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-direct {p0, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 327
-    iput-boolean v6, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 328
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    goto :goto_0
-
-    .line 331
-    :cond_3
-    invoke-direct {p0, p1, p2, p3, v7}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->updateIapFile(ILjava/lang/String;Ljava/lang/String;I)Z
-
-    move-result v4
-
-    iput-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 335
-    :goto_1
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    if-eqz v4, :cond_4
-
-    .line 336
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, "updateEmailFile oldEmail : "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, " newEmail:"
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, " emails:"
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, " efid"
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, " adnRecNum: "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-direct {p0, v4}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->log(Ljava/lang/String;)V
-
-    .line 338
-    iget-object v5, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    monitor-enter v5
-
-    .line 339
-    :try_start_0
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mFh:Lcom/android/internal/telephony/uicc/IccFileHandler;
-
-    const/4 v6, 0x6
-
-    invoke-virtual {p0, v6, p1, v1, v2}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
+    invoke-virtual {v0, v4, v1, v3}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->buildEmailRecord(Ljava/lang/String;II)[B
 
     move-result-object v6
 
-    invoke-virtual {v4, v1, v6}, Lcom/android/internal/telephony/uicc/IccFileHandler;->getEFLinearRecordSize(ILandroid/os/Message;)V
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    goto :goto_4
 
-    .line 342
-    :try_start_1
-    iget-object v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mLock:Ljava/lang/Object;
-
-    invoke-virtual {v4}, Ljava/lang/Object;->wait()V
-    :try_end_1
-    .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_0
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    .line 346
-    :goto_2
-    :try_start_2
-    monitor-exit v5
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
-    .line 348
-    :cond_4
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mEmailPresentInIap:Z
-
-    if-eqz v4, :cond_5
-
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    if-eqz v4, :cond_5
-
-    invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-nez v4, :cond_5
-
-    invoke-static {p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_5
-
-    .line 350
-    invoke-direct {p0, p1, p2, p3, v7}, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->updateIapFile(ILjava/lang/String;Ljava/lang/String;I)Z
-
-    move-result v4
-
-    iput-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
-
-    .line 352
-    :cond_5
-    iget-boolean v4, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
+    .line 927
+    .end local v6    # "recordData":[B
+    :cond_9
+    const/4 v3, 0x0
 
     goto/16 :goto_0
 
-    .line 333
-    :cond_6
-    iput-boolean v6, p0, Lcom/android/internal/telephony/gsm/UsimPhoneBookManager;->mSuccess:Z
+    .line 936
+    .restart local v6    # "recordData":[B
+    :catch_2
+    move-exception v17
 
-    goto :goto_1
+    .line 937
+    .restart local v17    # "e":Ljava/lang/InterruptedException;
+    const-string v3, "UsimPhoneBookManager"
 
-    .line 343
-    :catch_0
-    move-exception v0
+    const-string v4, "Interrupted Exception in updateType2Anr"
 
-    .line 344
-    .local v0, "e":Ljava/lang/InterruptedException;
-    :try_start_3
-    const-string v4, "UsimPhoneBookManager"
+    invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    const-string v6, "interrupted while trying to update by search"
+    goto/16 :goto_2
 
-    invoke-static {v4, v6}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
+    .line 944
+    .end local v17    # "e":Ljava/lang/InterruptedException;
+    .restart local v21    # "oldAdn":Lcom/android/internal/telephony/uicc/AdnRecord;
+    :sswitch_5
+    invoke-static/range {p1 .. p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    goto :goto_2
+    move-result v3
 
-    .line 346
-    .end local v0    # "e":Ljava/lang/InterruptedException;
-    :catchall_0
-    move-exception v4
+    if-eqz v3, :cond_a
 
-    monitor-exit v5
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+    .line 945
+    const-string v3, ""
 
-    throw v4
+    move-object/from16 v0, v21
+
+    invoke-virtual {v0, v3}, Lcom/android/internal/telephony/uicc/AdnRecord;->setAnr(Ljava/lang/String;)V
+
+    goto/16 :goto_3
+
+    .line 947
+    :cond_a
+    move-object/from16 v0, v21
+
+    move-object/from16 v1, p1
+
+    invoke-virtual {v0, v1}, Lcom/android/internal/telephony/uicc/AdnRecord;->setAnr(Ljava/lang/String;)V
+
+    goto/16 :goto_3
+
+    .line 951
+    :sswitch_6
+    invoke-static/range {p1 .. p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_b
+
+    .line 952
+    const/4 v3, 0x0
+
+    move-object/from16 v0, v21
+
+    invoke-virtual {v0, v3}, Lcom/android/internal/telephony/uicc/AdnRecord;->setEmails([Ljava/lang/String;)V
+
+    goto/16 :goto_3
+
+    .line 954
+    :cond_b
+    const/4 v3, 0x1
+
+    new-array v3, v3, [Ljava/lang/String;
+
+    const/4 v4, 0x0
+
+    aput-object p1, v3, v4
+
+    move-object/from16 v0, v21
+
+    invoke-virtual {v0, v3}, Lcom/android/internal/telephony/uicc/AdnRecord;->setEmails([Ljava/lang/String;)V
+
+    goto/16 :goto_3
+
+    .line 861
+    nop
+
+    :sswitch_data_0
+    .sparse-switch
+        0xc4 -> :sswitch_0
+        0xca -> :sswitch_0
+    .end sparse-switch
+
+    .line 890
+    :sswitch_data_1
+    .sparse-switch
+        0xc4 -> :sswitch_1
+        0xca -> :sswitch_2
+    .end sparse-switch
+
+    .line 942
+    :sswitch_data_2
+    .sparse-switch
+        0xc4 -> :sswitch_5
+        0xca -> :sswitch_6
+    .end sparse-switch
+
+    .line 912
+    :sswitch_data_3
+    .sparse-switch
+        0xc4 -> :sswitch_3
+        0xca -> :sswitch_4
+    .end sparse-switch
 .end method
