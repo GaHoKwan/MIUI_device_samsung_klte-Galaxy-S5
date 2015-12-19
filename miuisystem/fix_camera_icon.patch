@@ -1,14 +1,14 @@
-From 673019baf57bae67d35f18a0e4b81553f5f96084 Mon Sep 17 00:00:00 2001
-From: nian0114 <268078545@qq.com>
-Date: Fri, 8 May 2015 03:22:55 +0800
+From 3281b5744fcf2319b920b8b743f561b984b548e0 Mon Sep 17 00:00:00 2001
+From: X-s <xsmumu@gmail.com>
+Date: Mon, 27 Apr 2015 11:55:24 +0800
 Subject: [PATCH] fix camera icon
 
 ---
- .../smali/miui/content/res/IconCustomizer.smali          | 8 ++++++++
+ miuisystem/smali/miui/content/res/IconCustomizer.smali | 16 ++++++++++++++++
  1 file changed, 8 insertions(+)
 
---- a/MiuiFramework/smali/miui/content/res/IconCustomizer.smali
-+++ b/MiuiFramework/smali/miui/content/res/IconCustomizer.smali
+--- a/miuisystem/smali/miui/content/res/IconCustomizer.smali
++++ b/miuisystem/smali/miui/content/res/IconCustomizer.smali
 @@ -217,6 +217,22 @@
  
      sget-object v0, Lmiui/content/res/IconCustomizer;->sIconMapping:Ljava/util/Map;

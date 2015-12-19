@@ -1,3 +1,5 @@
+name="Whetstone.apk" certificate="build/target/product/security/platform.x509.pem" private_key="build/target/product/security/platform.pk8"
+name="PowerKeeper.apk" certificate="build/target/product/security/platform.x509.pem" private_key="build/target/product/security/platform.pk8"
 name="Apollo.apk" certificate="PRESIGNED" private_key=""
 name="BackupRestoreConfirmation.apk" certificate="build/target/product/security/platform.x509.pem" private_key="build/target/product/security/platform.pk8"
 name="BasicDreams.apk" certificate="PRESIGNED" private_key=""

@@ -54,7 +54,7 @@ function BUILD_DATE() {
 
 LAST_TARGET="$LAST_BUILD_NUMBER"-target.zip
 
-if [ -e out/ZIP/system/priv-app/QuickSearchBox.apk ];then
+if [ -e out/ZIP/system/bin/mdnsd_original ];then
 	cp -f stockrom/system/build.prop out/ZIP/system/build.prop
 	mv out/ZIP/system/bin/mdnsd_original out/ZIP/system/bin/mdnsd
 fi
@@ -92,7 +92,7 @@ function fullota(){
 
 function copyfullota(){
 	echo ">>>  Copying Fullota.zip "
-	cp out/fullota.zip miui6_KLTE_luo2888_"$BUILD_NUMBER"__4.4.zip
+	cp out/fullota.zip miui7_KLTE_luo2888_"$BUILD_NUMBER"__4.4.zip
 }
 
 function otadiff(){
@@ -120,7 +120,7 @@ function copydiffota(){
 	cp out/target_files.zip $BUILD_NUMBER-target.zip
 }
 
-OUTDIR=/home/jay/miui/v6-kitkat/klte/out
+OUTDIR=/home/jay/miui7/klte/out
 
 # Function Start
 BUILD_DATE

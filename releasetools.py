@@ -6,8 +6,54 @@ def RemoveDeviceAssert(info):
   edify = info.script
   for i in xrange(len(edify.script)):
     if "ro.product" in edify.script[i]:
-      edify.script[i] = ''
+      edify.script[i] = """ui_print(" ");
+ui_print("********************************************");
+ui_print("* Galaxy S5 Miui7 Based on Mokee OS  ");
+ui_print("*                ^.^     Welcome     ^.^                 ");
+ui_print("*         http://weibo.com/kwangaho         ");
+ui_print("********************************************");
+show_progress(0.750000, 15);"""
       return
+
+def Writeboot(info):
+    for filename in os.listdir("other"):
+        if not (filename.find('.img')==-1):
+            data=open(os.path.join(os.getcwd(),"other",filename)).read()
+            common.ZipWriteStr(info.output_zip, filename, data)
+
+    extra_img_flash = """set_progress(0.800000);
+show_progress(0.180000, 10);
+ui_print("Update Boot image...");
+package_extract_file("boot_klte.img", "/dev/block/platform/msm_sdcc.1/by-name/boot");
+ifelse(is_substring("G900I", getprop("ro.bootloader")), delete("/system/app/Nfc.apk"));
+ifelse(is_substring("G900F", getprop("ro.bootloader")), package_extract_file("boot_kltexx.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
+ifelse(is_substring("G9006V", getprop("ro.bootloader")), package_extract_file("boot_kltechn.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
+ifelse(is_substring("G9008V", getprop("ro.bootloader")), package_extract_file("boot_kltechn.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
+ifelse(is_substring("G900P", getprop("ro.bootloader")), package_extract_file("boot_kltespr.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
+ifelse(is_substring("G900P", getprop("ro.bootloader")), delete("/system/app/Nfc.apk"));
+ifelse(is_substring("SCL23", getprop("ro.bootloader")), package_extract_file("boot_kltekdi.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
+ifelse(is_substring("SCL23", getprop("ro.bootloader")), delete("/system/app/Nfc.apk"));
+ifelse(is_substring("SC04F", getprop("ro.bootloader")), package_extract_file("boot_kltekdi.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
+ifelse(is_substring("SC04F", getprop("ro.bootloader")), delete("/system/app/Nfc.apk"));
+set_progress(1.000000);"""
+    info.script.AppendExtra(extra_img_flash);
+
+def RemoveCount(info):
+  edify = info.script
+  for i in xrange(len(edify.script)):
+    if "ui_print" in edify.script[i] and "Update" and "Boot" and "image..." in edify.script[i]:
+      edify.script[i] = 'delete("/data/system/count");'
+      return
+
+def RemoveCountonIncrementalOTA(info):
+    remove_Count = """mount("ext4", "EMMC", "/dev/block/platform/msm_sdcc.1/by-name/userdata", "/data");
+delete("/data/system/count");"""
+    info.script.AppendExtra(remove_Count);
+
+def UpdatePerm(info):
+    extra_Perm = """set_metadata_recursive("/system/etc/init.d", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/etc/init.d", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");"""
+    info.script.AppendExtra(extra_Perm);
 
 def Setmetadata(info):
     extra_metadata = """ui_print("Update MetaData...");
@@ -61,39 +107,6 @@ set_metadata("/system/xbin/librank", "uid", 0, "gid", 0, "mode", 06755, "capabil
 set_metadata("/system/xbin/procmem", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata("/system/xbin/procrank", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");"""
     info.script.AppendExtra(extra_metadata);
-
-def Writeboot(info):
-    for filename in os.listdir("other"):
-        if not (filename.find('.img')==-1):
-            data=open(os.path.join(os.getcwd(),"other",filename)).read()
-            common.ZipWriteStr(info.output_zip, filename, data)
-
-    extra_img_flash = """ui_print("Update Boot image...");
-package_extract_file("klte.img", "/tmp/klte.img");
-package_extract_file("kltexx.img", "/tmp/kltexx.img");
-package_extract_file("kltechn.img", "/tmp/kltechn.img");
-package_extract_file("kltekdi.img", "/tmp/kltekdi.img");
-package_extract_file("kltespr.img", "/tmp/kltespr.img");
-set_metadata("/system/flash_boot", "uid", 0, "gid", 0, "mode", 0755);
-run_program("/system/flash_boot");"""
-    info.script.AppendExtra(extra_img_flash);
-
-def RemoveCount(info):
-  edify = info.script
-  for i in xrange(len(edify.script)):
-    if "ui_print" in edify.script[i] and "Update" and "Boot" and "image..." in edify.script[i]:
-      edify.script[i] = 'delete("/data/system/count");'
-      return
-
-def RemoveCountonIncrementalOTA(info):
-    remove_Count = """mount("ext4", "EMMC", "/dev/block/platform/msm_sdcc.1/by-name/userdata", "/data");
-delete("/data/system/count");"""
-    info.script.AppendExtra(remove_Count);
-
-def UpdatePerm(info):
-    extra_Perm = """set_metadata_recursive("/system/etc/init.d", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
-set_metadata("/system/etc/init.d", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");"""
-    info.script.AppendExtra(extra_Perm);
 
 def UpdateFirmWare(info):
     extra_firmware = """ui_print("Update FirmWare...");

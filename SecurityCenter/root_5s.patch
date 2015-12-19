@@ -17,7 +17,7 @@ Subject: [PATCH] root 5s to 0s
 +    #invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
 -    move-result v0
-+    invoke-static {p0, v0}, Lcom/miui/common/AndroidUtils;->loadAppLabel(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/CharSequence;
++    invoke-static {p0, v0}, Lcom/miui/common/utils/PackageUtils;->loadAppLabel(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/CharSequence;
 
 -    if-eqz v0, :cond_0
 +    move-result-object v0
@@ -35,5 +35,4 @@ Subject: [PATCH] root 5s to 0s
      :goto_0
 -- 
 1.9.1
-
 
