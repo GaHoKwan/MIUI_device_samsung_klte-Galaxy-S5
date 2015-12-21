@@ -249,4 +249,3 @@ def IncrementalOTA_InstallEnd(info):
     RemoveDeviceAssert(info)
     UpdatePerm(info)
     RemoveCountonIncrementalOTA(info)
-    Writeboot(info)

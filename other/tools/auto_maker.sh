@@ -99,6 +99,7 @@ function otadiff(){
 	echo ">>>  OTA Diff Package   "
 	if [ "$LAST_BUILD_NUMBER" == "" ]; then
 		echo ">>>  Skip To Make Diffota !!! "
+		cp out/target_files.zip $BUILD_NUMBER-target.zip
 	else
 		echo ">>>  Sure Make Diffota?(y/n) <<< "
 		read m
