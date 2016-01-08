@@ -897,13 +897,13 @@
     <style name="TextAppearance.StatusBar.Icon" parent="@style/TextAppearance.StatusBar" />
     <style name="TextAppearance.StatusBar.EventContent" parent="@style/TextAppearance.StatusBar">
         <item name="textSize">@dimen/notification_text_size</item>
-        <item name="textColor">#ff999999</item>
+        <item name="textColor">@color/statusbar_content</item>
     </style>
     <style name="TextAppearance.StatusBar.EventContent.Title" parent="@style/TextAppearance.StatusBar.EventContent">
         <item name="textSize">@dimen/notification_title_text_size</item>
-        <item name="textStyle">bold</item>
-        <item name="textColor">#ffffffff</item>
-        <item name="fontFamily">sans-serif-light</item>
+        <item name="textStyle">normal</item>
+        <item name="textColor">@color/statusbar_content_title</item>
+        <item name="fontFamily">@null</item>
     </style>
     <style name="Theme.WithActionBar" parent="@style/Theme">
         <item name="windowActionBar">true</item>
@@ -2750,14 +2750,14 @@
     </style>
     <style name="TextAppearance.StatusBar.EventContent.Info" parent="@style/TextAppearance.StatusBar.EventContent">
         <item name="textSize">@dimen/notification_subtext_size</item>
-        <item name="textColor">#ff999999</item>
+        <item name="textColor">@color/statusbar_content_info</item>
     </style>
     <style name="TextAppearance.StatusBar.EventContent.Time" parent="@style/TextAppearance.StatusBar.EventContent">
         <item name="textSize">@dimen/notification_subtext_size</item>
-        <item name="textColor">#ff999999</item>
+        <item name="textColor">@color/statusbar_content_time</item>
     </style>
     <style name="TextAppearance.StatusBar.EventContent.Emphasis" parent="@style/TextAppearance.StatusBar.EventContent">
-        <item name="textColor">#ffcccccc</item>
+        <item name="textColor">@color/statusbar_content_emphasis</item>
     </style>
     <style name="TextAppearance.Small.CalendarViewWeekDayView" parent="@style/TextAppearance.Small">
         <item name="textStyle">bold</item>
@@ -2920,6 +2920,8 @@
         <item name="textColor">@color/primary_text_light</item>
     </style>
     <style name="TextAppearance.Toast" parent="@style/TextAppearance">
+        <item name="textSize">12.0sp</item>
+        <item name="textColor">@color/toast_text_color</item>
         <item name="fontFamily">sans-serif-condensed</item>
     </style>
     <style name="Widget.ActivityChooserView" parent="@style/Widget">

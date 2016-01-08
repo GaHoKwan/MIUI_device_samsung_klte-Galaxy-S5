@@ -36,8 +36,8 @@
     <color name="dim_foreground_light_inverse">#ffbebebe</color>
     <color name="dim_foreground_light_inverse_disabled">#80bebebe</color>
     <color name="hint_foreground_light">#ff808080</color>
-    <color name="highlighted_text_dark">#9983cc39</color>
-    <color name="highlighted_text_light">#9983cc39</color>
+    <color name="highlighted_text_dark">#4df06410</color>
+    <color name="highlighted_text_light">#4df06410</color>
     <color name="link_text_dark">#ff5c5cff</color>
     <color name="link_text_light">#ff0000ee</color>
     <color name="suggestion_highlight_text">#ff177bbd</color>
@@ -102,9 +102,16 @@
     <color name="keyguard_avatar_nick_color">#ffffffff</color>
     <color name="keyguard_avatar_frame_pressed_color">#ff35b5e5</color>
     <color name="accessibility_focus_highlight">#80ffff00</color>
-    <color name="config_defaultNotificationColor">#ffffffff</color>
+    <color name="config_defaultNotificationColor">#ff0000ff</color>
     <color name="webviewchromium_color_picker_border_color">#ffb0b0b0</color>
     <color name="webviewchromium_color_picker_background_color">#ffffffff</color>
     <color name="webviewchromium_autofill_divider_color">#ffe5e5e5</color>
     <color name="webviewchromium_autofill_dark_divider_color">#ffc0c0c0</color>
+    <color name="notification_action_text_color">#ffcccccc</color>
+    <color name="statusbar_content">#80ffffff</color>
+    <color name="statusbar_content_title">#ffffffff</color>
+    <color name="statusbar_content_info">#80ffffff</color>
+    <color name="statusbar_content_time">#80ffffff</color>
+    <color name="statusbar_content_emphasis">#ffcccccc</color>
+    <color name="toast_text_color">#ccffffff</color>
 </resources>
