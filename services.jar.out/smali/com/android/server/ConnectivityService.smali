@@ -13921,6 +13921,8 @@
     invoke-direct {p0}, Lcom/android/server/ConnectivityService;->throwIfLockdownEnabled()V
 
     .line 3863
+    invoke-static {}, Lcom/android/server/ConnectivityServiceInjector;->notifyVpnStart()V
+
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v1
@@ -17194,6 +17196,8 @@
     monitor-exit v3
 
     .line 3884
+    invoke-static {}, Lcom/android/server/ConnectivityServiceInjector;->notifyVpnStart()V
+
     return-void
 
     .line 3883
