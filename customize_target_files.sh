@@ -14,4 +14,6 @@ fi
 
 cp -r other/*.img out/target_files/BOOTABLE_IMAGES/
 
+cp -r other/variant/ out/target_files/VARIANT/
+
 cp -f other/file_contexts out/target_files/META/

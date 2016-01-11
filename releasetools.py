@@ -1,6 +1,7 @@
 import common
 import edify_generator
 import os
+import copy
 
 def RemoveDeviceAssert(info):
   edify = info.script
@@ -9,11 +10,22 @@ def RemoveDeviceAssert(info):
       edify.script[i] = """ui_print(" ");
 ui_print("********************************************");
 ui_print("* Galaxy S5 Miui7 Based on Mokee OS  ");
-ui_print("*                ^.^     Welcome     ^.^                 ");
-ui_print("*         http://weibo.com/kwangaho         ");
+ui_print("*        ^.^     Welcome     ^.^");
+ui_print("* http://weibo.com/kwangaho");
 ui_print("********************************************");
 show_progress(0.750000, 15);"""
       return
+
+def CopyVariantFiles(input_zip, output_zip, script):
+
+  print "[GaHoKwan CUST] OTA: copy variant files"
+  for info in input_zip.infolist():
+    if info.filename.startswith("VARIANT/variant/"):
+      basefilename = info.filename[8:]
+      info2 = copy.copy(info)
+      info2.filename = basefilename
+      data = input_zip.read(info.filename)
+      output_zip.writestr(info2, data)
 
 def Writeboot(info):
     for filename in os.listdir("other"):
@@ -25,16 +37,17 @@ def Writeboot(info):
 show_progress(0.180000, 10);
 ui_print("Update Boot image...");
 package_extract_file("boot_klte.img", "/dev/block/platform/msm_sdcc.1/by-name/boot");
-ifelse(is_substring("G900I", getprop("ro.bootloader")), delete("/system/app/Nfc.apk"));
+ifelse(is_substring("G900I", getprop("ro.bootloader")),package_extract_dir("variant/kltedv", "/system"));
 ifelse(is_substring("G900F", getprop("ro.bootloader")), package_extract_file("boot_kltexx.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
 ifelse(is_substring("G9006V", getprop("ro.bootloader")), package_extract_file("boot_kltechn.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
 ifelse(is_substring("G9008V", getprop("ro.bootloader")), package_extract_file("boot_kltechn.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
 ifelse(is_substring("G900P", getprop("ro.bootloader")), package_extract_file("boot_kltespr.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
-ifelse(is_substring("G900P", getprop("ro.bootloader")), delete("/system/app/Nfc.apk"));
+ifelse(is_substring("G900P", getprop("ro.bootloader")),package_extract_dir("variant/kltespr", "/system"));
 ifelse(is_substring("SCL23", getprop("ro.bootloader")), package_extract_file("boot_kltekdi.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
-ifelse(is_substring("SCL23", getprop("ro.bootloader")), delete("/system/app/Nfc.apk"));
+ifelse(is_substring("SCL23", getprop("ro.bootloader")),package_extract_dir("variant/kltekdi", "/system"));
+ifelse(is_substring("SCL23", getprop("ro.bootloader")), delete("/system/app/NfcNci.apk"));
 ifelse(is_substring("SC04F", getprop("ro.bootloader")), package_extract_file("boot_kltekdi.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
-ifelse(is_substring("SC04F", getprop("ro.bootloader")), delete("/system/app/Nfc.apk"));
+ifelse(is_substring("SC04F", getprop("ro.bootloader")), delete("/system/app/NfcNci.apk"));
 set_progress(1.000000);"""
     info.script.AppendExtra(extra_img_flash);
 
@@ -244,6 +257,7 @@ def FullOTA_InstallEnd(info):
     UpdateFirmWare(info)
     Setmetadata(info)
     Writeboot(info)
+    CopyVariantFiles(info.input_zip, info.output_zip, info.script)
 	
 def IncrementalOTA_InstallEnd(info):
     RemoveDeviceAssert(info)

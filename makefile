@@ -22,7 +22,7 @@ local-miui-removed-apps :=
 
 local-miui-removed-priv-apps := 
 
-local-miui-modified-apps := miuisystem Settings TeleService SecurityCenter MiuiSystemUI XiaomiServiceFramework
+local-miui-modified-apps := miuisystem Settings TeleService SecurityCenter MiuiSystemUI XiaomiServiceFramework DownloadProvider
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
@@ -51,6 +51,8 @@ include $(PORT_BUILD)/porting.mk
 BUILD_COUNT := $(shell date +%Y%m%d)
 local-pre-zip-misc:
 	cp -rf other/system $(ZIP_DIR)/
+	@echo ">>> Fix nfc"
+	mv $(ZIP_DIR)/system/app/Nfc.apk $(ZIP_DIR)/system/app/NfcNci.apk
 	@echo ">>> Remove miui prebuilt binaries"
 	rm -rf $(ZIP_DIR)/system/bin/app_process_vendor
 	cp -rf stockrom/system/bin/app_process $(ZIP_DIR)/system/bin/app_process

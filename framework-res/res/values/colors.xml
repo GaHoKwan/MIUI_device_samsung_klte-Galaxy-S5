@@ -17,7 +17,6 @@
     <color name="holo_purple">#ffaa66cc</color>
     <color name="holo_blue_bright">#ff00ddff</color>
     <color name="dialog_title_divider">@color/holo_blue_light</color>
-    <color name="notification_action_text_color">#ffcccccc</color>
     <color name="lock_pattern_path_color">#ffffffff</color>
     <color name="safe_mode_text">#80ffffff</color>
     <color name="bright_foreground_dark">@color/background_light</color>
