@@ -20,6 +20,7 @@
 #
 
 cat /system/etc/boeffla-config-v2 > /data/app/boeffla-config-v2.apk
+cat /system/etc/KTweaker > /data/app/KTweaker.apk
 
 setprop ro.telephony.default_network 9
 
@@ -120,6 +121,16 @@ elif [ "$GET_BL_VERSION" == "G9008" ]; then
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 
+elif [ "$GET_BL_VERSION" == "SC04F" ]; then
+
+  setprop ro.product.model "SM-G900J"
+  setprop ro.product.device "kltedcm"
+  setprop ro.build.description "kltedcm-user 4.4.2 KOT49H SC04FOMU1VOD2 release-keys"
+  setprop ro.build.fingerprint "samsung/SC04F/SC04F:4.4.2/KOT49H/SC04FOMU1VOD2:user/release-keys"
+  setprop telephony.sms.pseudo_multipart 1
+  setprop telephony.lteOnGsmDevice 1
+  setprop ro.telephony.ril.v3 "newDialCode"
+
 #For CDMA Device
 
 elif [ "$GET_BL_VERSION" == "SCL23" ]; then
@@ -133,20 +144,7 @@ elif [ "$GET_BL_VERSION" == "SCL23" ]; then
   setprop ro.cdma.home.operator.numeric "operator_numeric"
   setprop ro.telephony.default_cdma_sub "default_cdma_sub"
   setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
-  setprop telephony.lteOnCdmaDevice 1
-
-elif [ "$GET_BL_VERSION" == "SC04F" ]; then
-
-  setprop ro.product.model "SM-G900J"
-  setprop ro.product.device "kltedcm"
-  setprop ro.build.description "kltedcm-user 4.4.2 KOT49H SC04FOMU1VOD2 release-keys"
-  setprop ro.build.fingerprint "samsung/SC04F/SC04F:4.4.2/KOT49H/SC04FOMU1VOD2:user/release-keys"
-  setprop telephony.sms.pseudo_multipart 1
-  setprop ril.subscription.types "NV,RUIM"
-  setprop ro.cdma.home.operator.numeric "operator_numeric"
-  setprop ro.telephony.default_cdma_sub "default_cdma_sub"
-  setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
-  setprop telephony.lteOnCdmaDevice 1
+  setprop telephony.lteOnCdmaDevice 0
 
 elif [ "$GET_BL_VERSION" == "G900P" ]; then
 
