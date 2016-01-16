@@ -594,9 +594,13 @@
     .line 457
     iget-object v6, p0, Landroid/graphics/drawable/BitmapDrawable;->mBitmap:Landroid/graphics/Bitmap;
 
-    .line 458
     .local v6, "bitmap":Landroid/graphics/Bitmap;
-    if-eqz v6, :cond_3
+
+    invoke-static {v6}, Lcom/miui/whetstone/graphics/BitmapCacheManager;->isBitmapValid(Landroid/graphics/Bitmap;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_3
 
     .line 459
     iget-object v9, p0, Landroid/graphics/drawable/BitmapDrawable;->mBitmapState:Landroid/graphics/drawable/BitmapDrawable$BitmapState;

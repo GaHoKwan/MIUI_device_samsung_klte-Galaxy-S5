@@ -1235,6 +1235,18 @@
     :goto_3
     if-nez v11, :cond_9
 
+    iget-object v1, p1, Lcom/android/server/am/ServiceRecord;->name:Landroid/content/ComponentName;
+
+    move/from16 v0, p2
+
+    move/from16 v3, p4
+
+    invoke-static {v1, v0, v3}, Lcom/miui/whetstone/client/WhetstoneClientManager;->startServiceAllowed(Landroid/content/ComponentName;IZ)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_miui_00
+
     .line 1349
     iget-object v1, p0, Lcom/android/server/am/ActiveServices;->mAm:Lcom/android/server/am/ActivityManagerService;
 
@@ -1258,7 +1270,7 @@
 
     if-nez v11, :cond_8
 
-    .line 1351
+    :cond_miui_00
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -12142,7 +12154,8 @@
     .param p6, "userId"    # I
 
     .prologue
-    .line 291
+    invoke-static/range {p4 .. p4}, Lcom/miui/whetstone/client/WhetstoneClientManager;->setCallingProcessPid(I)V
+    
     if-eqz p1, :cond_2
 
     .line 292

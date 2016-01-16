@@ -26022,6 +26022,23 @@
 
     .line 2907
     :cond_d
+    move-object/from16 v0, p1
+
+    iget-object v1, v0, Lcom/android/server/am/ProcessRecord;->processName:Ljava/lang/String;
+
+    invoke-static {v1}, Lcom/miui/whetstone/client/WhetstoneClientManager;->isProtectImportantApp(Ljava/lang/String;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_xs
+    
+    const/4 v1, 0x4
+
+    move-object/from16 v0, p1
+
+    iput v1, v0, Lcom/android/server/am/ProcessRecord;->maxAdj:I
+    
+    :cond_xs
     move-object/from16 v0, p0
 
     iget-object v14, v0, Lcom/android/server/am/ActivityManagerService;->mStringBuilder:Ljava/lang/StringBuilder;

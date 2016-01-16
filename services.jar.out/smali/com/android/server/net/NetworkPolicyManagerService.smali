@@ -3750,14 +3750,15 @@
     .param p2, "enabled"    # Z
 
     .prologue
-    .line 945
+    const/4 v1, 0x1
+
     invoke-virtual {p1}, Landroid/net/NetworkTemplate;->getMatchRule()I
 
     move-result v0
 
     packed-switch v0, :pswitch_data_0
 
-    .line 965
+    :pswitch_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "unexpected template"
@@ -3766,8 +3767,7 @@
 
     throw v0
 
-    .line 951
-    :pswitch_0
+    :pswitch_1
     invoke-static {}, Landroid/net/NetworkIdentity;->isDdsReady()Z
 
     move-result v0
@@ -3788,47 +3788,46 @@
 
     if-eqz v0, :cond_0
 
-    .line 954
     const/4 v0, 0x0
 
     invoke-direct {p0, v0, p2}, Lcom/android/server/net/NetworkPolicyManagerService;->setPolicyDataEnable(IZ)V
 
-    .line 955
     const/4 v0, 0x6
 
     invoke-direct {p0, v0, p2}, Lcom/android/server/net/NetworkPolicyManagerService;->setPolicyDataEnable(IZ)V
 
-    .line 967
     :cond_0
     :goto_0
     return-void
 
-    .line 959
-    :pswitch_1
-    const/4 v0, 0x1
-
-    invoke-direct {p0, v0, p2}, Lcom/android/server/net/NetworkPolicyManagerService;->setPolicyDataEnable(IZ)V
+    :pswitch_2
+    invoke-direct {p0, v1, p2}, Lcom/android/server/net/NetworkPolicyManagerService;->setPolicyDataEnable(IZ)V
 
     goto :goto_0
 
-    .line 962
-    :pswitch_2
+    :pswitch_3
     const/16 v0, 0x9
 
     invoke-direct {p0, v0, p2}, Lcom/android/server/net/NetworkPolicyManagerService;->setPolicyDataEnable(IZ)V
 
     goto :goto_0
 
-    .line 945
+    :pswitch_4
+    invoke-direct {p0, v1, p2}, Lcom/android/server/net/NetworkPolicyManagerService;->setPolicyDataEnable(IZ)V
+
+    goto :goto_0
+
     nop
 
     :pswitch_data_0
     .packed-switch 0x1
-        :pswitch_0
-        :pswitch_0
-        :pswitch_0
+        :pswitch_1
+        :pswitch_1
         :pswitch_1
         :pswitch_2
+        :pswitch_3
+        :pswitch_0
+        :pswitch_4
     .end packed-switch
 .end method
 
