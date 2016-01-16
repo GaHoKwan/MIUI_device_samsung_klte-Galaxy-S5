@@ -1,0 +1,17 @@
+#!/system/bin/sh
+
+echo 185 >/proc/sys/vm/swappiness
+
+if [ -f /dev/block/vnswap0 ];then
+  export SWAP_CHECK=`cat /proc/swaps | grep -i vnswap`
+  if [ "$SWAP_CHECK" == "1" ];then
+    exho "Opening VnSwap..."
+    log -t VNSWAP "Opening VnSwap!"
+    echo 1572864000 >/sys/block/vnswap0/disksize
+    mkswap /dev/block/vnswap0
+    swapon -p 2 /dev/block/vnswap
+  else
+    echo "SWAP has been opened!"
+    log -t VNSWAP "SWAP has been opened!"
+  fi
+fi
