@@ -31,7 +31,8 @@
         Landroid/app/ActivityThread$NewIntentData;,
         Landroid/app/ActivityThread$ProviderClientRecord;,
         Landroid/app/ActivityThread$ActivityClientRecord;,
-        Landroid/app/ActivityThread$ProviderKey;
+        Landroid/app/ActivityThread$ProviderKey;,
+        Landroid/app/ActivityThread$Injector;
     }
 .end annotation
 
@@ -16949,6 +16950,7 @@
 
     if-eqz v4, :cond_miui_0
 
+    :goto_miui_0
     return-void
 
     :cond_miui_0
@@ -17001,8 +17003,7 @@
     :cond_0
     invoke-virtual {v3}, Landroid/view/WindowManagerGlobal;->endTrimMemory()V
 
-    .line 4101
-    return-void
+    goto :goto_miui_0
 .end method
 
 .method final handleUnstableProviderDied(Landroid/os/IBinder;Z)V
