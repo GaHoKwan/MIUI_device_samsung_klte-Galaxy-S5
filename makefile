@@ -22,7 +22,7 @@ local-miui-removed-apps :=
 
 local-miui-removed-priv-apps := 
 
-local-miui-modified-apps := miuisystem Settings TeleService SecurityCenter MiuiSystemUI XiaomiServiceFramework DownloadProvider
+local-miui-modified-apps := DeskClock DownloadProvider miuisystem Settings TeleService SecurityCenter MiuiSystemUI XiaomiServiceFramework
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
@@ -64,15 +64,16 @@ local-pre-zip-misc:
 	mv $(ZIP_DIR)/system/bin/mdnsd $(ZIP_DIR)/system/bin/mdnsd_original
 	@echo ">>> Some changes"
 	echo "ro.sf.lcd_density=480" >> $(ZIP_DIR)/system/build.prop
-	#PowerKeeper and Whetstone
+	sed -i 's/qemu.sf.lcd_density/persist.sys.density/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
+	@echo ">>> PowerKeeper and Whetstone "
 	echo "persist.sys.mcd_config_file=/system/etc/mcd_default.conf" >> $(ZIP_DIR)/system/build.prop
 	echo "persist.sys.klo=on" >> $(ZIP_DIR)/system/build.prop
-	#call audio
+	@echo ">>> Call Audio "
 	echo "persist.audio.fluence.voicerec=false" >> $(ZIP_DIR)/system/build.prop
 	echo "persist.audio.fluence.speaker=false" >> $(ZIP_DIR)/system/build.prop
 	sed -i 's/qemu.sf.lcd_density/persist.sys.density/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
-	#security patch
-	echo "ro.build.version.security_patch=2015-12-31" >> $(ZIP_DIR)/system/build.prop
+	@echo ">>> Security Patch "
+	echo "ro.build.version.security_patch=2016-01-01" >> $(ZIP_DIR)/system/build.prop
 	echo "ro.build.version.base_os=" >> $(ZIP_DIR)/system/build.prop
 	@echo ">>> Use auto brightadj"
 	echo "persist.power.useautobrightadj=true" >> $(ZIP_DIR)/system/build.prop

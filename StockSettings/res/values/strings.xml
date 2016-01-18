@@ -12,7 +12,7 @@
     <string name="charge">Fast Charge</string>
     <string name="cm_camera">CM Camera</string>
     <string name="defaults_button">Reset to default</string>
-    <string name="density_edit_message">Please enter a reasonable range of values(180-440)</string>
+    <string name="density_edit_message">Please enter a reasonable range of values(440-480)</string>
     <string name="density_edit_title">Adjust the DPI specified</string>
     <string name="density_error">Warning:Input Error!</string>
     <string name="density_title">Screen DPI</string>

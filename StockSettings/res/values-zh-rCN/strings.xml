@@ -11,7 +11,7 @@
     <string name="charge">快充模式</string>
     <string name="cm_camera">CM相机</string>
     <string name="defaults_button">默认值</string>
-    <string name="density_edit_message">请输入一个合理的密度值（180-440）</string>
+    <string name="density_edit_message">请输入一个合理的密度值（440-480）</string>
     <string name="density_edit_title">屏幕密度修改</string>
     <string name="density_error">警告，输入密度值超出范围，请重新输入</string>
     <string name="density_title">屏幕密度</string>
