@@ -38,7 +38,6 @@ ro.mk.device=kltezn
 rild.libargs=-d /dev/smd0
 rild.libpath=/system/lib/libsec-ril.so
 ro.ril.telephony.mqanelements=6
-ro.telephony.ril_class=KlteRIL
 
 #
 # ADDITIONAL_BUILD_PROPERTIES
@@ -120,7 +119,7 @@ persist.sys.root_access=1
 persist.sys.recovery_update=false
 ro.mk.support=bbs.mfunz.com
 ro.mk.version=MK44.4-kltezn-150525171525-UNOFFICAL
-ro.mk.releasetype=HISTORY
+ro.mk.releasetype=UNOFFICIAL
 ro.modversion=MK44.4-kltezn-150525171525-UNOFFICAL
 ro.config.notification_sound=Alya.ogg
 ro.config.alarm_alert=Alarm_Buzzer.ogg

@@ -19,7 +19,6 @@ private-phone-apps := BasicDreams \
 					  PhaseBeam \
 					  PhotoTable \
 					  PicoTts \
-					  PPPreference \
 					  qcrilmsgtunnel \
 					  PrintSpooler \
                  Stk \

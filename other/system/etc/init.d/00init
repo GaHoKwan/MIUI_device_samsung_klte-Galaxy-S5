@@ -20,7 +20,6 @@
 #
 
 cat /system/etc/boeffla_config-v2 > /data/app/boeffla_config-v2.apk
-cat /system/etc/KTweaker > /data/app/KTweaker.apk
 
 setprop ro.telephony.default_network 9
 
@@ -36,6 +35,7 @@ if [ "$GET_BL_VERSION" == "G900F" ]; then
   setprop ro.product.device "kltexx"
   setprop ro.build.description "kltexx-user 4.4.2 KOT49H G900FXXU1ANG2 release-keys"
   setprop ro.build.fingerprint "samsung/kltexx/klte:4.4.2/KOT49H/G900FXXU1ANG2:user/release-keys"
+  setprop ro.telephony.ril_class KlteRIL
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 
@@ -45,6 +45,7 @@ elif [ "$GET_BL_VERSION" == "G900A" ]; then
   setprop ro.product.device "klteatt"
   setprop ro.build.description "klteatt-user 4.4.2 KOT49H G900AUCU2AND3 release-keys"
   setprop ro.build.fingerprint "samsung/klteatt/klte:4.4.2/KOT49H/G900AUCU2AND3:user/release-keys"
+  setprop ro.telephony.ril_class KlteRIL
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 
@@ -54,6 +55,7 @@ elif [ "$GET_BL_VERSION" == "G900M" ]; then
   setprop ro.product.device "klteeub"
   setprop ro.build.description "klteub-user 4.4.2 KOT49H G900MUBU1ANCE release-keys"
   setprop ro.build.fingerprint "samsung/klteub/klte:4.4.2/KOT49H/G900MUBU1ANCE:user/release-keys"
+  setprop ro.telephony.ril_class KlteRIL
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 
@@ -63,6 +65,7 @@ elif [ "$GET_BL_VERSION" == "G900T" ]; then
   setprop ro.product.device "kltetmo"
   setprop ro.build.description "kltetmo-user 4.4.2 KOT49H G900TUVU1BNH5 release-keys"
   setprop ro.build.fingerprint "samsung/kltetmo/kltetmo:4.4.2/KOT49H/G900TUVU1BNH5:user/release-keys"
+  setprop ro.telephony.ril_class KlteRIL
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 
@@ -70,6 +73,7 @@ elif [ "$GET_BL_VERSION" == "G900S" ]; then
 
   setprop ro.product.model "SM-G900S"
   setprop ro.product.device "klteskt"
+  setprop ro.telephony.ril_class KlteRIL
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 
@@ -77,6 +81,7 @@ elif [ "$GET_BL_VERSION" == "G900I" ]; then
 
   setprop ro.product.model "SM-G900I"
   setprop ro.product.device "kltedv"
+  setprop ro.telephony.ril_class KlteRIL
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 
@@ -84,6 +89,7 @@ elif [ "$GET_BL_VERSION" == "G900L" ]; then
 
   setprop ro.product.model "SM-G900L"
   setprop ro.product.device "kltelgt"
+  setprop ro.telephony.ril_class KlteRIL
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 
@@ -91,6 +97,7 @@ elif [ "$GET_BL_VERSION" == "G900K" ]; then
 
   setprop ro.product.model "SM-G900K"
   setprop ro.product.device "kltektt"
+  setprop ro.telephony.ril_class KlteRIL
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 
@@ -100,6 +107,7 @@ elif [ "$GET_BL_VERSION" == "G900W8" ]; then
   setprop ro.product.device "kltecan"
   setprop ro.build.description "kltevl-user 4.3 JSS15J N900W8VLUBMJ4 release-keys"
   setprop ro.build.fingerprint "samsung/kltevl/kltecan:4.3/JSS15J/N900W8VLUBMJ4:user/release-keys"
+  setprop ro.telephony.ril_class KlteRIL
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 
@@ -109,6 +117,7 @@ elif [ "$GET_BL_VERSION" == "G9006" ]; then
   setprop ro.product.device "kltezn"
   setprop ro.build.description "kltezn-user 4.4.2 KOT49H G9006VZNU1ANCH release-keys"
   setprop ro.build.fingerprint "samsung/kltezn/klte:4.4.2/KOT49H/G9006VZNU1ANCH:user/release-keys"
+  setprop ro.telephony.ril_class KlteRIL
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 
@@ -118,6 +127,7 @@ elif [ "$GET_BL_VERSION" == "G9008" ]; then
   setprop ro.product.device "kltezm"
   setprop ro.build.description "kltezm-user 4.4.2 KOT49H G9008VZNU1ANCH release-keys"
   setprop ro.build.fingerprint "samsung/kltezm/klte:4.4.2/KOT49H/G9008VZNU1ANCH:user/release-keys"
+  setprop ro.telephony.ril_class KlteRIL
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 
@@ -127,7 +137,7 @@ elif [ "$GET_BL_VERSION" == "SC04F" ]; then
   setprop ro.product.device "kltedcm"
   setprop ro.build.description "kltedcm-user 4.4.2 KOT49H SC04FOMU1VOD2 release-keys"
   setprop ro.build.fingerprint "samsung/SC04F/SC04F:4.4.2/KOT49H/SC04FOMU1VOD2:user/release-keys"
-  setprop telephony.sms.pseudo_multipart 1
+  setprop ro.telephony.ril_class KlteRIL
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 
@@ -142,8 +152,10 @@ elif [ "$GET_BL_VERSION" == "SCL23" ]; then
   setprop telephony.sms.pseudo_multipart 1
   setprop ril.subscription.types "NV,RUIM"
   setprop ro.cdma.home.operator.numeric "operator_numeric"
+  setprop ro.cdma.home.operator.alpha "operator_alpha"
   setprop ro.telephony.default_cdma_sub "default_cdma_sub"
   setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
+  setprop ro.telephony.ril_class SamsungQualcommRIL
   setprop telephony.lteOnCdmaDevice 0
 
 elif [ "$GET_BL_VERSION" == "G900P" ]; then
@@ -158,19 +170,8 @@ elif [ "$GET_BL_VERSION" == "G900P" ]; then
   setprop ro.cdma.home.operator.alpha "operator_alpha"
   setprop ro.telephony.default_cdma_sub "default_cdma_sub"
   setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
+  setprop ro.telephony.ril_class KlteRIL
   setprop telephony.lteOnCdmaDevice 0
-  rm -rf /data/app/boeffla_config-v2.apk
-
-elif [ "$GET_BL_VERSION" == "G900R" ]; then
-
-  setprop ro.product.model "SM-G900R"
-  setprop telephony.sms.pseudo_multipart 1
-  setprop ril.subscription.types "NV"
-  setprop ro.cdma.home.operator.numeric "operator_numeric"
-  setprop ro.cdma.home.operator.alpha "operator_alpha"
-  setprop ro.telephony.default_cdma_sub "default_cdma_sub"
-  setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
-  setprop telephony.lteOnCdmaDevice 1
 
 elif [ "$GET_BL_VERSION" == "G900V" ]; then
 
@@ -184,7 +185,22 @@ elif [ "$GET_BL_VERSION" == "G900V" ]; then
   setprop ro.cdma.home.operator.alpha "operator_alpha"
   setprop ro.telephony.default_cdma_sub "default_cdma_sub"
   setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
+  setprop ro.telephony.ril_class KlteRIL
   setprop telephony.lteOnCdmaDevice 1
+
+elif [ "$GET_BL_VERSION" == "G900R" ]; then
+
+  setprop ro.product.model "SM-G900R"
+  setprop ro.product.device "klteusc"
+  setprop telephony.sms.pseudo_multipart 1
+  setprop ril.subscription.types "NV"
+  setprop ro.cdma.home.operator.numeric "operator_numeric"
+  setprop ro.cdma.home.operator.alpha "operator_alpha"
+  setprop ro.telephony.default_cdma_sub "default_cdma_sub"
+  setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
+  setprop ro.telephony.ril_class KlteRIL
+  setprop telephony.lteOnCdmaDevice 1
+
 else
 
   setprop ro.product.model $GET_BL_VERSION

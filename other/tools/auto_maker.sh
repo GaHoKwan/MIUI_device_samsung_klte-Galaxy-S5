@@ -27,7 +27,57 @@
 
 # Auto maker Script for miui patchrom
 # Script Start
+
+export PWD_DIR=`pwd`
+
 echo "               Usage:  LAST_TARGET_BUILD_NUMBER                    " 
+function get_make_command()
+{
+  echo command make
+}
+
+function mka_timer()
+{
+    local start_time=$(date +"%s")
+    $@
+    local ret=$?
+    local end_time=$(date +"%s")
+    local tdiff=$(($end_time-$start_time))
+    local hours=$(($tdiff / 3600 ))
+    local mins=$((($tdiff % 3600) / 60))
+    local secs=$(($tdiff % 60))
+    local ncolors=$(tput colors 2>/dev/null)
+    if [ -n "$ncolors" ] && [ $ncolors -ge 8 ]; then
+        color_failed="\e[0;31m"
+        color_success="\e[0;32m"
+        color_reset="\e[0m"
+    else
+        color_failed=""
+        color_success=""
+        color_reset=""
+    fi
+    echo
+    if [ $ret -eq 0 ] ; then
+        printf "${color_success}#### make completed successfully "
+    else
+        printf "${color_failed}#### make failed to build some targets "
+    fi
+    if [ $hours -gt 0 ] ; then
+        printf "(%02g:%02g:%02g (hh:mm:ss))" $hours $mins $secs
+    elif [ $mins -gt 0 ] ; then
+        printf "(%02g:%02g (mm:ss))" $mins $secs
+    elif [ $secs -gt 0 ] ; then
+        printf "(%s seconds)" $secs
+    fi
+    printf " ####${color_reset}\n\n"
+    return $ret
+}
+
+function make()
+{
+    mka_timer $(get_make_command) "$@"
+}
+
 echo "                                                                   " 
 echo "  -LAST_TARGET_BUILD_NUMBER  if you want to build ota diff package " 
 echo "      use [LAST_TARGET_BUILD_NUMBER] last the MIUI Version         " 
@@ -122,10 +172,15 @@ function copydiffota(){
 	cp out/target_files.zip $BUILD_NUMBER-target.zip
 }
 
-OUTDIR=/home/jay/miui7/klte/out
+OUTDIR=$PWD_DIR/out
 
 # Function Start
-BUILD_DATE
+if [ "$1" = '' ]
+then
+    BUILD_DATE
+else
+    BUILD_NUMBER=$1
+fi
 init
 clean
 fullota

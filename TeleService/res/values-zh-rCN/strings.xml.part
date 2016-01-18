@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preferred_network_type_pref_entries_only_4g">仅使用4G网络</string>
+</resources>

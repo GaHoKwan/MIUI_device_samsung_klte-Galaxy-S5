@@ -65,6 +65,9 @@ if [ $1 = "TeleService" ];then
 	applyPatch $1 $2
 	changeID $1
 	$XMLMERGYTOOL $1/res/values $2/res/values
+	$XMLMERGYTOOL $1/res/values-zh-rCN $2/res/values-zh-rCN
+    # Copy LTE Xml
+    cp -f $1/res/xml/preferred_network_type_lte_x5.xml $2/res/xml/preferred_network_type_lte_x5.xml
     #fix read sim card contact preson
     sed -i 's/MiuiIccProvider/IccProvider/g' $2/smali/com/android/phone/IccProvider.smali
 fi
