@@ -34162,7 +34162,6 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 4151
     iget-object v1, p1, Lcom/android/server/pm/PackageSetting;->signatures:Lcom/android/server/pm/PackageSignatures;
 
     iget-object v1, v1, Lcom/android/server/pm/PackageSignatures;->mSignatures:[Landroid/content/pm/Signature;
