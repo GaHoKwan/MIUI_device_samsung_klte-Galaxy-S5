@@ -51,30 +51,18 @@ function mergyXmlPart() {
 	done
 }
 
+if [ $1 = "DeskClock" ];then
+    changeID $1
+fi
+
+if [ $1 = "DownloadProvider" ];then
+	changeID $1
+fi
+
 if [ $1 = "MiuiSystemUI" ];then
     applyPatch $1 $2
     $XMLMERGYTOOL $1/res/values $2/res/values
     changeID $1
-fi
-
-if [ $1 = "SecurityCenter" ];then
-	applyPatch $1 $2
-fi
-
-if [ $1 = "TeleService" ];then
-	applyPatch $1 $2
-	changeID $1
-	$XMLMERGYTOOL $1/res/values $2/res/values
-	$XMLMERGYTOOL $1/res/values-zh-rCN $2/res/values-zh-rCN
-    # Copy LTE Xml
-    cp -f $1/res/xml/preferred_network_type_lte_x5.xml $2/res/xml/preferred_network_type_lte_x5.xml
-    #fix read sim card contact preson
-    sed -i 's/MiuiIccProvider/IccProvider/g' $2/smali/com/android/phone/IccProvider.smali
-fi
-
-if [ $1 = "DeskClock" ];then
-	applyPatch $1 $2
-	changeID $1
 fi
 
 if [ $1 = "miuisystem" ];then
@@ -84,7 +72,7 @@ if [ $1 = "miuisystem" ];then
 	cp $1/klte_legacy.xml $2/assets/device_features/
 fi
 
-if [ $1 = "MiuiKeyguard" ];then
+if [ $1 = "SecurityCenter" ];then
 	applyPatch $1 $2
 fi
 
@@ -96,8 +84,15 @@ if [ $1 = "Settings" ];then
 	changeID $1
 fi
 
-if [ $1 = "DownloadProvider" ];then
+if [ $1 = "TeleService" ];then
+	applyPatch $1 $2
 	changeID $1
+	$XMLMERGYTOOL $1/res/values $2/res/values
+	$XMLMERGYTOOL $1/res/values-zh-rCN $2/res/values-zh-rCN
+    # Copy LTE Xml
+    cp -f $1/res/xml/preferred_network_type_lte_x5.xml $2/res/xml/preferred_network_type_lte_x5.xml
+    #fix read sim card contact preson
+    sed -i 's/MiuiIccProvider/IccProvider/g' $2/smali/com/android/phone/IccProvider.smali
 fi
 
 if [ $1 = "XiaomiServiceFramework" ];then
