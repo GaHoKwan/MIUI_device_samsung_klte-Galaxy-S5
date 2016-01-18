@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="expanded_status_bar_content_height">559.0dip</dimen>
+    <dimen name="expanded_status_bar_toggles_height">440.0dip</dimen>
+    <dimen name="expanded_status_bar_toggles_brightness_panel_height">75.0dip</dimen>
+    <dimen name="expanded_status_bar_toggle_max_width">80.0dip</dimen>
+    <dimen name="expanded_status_bar_toggle_max_height">110.0dip</dimen>
+    <dimen name="expanded_status_bar_toggle_max_land_height">90.0dip</dimen>
+    <dimen name="expanded_status_bar_toggles_padding_bottom">33.0dip</dimen>
+    <dimen name="expanded_status_bar_brightness_panel_padding_bottom">33.0dip</dimen>
+    <dimen name="awesome_expanded_toggles_land_header_height">77.0dip</dimen>
+    <dimen name="awesome_expanded_notifications_land_header_height">32.0dip</dimen>
+</resources>
