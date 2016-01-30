@@ -3581,39 +3581,10 @@
     .param p6, "resultRequestCode"    # I
 
     .prologue
-    .line 1358
     iget-boolean v0, p0, Landroid/preference/PreferenceActivity;->mSinglePane:Z
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_0
 
-    .line 1360
-    if-nez p3, :cond_0
-
-    if-eqz p4, :cond_0
-
-    .line 1361
-    const/4 v6, 0x0
-
-    move-object v0, p0
-
-    move-object v1, p1
-
-    move-object v2, p2
-
-    move-object v3, p5
-
-    move v4, p6
-
-    move-object v5, p4
-
-    invoke-virtual/range {v0 .. v6}, Landroid/preference/PreferenceActivity;->startWithFragment(Ljava/lang/String;Landroid/os/Bundle;Landroid/app/Fragment;ILjava/lang/CharSequence;Ljava/lang/CharSequence;)V
-
-    .line 1381
-    :goto_0
-    return-void
-
-    .line 1363
-    :cond_0
     const/4 v6, 0x0
 
     move-object v0, p0
@@ -3630,23 +3601,20 @@
 
     invoke-virtual/range {v0 .. v6}, Landroid/preference/PreferenceActivity;->startWithFragment(Ljava/lang/String;Landroid/os/Bundle;Landroid/app/Fragment;III)V
 
-    goto :goto_0
+    :goto_0
+    return-void
 
-    .line 1366
-    :cond_1
+    :cond_0
     invoke-static {p0, p1, p2}, Landroid/app/Fragment;->instantiate(Landroid/content/Context;Ljava/lang/String;Landroid/os/Bundle;)Landroid/app/Fragment;
 
     move-result-object v7
 
-    .line 1367
     .local v7, "f":Landroid/app/Fragment;
-    if-eqz p5, :cond_2
+    if-eqz p5, :cond_1
 
-    .line 1368
     invoke-virtual {v7, p5, p6}, Landroid/app/Fragment;->setTargetFragment(Landroid/app/Fragment;I)V
 
-    .line 1370
-    :cond_2
+    :cond_1
     invoke-virtual {p0}, Landroid/preference/PreferenceActivity;->getFragmentManager()Landroid/app/FragmentManager;
 
     move-result-object v0
@@ -3655,40 +3623,32 @@
 
     move-result-object v8
 
-    .line 1371
     .local v8, "transaction":Landroid/app/FragmentTransaction;
     const v0, 0x10202fb
 
     invoke-virtual {v8, v0, v7}, Landroid/app/FragmentTransaction;->replace(ILandroid/app/Fragment;)Landroid/app/FragmentTransaction;
 
-    .line 1372
-    if-eqz p3, :cond_4
+    if-eqz p3, :cond_3
 
-    .line 1373
     invoke-virtual {v8, p3}, Landroid/app/FragmentTransaction;->setBreadCrumbTitle(I)Landroid/app/FragmentTransaction;
 
-    .line 1377
-    :cond_3
+    :cond_2
     :goto_1
     const/16 v0, 0x1001
 
     invoke-virtual {v8, v0}, Landroid/app/FragmentTransaction;->setTransition(I)Landroid/app/FragmentTransaction;
 
-    .line 1378
     const-string v0, ":android:prefs"
 
     invoke-virtual {v8, v0}, Landroid/app/FragmentTransaction;->addToBackStack(Ljava/lang/String;)Landroid/app/FragmentTransaction;
 
-    .line 1379
     invoke-virtual {v8}, Landroid/app/FragmentTransaction;->commitAllowingStateLoss()I
 
     goto :goto_0
 
-    .line 1374
-    :cond_4
-    if-eqz p4, :cond_3
+    :cond_3
+    if-eqz p4, :cond_2
 
-    .line 1375
     invoke-virtual {v8, p4}, Landroid/app/FragmentTransaction;->setBreadCrumbTitle(Ljava/lang/CharSequence;)Landroid/app/FragmentTransaction;
 
     goto :goto_1
