@@ -327,6 +327,8 @@
 
     .restart local v4    # "layoutBoundsRect":Landroid/graphics/Rect;
     :cond_4
+    invoke-static {v1, p3}, Lmiui/util/DumpBitmapInfoUtils;->putBitmap(Landroid/graphics/Bitmap;Ljava/lang/CharSequence;)V
+
     move-object v0, p0
 
     move-object v5, p3

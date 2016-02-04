@@ -5405,7 +5405,7 @@
 
     .line 4250
     :cond_3
-    invoke-static {}, Lcom/miui/whetstone/app/WhetstoneAppManager;->setHardwareRendererIfNeeded()V
+    invoke-static {}, Landroid/app/ActivityThread$Injector;->setHardwareRenderer()V
 
     move-object/from16 v0, p0
 
@@ -6185,12 +6185,6 @@
 
     .line 4442
     :cond_12
-    move-object/from16 v0, p1
-
-    iget-object v2, v0, Landroid/app/ActivityThread$AppBindData;->appInfo:Landroid/content/pm/ApplicationInfo;
-
-    invoke-static {v2}, Lcom/miui/whetstone/app/WhetstoneAppManager;->trimHeapSizeIfNeeded(Landroid/content/pm/ApplicationInfo;)V
-
     invoke-static {}, Landroid/os/StrictMode;->allowThreadDiskWrites()Landroid/os/StrictMode$ThreadPolicy;
 
     move-result-object v29
@@ -11541,8 +11535,6 @@
 
     .line 5133
     .local v0, "thread":Landroid/app/ActivityThread;
-    invoke-static {}, Lcom/miui/whetstone/app/WhetstoneAppManager;->getInstance()Lcom/miui/whetstone/app/WhetstoneAppManager;
-
     invoke-direct {v0, v3}, Landroid/app/ActivityThread;->attach(Z)V
 
     .line 5135
