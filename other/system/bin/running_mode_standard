@@ -1,0 +1,28 @@
+#!/system/bin/sh
+
+#RESET CPU CORES
+echo '1' >/sys/devices/system/cpu/cpu0/online_control
+echo '1' >/sys/devices/system/cpu/cpu1/online_control
+echo '1' >/sys/devices/system/cpu/cpu2/online_control
+echo '1' >/sys/devices/system/cpu/cpu3/online_control
+sleep 1
+
+#CPU
+echo '2457600' > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+echo '2457600' > /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
+echo '2457600' > /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
+echo '2457600' > /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
+
+#CPU CORES
+echo '0' >/sys/devices/system/cpu/cpu0/online_control
+echo '0' >/sys/devices/system/cpu/cpu1/online_control
+echo '0' >/sys/devices/system/cpu/cpu2/online_control
+echo '0' >/sys/devices/system/cpu/cpu3/online_control
+
+#GPU
+echo '1' > /sys/class/kgsl/kgsl-3d0/max_pwrlevel_hardlimit
+echo '5' > /sys/class/kgsl/kgsl-3d0/min_pwrlevel_hardlimit
+sleep 1
+
+echo '1' > /sys/class/kgsl/kgsl-3d0/max_pwrlevel
+echo '5' > /sys/class/kgsl/kgsl-3d0/min_pwrlevel

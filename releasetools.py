@@ -10,8 +10,8 @@ def RemoveDeviceAssert(info):
       edify.script[i] = """ui_print(" ");
 ui_print("********************************************");
 ui_print("* Galaxy S5 Miui7 Based on Mokee OS  ");
-ui_print("*        ^.^     Welcome     ^.^");
-ui_print("* http://weibo.com/kwangaho");
+ui_print("*              ^.^     Welcome     ^.^");
+ui_print("*       http://weibo.com/kwangaho");
 ui_print("********************************************");
 show_progress(0.750000, 15);"""
       return
@@ -37,13 +37,9 @@ def Writeboot(info):
 show_progress(0.180000, 10);
 ui_print("Update Boot image...");
 package_extract_file("boot_klte.img", "/dev/block/platform/msm_sdcc.1/by-name/boot");
-ifelse(is_substring("G900I", getprop("ro.bootloader")),package_extract_dir("variant/kltedv", "/system"));
-ifelse(is_substring("G900R", getprop("ro.bootloader")),package_extract_dir("variant/klteusc", "/system"));
-ifelse(is_substring("G900P", getprop("ro.bootloader")),package_extract_dir("variant/kltespr", "/system"));
 ifelse(is_substring("G9006V", getprop("ro.bootloader")), package_extract_file("boot_kltechn.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
 ifelse(is_substring("G9008V", getprop("ro.bootloader")), package_extract_file("boot_kltechn.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
 ifelse(is_substring("SCL23", getprop("ro.bootloader")), package_extract_file("boot_kltejpn.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
-ifelse(is_substring("SCL23", getprop("ro.bootloader")),package_extract_dir("variant/kltekdi", "/system"));
 ifelse(is_substring("SCL23", getprop("ro.bootloader")), delete("/system/app/NfcNci.apk"));
 ifelse(is_substring("SC04F", getprop("ro.bootloader")), package_extract_file("boot_kltejpn.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
 ifelse(is_substring("SC04F", getprop("ro.bootloader")), delete("/system/app/NfcNci.apk"));
@@ -68,7 +64,12 @@ set_metadata("/system/etc/init.d", "uid", 0, "gid", 0, "mode", 0755, "capabiliti
     info.script.AppendExtra(extra_Perm);
 
 def Setmetadata(info):
-    extra_metadata = """ui_print("Update MetaData...");
+    extra_metadata = """ui_print("Update VARIANT..."); 
+ifelse(is_substring("G900I", getprop("ro.bootloader")),package_extract_dir("variant/kltedv", "/system"));
+ifelse(is_substring("G900R", getprop("ro.bootloader")),package_extract_dir("variant/klteusc", "/system"));
+ifelse(is_substring("G900P", getprop("ro.bootloader")),package_extract_dir("variant/kltespr", "/system"));
+ifelse(is_substring("SCL23", getprop("ro.bootloader")),package_extract_dir("variant/kltekdi", "/system"));
+ ui_print("Update MetaData...");
 set_metadata_recursive("/system", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata_recursive("/system/addon.d", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata_recursive("/system/bin", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
@@ -120,8 +121,8 @@ set_metadata("/system/xbin/procmem", "uid", 0, "gid", 0, "mode", 06755, "capabil
 set_metadata("/system/xbin/procrank", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");"""
     info.script.AppendExtra(extra_metadata);
 
-def UpdateFirmWare(info):
-    extra_firmware = """ui_print("Update FirmWare...");
+def CreateSymlinks(info):
+    extra_links = """ui_print("Update FirmWare...");
 symlink("/data/misc/audio/mbhc.bin", "/system/etc/firmware/wcd9320/wcd9320_mbhc.bin");
 symlink("/data/misc/audio/wcd9320_anc.bin", "/system/etc/firmware/wcd9320/wcd9320_anc.bin");
 symlink("/data/misc/audio/wcd9320_mad_audio.bin", "/system/etc/firmware/wcd9320/wcd9320_mad_audio.bin");
@@ -240,7 +241,7 @@ symlink("/firmware/image/widevine.b01", "/system/vendor/firmware/widevine.b01");
 symlink("/firmware/image/widevine.b02", "/system/vendor/firmware/widevine.b02");
 symlink("/firmware/image/widevine.b03", "/system/vendor/firmware/widevine.b03");
 symlink("/firmware/image/widevine.mdt", "/system/vendor/firmware/widevine.mdt");"""
-    info.script.AppendExtra(extra_firmware);
+    info.script.AppendExtra(extra_links);
 
 def WritePolicyConfig(info):
   try:
@@ -250,13 +251,13 @@ def WritePolicyConfig(info):
     print "warning: file_context missing from target;"
 
 def FullOTA_InstallEnd(info):
+    CopyVariantFiles(info.input_zip, info.output_zip, info.script)
     RemoveDeviceAssert(info)
     WritePolicyConfig(info)
     RemoveCount(info)
-    UpdateFirmWare(info)
+    CreateSymlinks(info)
     Setmetadata(info)
     Writeboot(info)
-    CopyVariantFiles(info.input_zip, info.output_zip, info.script)
 	
 def IncrementalOTA_InstallEnd(info):
     RemoveDeviceAssert(info)

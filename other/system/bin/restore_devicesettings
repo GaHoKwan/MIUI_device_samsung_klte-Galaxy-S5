@@ -1,0 +1,122 @@
+#!/system/bin/sh
+sleep 15
+
+FILE=/data/data/com.luo2888.devicesettings/shared_prefs/com.luo2888.devicesettings_preferences.xml
+
+function getstringvalue(){
+    sed -n '/name="'$1'"/{s///g;s/ //g;s/string//g;s/<//g;s/>//g;s/\///g;p}' $FILE
+}
+
+function getbooleanvalue(){
+    sed -n '/name="'$1'"/{s///g;s/ //g;s/boolean//g;s/"//g;s/value=//g;s/<//g;s/>//g;s/\///g;p}' $FILE
+}
+
+#RESTORE BOOLEAN
+
+if [ "`getbooleanvalue charge`" == "true" ]; then
+    echo '2200 mA' > /sys/kernel/charge_levels/charge_level_ac
+    echo '950 mA' > /sys/kernel/charge_levels/charge_level_usb
+else
+    echo '0 mA' > /sys/kernel/charge_levels/charge_level_ac
+    echo '0 mA' > /sys/kernel/charge_levels/charge_level_usb
+fi
+
+if [ "`getbooleanvalue glove_mode`" == "true" ]; then
+    echo '1' > /sys/class/i2c-adapter/i2c-2/2-0020/input/input2/glove_mode_enable
+else
+    echo '0' > /sys/class/i2c-adapter/i2c-2/2-0020/input/input2/glove_mode_enable
+fi
+
+if [ "`getbooleanvalue kcal_invert`" == "true" ]; then
+    echo '1' >  /sys/devices/platform/kcal_ctrl.0/kcal_invert
+else
+    echo '0' >  /sys/devices/platform/kcal_ctrl.0/kcal_invert
+fi
+
+#RESTORE STRING
+
+if [ "`getstringvalue led_intensity`" == "0" ]; then
+    echo '40' > /sys/class/sec/led/led_intensity
+elif [ "`getstringvalue led_intensity`" == "1" ]; then
+    echo '30' > /sys/class/sec/led/led_intensity
+elif [ "`getstringvalue led_intensity`" == "2" ]; then
+    echo '20' > /sys/class/sec/led/led_intensity
+elif [ "`getstringvalue led_intensity`" == "3" ]; then
+    echo '10' > /sys/class/sec/led/led_intensity
+elif [ "`getstringvalue led_intensity`" == "4" ]; then
+    echo '5' > /sys/class/sec/led/led_intensity
+elif [ "`getstringvalue led_intensity`" == "5" ]; then
+    echo '1' > /sys/class/sec/led/led_intensity
+fi
+
+if [ "`getstringvalue led_fade`" == "0" ]; then
+    echo '0' > /sys/class/sec/led/led_fade
+elif [ "`getstringvalue led_fade`" == "1" ]; then
+    echo '1' > /sys/class/sec/led/led_fade
+fi
+
+if [ "`getstringvalue wakeup_mode`" == "0" ]; then
+    echo '0' > /sys/class/i2c-adapter/i2c-2/2-0020/input/input2/screen_wake_options
+elif [ "`getstringvalue wakeup_mode`" == "1" ]; then
+    echo '1' > /sys/class/i2c-adapter/i2c-2/2-0020/input/input2/screen_wake_options
+elif [ "`getstringvalue wakeup_mode`" == "2" ]; then
+    echo '2' > /sys/class/i2c-adapter/i2c-2/2-0020/input/input2/screen_wake_options
+elif [ "`getstringvalue wakeup_mode`" == "3" ]; then
+    echo '3' > /sys/class/i2c-adapter/i2c-2/2-0020/input/input2/screen_wake_options
+elif [ "`getstringvalue wakeup_mode`" == "4" ]; then
+    echo '4' > /sys/class/i2c-adapter/i2c-2/2-0020/input/input2/screen_wake_options
+elif [ "`getstringvalue wakeup_mode`" == "5" ]; then
+    echo '5' > /sys/class/i2c-adapter/i2c-2/2-0020/input/input2/screen_wake_options
+elif [ "`getstringvalue wakeup_mode`" == "6" ]; then
+    echo '6' > /sys/class/i2c-adapter/i2c-2/2-0020/input/input2/screen_wake_options
+fi
+
+if [ "`getstringvalue kcal`" == "0" ]; then
+    echo '255 255 255' >/sys/devices/platform/kcal_ctrl.0/kcal
+elif [ "`getstringvalue kcal`" == "1" ]; then
+    echo '200 200 205' >/sys/devices/platform/kcal_ctrl.0/kcal
+elif [ "`getstringvalue kcal`" == "2" ]; then
+    echo '150 150 155' >/sys/devices/platform/kcal_ctrl.0/kcal
+elif [ "`getstringvalue kcal`" == "3" ]; then
+    echo '125 125 130' >/sys/devices/platform/kcal_ctrl.0/kcal
+elif [ "`getstringvalue kcal`" == "4" ]; then
+    echo '75 75 80' >/sys/devices/platform/kcal_ctrl.0/kcal
+fi
+
+if [ "`getstringvalue kcal_sat`" == "0" ]; then
+    echo '255' >/sys/devices/platform/kcal_ctrl.0/kcal_sat
+elif [ "`getstringvalue kcal_sat`" == "1" ]; then
+    echo '128' >/sys/devices/platform/kcal_ctrl.0/kcal_sat
+elif [ "`getstringvalue kcal_sat`" == "2" ]; then
+    echo '285' >/sys/devices/platform/kcal_ctrl.0/kcal_sat
+fi
+
+if [ "`getstringvalue keylight`" == "0" ]; then
+    echo '2' >sys/class/misc/btk_control/btkc_mode
+elif [ "`getstringvalue keylight`" == "1" ]; then
+    echo '0' >sys/class/misc/btk_control/btkc_mode
+elif [ "`getstringvalue keylight`" == "2" ]; then
+    echo '1' >sys/class/misc/btk_control/btkc_mode
+fi
+
+if [ "`getstringvalue keylight_timout`" == "0" ]; then
+    echo '1' >sys/class/misc/btk_control/btkc_timeout
+elif [ "`getstringvalue keylight_timout`" == "1" ]; then
+    echo '5' >sys/class/misc/btk_control/btkc_timeout
+elif [ "`getstringvalue keylight_timout`" == "2" ]; then
+    echo '10' >sys/class/misc/btk_control/btkc_timeout
+elif [ "`getstringvalue keylight_timout`" == "3" ]; then
+    echo '20' >sys/class/misc/btk_control/btkc_timeout
+elif [ "`getstringvalue keylight_timout`" == "4" ]; then
+    echo '7200' >sys/class/misc/btk_control/btkc_timeout
+fi
+
+if [ "`getstringvalue running_mode`" == "0" ]; then
+    /system/bin/running_mode_battery
+elif [ "`getstringvalue running_mode`" == "1" ]; then
+    /system/bin/running_mode_standard
+elif [ "`getstringvalue running_mode`" == "2" ]; then
+    /system/bin/running_mode_performance
+fi
+
+log -t Restore_DeviceSettings "Done!"

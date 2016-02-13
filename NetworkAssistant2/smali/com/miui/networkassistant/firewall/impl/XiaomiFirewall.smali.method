@@ -1,0 +1,10 @@
+.method static constructor <clinit>()V
+    .locals 1
+
+    .prologue
+    const-string v0, "mfwd"
+
+    sput-object v0, Lcom/miui/networkassistant/firewall/impl/XiaomiFirewall;->SERVER_SOCKET_FD_NAME:Ljava/lang/String;
+
+    return-void
+.end method

@@ -175,9 +175,14 @@ function copydiffota(){
 OUTDIR=$PWD_DIR/out
 
 # Function Start
-if [ "$1" = '' ]
-then
+if [ "$1" = '' ]; then
     BUILD_DATE
+elif [ "$1" = 'diffota' ]; then
+    init
+    BUILD_NUMBER=$2
+	  otadiff
+	  source other/tools/md5.sh
+    exit 0
 else
     BUILD_NUMBER=$1
 fi

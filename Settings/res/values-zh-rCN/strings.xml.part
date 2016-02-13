@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="stocksettings">附加设置</string>
+    <string name="devicesettings">其他附加设置</string>
 </resources>

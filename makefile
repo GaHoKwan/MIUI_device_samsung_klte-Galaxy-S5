@@ -9,7 +9,7 @@ local-zip-file := stockrom.zip
 local-out-zip-file := MIUI_Klte.zip
 
 # All apps from original ZIP, but has smali files chanded
-local-modified-apps := StockSettings
+local-modified-apps :=
 
 local-modified-priv-apps :=
 
@@ -22,7 +22,7 @@ local-miui-removed-apps :=
 
 local-miui-removed-priv-apps := 
 
-local-miui-modified-apps := DeskClock DownloadProvider miuisystem Settings TeleService SecurityCenter MiuiSystemUI XiaomiServiceFramework
+local-miui-modified-apps := DeskClock DownloadProvider miuisystem Settings TeleService SecurityCenter MiuiSystemUI XiaomiServiceFramework NetworkAssistant2
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
@@ -51,8 +51,9 @@ include $(PORT_BUILD)/porting.mk
 BUILD_COUNT := $(shell date +%Y%m%d)
 local-pre-zip-misc:
 	cp -rf other/system $(ZIP_DIR)/
-	@echo ">>> Fix nfc"
-	mv $(ZIP_DIR)/system/app/Nfc.apk $(ZIP_DIR)/system/app/NfcNci.apk
+	@echo ">>> Fix nfc" 
+	cp -rf  stockrom/system/app/Nfc.apk $(ZIP_DIR)/system/app/NfcNci.apk
+	rm $(ZIP_DIR)/system/app/Nfc.apk
 	@echo ">>> Remove miui prebuilt binaries"
 	rm -rf $(ZIP_DIR)/system/bin/app_process_vendor
 	cp -rf stockrom/system/bin/app_process $(ZIP_DIR)/system/bin/app_process
@@ -61,10 +62,20 @@ local-pre-zip-misc:
 	rm -rf $(ZIP_DIR)/system/bin/dexopt_vendor
 	cp -rf stockrom/system/bin/dexopt $(ZIP_DIR)/system/bin/dexopt
 	@echo ">>> Fix mdnsd"
-	mv $(ZIP_DIR)/system/bin/mdnsd $(ZIP_DIR)/system/bin/mdnsd_original
+	 cp -rf stockrom/system/bin/mdnsd $(ZIP_DIR)/system/bin/mdnsd_original
+	 rm -rf $(ZIP_DIR)/system/bin/mdnsd
 	@echo ">>> Some changes"
+	echo "persist.sys.density=480" >> $(ZIP_DIR)/system/build.prop
 	echo "ro.sf.lcd_density=480" >> $(ZIP_DIR)/system/build.prop
 	sed -i 's/qemu.sf.lcd_density/persist.sys.density/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
+	@echo ">>> Remove Qrng Service"
+	 cp -rf stockrom/system/bin/qrngd $(ZIP_DIR)/system/bin/qrngd_original
+	 rm -rf $(ZIP_DIR)/system/bin/qrngd
+	 cp -rf stockrom/system/bin/qrngp $(ZIP_DIR)/system/bin/qrngp_original
+	 rm -rf $(ZIP_DIR)/system/bin/qrngp
+		 @echo ">>> Sounds Change"
+		echo "persist.power.sound=1" >> $(ZIP_DIR)/system/build.prop
+		echo "persist.screenshot.sound=1" >> $(ZIP_DIR)/system/build.prop
 	@echo ">>> PowerKeeper and Whetstone "
 	echo "persist.sys.mcd_config_file=/system/etc/mcd_default.conf" >> $(ZIP_DIR)/system/build.prop
 	echo "persist.sys.klo=on" >> $(ZIP_DIR)/system/build.prop

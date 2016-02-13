@@ -98,3 +98,7 @@ fi
 if [ $1 = "XiaomiServiceFramework" ];then
     applyPatch $1 $2
 fi
+
+if [ $1 = "NetworkAssistant2" ];then
+    sed -i '/  - 16/a\  - 18' $2/apktool.yml
+fi
