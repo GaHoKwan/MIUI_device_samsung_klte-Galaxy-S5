@@ -95,6 +95,10 @@ if [ $1 = "TeleService" ];then
     sed -i 's/MiuiIccProvider/IccProvider/g' $2/smali/com/android/phone/IccProvider.smali
 fi
 
+if [ $1 = "ThemeManager" ];then
+    applyPatch $1 $2
+fi
+
 if [ $1 = "XiaomiServiceFramework" ];then
     applyPatch $1 $2
 fi

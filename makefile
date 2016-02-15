@@ -48,7 +48,7 @@ include $(PORT_BUILD)/porting.mk
 # To define any local-target
 #updater := $(ZIP_DIR)/META-INF/com/google/android/updater-script
 #pre_install_data_packages := $(TMP_DIR)/pre_install_apk_pkgname.txt
-BUILD_COUNT := $(shell date +%Y%m%d)
+BUILD_DATE := $(shell date +%Y%m%d)
 local-pre-zip-misc:
 	cp -rf other/system $(ZIP_DIR)/
 	@echo ">>> Fix nfc" 
@@ -84,7 +84,14 @@ local-pre-zip-misc:
 	echo "persist.audio.fluence.speaker=false" >> $(ZIP_DIR)/system/build.prop
 	sed -i 's/qemu.sf.lcd_density/persist.sys.density/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
 	@echo ">>> Security Patch "
-	echo "ro.build.version.security_patch=2016-01-01" >> $(ZIP_DIR)/system/build.prop
+	echo "ro.build.version.security_patch=2016-02-01" >> $(ZIP_DIR)/system/build.prop
 	echo "ro.build.version.base_os=" >> $(ZIP_DIR)/system/build.prop
 	@echo ">>> Use auto brightadj"
 	echo "persist.power.useautobrightadj=true" >> $(ZIP_DIR)/system/build.prop
+	@echo ">>> DeviceUpdater Changes"
+	echo "ro.ota.romname=MIUI7" >> $(ZIP_DIR)/system/build.prop
+	echo "ro.ota.device=klte" >> $(ZIP_DIR)/system/build.prop
+	echo "ro.ota.codename=experimental" >> $(ZIP_DIR)/system/build.prop
+	echo "ro.ota.version=$(BUILD_NUMBER)" >> $(ZIP_DIR)/system/build.prop
+	echo "ro.ota.version_number=$(BUILD_DATE)" >> $(ZIP_DIR)/system/build.prop
+	echo "ro.ota.manifest=http://luo2888.tk/miui7/ota.xml" >> $(ZIP_DIR)/system/build.prop

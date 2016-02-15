@@ -59,8 +59,15 @@ delete("/data/system/count");"""
     info.script.AppendExtra(remove_Count);
 
 def UpdatePerm(info):
-    extra_Perm = """set_metadata_recursive("/system/etc/init.d", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
-set_metadata("/system/etc/init.d", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");"""
+    extra_Perm = """ui_print("Create SymLinks...");
+symlink("/system/CameraDir/miui_camera.apk", "/system/app/Camera.apk");
+set_metadata_recursive("/system/etc/init.d", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/etc/init.d", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/bin/mcd", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/bin/restore_devicesettings", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/bin/running_mode_battery", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/bin/running_mode_standard", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/bin/running_mode_performance", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");"""
     info.script.AppendExtra(extra_Perm);
 
 def Setmetadata(info):
@@ -122,7 +129,9 @@ set_metadata("/system/xbin/procrank", "uid", 0, "gid", 0, "mode", 06755, "capabi
     info.script.AppendExtra(extra_metadata);
 
 def CreateSymlinks(info):
-    extra_links = """ui_print("Update FirmWare...");
+    extra_links = """ui_print("Create SymLinks...");
+symlink("/system/CameraDir/miui_camera.apk", "/system/app/Camera.apk");
+ui_print("Update FirmWare...");
 symlink("/data/misc/audio/mbhc.bin", "/system/etc/firmware/wcd9320/wcd9320_mbhc.bin");
 symlink("/data/misc/audio/wcd9320_anc.bin", "/system/etc/firmware/wcd9320/wcd9320_anc.bin");
 symlink("/data/misc/audio/wcd9320_mad_audio.bin", "/system/etc/firmware/wcd9320/wcd9320_mad_audio.bin");
