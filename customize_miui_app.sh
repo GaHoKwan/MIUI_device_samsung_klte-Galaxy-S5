@@ -69,7 +69,6 @@ if [ $1 = "miuisystem" ];then
 	sed -i -e '/  - 16/a\  - 17' $2/apktool.yml
 	applyPatch $1 $2
 	cp $1/klte.xml $2/assets/device_features/
-	cp $1/klte_legacy.xml $2/assets/device_features/
 fi
 
 if [ $1 = "SecurityCenter" ];then
