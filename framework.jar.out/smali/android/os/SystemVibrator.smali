@@ -2,10 +2,15 @@
 .super Landroid/os/Vibrator;
 .source "SystemVibrator.java"
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/os/SystemVibrator$MagnitudeType;
+    }
+.end annotation
 
 # static fields
 .field private static final TAG:Ljava/lang/String; = "Vibrator"
-
 
 # instance fields
 .field private final mPackageName:Ljava/lang/String;
@@ -343,5 +348,49 @@
     invoke-virtual {p0, v0, v1, p1, p2}, Landroid/os/SystemVibrator;->vibrate(ILjava/lang/String;[JI)V
 
     .line 68
+    return-void
+.end method
+
+#GaHoKwan ADD 
+
+.method public vibrateImmVibe(I)V
+    .locals 0
+    .prologue
+
+    return-void
+.end method
+
+.method public vibrateImmVibe(II)V
+    .locals 0
+    .prologue
+
+    return-void
+.end method
+
+.method public vibrateImmVibe(ILandroid/os/SystemVibrator$MagnitudeType;)V
+    .locals 0
+    .prologue
+
+    return-void
+.end method
+
+.method public vibrateImmVibe([B)V
+    .locals 0
+    .prologue
+
+    return-void
+.end method
+
+.method public vibrateImmVibe([BI)V
+    .locals 0
+    .prologue
+
+    return-void
+.end method
+
+.method public vibrateImmVibe([BLandroid/os/SystemVibrator$MagnitudeType;)V
+    .locals 0
+    .prologue
+
     return-void
 .end method

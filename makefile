@@ -53,7 +53,7 @@ local-pre-zip-misc:
 	cp -rf other/system $(ZIP_DIR)/
 	@echo ">>> Fix nfc" 
 	cp -rf  stockrom/system/app/Nfc.apk $(ZIP_DIR)/system/app/NfcNci.apk
-	rm $(ZIP_DIR)/system/app/Nfc.apk
+	rm -rf $(ZIP_DIR)/system/app/Nfc.apk
 	@echo ">>> Remove miui prebuilt binaries"
 	rm -rf $(ZIP_DIR)/system/bin/app_process_vendor
 	cp -rf stockrom/system/bin/app_process $(ZIP_DIR)/system/bin/app_process
@@ -62,20 +62,20 @@ local-pre-zip-misc:
 	rm -rf $(ZIP_DIR)/system/bin/dexopt_vendor
 	cp -rf stockrom/system/bin/dexopt $(ZIP_DIR)/system/bin/dexopt
 	@echo ">>> Fix mdnsd"
-	 cp -rf stockrom/system/bin/mdnsd $(ZIP_DIR)/system/bin/mdnsd_original
-	 rm -rf $(ZIP_DIR)/system/bin/mdnsd
+	cp -rf stockrom/system/bin/mdnsd $(ZIP_DIR)/system/bin/mdnsd_original
+	rm -rf $(ZIP_DIR)/system/bin/mdnsd
 	@echo ">>> Some changes"
 	echo "persist.sys.density=480" >> $(ZIP_DIR)/system/build.prop
 	echo "ro.sf.lcd_density=480" >> $(ZIP_DIR)/system/build.prop
 	sed -i 's/qemu.sf.lcd_density/persist.sys.density/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
 	@echo ">>> Remove Qrng Service"
-	 cp -rf stockrom/system/bin/qrngd $(ZIP_DIR)/system/bin/qrngd_original
-	 rm -rf $(ZIP_DIR)/system/bin/qrngd
-	 cp -rf stockrom/system/bin/qrngp $(ZIP_DIR)/system/bin/qrngp_original
-	 rm -rf $(ZIP_DIR)/system/bin/qrngp
-		 @echo ">>> Sounds Change"
-		echo "persist.power.sound=1" >> $(ZIP_DIR)/system/build.prop
-		echo "persist.screenshot.sound=1" >> $(ZIP_DIR)/system/build.prop
+	cp -rf stockrom/system/bin/qrngd $(ZIP_DIR)/system/bin/qrngd_original
+	rm -rf $(ZIP_DIR)/system/bin/qrngd
+	cp -rf stockrom/system/bin/qrngp $(ZIP_DIR)/system/bin/qrngp_original
+	rm -rf $(ZIP_DIR)/system/bin/qrngp
+	@echo ">>> Sounds Change"
+	echo "persist.power.sound=1" >> $(ZIP_DIR)/system/build.prop
+	echo "persist.screenshot.sound=1" >> $(ZIP_DIR)/system/build.prop
 	@echo ">>> PowerKeeper and Whetstone "
 	echo "persist.sys.mcd_config_file=/system/etc/mcd_default.conf" >> $(ZIP_DIR)/system/build.prop
 	echo "persist.sys.klo=on" >> $(ZIP_DIR)/system/build.prop

@@ -106,8 +106,6 @@ LAST_TARGET="$LAST_BUILD_NUMBER"-target.zip
 
 if [ -e out/ZIP/system/bin/mdnsd_original ];then
 	cp -f stockrom/system/build.prop out/ZIP/system/build.prop
-	mv out/ZIP/system/bin/mdnsd_original out/ZIP/system/bin/mdnsd
-	mv out/ZIP/system/app/NfcNci.apk out/ZIP/system/app/Nfc.apk
 fi
 
 function init(){
