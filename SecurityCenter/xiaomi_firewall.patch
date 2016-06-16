@@ -1,0 +1,45 @@
+From 58b696a9b7d6a5b5fae37919c8ae38e3e7eeeadc Mon Sep 17 00:00:00 2001
+From: X-s <imxs1107@gmail.com>
+Date: Tue, 29 Mar 2016 11:55:52 +0800
+Subject: [PATCH] fix network control
+
+Signed-off-by: X-s <imxs1107@gmail.com>
+---
+ .../com/miui/networkassistant/firewall/impl/XiaomiFirewall.smali      | 2 ++
+ .../com/miui/networkassistant/service/tm/SocketTaggerManager.smali    | 4 ++++
+ 2 files changed, 6 insertions(+)
+
+--- a/SecurityCenter/smali/com/miui/networkassistant/firewall/impl/XiaomiFirewall.smali
++++ b/SecurityCenter/smali/com/miui/networkassistant/firewall/impl/XiaomiFirewall.smali
+@@ -122,6 +122,8 @@
+ 
+     move-result-object v0
+ 
++    const-string v0, "mfwd"
++
+     sput-object v0, Lcom/miui/networkassistant/firewall/impl/XiaomiFirewall;->SERVER_SOCKET_FD_NAME:Ljava/lang/String;
+ 
+     return-void
+--- a/SecurityCenter/smali/com/miui/networkassistant/service/tm/SocketTaggerManager.smali
++++ b/SecurityCenter/smali/com/miui/networkassistant/service/tm/SocketTaggerManager.smali
+@@ -69,6 +69,8 @@
+ 
+     move-result-object v0
+ 
++    const-string v0, "mtagd"
++
+     sput-object v0, Lcom/miui/networkassistant/service/tm/SocketTaggerManager;->SOCKET_TAGGER_SERVER_SOCKET_FD_NAME:Ljava/lang/String;
+ 
+     new-instance v0, Ljava/lang/StringBuilder;
+@@ -99,6 +101,8 @@
+ 
+     move-result-object v0
+ 
++    const-string v0, "/data/system/netstats/pkgtags"
++
+     sput-object v0, Lcom/miui/networkassistant/service/tm/SocketTaggerManager;->PKG_TO_TAG_MAP_FILE_PATH:Ljava/lang/String;
+ 
+     return-void
+-- 
+2.5.0
+

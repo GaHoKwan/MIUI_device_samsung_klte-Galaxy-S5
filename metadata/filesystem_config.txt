@@ -194,6 +194,7 @@ system/bin/lsmod 0 2000 755
 system/bin/lsof 0 2000 755
 system/bin/macloader 0 2000 755
 system/bin/make_ext4fs 0 2000 755
+system/bin/mcd 0 2000 755
 system/bin/md5 0 2000 755
 system/bin/mdnsd 0 2000 755
 system/bin/media 0 2000 755

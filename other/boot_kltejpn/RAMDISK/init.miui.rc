@@ -1,5 +1,22 @@
 # miui init rc
 
+on init
+    # Create cgroup mount point for memory and freezer
+    mount tmpfs none /sys/fs/cgroup mode=0750,uid=0,gid=1000
+    mkdir /sys/fs/cgroup/memory 0750 root system
+    mount cgroup none /sys/fs/cgroup/memory memory
+    mkdir /sys/fs/cgroup/freezer 0750 root system
+    mount cgroup none /sys/fs/cgroup/freezer freezer
+
+on post-fs-data
+    mkdir /data/system/mcd 755 system system
+    restorecon_recursive /data/system/mcd
+
+# secureboot
+service setlockstate /sbin/setlockstate
+    class core
+    oneshot
+
 #mdbd
 service mdbd /sbin/mdbd
     class core
@@ -46,6 +63,32 @@ service tunman /system/xbin/tunman
 on property:net.svc.tunman=start
     start tunman
 
+service otad /bin/otad
+    class main
+    socket otad stream 0660 updater updater
+    seclabel u:r:otad:s0
+
+# will delete this service, /system may be invalidate yet when post-fs-data triggered
+service checkpath /system/xbin/miuioneshots check-sdk-path
+    class main
+    user root
+    group system
+    disabled
+    oneshot
+
+on post-fs-data
+    start checkpath
+
+service checksdkpath /system/xbin/miuioneshots check-sdk-path
+    class main
+    user root
+    group system
+    disabled
+    oneshot
+
+on property:init.svc.zygote=running
+    start checksdkpath
+
 # for theme
 on post-fs-data
     mkdir /data/system/theme 0755 theme theme
@@ -59,3 +102,8 @@ on post-fs-data
     chown theme theme /data/system/theme_magic
     chmod 0775 /data/system/theme_magic
     restorecon /data/system/theme_magic
+
+service fdpp /system/bin/fdpp daemon
+    class main
+    user root
+    group root

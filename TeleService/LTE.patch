@@ -21,27 +21,27 @@ Subject: [PATCH] LTE
  
 --- a/TeleService/smali/com/android/phone/settings/PreferredNetworkTypeListPreference.smali
 +++ b/TeleService/smali/com/android/phone/settings/PreferredNetworkTypeListPreference.smali
-@@ -749,15 +749,15 @@
+@@ -740,15 +740,15 @@
+     .local v2, "numeric":Ljava/lang/String;
+     sget-boolean v4, Lmiui/os/Build;->IS_MIFIVE:Z
  
-     sget-boolean v3, Lmiui/os/Build;->IS_MIFIVE:Z
+-    if-nez v4, :cond_8
++    #if-nez v4, :cond_8
  
--    if-nez v3, :cond_8
-+    #if-nez v3, :cond_8
+-    sget-boolean v4, Lmiui/os/Build;->IS_HONGMI_TWOX_CM:Z
++    #sget-boolean v4, Lmiui/os/Build;->IS_HONGMI_TWOX_CM:Z
  
--    sget-boolean v3, Lmiui/os/Build;->IS_HONGMI_TWOX_CM:Z
-+    #sget-boolean v3, Lmiui/os/Build;->IS_HONGMI_TWOX_CM:Z
+-    if-nez v4, :cond_8
++    #if-nez v4, :cond_8
  
--    if-nez v3, :cond_8
-+    #if-nez v3, :cond_8
+-    sget-boolean v4, Lmiui/os/Build;->IS_HONGMI_THREEX_CM:Z
++    #sget-boolean v4, Lmiui/os/Build;->IS_HONGMI_THREEX_CM:Z
  
--    sget-boolean v3, Lmiui/os/Build;->IS_HONGMI_THREEX_CM:Z
-+    #sget-boolean v3, Lmiui/os/Build;->IS_HONGMI_THREEX_CM:Z
- 
--    if-eqz v3, :cond_a
-+    #if-eqz v3, :cond_a
+-    if-eqz v4, :cond_a
++    #if-eqz v4, :cond_a
  
      :cond_8
-     const v3, 0x7f050026
+     const v4, 0x7f050026
 -- 
 1.9.1
 

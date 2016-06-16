@@ -66,21 +66,26 @@ if [ $1 = "MiuiSystemUI" ];then
 fi
 
 if [ $1 = "miuisystem" ];then
-	sed -i -e '/  - 16/a\  - 17' $2/apktool.yml
+    sed -i '/  - 16/a\  - 17' $2/apktool.yml
 	applyPatch $1 $2
 	cp $1/klte.xml $2/assets/device_features/
 fi
 
 if [ $1 = "SecurityCenter" ];then
 	applyPatch $1 $2
+    sed -i '/  - 16/a\  - 18' $2/apktool.yml
 fi
 
 if [ $1 = "Settings" ];then
-    sed -i -e '/  - 17/a\  - 18' $2/apktool.yml
+    sed -i '/  - 17/a\  - 18' $2/apktool.yml
 	$XMLMERGYTOOL $1/res/values $2/res/values
 	$XMLMERGYTOOL $1/res/values-zh-rCN $2/res/values-zh-rCN
 	applyPatch $1 $2
 	changeID $1
+    #fix button light timeout
+    sed -i 's/screen_buttons_timeout/button_backlight_timeout/g' $2/smali/com/android/settings/KeySettings.smali
+    #remove mi sound
+    sed -i 's/<bool name="support_dirac">true<\/bool>/<bool name="support_dirac">false<\/bool>/' $2/res/values/bools.xml
 fi
 
 if [ $1 = "TeleService" ];then
@@ -102,6 +107,3 @@ if [ $1 = "XiaomiServiceFramework" ];then
     applyPatch $1 $2
 fi
 
-if [ $1 = "NetworkAssistant2" ];then
-    sed -i '/  - 16/a\  - 18' $2/apktool.yml
-fi

@@ -9,7 +9,7 @@ def RemoveDeviceAssert(info):
     if "ro.product" in edify.script[i]:
       edify.script[i] = """ui_print(" ");
 ui_print("********************************************");
-ui_print("* Galaxy S5 Miui7 Based on Mokee OS  ");
+ui_print("* Galaxy S4/S5 Miui7 Based on Mokee OS  ");
 ui_print("*              ^.^     Welcome     ^.^");
 ui_print("*       http://weibo.com/kwangaho");
 ui_print("********************************************");
@@ -37,6 +37,8 @@ def Writeboot(info):
 show_progress(0.180000, 10);
 ui_print("Update Boot image...");
 package_extract_file("boot_klte.img", "/dev/block/platform/msm_sdcc.1/by-name/boot");
+ifelse(is_substring("G900I", getprop("ro.bootloader")), package_extract_file("boot_kltebcm.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
+ifelse(is_substring("G900P", getprop("ro.bootloader")), package_extract_file("boot_kltebcm.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
 ifelse(is_substring("G9006", getprop("ro.bootloader")), package_extract_file("boot_kltechn.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
 ifelse(is_substring("G9008", getprop("ro.bootloader")), package_extract_file("boot_kltechn.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
 ifelse(is_substring("SCL23", getprop("ro.bootloader")), package_extract_file("boot_kltejpn.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
@@ -44,6 +46,7 @@ ifelse(is_substring("SCL23", getprop("ro.bootloader")), delete("/system/app/NfcN
 ifelse(is_substring("SC04F", getprop("ro.bootloader")), package_extract_file("boot_kltejpn.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
 ifelse(is_substring("SC04F", getprop("ro.bootloader")), delete("/system/app/NfcNci.apk"));
 ifelse(is_substring("G9009D", getprop("ro.bootloader")), package_extract_file("boot_k3gduos.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
+ifelse(is_substring("I9508V", getprop("ro.bootloader")), package_extract_file("boot_jsglte.img", "/dev/block/platform/msm_sdcc.1/by-name/boot"));
 set_progress(1.000000);"""
     info.script.AppendExtra(extra_img_flash);
 
@@ -71,11 +74,11 @@ set_metadata("/system/bin/running_mode_performance", "uid", 0, "gid", 0, "mode",
 
 def Setmetadata(info):
     extra_metadata = """ui_print("Update VARIANT..."); 
-ifelse(is_substring("G900I", getprop("ro.bootloader")),package_extract_dir("variant/kltedv", "/system"));
-ifelse(is_substring("G900R", getprop("ro.bootloader")),package_extract_dir("variant/klteusc", "/system"));
-ifelse(is_substring("G900P", getprop("ro.bootloader")),package_extract_dir("variant/kltespr", "/system"));
-ifelse(is_substring("SCL23", getprop("ro.bootloader")),package_extract_dir("variant/kltekdi", "/system"));
-ifelse(is_substring("G9009D", getprop("ro.bootloader")),package_extract_dir("variant/k3gduos", "/system"));
+ifelse(is_substring("G9009D", getprop("ro.bootloader")),package_extract_dir("variant/cdma", "/system"));
+ifelse(is_substring("G900R", getprop("ro.bootloader")),package_extract_dir("variant/cdma", "/system"));
+ifelse(is_substring("G900I", getprop("ro.bootloader")),package_extract_dir("variant/bcmnfc", "/system"));
+ifelse(is_substring("G900P", getprop("ro.bootloader")),package_extract_dir("variant/bcmnfc", "/system"));
+ifelse(is_substring("I9508V", getprop("ro.bootloader")),package_extract_dir("variant/jsglte", "/system"));
  ui_print("Update MetaData...");
 set_metadata_recursive("/system", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata_recursive("/system/addon.d", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");

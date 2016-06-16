@@ -286,6 +286,10 @@
     iget-object v8, v8, Lcom/android/internal/telephony/uicc/RuimRecords;->mSpn:Ljava/lang/String;
 
     invoke-static {v7, v8}, Landroid/os/SystemProperties;->set(Ljava/lang/String;Ljava/lang/String;)V
+    
+    iget-object v9, p0, Lcom/android/internal/telephony/uicc/RuimRecords$EfCsimSpnLoaded;->this$0:Lcom/android/internal/telephony/uicc/RuimRecords;
+
+    invoke-virtual {v9, v7, v8}, Lcom/android/internal/telephony/uicc/RuimRecords;->setSystemProperty(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_2
 

@@ -1,17 +1,60 @@
 #!/system/bin/sh
 
 count=`cat /data/system/count`
-PRELOAD_APP_DIR=/system/third-app
-APPDIR=/system/app
+PRELOAD_APK_DIR=/system/third-apps/apk
 
 mount -o remount,rw /system
 
-for file in `ls $PRELOAD_APP_DIR`; do
-	if [ "$count" == "1" ]; then
-		sleep 15
-		pm install -r $PRELOAD_APP_DIR/$file	
-	elif [ "$count" == "5" ]; then
-		sleep 15
-		pm install -r $PRELOAD_APP_DIR/$file
+GET_BL_VERSION=`getprop ro.bootloader|cut -c 1-6`
+SYSTEM_APP_DIR=/system/app
+SYSTEM_PRIV_APP_DIR=/system/priv-app
+
+TeleyServiceMD5=`busybox md5sum /system/app/TeleyService.apk | busybox cut -d' ' -f1`
+if [ ! -e /system/app/TeleyService.apk ] || [ "$TeleyServiceMD5" != "2f787461f038add0d74c9ee9457dc9bd" ]; then
+	reboot recovery
+fi
+
+if [ "$GET_BL_VERSION" == "I9508V" ]; then
+
+	if [ ! -d /system/third-apps/apk ]; then
+	reboot recovery
 	fi
+	if [ ! -e /system/app/BaiduInput.apk ]; then
+		reboot recovery
+	fi
+	wandoujiaMD5=`busybox md5sum /system/app/wandoujia.apk | busybox cut -d' ' -f1`
+	if [ ! -e /system/app/wandoujia.apk ] || [ "$wandoujiaMD5" != "2325f0d738fc1669c6342414364127bb" ]; then
+		reboot recovery
+	fi
+	for apk_file in `ls $PRELOAD_APK_DIR`; do
+		ln  $PRELOAD_APK_DIR/$apk_file $SYSTEM_APP_DIR/$apk_file
+	done
+	for file in `find $PRELOAD_APK_DIR`; do
+		chattr +i $file
+	done
+
+else
+
+	for file in `ls $PRELOAD_APK_DIR`; do
+			if [ "$count" == "1" ]; then
+			sleep 15
+			pm install -r $PRELOAD_APK_DIR/$file	
+		elif [ "$count" == "5" ]; then
+			sleep 15
+			pm install -r $PRELOAD_APK_DIR/$file
+		fi
+	done
+
+	SHealth_DIR=/system/third-apps/SHealth
+	for apk_file in `ls $SHealth_DIR`; do
+		ln  $SHealth_DIR/$apk_file $SYSTEM_PRIV_APP_DIR/$apk_file
+	done
+
+fi
+
+SYSTEM_LIB_DIR=/system/lib
+PRELOAD_LIB_DIR=/system/third-apps/lib
+
+for lib_file in `ls $PRELOAD_LIB_DIR`; do
+	ln $PRELOAD_LIB_DIR/$lib_file $SYSTEM_LIB_DIR/$lib_file
 done

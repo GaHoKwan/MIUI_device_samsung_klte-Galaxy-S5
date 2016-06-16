@@ -16862,8 +16862,6 @@
 
     invoke-direct {v0, v1, v2, v4}, Lcom/android/server/am/ActivityManagerService;->removeUriPermissionsForPackageLocked(Ljava/lang/String;IZ)V
 
-    .line 4844
-
     move-object/from16 v0, p0
 
     move-object/from16 v1, p1
@@ -18847,6 +18845,24 @@
     .restart local v31    # "proc":Lcom/android/server/am/ProcessRecord;
     :cond_17
     :try_start_10
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
+
+    move-object/from16 v0, p0
+
+    iget-boolean v10, v0, Lcom/android/server/am/ActivityManagerService;->mSystemReady:Z
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p1
+
+    invoke-static {v5, v0, v1, v4, v10}, Lcom/android/server/am/ExtraActivityManagerService;->checkRunningCompatibility(Landroid/content/Context;Lcom/android/server/am/ActivityManagerService;Landroid/app/IApplicationThread;Lcom/android/server/am/ContentProviderRecord;Z)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_miui_18
+
     iget-object v11, v6, Landroid/content/pm/ProviderInfo;->processName:Ljava/lang/String;
 
     iget-object v12, v4, Lcom/android/server/am/ContentProviderRecord;->appInfo:Landroid/content/pm/ApplicationInfo;
@@ -18942,6 +18958,8 @@
     move-result-object v10
 
     invoke-static {v5, v10}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
+
+    :cond_miui_18
     :try_end_10
     .catchall {:try_start_10 .. :try_end_10} :catchall_2
 
@@ -31268,17 +31286,25 @@
 
     invoke-static {v1}, Landroid/os/UserHandle;->getUserId(I)I
 
-    move-result v1
+    move-result v5
 
-    iget-boolean v2, p0, Lcom/android/server/am/ActivityManagerService;->mSystemReady:Z
+    iget-boolean v6, p0, Lcom/android/server/am/ActivityManagerService;->mSystemReady:Z
 
-    invoke-static {v0, p3, p4, v1, v2}, Lcom/android/server/am/ExtraActivityManagerService;->checkRunningCompatibility(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;IZ)Z
+    move-object v1, p0
+
+    move-object v2, p1
+
+    move-object v3, p3
+
+    move-object v4, p4
+
+    invoke-static/range {v0 .. v6}, Lcom/android/server/am/ExtraActivityManagerService;->checkRunningCompatibility(Landroid/content/Context;Lcom/android/server/am/ActivityManagerService;Landroid/app/IApplicationThread;Landroid/content/Intent;Ljava/lang/String;IZ)Z
 
     move-result v0
 
     if-nez v0, :cond_1
 
-    const/4 v0, -0x1
+    const/4 v0, 0x0
 
     :goto_0
     return v0
@@ -33673,6 +33699,21 @@
     move-exception v4
 
     goto :goto_3
+.end method
+
+.method public clearDeadAppFromNative()V
+    .locals 3
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
+
+    iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mProcessCpuThread:Ljava/lang/Thread;
+
+    iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mProcessCpuTracker:Lcom/android/internal/os/ProcessCpuTracker;
+
+    invoke-static {p0, v0, v1, v2}, Lcom/android/server/am/ActivityManagerServiceInjector;->clearDeadAppFromNative(Lcom/android/server/am/ActivityManagerService;Ljava/util/ArrayList;Ljava/lang/Thread;Lcom/android/internal/os/ProcessCpuTracker;)V
+
+    return-void
 .end method
 
 .method public clearPendingBackup()V
@@ -50458,12 +50499,24 @@
 
     move-result v4
 
+    invoke-static {v4}, Landroid/os/UserHandle;->isApp(I)Z
+
+    move-result v5
+
+    if-nez v5, :cond_miui_00
+
     invoke-static {v4, p2}, Landroid/os/UserHandle;->isSameUser(II)Z
 
     move-result v4
 
-    if-eqz v4, :cond_1
+    if-nez v4, :cond_1
 
+    :cond_miui_00
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_1
+
+    :cond_1
     invoke-virtual {v3, v1}, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
 
     move-result-object v4
@@ -50471,11 +50524,6 @@
     check-cast v4, Lcom/android/server/am/ProcessRecord;
 
     goto :goto_0
-
-    :cond_1
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_1
 
     .end local v0    # "N":I
     .end local v1    # "i":I
@@ -65687,11 +65735,19 @@
 
     invoke-static {v1}, Landroid/os/UserHandle;->getUserId(I)I
 
-    move-result v1
+    move-result v5
 
-    iget-boolean v2, p0, Lcom/android/server/am/ActivityManagerService;->mSystemReady:Z
+    iget-boolean v6, p0, Lcom/android/server/am/ActivityManagerService;->mSystemReady:Z
 
-    invoke-static {v0, p2, p3, v1, v2}, Lcom/android/server/am/ExtraActivityManagerService;->checkRunningCompatibility(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;IZ)Z
+    move-object v1, p0
+
+    move-object v2, p1
+
+    move-object v3, p2
+
+    move-object v4, p3
+
+    invoke-static/range {v0 .. v6}, Lcom/android/server/am/ExtraActivityManagerService;->checkRunningCompatibility(Landroid/content/Context;Lcom/android/server/am/ActivityManagerService;Landroid/app/IApplicationThread;Landroid/content/Intent;Ljava/lang/String;IZ)Z
 
     move-result v0
 

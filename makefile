@@ -22,7 +22,7 @@ local-miui-removed-apps :=
 
 local-miui-removed-priv-apps := 
 
-local-miui-modified-apps := DeskClock DownloadProvider miuisystem Settings TeleService SecurityCenter MiuiSystemUI XiaomiServiceFramework NetworkAssistant2 ThemeManager
+local-miui-modified-apps := DeskClock DownloadProvider MiuiHome miuisystem Settings TeleService SecurityCenter MiuiSystemUI ThemeManager
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
@@ -84,7 +84,7 @@ local-pre-zip-misc:
 	echo "persist.audio.fluence.speaker=false" >> $(ZIP_DIR)/system/build.prop
 	sed -i 's/qemu.sf.lcd_density/persist.sys.density/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
 	@echo ">>> Security Patch "
-	echo "ro.build.version.security_patch=2016-02-01" >> $(ZIP_DIR)/system/build.prop
+	echo "ro.build.version.security_patch=2016-05-01" >> $(ZIP_DIR)/system/build.prop
 	echo "ro.build.version.base_os=" >> $(ZIP_DIR)/system/build.prop
 	@echo ">>> Use auto brightadj"
 	echo "persist.power.useautobrightadj=true" >> $(ZIP_DIR)/system/build.prop

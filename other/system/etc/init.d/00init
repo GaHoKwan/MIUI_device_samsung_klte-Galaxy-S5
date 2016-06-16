@@ -18,14 +18,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-
-cat /system/etc/boeffla_config-v2 > /data/app/boeffla_config-v2.apk
-
 setprop ro.telephony.default_network 9
 
 GET_BL_VERSION=`getprop ro.bootloader|cut -c 1-5`
 
 mount -o remount,rw /system
+
+if [ "$GET_BL_VERSION" != "I9508" ]; then
+
+  cat /system/etc/boeffla_config-v2 > /data/app/boeffla_config-v2.apk
+
+fi
 
 # For GSM Device
 
@@ -117,6 +120,14 @@ elif [ "$GET_BL_VERSION" == "SC04F" ]; then
   setprop telephony.lteOnGsmDevice 1
   setprop ro.telephony.ril.v3 "newDialCode"
 
+elif [ "$GET_BL_VERSION" == "I9508" ]; then
+
+  setprop ro.product.model "GT-I9508V"
+  setprop ro.product.device "jsglte"
+  setprop ro.telephony.ril_class JsglteRIL
+  setprop telephony.lteOnGsmDevice 1
+  setprop ro.telephony.ril.v3 "newDialCode"
+
 #For CDMA Device
 
 elif [ "$GET_BL_VERSION" == "SCL23" ]; then
@@ -129,8 +140,8 @@ elif [ "$GET_BL_VERSION" == "SCL23" ]; then
   setprop ro.cdma.home.operator.alpha "operator_alpha"
   setprop ro.telephony.default_cdma_sub "default_cdma_sub"
   setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
-  setprop ro.telephony.ril_class SamsungQualcommRIL
-  setprop telephony.lteOnCdmaDevice 0
+  setprop ro.telephony.ril_class KlteRIL
+  setprop telephony.lteOnCdmaDevice 1
 
 elif [ "$GET_BL_VERSION" == "G900P" ]; then
 
@@ -143,7 +154,20 @@ elif [ "$GET_BL_VERSION" == "G900P" ]; then
   setprop ro.telephony.default_cdma_sub "default_cdma_sub"
   setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
   setprop ro.telephony.ril_class KlteRIL
-  setprop telephony.lteOnCdmaDevice 0
+  setprop telephony.lteOnCdmaDevice 1
+
+elif [ "$GET_BL_VERSION" == "G900V" ]; then
+
+  setprop ro.product.model "SM-G900V"
+  setprop ro.product.device "kltevzw"
+  setprop telephony.sms.pseudo_multipart 1
+  setprop ril.subscription.types "RUIM"
+  setprop ro.cdma.home.operator.numeric "operator_numeric"
+  setprop ro.cdma.home.operator.alpha "operator_alpha"
+  setprop ro.telephony.default_cdma_sub "default_cdma_sub"
+  setprop ro.telephony.ril.v3 "newDriverCallU,newDialCode"
+  setprop ro.telephony.ril_class KlteRIL
+  setprop telephony.lteOnCdmaDevice 1
 
 elif [ "$GET_BL_VERSION" == "G900R" ]; then
 
